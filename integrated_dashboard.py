@@ -116,7 +116,7 @@ INTEGRATED_HOTELS = master.to_dict("records")
 GROUP_LABELS = {"Marriott": "메리어트", "Hilton": "힐튼", "Accor": "아코르"}
 GROUP_ICONS = {"Marriott": "Ⓜ️", "Hilton": "✨", "Accor": "🪶"}
 GROUPS = ["Marriott", "Hilton", "Accor"]
-SIDEBAR_LOGO_SIZE = 64  # 200×200 로고를 화면에서는 64×64px로 표시
+SIDEBAR_LOGO_SIZE = 40  # 원본 200×200, 사이드바에서는 40×40px로 표시
 BRAND_COLORS = {"Marriott": "#C73A4A", "Hilton": "#004B87", "Accor": "#9C7B2F"}
 BRAND_TEXT_COLORS = {"Marriott": "#FFFFFF", "Hilton": "#FFFFFF", "Accor": "#FFFFFF"}
 SIDEBAR_LOGO_PATHS = {
@@ -390,7 +390,7 @@ with st.sidebar:
     st.header("🏢 호텔 체인 및 지역")
     enabled_groups = []
     for group in GROUPS:
-        logo_col, check_col = st.columns([1.3, 3.7], vertical_alignment="center")
+        logo_col, check_col = st.columns([0.9, 4.1], gap="small", vertical_alignment="center")
         with logo_col:
             logo_path = SIDEBAR_LOGO_PATHS.get(group)
             if logo_path and logo_path.is_file():
