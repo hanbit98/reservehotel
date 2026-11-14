@@ -1,6 +1,6 @@
-﻿brand_group,country,region,area,code,name,brand,tier,popular,hotel_url
-Hilton,대한민국,서울,여의도,SELCICI,콘래드 서울,Conrad,Luxury,TRUE,https://www.hilton.com/ko/hotels/selcici-conrad-seoul/
-Hilton,대한민국,경기·인천,성남 판교,SELSEDI,더블트리 바이 힐튼 서울 판교,DoubleTree,Premium,FALSE,https://www.hilton.com/ko/hotels/selsedi-doubletree-seoul-pangyo/
-Hilton,일본,오사카,나카노시마,OSACICI,콘래드 오사카,Conrad,Luxury,TRUE,https://www.hilton.com/ko/hotels/osacici-conrad-osaka/
-Hilton,일본,도쿄·요코하마,도쿄 시오도메,TYOCICI,콘래드 도쿄,Conrad,Luxury,TRUE,https://www.hilton.com/ko/hotels/tyocici-conrad-tokyo/
-Hilton,태국,방콕,랏차담리,BKKWAWA,월도프 아스토리아 방콕,Waldorf Astoria,Luxury,TRUE,https://www.hilton.com/ko/hotels/bkkwawa-waldorf-astoria-bangkok/
+﻿brand_group,country,region,area,code,name,brand,tier,popular,hotel_url,star_rating
+Hilton,대한민국,서울,여의도,SELCICI,콘래드 서울,Conrad,Luxury,TRUE,https://www.hilton.com/ko/hotels/selcici-conrad-seoul/,
+Hilton,대한민국,경기·인천,성남 판교,SELSEDI,더블트리 바이 힐튼 서울 판교,DoubleTree,Premium,FALSE,https://www.hilton.com/ko/hotels/selsedi-doubletree-seoul-pangyo/,
+Hilton,일본,오사카,나카노시마,OSACICI,콘래드 오사카,Conrad,Luxury,TRUE,https://www.hilton.com/ko/hotels/osacici-conrad-osaka/,
+Hilton,일본,도쿄·요코하마,도쿄 시오도메,TYOCICI,콘래드 도쿄,Conrad,Luxury,TRUE,https://www.hilton.com/ko/hotels/tyocici-conrad-tokyo/,
+Hilton,태국,방콕,랏차담리,BKKWAWA,월도프 아스토리아 방콕,Waldorf Astoria,Luxury,TRUE,https://www.hilton.com/ko/hotels/bkkwawa-waldorf-astoria-bangkok/,

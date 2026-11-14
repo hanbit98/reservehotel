@@ -71,8 +71,11 @@ def load_hotel_data() -> pd.DataFrame:
         if missing:
             issues.append(f"{csv_path.name}: 필수 열 누락 - {', '.join(missing)}")
             continue
-        part = part[HOTEL_COLUMNS].copy()
-        for col in HOTEL_COLUMNS:
+        # star_rating은 선택 사항입니다. 현재 호텔의 성급은 검증되지 않아 비워 둡니다.
+        if "star_rating" not in part.columns:
+            part["star_rating"] = ""
+        part = part[HOTEL_COLUMNS + ["star_rating"]].copy()
+        for col in HOTEL_COLUMNS + ["star_rating"]:
             part[col] = part[col].astype(str).str.strip()
         part["brand_group"] = part["brand_group"].replace("", group)
         invalid_groups = part[part["brand_group"] != group]
@@ -90,6 +93,9 @@ def load_hotel_data() -> pd.DataFrame:
         if (~popular_lower.isin(["true", "false", "1", "0", "yes", "no", "y", "n"])).any():
             issues.append(f"{csv_path.name}: popular 열은 TRUE 또는 FALSE를 사용하세요.")
         part["popular"] = popular_lower.isin(["true", "1", "yes", "y"])
+        invalid_stars = ~part["star_rating"].isin(["", "1", "2", "3", "4", "5"])
+        if invalid_stars.any():
+            issues.append(f"{csv_path.name}: star_rating 열은 공란 또는 1~5의 정수만 사용하세요.")
         if group == "Hilton":
             part["hotel_url"] = part["hotel_url"].str.replace("/en/", "/ko/", regex=False)
         data_frames.append(part)
@@ -107,11 +113,16 @@ def load_hotel_data() -> pd.DataFrame:
 
 master = load_hotel_data()
 INTEGRATED_HOTELS = master.to_dict("records")
-GROUP_LABELS = {"Marriott": "Ⓜ️ 메리어트", "Hilton": "✨ 힐튼", "Accor": "🪶 아코르"}
+GROUP_LABELS = {"Marriott": "메리어트", "Hilton": "힐튼", "Accor": "아코르"}
 GROUP_ICONS = {"Marriott": "Ⓜ️", "Hilton": "✨", "Accor": "🪶"}
 GROUPS = ["Marriott", "Hilton", "Accor"]
 BRAND_COLORS = {"Marriott": "#C73A4A", "Hilton": "#004B87", "Accor": "#9C7B2F"}
 BRAND_TEXT_COLORS = {"Marriott": "#FFFFFF", "Hilton": "#FFFFFF", "Accor": "#FFFFFF"}
+SIDEBAR_LOGO_PATHS = {
+    "Marriott": DATA_DIR / "assets" / "marriott_sidebar.png",
+    "Hilton": DATA_DIR / "assets" / "hilton_sidebar.png",
+    "Accor": DATA_DIR / "assets" / "accor_sidebar.png",
+}
 LOGO_PATHS = {
     "Marriott": DATA_DIR / "assets" / "marriott.png",
     "Hilton": DATA_DIR / "assets" / "hilton.png",
@@ -141,6 +152,12 @@ def render_logo_label(group: str, text: str, logo_height: int = 18) -> str:
         f'<span style="font-weight:700; line-height:1.2;">{html_escape(str(text))}</span>'
         f'</div>'
     )
+
+
+def star_rating_label(value) -> str:
+    """공식 성급을 별도로 확인하여 CSV에 넣은 경우에만 별을 표시합니다."""
+    value = str(value or "").strip()
+    return "★" * int(value) if value in {"1", "2", "3", "4", "5"} else "성급 미확인"
 
 
 def render_anchor_button(label: str, url: str, bg_color: str, text_color: str = "#FFFFFF") -> str:
@@ -370,17 +387,16 @@ with st.sidebar:
 
     st.divider()
     st.header("🏢 호텔 체인 및 지역")
-    st.caption("체인 로고와 함께 표시됩니다.")
     enabled_groups = []
     for group in GROUPS:
-        c1, c2 = st.columns([1, 4])
-        with c1:
-            logo_path = LOGO_PATHS.get(group)
-            if logo_path and Path(logo_path).exists():
-                st.image(logo_path, width=58)
+        logo_col, check_col = st.columns([1.3, 3.7], vertical_alignment="center")
+        with logo_col:
+            logo_path = SIDEBAR_LOGO_PATHS.get(group)
+            if logo_path and logo_path.is_file():
+                st.image(str(logo_path), width=76)
             else:
                 st.markdown(GROUP_ICONS[group])
-        with c2:
+        with check_col:
             if st.checkbox(GROUP_LABELS[group], value=True, key=f"show_{group}"):
                 enabled_groups.append(group)
 
@@ -396,7 +412,10 @@ with st.sidebar:
     selected_regions = st.multiselect("도시 / 권역", options=available_regions, default=available_regions)
     tiers = ["Luxury", "Premium", "Select"]
     selected_tiers = st.multiselect("등급", options=tiers, default=tiers)
-    popular_only = st.checkbox("⭐ 주요 인기 호텔만 보기", value=False)
+    popular_only = st.checkbox(
+        "⭐ 추천 호텔만 보기", value=False,
+        help="CSV의 popular=TRUE로 수동 선택한 호텔입니다. 공식 인기 순위 또는 성급과는 무관합니다.",
+    )
     keyword = st.text_input("호텔명 / 코드 / 지역 검색", placeholder="예: 콘래드, 오사카, SELCICI, 발리")
 
     st.divider()
@@ -478,7 +497,8 @@ with tab_cards:
                     with cols[card_index % 3]:
                         with st.container(border=True):
                             st.markdown(render_logo_label(group, hotel["name"], logo_height=18), unsafe_allow_html=True)
-                            st.caption(f"`{hotel['code']}` | {hotel['brand']} | {hotel['area']} | {hotel['tier']}")
+                            rating = star_rating_label(hotel.get("star_rating", ""))
+                            st.caption(f"`{hotel['code']}` | {hotel['brand']} | {hotel['area']} | {hotel['tier']} | {rating}")
                             left, right = st.columns(2)
                             with left:
                                 primary_label = "🏨 호텔 소개" if group == "Accor" else "📅 날짜 달력"
@@ -504,8 +524,9 @@ with tab_table:
     if filtered_df.empty:
         st.info("테이블에 표시할 호텔이 없습니다.")
     else:
-        columns = ["brand_group", "country", "region", "area", "tier", "brand", "name", "code", "calendar_url", "exact_url"]
+        columns = ["brand_group", "country", "region", "area", "tier", "star_rating", "brand", "name", "code", "calendar_url", "exact_url"]
         view = filtered_df[columns].copy()
+        view["star_rating"] = view["star_rating"].map(star_rating_label)
         st.dataframe(
             view,
             column_config={
@@ -513,7 +534,8 @@ with tab_table:
                 "country": st.column_config.TextColumn("국가", width="small"),
                 "region": st.column_config.TextColumn("도시/권역", width="small"),
                 "area": st.column_config.TextColumn("상세 위치", width="medium"),
-                "tier": st.column_config.TextColumn("등급", width="small"),
+                "tier": st.column_config.TextColumn("브랜드 등급", width="small"),
+                "star_rating": st.column_config.TextColumn("호텔 성급", width="small"),
                 "brand": st.column_config.TextColumn("브랜드", width="medium"),
                 "name": st.column_config.TextColumn("호텔명", width="large"),
                 "code": st.column_config.TextColumn("호텔 코드", width="small"),
