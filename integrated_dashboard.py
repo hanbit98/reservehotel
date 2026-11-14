@@ -5,7 +5,10 @@
 공식 예약 사이트가 URL 파라미터를 변경하거나 로그인/쿠키를 요구할 수 있음.
 이 앱은 실시간 호텔 가격을 스크래핑하거나 예약 가능 여부를 판단하지 않음.
 """
+import base64
+from html import escape as html_escape
 import re
+from pathlib import Path
 from datetime import date, timedelta
 from urllib.parse import urlencode
 
@@ -18,177 +21,7 @@ st.set_page_config(
     layout="wide",
 )
 
-# 1) 원본 메리어트 호텔 147개 전체 보존 (기존 코드/권역/티어/인기 플래그)
-
-MARRIOTT_HOTELS = [
-    # ==================== 🇰🇷 대한민국 (39개) ====================
-    {"country": "대한민국", "region": "서울", "area": "강남/역삼", "code": "SELLC", "name": "조선 팰리스 서울 강남", "brand": "럭셔리 컬렉션", "tier": "Luxury", "popular": True},
-    {"country": "대한민국", "region": "서울", "area": "반포", "code": "SELJW", "name": "JW 메리어트 호텔 서울", "brand": "JW 메리어트", "tier": "Luxury", "popular": True},
-    {"country": "대한민국", "region": "서울", "area": "동대문", "code": "SELDP", "name": "JW 메리어트 동대문 스퀘어 서울", "brand": "JW 메리어트", "tier": "Luxury", "popular": True},
-    {"country": "대한민국", "region": "서울", "area": "소공동/시청", "code": "SELWI", "name": "웨스틴 조선 서울", "brand": "웨스틴", "tier": "Premium", "popular": True},
-    {"country": "대한민국", "region": "서울", "area": "삼성/코엑스", "code": "SELWG", "name": "웨스틴 서울 파르나스", "brand": "웨스틴", "tier": "Premium", "popular": True},
-    {"country": "대한민국", "region": "서울", "area": "시청", "code": "SELAK", "name": "더 플라자 서울", "brand": "오토그래프 컬렉션", "tier": "Premium", "popular": True},
-    {"country": "대한민국", "region": "서울", "area": "홍대", "code": "SELSA", "name": "라이즈(RYSE) 홍대", "brand": "오토그래프 컬렉션", "tier": "Premium", "popular": False},
-    {"country": "대한민국", "region": "서울", "area": "명동", "code": "SELMM", "name": "르메르디앙 서울 명동", "brand": "르메르디앙", "tier": "Premium", "popular": True},
-    {"country": "대한민국", "region": "서울", "area": "여의도", "code": "SELER", "name": "여의도 파크 센터 서울 (MEA)", "brand": "이그제큐티브 아파트먼트", "tier": "Premium", "popular": True},
-    {"country": "대한민국", "region": "서울", "area": "신도림", "code": "SELTX", "name": "더 링크 서울", "brand": "트리뷰트 포트폴리오", "tier": "Premium", "popular": False},
-    {"country": "대한민국", "region": "서울", "area": "강남/역삼", "code": "SELAG", "name": "AC 호텔 바이 메리어트 서울 강남", "brand": "AC 호텔", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "서울", "area": "명동/남대문", "code": "SELSN", "name": "코트야드 서울 명동", "brand": "코트야드", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "서울", "area": "영등포", "code": "SELCY", "name": "코트야드 서울 타임스퀘어", "brand": "코트야드", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "서울", "area": "마곡", "code": "SELCS", "name": "코트야드 서울 보타닉 파크", "brand": "코트야드", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "서울", "area": "청담", "code": "SELAL", "name": "알로프트 서울 강남", "brand": "알로프트", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "서울", "area": "명동", "code": "SELMO", "name": "알로프트 서울 명동", "brand": "알로프트", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "서울", "area": "명동", "code": "SELMX", "name": "목시 서울 명동", "brand": "목시", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "서울", "area": "종로/익선동", "code": "SELOX", "name": "목시 서울 인사동", "brand": "목시", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "서울", "area": "서울역", "code": "SELFP", "name": "포포인츠 바이 쉐라톤 조선 서울역", "brand": "포포인츠", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "서울", "area": "을지로", "code": "SELFD", "name": "포포인츠 바이 쉐라톤 조선 서울 명동", "brand": "포포인츠", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "서울", "area": "신사", "code": "SELFG", "name": "포포인츠 바이 쉐라톤 서울 강남", "brand": "포포인츠", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "서울", "area": "구로", "code": "SELFU", "name": "포포인츠 바이 쉐라톤 서울 구로", "brand": "포포인츠", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "서울", "area": "영등포", "code": "SELFI", "name": "페어필드 바이 메리어트 서울", "brand": "페어필드", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "경기·인천", "area": "인천 송도", "code": "SELGI", "name": "쉐라톤 그랜드 인천 호텔", "brand": "쉐라톤", "tier": "Premium", "popular": True},
-    {"country": "대한민국", "region": "경기·인천", "area": "인천 영종도", "code": "SELNH", "name": "네스트 호텔 인천", "brand": "디자인 호텔스", "tier": "Premium", "popular": False},
-    {"country": "대한민국", "region": "경기·인천", "area": "성남 판교", "code": "SELAY", "name": "그래비티 조선 서울 판교", "brand": "오토그래프 컬렉션", "tier": "Premium", "popular": True},
-    {"country": "대한민국", "region": "경기·인천", "area": "성남 판교", "code": "SELPN", "name": "코트야드 서울 판교", "brand": "코트야드", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "경기·인천", "area": "수원 광교", "code": "SELCW", "name": "코트야드 수원", "brand": "코트야드", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "경기·인천", "area": "평택 고덕", "code": "CJJPY", "name": "코트야드 평택", "brand": "코트야드", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "경기·인천", "area": "수원 인계동", "code": "SELFO", "name": "포포인츠 바이 쉐라톤 수원", "brand": "포포인츠", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "제주", "area": "서귀포", "code": "CJUJU", "name": "JW 메리어트 제주 리조트 & 스파", "brand": "JW 메리어트", "tier": "Luxury", "popular": True},
-    {"country": "대한민국", "region": "제주", "area": "서귀포 안덕", "code": "CJUMJ", "name": "제주신화월드 메리어트 리조트", "brand": "메리어트", "tier": "Premium", "popular": True},
-    {"country": "대한민국", "region": "부산·지방", "area": "부산 해운대", "code": "PUSWI", "name": "웨스틴 조선 부산", "brand": "웨스틴", "tier": "Premium", "popular": True},
-    {"country": "대한민국", "region": "부산·지방", "area": "부산 해운대", "code": "PUSAH", "name": "아늑 시그니처 부산 해운대", "brand": "시리즈 바이 메리어트", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "부산·지방", "area": "부산 해운대", "code": "PUSFI", "name": "페어필드 바이 메리어트 부산", "brand": "페어필드", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "부산·지방", "area": "부산 송도", "code": "PUSFB", "name": "페어필드 바이 메리어트 부산 송도 비치", "brand": "페어필드", "tier": "Select", "popular": False},
-    {"country": "대한민국", "region": "부산·지방", "area": "대구 동구", "code": "TAEMC", "name": "대구 메리어트 호텔", "brand": "메리어트", "tier": "Premium", "popular": True},
-    {"country": "대한민국", "region": "부산·지방", "area": "대전 유성", "code": "CJJAK", "name": "호텔 오노마 대전", "brand": "오토그래프 컬렉션", "tier": "Premium", "popular": True},
-    {"country": "대한민국", "region": "부산·지방", "area": "세종", "code": "CJJCY", "name": "코트야드 세종", "brand": "코트야드", "tier": "Select", "popular": False},
-
-    # ==================== 🇯🇵 일본 (29개) ====================
-    {"country": "일본", "region": "오사카", "area": "우메다", "code": "OSARZ", "name": "더 리츠칼튼 오사카", "brand": "리츠칼튼", "tier": "Luxury", "popular": True},
-    {"country": "일본", "region": "오사카", "area": "신사이바시/혼마치", "code": "OSAXR", "name": "세인트 레지스 오사카", "brand": "세인트 레지스", "tier": "Luxury", "popular": True},
-    {"country": "일본", "region": "오사카", "area": "신사이바시", "code": "OSAWH", "name": "W 오사카", "brand": "W 호텔", "tier": "Luxury", "popular": True},
-    {"country": "일본", "region": "오사카", "area": "텐노지/아베노", "code": "OSAMC", "name": "오사카 메리어트 미야코 호텔", "brand": "메리어트", "tier": "Premium", "popular": True},
-    {"country": "일본", "region": "오사카", "area": "우메다", "code": "OSAWI", "name": "웨스틴 호텔 오사카", "brand": "웨스틴", "tier": "Premium", "popular": True},
-    {"country": "일본", "region": "오사카", "area": "우메다/도지마", "code": "OSAAK", "name": "오사카 스테이션 호텔 (오토그래프)", "brand": "오토그래프 컬렉션", "tier": "Premium", "popular": True},
-    {"country": "일본", "region": "오사카", "area": "혼마치", "code": "OSACY", "name": "코트야드 오사카 혼마치", "brand": "코트야드", "tier": "Select", "popular": False},
-    {"country": "일본", "region": "오사카", "area": "신오사카", "code": "OSACS", "name": "코트야드 신오사카 스테이션", "brand": "코트야드", "tier": "Select", "popular": False},
-    {"country": "일본", "region": "오사카", "area": "우메다", "code": "OSAFU", "name": "포포인츠 플렉스 바이 쉐라톤 오사카 우메다", "brand": "포포인츠 플렉스", "tier": "Select", "popular": False},
-    {"country": "일본", "region": "오사카", "area": "난바", "code": "OSAFI", "name": "페어필드 바이 메리어트 오사카 난바", "brand": "페어필드", "tier": "Select", "popular": False},
-    {"country": "일본", "region": "교토·나라", "area": "교토 가모가와", "code": "UKYRZ", "name": "더 리츠칼튼 교토", "brand": "리츠칼튼", "tier": "Luxury", "popular": True},
-    {"country": "일본", "region": "교토·나라", "area": "교토 니조성", "code": "UKYLC", "name": "호테루 더 미츠이 교토", "brand": "럭셔리 컬렉션", "tier": "Luxury", "popular": True},
-    {"country": "일본", "region": "교토·나라", "area": "교토 히가시야마", "code": "UKYWI", "name": "웨스틴 미야코 교토", "brand": "웨스틴", "tier": "Premium", "popular": True},
-    {"country": "일본", "region": "교토·나라", "area": "나라", "code": "OSAJP", "name": "JW 메리어트 호텔 나라", "brand": "JW 메리어트", "tier": "Luxury", "popular": True},
-    {"country": "일본", "region": "도쿄·요코하마", "area": "도쿄 롯폰기", "code": "TYORZ", "name": "더 리츠칼튼 도쿄", "brand": "리츠칼튼", "tier": "Luxury", "popular": True},
-    {"country": "일본", "region": "도쿄·요코하마", "area": "도쿄 도라노몬", "code": "TYOET", "name": "도쿄 에디션 도라노몬", "brand": "에디션", "tier": "Luxury", "popular": True},
-    {"country": "일본", "region": "도쿄·요코하마", "area": "도쿄 기오이초", "code": "TYOLC", "name": "더 프린스 갤러리 도쿄 기오이초", "brand": "럭셔리 컬렉션", "tier": "Luxury", "popular": True},
-    {"country": "일본", "region": "도쿄·요코하마", "area": "도쿄 에비스", "code": "TYOWI", "name": "웨스틴 호텔 도쿄", "brand": "웨스틴", "tier": "Premium", "popular": True},
-    {"country": "일본", "region": "도쿄·요코하마", "area": "도쿄 다케시바", "code": "TYOAM", "name": "메즘 도쿄 (오토그래프 컬렉션)", "brand": "오토그래프 컬렉션", "tier": "Premium", "popular": True},
-    {"country": "일본", "region": "도쿄·요코하마", "area": "요코하마 미나토미라이", "code": "TYOWY", "name": "웨스틴 호텔 요코하마", "brand": "웨스틴", "tier": "Premium", "popular": True},
-    {"country": "일본", "region": "도쿄·요코하마", "area": "도쿄 긴자", "code": "TYOAC", "name": "AC 호텔 바이 메리어트 도쿄 긴자", "brand": "AC 호텔", "tier": "Select", "popular": False},
-    {"country": "일본", "region": "홋카이도", "area": "니세코", "code": "CTSRZ", "name": "히가시야마 니세코 빌리지 리츠칼튼 리저브", "brand": "리츠칼튼 리저브", "tier": "Luxury", "popular": True},
-    {"country": "일본", "region": "홋카이도", "area": "루스츠", "code": "CTSWR", "name": "웨스틴 루스츠 리조트", "brand": "웨스틴", "tier": "Premium", "popular": True},
-    {"country": "일본", "region": "홋카이도", "area": "삿포로 나카지마공원", "code": "CTSCY", "name": "코트야드 바이 메리어트 삿포로", "brand": "코트야드", "tier": "Select", "popular": True},
-    {"country": "일본", "region": "홋카이도", "area": "삿포로 스스키노", "code": "CTSFI", "name": "페어필드 바이 메리어트 삿포로", "brand": "페어필드", "tier": "Select", "popular": False},
-    {"country": "일본", "region": "오키나와·규슈", "area": "오키나와 나고", "code": "OKARZ", "name": "더 리츠칼튼 오키나와", "brand": "리츠칼튼", "tier": "Luxury", "popular": True},
-    {"country": "일본", "region": "오키나와·규슈", "area": "오키나와 미야코지마", "code": "OKAIL", "name": "이라프 SUI 럭셔리 컬렉션 미야코 오키나와", "brand": "럭셔리 컬렉션", "tier": "Luxury", "popular": True},
-    {"country": "일본", "region": "오키나와·규슈", "area": "오키나와 온나손", "code": "OKASI", "name": "쉐라톤 오키나와 선마리나 리조트", "brand": "쉐라톤", "tier": "Premium", "popular": True},
-    {"country": "일본", "region": "오키나와·규슈", "area": "후쿠오카 텐진", "code": "FUKRZ", "name": "더 리츠칼튼 후쿠오카", "brand": "리츠칼튼", "tier": "Luxury", "popular": True},
-
-    # ==================== 🇹🇼 대만 (9개) ====================
-    {"country": "대만", "region": "타이베이", "area": "신이구 (101 인근)", "code": "TPEWH", "name": "W 타이베이", "brand": "W 호텔", "tier": "Luxury", "popular": True},
-    {"country": "대만", "region": "타이베이", "area": "다즈", "code": "TPEMC", "name": "타이베이 메리어트 호텔", "brand": "메리어트", "tier": "Premium", "popular": True},
-    {"country": "대만", "region": "타이베이", "area": "중정구", "code": "TPESI", "name": "쉐라톤 그랜드 타이베이 호텔", "brand": "쉐라톤", "tier": "Premium", "popular": True},
-    {"country": "대만", "region": "타이베이", "area": "신이구", "code": "TPEMD", "name": "르메르디앙 타이베이", "brand": "르메르디앙", "tier": "Premium", "popular": True},
-    {"country": "대만", "region": "타이베이", "area": "다안구", "code": "TPEAK", "name": "호텔 프로버브 타이베이 (디자인 호텔스)", "brand": "디자인 호텔스", "tier": "Premium", "popular": False},
-    {"country": "대만", "region": "타이베이", "area": "난강역", "code": "TPECY", "name": "코트야드 타이베이", "brand": "코트야드", "tier": "Select", "popular": False},
-    {"country": "대만", "region": "타이베이", "area": "중산/민성", "code": "TPECD", "name": "코트야드 타이베이 다운타운", "brand": "코트야드", "tier": "Select", "popular": False},
-    {"country": "대만", "region": "가오슝·기타", "area": "가오슝 구산구", "code": "KHHMC", "name": "가오슝 메리어트 호텔", "brand": "메리어트", "tier": "Premium", "popular": True},
-    {"country": "대만", "region": "가오슝·기타", "area": "타오위안 다시", "code": "TPEWI", "name": "웨스틴 타오위안 리조트", "brand": "웨스틴", "tier": "Premium", "popular": True},
-
-    # ==================== 🇭🇰 홍콩 · 마카오 (13개) ====================
-    {"country": "홍콩·마카오", "region": "홍콩", "area": "침사추이/구룡", "code": "HKGKW", "name": "더 리츠칼튼 홍콩", "brand": "리츠칼튼", "tier": "Luxury", "popular": True},
-    {"country": "홍콩·마카오", "region": "홍콩", "area": "완차이", "code": "HKGXR", "name": "세인트 레지스 홍콩", "brand": "세인트 레지스", "tier": "Luxury", "popular": True},
-    {"country": "홍콩·마카오", "region": "홍콩", "area": "구룡역", "code": "HKGWH", "name": "W 홍콩", "brand": "W 호텔", "tier": "Luxury", "popular": True},
-    {"country": "홍콩·마카오", "region": "홍콩", "area": "애드미럴티", "code": "HKGDT", "name": "JW 메리어트 호텔 홍콩", "brand": "JW 메리어트", "tier": "Luxury", "popular": True},
-    {"country": "홍콩·마카오", "region": "홍콩", "area": "침사추이", "code": "HKGSI", "name": "쉐라톤 홍콩 호텔 & 타워", "brand": "쉐라톤", "tier": "Premium", "popular": True},
-    {"country": "홍콩·마카오", "region": "홍콩", "area": "완차이", "code": "HKGHV", "name": "르네상스 홍콩 하버 뷰 호텔", "brand": "르네상스", "tier": "Premium", "popular": True},
-    {"country": "홍콩·마카오", "region": "홍콩", "area": "오션파크", "code": "HKGOP", "name": "홍콩 오션파크 메리어트 호텔", "brand": "메리어트", "tier": "Premium", "popular": False},
-    {"country": "홍콩·마카오", "region": "홍콩", "area": "사이잉푼", "code": "HKGCY", "name": "코트야드 홍콩", "brand": "코트야드", "tier": "Select", "popular": False},
-    {"country": "홍콩·마카오", "region": "마카오", "area": "코타이 갤럭시", "code": "MFMJW", "name": "JW 메리어트 호텔 마카오", "brand": "JW 메리어트", "tier": "Luxury", "popular": True},
-    {"country": "홍콩·마카오", "region": "마카오", "area": "코타이 갤럭시", "code": "MFMRZ", "name": "더 리츠칼튼 마카오", "brand": "리츠칼튼", "tier": "Luxury", "popular": True},
-    {"country": "홍콩·마카오", "region": "마카오", "area": "코타이 런더너", "code": "MFMXR", "name": "세인트 레지스 마카오", "brand": "세인트 레지스", "tier": "Luxury", "popular": True},
-    {"country": "홍콩·마카오", "region": "마카오", "area": "코타이 스튜디오시티", "code": "MFMWH", "name": "W 마카오 - 스튜디오 시티", "brand": "W 호텔", "tier": "Luxury", "popular": True},
-    {"country": "홍콩·마카오", "region": "마카오", "area": "코타이 런더너", "code": "MFMLC", "name": "더 런더너 그랜드 (럭셔리 컬렉션)", "brand": "럭셔리 컬렉션", "tier": "Luxury", "popular": True},
-
-    # ==================== 🇨🇳 중국 (10개) ====================
-    {"country": "중국", "region": "상하이", "area": "푸동 루자쭈이", "code": "SHARZ", "name": "더 리츠칼튼 상하이 푸동", "brand": "리츠칼튼", "tier": "Luxury", "popular": True},
-    {"country": "중국", "region": "상하이", "area": "노스번드(와이탄)", "code": "SHAWH", "name": "W 상하이 - 더 번드", "brand": "W 호텔", "tier": "Luxury", "popular": True},
-    {"country": "중국", "region": "상하이", "area": "난징동루/와이탄", "code": "SHAEB", "name": "더 상하이 에디션", "brand": "에디션", "tier": "Luxury", "popular": True},
-    {"country": "중국", "region": "상하이", "area": "인민광장", "code": "SHAJW", "name": "JW 메리어트 호텔 상하이 투모로우 스퀘어", "brand": "JW 메리어트", "tier": "Luxury", "popular": True},
-    {"country": "중국", "region": "상하이", "area": "와이탄", "code": "SHAWI", "name": "웨스틴 번드 센터 상하이", "brand": "웨스틴", "tier": "Premium", "popular": False},
-    {"country": "중국", "region": "베이징", "area": "차오양", "code": "BJSRZ", "name": "더 리츠칼튼 베이징", "brand": "리츠칼튼", "tier": "Luxury", "popular": True},
-    {"country": "중국", "region": "베이징", "area": "젠궈먼", "code": "BJSXR", "name": "세인트 레지스 베이징", "brand": "세인트 레지스", "tier": "Luxury", "popular": True},
-    {"country": "중국", "region": "베이징", "area": "차오양", "code": "BJSJW", "name": "JW 메리어트 호텔 베이징", "brand": "JW 메리어트", "tier": "Luxury", "popular": False},
-    {"country": "중국", "region": "하이난(싼야)", "area": "하이탕베이", "code": "SYXEB", "name": "더 싼야 에디션", "brand": "에디션", "tier": "Luxury", "popular": True},
-    {"country": "중국", "region": "하이난(싼야)", "area": "야롱베이", "code": "SYXRZ", "name": "더 리츠칼튼 싼야, 야롱베이", "brand": "리츠칼튼", "tier": "Luxury", "popular": True},
-
-    # ==================== 🇹🇭 태국 (15개) ====================
-    {"country": "태국", "region": "방콕", "area": "룸피니/원방콕", "code": "BKKRZ", "name": "더 리츠칼튼 방콕", "brand": "리츠칼튼", "tier": "Luxury", "popular": True},
-    {"country": "태국", "region": "방콕", "area": "랏차담리", "code": "BKKXR", "name": "세인트 레지스 방콕", "brand": "세인트 레지스", "tier": "Luxury", "popular": True},
-    {"country": "태국", "region": "방콕", "area": "수쿰윗 아속", "code": "BKKLC", "name": "쉐라톤 그랜드 수쿰윗 (럭셔리 컬렉션)", "brand": "럭셔리 컬렉션", "tier": "Luxury", "popular": True},
-    {"country": "태국", "region": "방콕", "area": "스쿰윗 나나", "code": "BKKDT", "name": "JW 메리어트 호텔 방콕", "brand": "JW 메리어트", "tier": "Luxury", "popular": True},
-    {"country": "태국", "region": "방콕", "area": "사톤", "code": "BKKWH", "name": "W 방콕", "brand": "W 호텔", "tier": "Luxury", "popular": True},
-    {"country": "태국", "region": "방콕", "area": "프롬퐁", "code": "BKKQP", "name": "방콕 메리어트 마르퀴스 퀸즈 파크", "brand": "메리어트", "tier": "Premium", "popular": True},
-    {"country": "태국", "region": "방콕", "area": "수라웡", "code": "BKKSP", "name": "방콕 메리어트 호텔 더 수라웡세", "brand": "메리어트", "tier": "Premium", "popular": True},
-    {"country": "태국", "region": "방콕", "area": "통로", "code": "BKKMS", "name": "방콕 메리어트 호텔 수쿰윗", "brand": "메리어트", "tier": "Premium", "popular": False},
-    {"country": "태국", "region": "방콕", "area": "차오프라야 강변", "code": "BKKSI", "name": "로얄 오키드 쉐라톤 리버사이드 호텔", "brand": "쉐라톤", "tier": "Premium", "popular": False},
-    {"country": "태국", "region": "치앙마이", "area": "나이트바자", "code": "CNXMC", "name": "치앙마이 메리어트 호텔", "brand": "메리어트", "tier": "Premium", "popular": True},
-    {"country": "태국", "region": "치앙마이", "area": "창클란", "code": "CNXMD", "name": "멜리아/르메르디앙 치앙마이 권역", "brand": "르메르디앙", "tier": "Premium", "popular": False},
-    {"country": "태국", "region": "푸켓·코사무이", "area": "푸켓 마이카오", "code": "HKTJW", "name": "JW 메리어트 푸켓 리조트 & 스파", "brand": "JW 메리어트", "tier": "Luxury", "popular": True},
-    {"country": "태국", "region": "푸켓·코사무이", "area": "푸켓 카론/파통", "code": "HKTMD", "name": "르메르디앙 푸켓 비치 리조트", "brand": "르메르디앙", "tier": "Premium", "popular": True},
-    {"country": "태국", "region": "푸켓·코사무이", "area": "코사무이", "code": "USMRZ", "name": "더 리츠칼튼 코사무이", "brand": "리츠칼튼", "tier": "Luxury", "popular": True},
-    {"country": "태국", "region": "푸켓·코사무이", "area": "코사무이 매남", "code": "USMWH", "name": "W 코사무이", "brand": "W 호텔", "tier": "Luxury", "popular": True},
-
-    # ==================== 🇻🇳 베트남 (9개) ====================
-    {"country": "베트남", "region": "푸꾸옥·나트랑", "area": "푸꾸옥 켐비치", "code": "PQCJW", "name": "JW 메리어트 푸꾸옥 에메랄드 베이 리조트", "brand": "JW 메리어트", "tier": "Luxury", "popular": True},
-    {"country": "베트남", "region": "푸꾸옥·나트랑", "area": "푸꾸옥 혼똔섬", "code": "PQCSI", "name": "쉐라톤 푸꾸옥 롱비치 리조트", "brand": "쉐라톤", "tier": "Premium", "popular": True},
-    {"country": "베트남", "region": "푸꾸옥·나트랑", "area": "나트랑 혼트레섬", "code": "CXRMC", "name": "나트랑 메리어트 리조트 & 스파 (혼트레 아일랜드)", "brand": "메리어트", "tier": "Premium", "popular": True},
-    {"country": "베트남", "region": "푸꾸옥·나트랑", "area": "나트랑 시내", "code": "CXRSI", "name": "쉐라톤 나트랑 호텔 & 스파", "brand": "쉐라톤", "tier": "Premium", "popular": True},
-    {"country": "베트남", "region": "다낭", "area": "논누옥 비치", "code": "DADSI", "name": "쉐라톤 그랜드 다낭 리조트", "brand": "쉐라톤", "tier": "Premium", "popular": True},
-    {"country": "베트남", "region": "다낭", "area": "논누옥 비치", "code": "DADMC", "name": "다낭 메리어트 리조트 & 스파", "brand": "메리어트", "tier": "Premium", "popular": True},
-    {"country": "베트남", "region": "다낭", "area": "미케비치", "code": "DADFP", "name": "포포인츠 바이 쉐라톤 다낭", "brand": "포포인츠", "tier": "Select", "popular": False},
-    {"country": "베트남", "region": "하노이·호치민", "area": "하노이 미딩", "code": "HANJW", "name": "JW 메리어트 호텔 하노이", "brand": "JW 메리어트", "tier": "Luxury", "popular": True},
-    {"country": "베트남", "region": "하노이·호치민", "area": "호치민 1군", "code": "SGNAK", "name": "빈펄 랜드마크 81 오토그래프 컬렉션", "brand": "오토그래프 컬렉션", "tier": "Premium", "popular": True},
-
-    # ==================== 🇸🇬 싱가포르 (8개) ====================
-    {"country": "싱가포르", "region": "싱가포르", "area": "오차드/탕린", "code": "SINXR", "name": "세인트 레지스 싱가포르", "brand": "세인트 레지스", "tier": "Luxury", "popular": True},
-    {"country": "싱가포르", "region": "싱가포르", "area": "오차드", "code": "SINEB", "name": "더 싱가포르 에디션", "brand": "에디션", "tier": "Luxury", "popular": True},
-    {"country": "싱가포르", "region": "싱가포르", "area": "사우스비치/시티홀", "code": "SINJW", "name": "JW 메리어트 호텔 싱가포르 사우스 비치", "brand": "JW 메리어트", "tier": "Luxury", "popular": True},
-    {"country": "싱가포르", "region": "싱가포르", "area": "센토사 코브", "code": "SINWH", "name": "W 싱가포르 - 센토사 코브", "brand": "W 호텔", "tier": "Luxury", "popular": True},
-    {"country": "싱가포르", "region": "싱가포르", "area": "마리나베이", "code": "SINWI", "name": "웨스틴 싱가포르", "brand": "웨스틴", "tier": "Premium", "popular": True},
-    {"country": "싱가포르", "region": "싱가포르", "area": "오차드 로드", "code": "SINDT", "name": "싱가포르 메리어트 탕 플라자 호텔", "brand": "메리어트", "tier": "Premium", "popular": True},
-    {"country": "싱가포르", "region": "싱가포르", "area": "차이나타운/부기스", "code": "SINAK", "name": "더 베가본드 클럽 / 맥스웰 리저브 (오토그래프)", "brand": "오토그래프 컬렉션", "tier": "Premium", "popular": False},
-    {"country": "싱가포르", "region": "싱가포르", "area": "노베나", "code": "SINCY", "name": "코트야드 싱가포르 노베나", "brand": "코트야드", "tier": "Select", "popular": False},
-
-    # ==================== 🇲🇾 말레이시아 (7개) ====================
-    {"country": "말레이시아", "region": "쿠알라룸푸르", "area": "KL 센트럴", "code": "KULXR", "name": "세인트 레지스 쿠알라룸푸르", "brand": "세인트 레지스", "tier": "Luxury", "popular": True},
-    {"country": "말레이시아", "region": "쿠알라룸푸르", "area": "부킷 빈탕", "code": "KULRZ", "name": "더 리츠칼튼 쿠알라룸푸르", "brand": "리츠칼튼", "tier": "Luxury", "popular": True},
-    {"country": "말레이시아", "region": "쿠알라룸푸르", "area": "KLCC", "code": "KULWH", "name": "W 쿠알라룸푸르", "brand": "W 호텔", "tier": "Luxury", "popular": True},
-    {"country": "말레이시아", "region": "쿠알라룸푸르", "area": "부킷 빈탕", "code": "KULDT", "name": "JW 메리어트 호텔 쿠알라룸푸르", "brand": "JW 메리어트", "tier": "Luxury", "popular": True},
-    {"country": "말레이시아", "region": "쿠알라룸푸르", "area": "부킷 빈탕", "code": "KULWI", "name": "웨스틴 쿠알라룸푸르", "brand": "웨스틴", "tier": "Premium", "popular": False},
-    {"country": "말레이시아", "region": "랑카위·코타키나발루", "area": "랑카위", "code": "LGKRZ", "name": "더 리츠칼튼 랑카위", "brand": "리츠칼튼", "tier": "Luxury", "popular": True},
-    {"country": "말레이시아", "region": "랑카위·코타키나발루", "area": "코타키나발루", "code": "BKIMC", "name": "코타키나발루 메리어트 호텔", "brand": "메리어트", "tier": "Premium", "popular": True},
-
-    # ==================== 🇮🇩 인도네시아 (8개) ====================
-    {"country": "인도네시아", "region": "발리", "area": "우붓", "code": "DPSUB", "name": "만다파, 리츠칼튼 리저브 (우붓)", "brand": "리츠칼튼 리저브", "tier": "Luxury", "popular": True},
-    {"country": "인도네시아", "region": "발리", "area": "누사두아", "code": "DPSXR", "name": "세인트 레지스 발리 리조트", "brand": "세인트 레지스", "tier": "Luxury", "popular": True},
-    {"country": "인도네시아", "region": "발리", "area": "누사두아", "code": "DPSAZ", "name": "더 리츠칼튼 발리", "brand": "리츠칼튼", "tier": "Luxury", "popular": True},
-    {"country": "인도네시아", "region": "발리", "area": "스미냑", "code": "DPSWH", "name": "W 발리 - 스미냑", "brand": "W 호텔", "tier": "Luxury", "popular": True},
-    {"country": "인도네시아", "region": "발리", "area": "누사두아", "code": "DPSLC", "name": "더 라구나 럭셔리 컬렉션 리조트 발리", "brand": "럭셔리 컬렉션", "tier": "Luxury", "popular": True},
-    {"country": "인도네시아", "region": "발리", "area": "누사두아", "code": "DPSWI", "name": "웨스틴 리조트 누사두아 발리", "brand": "웨스틴", "tier": "Premium", "popular": True},
-    {"country": "인도네시아", "region": "발리", "area": "꾸따", "code": "DPSSI", "name": "쉐라톤 발리 꾸따 리조트", "brand": "쉐라톤", "tier": "Premium", "popular": False},
-    {"country": "인도네시아", "region": "자카르타", "area": "SCBD", "code": "JKTXR", "name": "세인트 레지스 자카르타", "brand": "세인트 레지스", "tier": "Luxury", "popular": True},
-]
-
+# 1) 국가 아이콘과 국가 표시 순서
 COUNTRY_FLAGS = {
     "대한민국": "🇰🇷",
     "일본": "🇯🇵",
@@ -203,26 +36,135 @@ COUNTRY_FLAGS = {
 }
 
 
-# 2) 힐튼/아코르 호텔. 호텔 식별코드는 각 체인의 공식 호텔 페이지와 대조.
-# 체인별 대표 호텔의 표본이며, 전체 체인 호텔 목록을 의미하지 않습니다.
-EXTRA_HOTELS = [
-    {"brand_group":"Hilton", "country":"대한민국", "region":"서울", "area":"여의도", "code":"SELCICI", "name":"콘래드 서울", "brand":"Conrad", "tier":"Luxury", "popular":True, "hotel_url":"https://www.hilton.com/en/hotels/selcici-conrad-seoul/"},
-    {"brand_group":"Hilton", "country":"대한민국", "region":"경기·인천", "area":"성남 판교", "code":"SELSEDI", "name":"더블트리 바이 힐튼 서울 판교", "brand":"DoubleTree", "tier":"Premium", "popular":False, "hotel_url":"https://www.hilton.com/en/hotels/selsedi-doubletree-seoul-pangyo/"},
-    {"brand_group":"Hilton", "country":"일본", "region":"오사카", "area":"나카노시마", "code":"OSACICI", "name":"콘래드 오사카", "brand":"Conrad", "tier":"Luxury", "popular":True, "hotel_url":"https://www.hilton.com/en/hotels/osacici-conrad-osaka/"},
-    {"brand_group":"Hilton", "country":"일본", "region":"도쿄·요코하마", "area":"도쿄 시오도메", "code":"TYOCICI", "name":"콘래드 도쿄", "brand":"Conrad", "tier":"Luxury", "popular":True, "hotel_url":"https://www.hilton.com/en/hotels/tyocici-conrad-tokyo/"},
-    {"brand_group":"Hilton", "country":"태국", "region":"방콕", "area":"랏차담리", "code":"BKKWAWA", "name":"월도프 아스토리아 방콕", "brand":"Waldorf Astoria", "tier":"Luxury", "popular":True, "hotel_url":"https://www.hilton.com/en/hotels/bkkwawa-waldorf-astoria-bangkok/"},
-    {"brand_group":"Accor", "country":"대한민국", "region":"서울", "area":"여의도", "code":"B200", "name":"페어몬트 앰배서더 서울", "brand":"Fairmont", "tier":"Luxury", "popular":True},
-    {"brand_group":"Accor", "country":"대한민국", "region":"서울", "area":"잠실", "code":"B220", "name":"소피텔 앰배서더 서울", "brand":"Sofitel", "tier":"Luxury", "popular":True},
-    {"brand_group":"Accor", "country":"일본", "region":"오사카", "area":"난바", "code":"A5C3", "name":"스위소텔 난카이 오사카", "brand":"Swissotel", "tier":"Premium", "popular":True},
-    {"brand_group":"Accor", "country":"태국", "region":"방콕", "area":"수쿰윗", "code":"5213", "name":"소피텔 방콕 스쿰윗", "brand":"Sofitel", "tier":"Luxury", "popular":True},
-    {"brand_group":"Accor", "country":"싱가포르", "region":"싱가포르", "area":"시티홀/마리나베이", "code":"A5D3", "name":"스위소텔 더 스탬포드", "brand":"Swissotel", "tier":"Premium", "popular":True},
-    {"brand_group":"Accor", "country":"싱가포르", "region":"싱가포르", "area":"센토사", "code":"9474", "name":"소피텔 싱가포르 센토사", "brand":"Sofitel", "tier":"Luxury", "popular":True},
+# 2) 호텔 마스터 데이터는 대시보드 파일과 같은 폴더의 CSV로 관리합니다.
+# 배포 시 .py + CSV 3개 + assets 폴더를 함께 업로드하세요.
+DATA_DIR = Path(__file__).resolve().parent
+CSV_FILES = {
+    "Marriott": DATA_DIR / "marriott_hotels.csv",
+    "Hilton": DATA_DIR / "hilton_hotels.csv",
+    "Accor": DATA_DIR / "accor_hotels.csv",
+}
+HOTEL_COLUMNS = [
+    "brand_group", "country", "region", "area", "code",
+    "name", "brand", "tier", "popular", "hotel_url",
 ]
 
-INTEGRATED_HOTELS = [dict(h, brand_group="Marriott") for h in MARRIOTT_HOTELS] + EXTRA_HOTELS
+
+def load_hotel_data() -> pd.DataFrame:
+    """체인별 CSV를 병합하고 필수값·코드·중복을 점검합니다.
+
+    CSV는 UTF-8 / UTF-8 BOM 모두 지원합니다. 코드를 문자로 읽어
+    숫자로 시작하는 코드의 앞자리 0을 보존합니다.
+    """
+    data_frames = []
+    issues = []
+    for group, csv_path in CSV_FILES.items():
+        if not csv_path.is_file():
+            issues.append(f"{csv_path.name}: 파일이 없습니다.")
+            continue
+        try:
+            part = pd.read_csv(csv_path, dtype=str, keep_default_na=False, encoding="utf-8-sig")
+        except Exception as exc:
+            issues.append(f"{csv_path.name}: CSV 읽기 오류 - {exc}")
+            continue
+        missing = sorted(set(HOTEL_COLUMNS) - set(part.columns))
+        if missing:
+            issues.append(f"{csv_path.name}: 필수 열 누락 - {', '.join(missing)}")
+            continue
+        part = part[HOTEL_COLUMNS].copy()
+        for col in HOTEL_COLUMNS:
+            part[col] = part[col].astype(str).str.strip()
+        part["brand_group"] = part["brand_group"].replace("", group)
+        invalid_groups = part[part["brand_group"] != group]
+        if not invalid_groups.empty:
+            issues.append(f"{csv_path.name}: brand_group은 모든 행에서 {group}이어야 합니다.")
+        part["code"] = part["code"].str.upper()
+        expected_len = {"Marriott": 5, "Hilton": 7, "Accor": 4}[group]
+        valid_codes = part["code"].str.fullmatch(rf"[A-Z0-9]{{{expected_len}}}")
+        if (~valid_codes).any():
+            issues.append(f"{csv_path.name}: 잘못된 호텔 코드 - {part.loc[~valid_codes, 'code'].head(5).tolist()}")
+        required = ["country", "region", "area", "code", "name", "brand", "tier"]
+        if part[required].eq("").any().any():
+            issues.append(f"{csv_path.name}: 국가, 지역, 호텔 코드/명 등 필수 정보에 빈 칸이 있습니다.")
+        popular_lower = part["popular"].str.lower()
+        if (~popular_lower.isin(["true", "false", "1", "0", "yes", "no", "y", "n"])).any():
+            issues.append(f"{csv_path.name}: popular 열은 TRUE 또는 FALSE를 사용하세요.")
+        part["popular"] = popular_lower.isin(["true", "1", "yes", "y"])
+        if group == "Hilton":
+            part["hotel_url"] = part["hotel_url"].str.replace("/en/", "/ko/", regex=False)
+        data_frames.append(part)
+    if issues:
+        for issue in issues:
+            st.error(issue)
+        st.stop()
+    result = pd.concat(data_frames, ignore_index=True)
+    if result.duplicated(["brand_group", "code"]).any():
+        duplicates = result[result.duplicated(["brand_group", "code"], keep=False)]
+        st.error("중복 호텔 코드가 있습니다: " + ", ".join(duplicates["code"].tolist()))
+        st.stop()
+    return result
+
+
+master = load_hotel_data()
+INTEGRATED_HOTELS = master.to_dict("records")
 GROUP_LABELS = {"Marriott": "Ⓜ️ 메리어트", "Hilton": "✨ 힐튼", "Accor": "🪶 아코르"}
 GROUP_ICONS = {"Marriott": "Ⓜ️", "Hilton": "✨", "Accor": "🪶"}
 GROUPS = ["Marriott", "Hilton", "Accor"]
+BRAND_COLORS = {"Marriott": "#C73A4A", "Hilton": "#004B87", "Accor": "#9C7B2F"}
+BRAND_TEXT_COLORS = {"Marriott": "#FFFFFF", "Hilton": "#FFFFFF", "Accor": "#FFFFFF"}
+LOGO_PATHS = {
+    "Marriott": DATA_DIR / "assets" / "marriott.png",
+    "Hilton": DATA_DIR / "assets" / "hilton.png",
+    "Accor": DATA_DIR / "assets" / "accor.png",
+}
+
+
+def img_to_base64(path_str: str) -> str:
+    p = Path(path_str)
+    if not p.exists():
+        return ""
+    return base64.b64encode(p.read_bytes()).decode("utf-8")
+
+
+LOGO_BASE64 = {group: img_to_base64(path) for group, path in LOGO_PATHS.items()}
+
+
+def render_logo_label(group: str, text: str, logo_height: int = 18) -> str:
+    logo_b64 = LOGO_BASE64.get(group, "")
+    if logo_b64:
+        logo_html = f'<img src="data:image/png;base64,{logo_b64}" style="height:{logo_height}px; width:auto; max-width:72px; object-fit:contain; border-radius:2px;" />'
+    else:
+        logo_html = f'<span>{GROUP_ICONS.get(group, "🏨")}</span>'
+    return (
+        f'<div style="display:flex; align-items:center; gap:8px; min-height:24px;">'
+        f'{logo_html}'
+        f'<span style="font-weight:700; line-height:1.2;">{html_escape(str(text))}</span>'
+        f'</div>'
+    )
+
+
+def render_anchor_button(label: str, url: str, bg_color: str, text_color: str = "#FFFFFF") -> str:
+    return f"""
+    <a href="{html_escape(url, quote=True)}" target="_blank"
+       style="display:block; width:100%; text-align:center; padding:0.6rem 0.75rem;
+              border-radius:0.55rem; text-decoration:none; font-weight:600;
+              background:{bg_color}; color:{text_color}; border:1px solid rgba(0,0,0,0.08);
+              box-sizing:border-box;">
+       {label}
+    </a>
+    """
+
+
+def localize_hilton_hotel_url(url: str) -> str:
+    if not url:
+        return ""
+    return url.replace("/en/", "/ko/")
+
+
+def localize_accor_url(url: str) -> str:
+    if not url:
+        return ""
+    return url.replace(".en.shtml", ".ko.shtml")
 
 # 기존 메리어트 달력 URL/정확한 날짜 URL 로직을 그대로 유지함.
 
@@ -334,7 +276,7 @@ def build_hilton_url(kind, code, checkin, nights, rooms, adults, children, child
         # Hilton UI에서 포인트 선택이 초기화될 수 있으므로 결과 화면에서 확인.
         params["redeemPts"] = "true"
     destination = "flexibledates" if kind == "calendar" else "rooms"
-    return f"https://www.hilton.com/en/book/reservation/{destination}/?{urlencode(params)}"
+    return f"https://www.hilton.com/ko/book/reservation/{destination}/?{urlencode(params)}"
 
 
 def build_accor_url(kind, code, checkin, nights, rooms, adults, children):
@@ -347,7 +289,7 @@ def build_accor_url(kind, code, checkin, nights, rooms, adults, children):
     if not re.fullmatch(r"[A-Za-z0-9]{4}", str(code)):
         raise ValueError("아코르 호텔 코드는 영숫자 4자리여야 합니다.")
     if kind == "calendar":
-        return f"https://all.accor.com/hotel/{code.upper()}/index.en.shtml"
+        return f"https://all.accor.com/hotel/{code.upper()}/index.ko.shtml"
     params = {
         "dateIn": checkin.strftime("%Y-%m-%d"),
         "nights": str(nights),
@@ -358,7 +300,7 @@ def build_accor_url(kind, code, checkin, nights, rooms, adults, children):
         "hideWDR": "false",
         "hideHotelDetails": "false",
     }
-    return f"https://all.accor.com/ssr/app/accor/rates/{code.upper()}/index.en.shtml?{urlencode(params)}"
+    return f"https://all.accor.com/ssr/app/accor/rates/{code.upper()}/index.ko.shtml?{urlencode(params)}"
 
 
 def make_links(hotel, checkin, nights, rooms, adults, children, child_ages, use_points):
@@ -402,7 +344,11 @@ def filter_hotels(df, selected_groups, countries, regions, tiers, popular_only, 
 
 
 # 4) 사이드바: 기존 필터와 직접 코드 조회 모두 복구
-master = pd.DataFrame(INTEGRATED_HOTELS)
+if "hotel_url" in master.columns:
+    master["hotel_url"] = master.apply(
+        lambda row: localize_hilton_hotel_url(row["hotel_url"]) if row["brand_group"] == "Hilton" else row["hotel_url"],
+        axis=1,
+    )
 with st.sidebar:
     st.header("🔍 숙박 및 조회 조건")
     use_points = st.toggle("💎 메리어트/힐튼 포인트 모드", value=True)
@@ -424,14 +370,24 @@ with st.sidebar:
 
     st.divider()
     st.header("🏢 호텔 체인 및 지역")
+    st.caption("체인 로고와 함께 표시됩니다.")
     enabled_groups = []
     for group in GROUPS:
-        if st.checkbox(GROUP_LABELS[group], value=True, key=f"show_{group}"):
-            enabled_groups.append(group)
+        c1, c2 = st.columns([1, 4])
+        with c1:
+            logo_path = LOGO_PATHS.get(group)
+            if logo_path and Path(logo_path).exists():
+                st.image(logo_path, width=58)
+            else:
+                st.markdown(GROUP_ICONS[group])
+        with c2:
+            if st.checkbox(GROUP_LABELS[group], value=True, key=f"show_{group}"):
+                enabled_groups.append(group)
 
     all_countries = [country for country in COUNTRY_FLAGS if country in master["country"].values]
+    all_countries += [country for country in master["country"].drop_duplicates() if country not in all_countries]
     selected_countries = st.multiselect(
-        "국가", options=all_countries, default=["대한민국", "일본"],
+        "국가", options=all_countries, default=[c for c in ("대한민국", "일본") if c in all_countries],
         format_func=lambda c: f"{COUNTRY_FLAGS.get(c, '')} {c}",
     )
     available_regions = master[
@@ -454,8 +410,19 @@ with st.sidebar:
             else:
                 custom_hotel = {"brand_group": custom_group, "code": custom_code, "name": custom_code}
                 u1, u2 = make_links(custom_hotel, checkin_date, nights, rooms, adults, children, child_ages, use_points)
-                st.link_button("📅 달력/호텔 소개", u1, use_container_width=True)
-                st.link_button("🛏️ 날짜별 요금 조회", u2, use_container_width=True)
+                x1, x2 = st.columns(2)
+                with x1:
+                    st.markdown(
+                        render_anchor_button(
+                            "📅 달력/호텔 소개",
+                            u1,
+                            BRAND_COLORS[custom_group],
+                            BRAND_TEXT_COLORS[custom_group],
+                        ),
+                        unsafe_allow_html=True,
+                    )
+                with x2:
+                    st.markdown(render_anchor_button("🛏️ 날짜별 요금 조회", u2, "#F7F7F7", "#222222"), unsafe_allow_html=True)
 
 # 5) 검색 결과 + 공통 링크 생성
 st.title("🏨 아시아 호텔 통합 포인트 & 요금 대시보드")
@@ -475,7 +442,10 @@ if not filtered_df.empty:
     )
     filtered_df["calendar_url"] = links.apply(lambda pair: pair[0])
     filtered_df["exact_url"] = links.apply(lambda pair: pair[1])
-    filtered_df["hotel_url"] = filtered_df["hotel_url"].fillna("") if "hotel_url" in filtered_df.columns else ""
+    if "hotel_url" in filtered_df.columns:
+        filtered_df["hotel_url"] = filtered_df["hotel_url"].fillna("")
+    else:
+        filtered_df["hotel_url"] = ""
 
 summary = " / ".join(f"{GROUP_LABELS[g]} {len(master[master['brand_group'] == g])}개" for g in GROUPS)
 st.caption(f"등록 호텔: **{len(master)}개** ({summary}) | 현재 검색 결과: **{len(filtered_df)}개**")
@@ -507,18 +477,25 @@ with tab_cards:
                     group = hotel["brand_group"]
                     with cols[card_index % 3]:
                         with st.container(border=True):
-                            st.markdown(f"**{GROUP_ICONS[group]} {hotel['name']}**")
+                            st.markdown(render_logo_label(group, hotel["name"], logo_height=18), unsafe_allow_html=True)
                             st.caption(f"`{hotel['code']}` | {hotel['brand']} | {hotel['area']} | {hotel['tier']}")
                             left, right = st.columns(2)
                             with left:
-                                st.link_button(
-                                    "🏨 호텔 소개" if group == "Accor" else "📅 날짜 달력",
-                                    hotel["calendar_url"],
-                                    use_container_width=True,
-                                    type="primary" if group == "Marriott" else "secondary",
+                                primary_label = "🏨 호텔 소개" if group == "Accor" else "📅 날짜 달력"
+                                st.markdown(
+                                    render_anchor_button(
+                                        primary_label,
+                                        hotel["calendar_url"],
+                                        BRAND_COLORS[group],
+                                        BRAND_TEXT_COLORS[group],
+                                    ),
+                                    unsafe_allow_html=True,
                                 )
                             with right:
-                                st.link_button("🛏️ 요금 조회", hotel["exact_url"], use_container_width=True)
+                                st.markdown(
+                                    render_anchor_button("🛏️ 요금 조회", hotel["exact_url"], "#F7F7F7", "#222222"),
+                                    unsafe_allow_html=True,
+                                )
                             if hotel.get("hotel_url"):
                                 st.markdown(f"[공식 호텔 상세 페이지]({hotel['hotel_url']})")
                 st.divider()
