@@ -509,28 +509,25 @@ def filter_hotels(df, selected_groups, countries, regions, tiers, popular_only, 
     return filtered
 
 
-# 4) 사이드바: 호텔 체인 및 국가/지역 필터
-with st.sidebar:
-    st.header("🔍 숙박 및 조회 조건")
-    use_points = st.toggle("💎 메리어트/힐튼 포인트 모드", value=True)
-    checkin_date = st.date_input("체크인 날짜", value=date.today() + timedelta(days=30), min_value=date.today())
-    nights = int(st.number_input("숙박 일수 (박)", min_value=1, max_value=14, value=1))
-    col_r, col_a, col_c = st.columns(3)
-    with col_r:
-        rooms = int(st.number_input("객실", min_value=1, max_value=3, value=1))
-    with col_a:
-        adults = int(st.number_input("성인/객실", min_value=1, max_value=4, value=2))
-    with col_c:
-        children = int(st.number_input("어린이/객실", min_value=0, max_value=4, value=0))
-    child_ages = []
-    if children:
-        with st.expander("👶 어린이 나이 입력 (힐튼 예약에 필요)", expanded=True):
-            st.caption("각 객실의 어린이 나이가 같다고 가정합니다. 실제 예약 화면에서 확인하세요.")
-            for i in range(children):
-                child_ages.append(int(st.number_input(f"어린이 {i+1} 나이", min_value=0, max_value=17, value=8, key=f"child_age_{i}")))
+# 검색 필터는 「호텔 검색」을 눌렀을 때만 결과에 반영됩니다.
+# 예약 날짜/인원/포인트 모드는 변경 즉시 현재 결과의 링크에 반영됩니다.
+def current_filter_snapshot(groups, country, regions, tiers, hilton_tiers, slh, upcoming, popular, query):
+    return {
+        "groups": list(groups), "country": country, "regions": list(regions),
+        "tiers": list(tiers), "hilton_tiers": None if hilton_tiers is None else list(hilton_tiers),
+        "slh": slh, "upcoming": bool(upcoming), "popular": bool(popular), "query": query,
+    }
 
-    st.divider()
-    st.header("🏢 호텔 체인 및 지역")
+
+def reservation_button_labels(group: str, use_points: bool):
+    if group == "Accor":
+        return "🏨 호텔 소개", "🛏️ 선택일 객실 조회"
+    return ("📅 포인트 달력" if use_points else "📅 유상요금 달력", "🛏️ 선택일 객실 조회")
+
+
+# 4) 사이드바: 검색 조건은 확정 버튼으로 적용, 예약 조건은 즉시 반영
+with st.sidebar:
+    st.header("🔎 ① 호텔 검색 조건")
     enabled_groups = []
     for group in GROUPS:
         logo_col, check_col = st.columns([0.9, 4.1], gap="small", vertical_alignment="center")
@@ -593,6 +590,37 @@ with st.sidebar:
     )
     keyword = st.text_input("호텔명 / 코드 / 지역 검색", placeholder="예: 콘래드, 오사카, SELCICI, 발리")
 
+    draft_filters = current_filter_snapshot(
+        enabled_groups, selected_country, selected_regions, selected_tiers,
+        hilton_source_tiers, slh_mode, include_upcoming, popular_only, keyword,
+    )
+    if "applied_hotel_filters" not in st.session_state:
+        st.session_state["applied_hotel_filters"] = draft_filters.copy()
+    if st.button("🔍 호텔 검색", type="primary", use_container_width=True, key="apply_hotel_search"):
+        st.session_state["applied_hotel_filters"] = draft_filters.copy()
+    if draft_filters != st.session_state["applied_hotel_filters"]:
+        st.info("검색 조건이 변경되었습니다. 결과에 적용하려면 **호텔 검색**을 누르세요.")
+
+    st.divider()
+    st.header("📅 ② 예약 조건 · 즉시 반영")
+    st.caption("날짜·숙박 일수·인원·포인트 모드는 호텔 검색 버튼을 다시 누르지 않아도 반영됩니다.")
+    use_points = st.toggle("💎 메리어트/힐튼 포인트 숙박", value=True, help="OFF일 때 유상 숙박 링크를 만듭니다. 힐튼 포인트 적용은 공식 페이지에서 재확인하세요.")
+    checkin_date = st.date_input("체크인 날짜", value=date.today() + timedelta(days=30), min_value=date.today())
+    nights = int(st.number_input("숙박 일수 (박)", min_value=1, max_value=14, value=1))
+    col_r, col_a, col_c = st.columns(3)
+    with col_r:
+        rooms = int(st.number_input("객실", min_value=1, max_value=3, value=1))
+    with col_a:
+        adults = int(st.number_input("성인/객실", min_value=1, max_value=4, value=2))
+    with col_c:
+        children = int(st.number_input("어린이/객실", min_value=0, max_value=4, value=0))
+    child_ages = []
+    if children:
+        with st.expander("👶 어린이 나이 입력 (힐튼 예약에 필요)", expanded=True):
+            st.caption("각 객실의 어린이 나이가 같다고 가정합니다. 실제 예약 화면에서 확인하세요.")
+            for i in range(children):
+                child_ages.append(int(st.number_input(f"어린이 {i+1} 나이", min_value=0, max_value=17, value=8, key=f"child_age_{i}")))
+
     st.divider()
     with st.expander("🛠️ 직접 호텔 코드로 조회"):
         custom_group = st.selectbox("체인", GROUPS, format_func=lambda g: GROUP_LABELS[g])
@@ -608,7 +636,7 @@ with st.sidebar:
                 with x1:
                     st.markdown(
                         render_anchor_button(
-                            "📅 달력/호텔 소개",
+                            reservation_button_labels(custom_group, use_points)[0],
                             u1,
                             BRAND_COLORS[custom_group],
                             BRAND_TEXT_COLORS[custom_group],
@@ -616,7 +644,7 @@ with st.sidebar:
                         unsafe_allow_html=True,
                     )
                 with x2:
-                    st.markdown(render_anchor_button("🛏️ 날짜별 요금 조회", u2, "#F7F7F7", "#222222"), unsafe_allow_html=True)
+                    st.markdown(render_anchor_button(reservation_button_labels(custom_group, use_points)[1], u2, "#F7F7F7", "#222222"), unsafe_allow_html=True)
 
 # 5) 검색 결과 + 공통 링크 생성
 st.title("🏨 아시아 호텔 통합 포인트 & 요금 대시보드")
@@ -628,7 +656,13 @@ st.markdown(
 )
 st.caption("호텔 목록은 hotels.csv에서 통합 관리합니다. 메리어트 데이터는 2026-11-16 제공 수집본 기준이며, 힐튼 데이터는 제공된 2026-11-16 아시아 25개국 엑셀 기준(개관 예정 포함), 아코르는 기존 목록입니다. 평점·리뷰·미확인 성급은 표시하지 않습니다. 예약 링크 작동은 전수 검증되지 않았습니다.")
 
-filtered_df = filter_hotels(master, enabled_groups, [selected_country], selected_regions, selected_tiers, popular_only, keyword, hilton_source_tiers, include_upcoming, slh_mode)
+applied_filters = st.session_state["applied_hotel_filters"]
+applied_country = applied_filters["country"]
+filtered_df = filter_hotels(
+    master, applied_filters["groups"], [applied_country], applied_filters["regions"],
+    applied_filters["tiers"], applied_filters["popular"], applied_filters["query"],
+    applied_filters["hilton_tiers"], applied_filters["upcoming"], applied_filters["slh"],
+)
 if not filtered_df.empty:
     links = filtered_df.apply(
         lambda row: make_links(row, checkin_date, nights, rooms, adults, children, child_ages, use_points),
@@ -644,11 +678,11 @@ if not filtered_df.empty:
 summary = " / ".join(f"{GROUP_LABELS[g]} {len(master[master['brand_group'] == g])}개" for g in GROUPS)
 st.caption(f"등록 호텔: **{len(master)}개** ({summary}) | 현재 검색 결과: **{len(filtered_df)}개**")
 
-if any(g in enabled_groups for g in ["Hilton", "Accor"]):
+if any(g in applied_filters["groups"] for g in ["Hilton", "Accor"]):
     with st.expander("ℹ️ 체인별 예약 링크 주의사항", expanded=False):
         st.markdown(
             "- **메리어트:** 원래 사용하던 월간 가용성 달력과 특정일 요금 링크를 유지했습니다.\n"
-            "- **힐튼:** 유연한 날짜 검색 및 객실 검색 링크입니다. 포인트 모드는 공식 사이트에서 다시 선택해야 할 수 있습니다.\n"
+            "- **힐튼:** 유연한 날짜 검색 및 객실 검색 링크입니다. 힐튼 공식 안내에서는 포인트 사용을 별도로 선택하도록 안내하므로 결과 화면에서 반드시 확인하세요.\n"
             "- **아코르:** 메리어트식 포인트 달력이 없어 첫 번째 링크는 호텔 소개입니다. 날짜별 요금 검색만 연결합니다.\n"
             "- **어린이·다객실 예약:** 힐튼 아동 나이는 전달하지만, 브랜드별 예약 화면에서 인원과 연령을 재확인해야 합니다. 아코르는 객실 인원을 다시 지정할 수 있습니다."
         )
@@ -658,23 +692,23 @@ with tab_cards:
     if filtered_df.empty:
         st.warning("현재 조건에 일치하는 호텔이 없습니다. 체인, 국가, 지역, 등급을 변경하세요.")
     else:
-        st.markdown(country_heading(selected_country, len(filtered_df)), unsafe_allow_html=True)
+        st.markdown(country_heading(applied_country, len(filtered_df)), unsafe_allow_html=True)
         # Streamlit의 st.expander는 닫힌 상태에서도 내부 위젯을 모두 생성합니다.
         # 따라서 지역별 버튼+session_state로 구현하여 열린 권역만 카드를 렌더링합니다.
         # 한 국가의 모든 권역은 이 화면에 표시되며, 별도의 페이지 분할은 없습니다.
         region_counts = filtered_df["display_region"].value_counts()
         regions_in_order = region_counts.index.tolist()  # 현재 필터 결과 기준 호텔 수 내림차순
         region_keys = {
-            region: f"region_open_{selected_country}_{region}" for region in regions_in_order
+            region: f"region_open_{applied_country}_{region}" for region in regions_in_order
         }
 
         # 첫 방문 및 국가 변경 시에는 호텔 수가 가장 많은 권역 딱 하나만 엽니다.
         # 같은 국가에서 검색·등급·브랜드를 조정할 때는 사용자의 펼침 상태를 유지합니다.
-        if st.session_state.get("active_region_country") != selected_country:
+        if st.session_state.get("active_region_country") != applied_country:
             for key in list(st.session_state.keys()):
                 if key.startswith("region_open_"):
                     del st.session_state[key]
-            st.session_state["active_region_country"] = selected_country
+            st.session_state["active_region_country"] = applied_country
             st.session_state[region_keys[regions_in_order[0]]] = True
         for state_key in region_keys.values():
             if state_key not in st.session_state:
@@ -683,12 +717,12 @@ with tab_cards:
         st.caption("국가를 선택하면 호텔이 가장 많은 권역 한 곳만 먼저 펼쳐집니다. 나머지는 클릭하여 열 수 있습니다.")
         ctl1, ctl2, _ = st.columns([1, 1, 3])
         with ctl1:
-            if st.button("모두 펼치기", key=f"expand_regions_{selected_country}", use_container_width=True):
+            if st.button("모두 펼치기", key=f"expand_regions_{applied_country}", use_container_width=True):
                 for state_key in region_keys.values():
                     st.session_state[state_key] = True
                 st.rerun()
         with ctl2:
-            if st.button("모두 접기", key=f"collapse_regions_{selected_country}", use_container_width=True):
+            if st.button("모두 접기", key=f"collapse_regions_{applied_country}", use_container_width=True):
                 for state_key in region_keys.values():
                     st.session_state[state_key] = False
                 st.rerun()
@@ -704,7 +738,7 @@ with tab_cards:
             # st.button은 HTML을 렌더링하지 않으므로, 버튼과 색상 배지를 나란히 배치합니다.
             region_button_col, region_brand_col = st.columns([3, 2], gap="small", vertical_alignment="center")
             with region_button_col:
-                if st.button(label, key=f"toggle_{selected_country}_{region}", use_container_width=True):
+                if st.button(label, key=f"toggle_{applied_country}_{region}", use_container_width=True):
                     st.session_state[state_key] = not is_open
                     st.rerun()
             with region_brand_col:
@@ -735,16 +769,18 @@ with tab_cards:
                             st.caption("📍 지역 정보 미확인 (원본 누락)")
                         left, right = st.columns(2)
                         with left:
-                            primary_label = "🏨 호텔 소개" if group == "Accor" else "📅 날짜 달력"
+                            primary_label, exact_label = reservation_button_labels(group, use_points)
                             st.markdown(
                                 render_anchor_button(primary_label, hotel["calendar_url"], BRAND_COLORS[group], BRAND_TEXT_COLORS[group]),
                                 unsafe_allow_html=True,
                             )
                         with right:
                             st.markdown(
-                                render_anchor_button("🛏️ 요금 조회", hotel["exact_url"], "#F7F7F7", "#222222"),
+                                render_anchor_button(exact_label, hotel["exact_url"], "#F7F7F7", "#222222"),
                                 unsafe_allow_html=True,
                             )
+                        if group == "Hilton" and use_points:
+                            st.caption("힐튼 포인트 표시는 예약 사이트에서 재확인")
                         if hotel.get("hotel_url"):
                             st.markdown(f"[공식 호텔 상세 페이지]({hotel['hotel_url']})")
 
@@ -769,8 +805,8 @@ with tab_table:
                 "display_name": st.column_config.TextColumn("호텔명", width="large"),
                 "code": st.column_config.TextColumn("호텔 코드", width="small"),
                 "hotel_url": st.column_config.LinkColumn("공식 호텔 페이지", display_text="🔗 열기", width="small"),
-                "calendar_url": st.column_config.LinkColumn("달력 / 호텔 소개", display_text="📅 열기", width="small"),
-                "exact_url": st.column_config.LinkColumn("특정일 요금", display_text="🛏️ 열기", width="small"),
+                "calendar_url": st.column_config.LinkColumn("포인트/유상 달력 · 호텔 소개", display_text="📅 열기", width="small"),
+                "exact_url": st.column_config.LinkColumn("선택일 객실 조회", display_text="🛏️ 열기", width="small"),
             },
             hide_index=True,
             use_container_width=True,
