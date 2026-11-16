@@ -521,23 +521,29 @@ def reservation_button_labels(group: str, use_points: bool):
 
 
 def render_equal_height_hotel_card(hotel, use_points: bool) -> str:
-    """Self-contained card markup with consistently aligned two-button booking row."""
+    """Compact, equal-height card. Tier appears inline directly after the hotel name."""
     group = str(hotel["brand_group"])
-    safe = lambda x: html_escape(str(x if x is not None else ""), quote=True)
-    logo_title = render_logo_label(group, hotel["display_name"], logo_height=18)
-    code = safe(hotel["code"])
+    safe = lambda value: html_escape(str(value if value is not None else ""), quote=True)
+    logo_b64 = LOGO_BASE64.get(group, "")
+    logo = (
+        f'<img src="data:image/png;base64,{logo_b64}" alt="{safe(group)}" '
+        f'style="height:18px;max-width:64px;width:auto;object-fit:contain;'
+        f'vertical-align:middle;margin-right:7px;" />'
+        if logo_b64 else f'<span style="margin-right:7px;">{GROUP_ICONS.get(group, "🏨")}</span>'
+    )
     badge = render_tier_badge(hotel["tier"])
+    code = safe(hotel["code"])
     brand = safe(hotel["brand"])
     area = safe(hotel["area"])
+    is_slh = group == "Hilton" and str(hotel.get("hilton_affiliation", "")) == "SLH 제휴"
     extra = []
-    if group == "Hilton":
-        if str(hotel.get("hilton_affiliation", "")) == "SLH 제휴":
-            extra.append("SLH 제휴 호텔")
-        if str(hotel.get("opening_status", "")).startswith("개관 예정"):
-            extra.append("🏗️ " + safe(hotel["opening_status"]))
+    if is_slh:
+        extra.append('<span style="font-weight:650;color:#76618b;white-space:nowrap;">SLH 제휴</span>')
+    if group == "Hilton" and str(hotel.get("opening_status", "")).startswith("개관 예정"):
+        extra.append('🏗️ 개관 예정')
     if group == "Marriott" and hotel.get("location_status") == "위치 미확인":
-        extra.append("📍 지역 정보 미확인")
-    extra_html = " · ".join(extra)
+        extra.append('지역 정보 미확인')
+    extra_html = (' &nbsp;·&nbsp; ' + ' &nbsp;·&nbsp; '.join(extra)) if extra else ''
 
     calendar_label, room_label = reservation_button_labels(group, use_points)
     calendar = render_anchor_button(calendar_label, str(hotel["calendar_url"]), BRAND_COLORS[group], BRAND_TEXT_COLORS[group])
@@ -545,24 +551,24 @@ def render_equal_height_hotel_card(hotel, use_points: bool) -> str:
     hotel_url = str(hotel.get("hotel_url", "") or "").strip()
     official = (
         f'<a href="{safe(hotel_url)}" target="_blank" rel="noopener noreferrer" '
-        f'style="font-size:.72rem;text-decoration:none;color:#777;">🔗 호텔 공홈</a>'
+        f'style="font-size:.70rem;text-decoration:none;color:#777;white-space:nowrap;">🔗 호텔 공홈</a>'
         if hotel_url else ""
     )
     return f"""
 <div class="hotel-equal-card" style="box-sizing:border-box;border:1px solid rgba(120,120,120,.23);
-    border-radius:12px;padding:13px;height:292px;display:flex;flex-direction:column;
-    margin-bottom:16px;overflow:hidden;background:transparent;">
-    <div style="height:65px;min-height:65px;overflow:hidden;overflow-wrap:anywhere;">{logo_title}</div>
-    <div style="height:30px;min-height:30px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
-        {badge}<span title="호텔 코드: {code}" style="font-size:9px;color:#fff;">{code}</span>
+    border-radius:12px;padding:12px;height:228px;display:flex;flex-direction:column;
+    margin-bottom:12px;overflow:hidden;background:transparent;">
+    <div style="font-size:1rem;font-weight:750;line-height:1.35;max-height:76px;
+        overflow:hidden;overflow-wrap:anywhere;">
+        {logo}<span>{safe(hotel["display_name"])}</span> <span style="display:inline-block;vertical-align:baseline;white-space:nowrap;">{badge}</span>
+        <span title="호텔 코드: {code}" style="font-size:8px;color:#fff;">{code}</span>
     </div>
-    <div style="font-size:.77rem;color:#70747a;line-height:1.45;min-height:43px;max-height:43px;
-         overflow:hidden;overflow-wrap:anywhere;">
-        <b>브랜드</b> : {brand} &nbsp;/&nbsp; <b>위치</b> : {area}
+    <div style="font-size:.76rem;color:#70747a;line-height:1.35;max-height:43px;
+        margin-top:4px;overflow:hidden;overflow-wrap:anywhere;">
+        <b>브랜드</b> : {brand} &nbsp;/&nbsp; <b>위치</b> : {area}{extra_html}
     </div>
-    <div style="font-size:.71rem;color:#777;min-height:20px;height:20px;overflow:hidden;">{extra_html}</div>
-    <div style="flex:1;min-height:0;"></div>
-    <div style="height:24px;min-height:24px;display:flex;align-items:center;justify-content:flex-end;">{official}</div>
+    <div style="flex:1;min-height:2px;"></div>
+    <div style="min-height:18px;display:flex;align-items:center;justify-content:flex-end;margin-bottom:3px;">{official}</div>
     <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:7px;
        width:100%;height:44px;min-height:44px;align-items:stretch;">{calendar}{rooms}</div>
 </div>"""
@@ -786,19 +792,18 @@ with tab_cards:
             region: f"region_open_{applied_country}_{region}" for region in regions_in_order
         }
 
-        # 첫 방문 및 국가 변경 시에는 호텔 수가 가장 많은 권역 딱 하나만 엽니다.
-        # 같은 국가에서 검색·등급·브랜드를 조정할 때는 사용자의 펼침 상태를 유지합니다.
-        if st.session_state.get("active_region_country") != applied_country:
+        # 첫 방문·국가 변경·호텔 검색 버튼 클릭 시 모든 권역을 접습니다.
+        # 같은 국가에서 예약일·포인트 조건만 바꾸면 펼침 상태를 유지합니다.
+        if search_clicked or st.session_state.get("active_region_country") != applied_country:
             for key in list(st.session_state.keys()):
                 if key.startswith("region_open_"):
                     del st.session_state[key]
             st.session_state["active_region_country"] = applied_country
-            st.session_state[region_keys[regions_in_order[0]]] = True
         for state_key in region_keys.values():
             if state_key not in st.session_state:
                 st.session_state[state_key] = False
 
-        st.caption("국가를 선택하면 정렬 기준의 첫 번째 권역 한 곳만 먼저 펼쳐집니다. 나머지는 클릭하여 열 수 있습니다.")
+        st.caption("호텔 검색 후에는 모든 권역이 접힌 상태로 표시됩니다. 보고 싶은 권역을 클릭하여 펼치세요.")
         ctl1, ctl2, _ = st.columns([1, 1, 3])
         with ctl1:
             if st.button("모두 펼치기", key=f"expand_regions_{applied_country}", use_container_width=True):
