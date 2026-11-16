@@ -534,15 +534,24 @@ with tab_cards:
         # 따라서 지역별 버튼+session_state로 구현하여 열린 권역만 카드를 렌더링합니다.
         # 한 국가의 모든 권역은 이 화면에 표시되며, 별도의 페이지 분할은 없습니다.
         region_counts = filtered_df["display_region"].value_counts()
-        regions_in_order = region_counts.index.tolist()  # 검색 결과 호텔 수 내림차순
+        regions_in_order = region_counts.index.tolist()  # 현재 필터 결과 기준 호텔 수 내림차순
         region_keys = {
             region: f"region_open_{selected_country}_{region}" for region in regions_in_order
         }
+
+        # 첫 방문 및 국가 변경 시에는 호텔 수가 가장 많은 권역 딱 하나만 엽니다.
+        # 같은 국가에서 검색·등급·브랜드를 조정할 때는 사용자의 펼침 상태를 유지합니다.
+        if st.session_state.get("active_region_country") != selected_country:
+            for key in list(st.session_state.keys()):
+                if key.startswith("region_open_"):
+                    del st.session_state[key]
+            st.session_state["active_region_country"] = selected_country
+            st.session_state[region_keys[regions_in_order[0]]] = True
         for state_key in region_keys.values():
             if state_key not in st.session_state:
                 st.session_state[state_key] = False
 
-        st.caption("권역 제목을 클릭하면 호텔 카드가 표시됩니다. 닫힌 권역의 카드는 렌더링하지 않아 화면이 가벼워집니다.")
+        st.caption("국가를 선택하면 호텔이 가장 많은 권역 한 곳만 먼저 펼쳐집니다. 나머지는 클릭하여 열 수 있습니다.")
         ctl1, ctl2, _ = st.columns([1, 1, 3])
         with ctl1:
             if st.button("모두 펼치기", key=f"expand_regions_{selected_country}", use_container_width=True):
@@ -555,18 +564,31 @@ with tab_cards:
                     st.session_state[state_key] = False
                 st.rerun()
 
+        tier_order = {"Luxury": 0, "Premium": 1, "Select": 2, "Extended Stay": 3}
         for region in regions_in_order:
             state_key = region_keys[region]
             is_open = st.session_state[state_key]
             arrow = "▼" if is_open else "▶"
-            label = f"{arrow}  {region}  ({int(region_counts[region]):,}개 호텔)"
+            region_df = filtered_df[filtered_df["display_region"] == region]
+            chain_counts = region_df["brand_group"].value_counts()
+            chain_label = "  ·  ".join(
+                f"{GROUP_LABELS[group]} {int(chain_counts.get(group, 0)):,}"
+                for group in GROUPS
+            )
+            label = f"{arrow}  {region}  ({int(region_counts[region]):,}개)  |  {chain_label}"
             if st.button(label, key=f"toggle_{selected_country}_{region}", use_container_width=True):
                 st.session_state[state_key] = not is_open
                 st.rerun()
             if not is_open:
                 continue
 
-            region_df = filtered_df[filtered_df["display_region"] == region]
+            # 호텔 등급: Luxury → Premium → Select → Extended Stay.
+            # 같은 등급 안에서는 호텔명을 기준으로 정렬합니다.
+            region_df = (
+                region_df.assign(_tier_order=region_df["tier"].map(tier_order).fillna(99))
+                .sort_values(["_tier_order", "display_name", "code"], kind="stable")
+                .drop(columns="_tier_order")
+            )
             cols = st.columns(3)
             for card_index, (_, hotel) in enumerate(region_df.iterrows()):
                 group = hotel["brand_group"]
