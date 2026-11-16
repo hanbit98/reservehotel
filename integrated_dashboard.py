@@ -521,11 +521,52 @@ def reservation_button_labels(group: str, use_points: bool):
     return ("📅 포인트 달력" if use_points else "📅 유상요금 달력", "🛏️ 선택일 객실 조회")
 
 
-# 4) 사이드바: 예약 모드 → 날짜·인원 → 국가 → 공통 유형 → 검색 버튼.
+def render_equal_height_hotel_card(hotel, use_points: bool) -> str:
+    """3열에서 호텔마다 카드 높이를 고정하고 하단 버튼을 같은 위치에 정렬."""
+    group = str(hotel["brand_group"])
+    safe = lambda x: html_escape(str(x or ""), quote=True)
+    name = safe(hotel["display_name"])
+    code = safe(hotel["code"])
+    brand = safe(hotel["brand"])
+    area = safe(hotel["area"])
+    logo = render_logo_label(group, hotel["display_name"], logo_height=18)
+    tier = render_tier_badge(hotel["tier"])
+    extra = ""
+    if group == "Hilton":
+        extra = f'<div class="hotel-card-extra">힐튼: {safe(hotel["tier_source"])} · {safe(hotel["hilton_affiliation"])}</div>'
+        if str(hotel.get("opening_status", "")).startswith("개관 예정"):
+            extra += f'<div class="hotel-card-upcoming">🏗️ {safe(hotel["opening_status"])}</div>'
+    if group == "Marriott" and hotel.get("location_status") == "위치 미확인":
+        extra += '<div class="hotel-card-extra">📍 지역 정보 미확인</div>'
+    if group == "Hilton" and use_points:
+        extra += '<div class="hotel-card-extra">포인트 적용은 예약 사이트에서 확인</div>'
+    calendar_label, exact_label = reservation_button_labels(group, use_points)
+    calendar_link = render_anchor_button(calendar_label, str(hotel["calendar_url"]), BRAND_COLORS[group], BRAND_TEXT_COLORS[group])
+    exact_link = render_anchor_button(exact_label, str(hotel["exact_url"]), "#F7F7F7", "#222222")
+    official = str(hotel.get("hotel_url", "") or "")
+    official_link = (f'<a href="{safe(official)}" target="_blank" rel="noopener noreferrer" '
+                     f'style="font-size:0.77rem; text-decoration:none; color:inherit;">🔗 호텔 공홈</a>') if official else ""
+    return f"""
+    <div class="hotel-equal-card" style="box-sizing:border-box;border:1px solid rgba(120,120,120,.23);
+        border-radius:12px; padding:13px; height:292px; display:flex; flex-direction:column;
+        margin-bottom:16px; overflow:hidden; background:transparent;">
+        <div style="height:59px;overflow:hidden;">{logo}</div>
+        <div style="height:30px;">{tier}</div>
+        <div style="font-size:.78rem;color:gray;line-height:1.4;height:34px;overflow:hidden;">{code} · {brand} · {area}</div>
+        <div style="font-size:.72rem;color:gray;height:45px;overflow:hidden;">{extra}</div>
+        <div style="margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:7px;">{calendar_link}{exact_link}</div>
+        <div style="height:25px;display:flex;justify-content:flex-end;align-items:flex-end;">{official_link}</div>
+    </div>
+    """
+
+
+# 4) 사이드바: 국가 → 포인트 모드 → 날짜·인원 → 공통 유형 → 검색 → 추가조건.
 # 메리어트·힐튼·아코르 로고는 사이드바에 표시하지 않습니다.
 with st.sidebar:
     st.markdown("""
     <style>
+    .hotel-equal-card a {font-size:0.76rem !important; padding:0.55rem 0.28rem !important; line-height:1.2;}
+    .hotel-equal-card a:hover {filter:brightness(.94);}
     /* 검색 조건에서는 브랜드 전용 컬러를 쓰지 않습니다. */
     [data-testid="stSidebar"] .st-key-apply_hotel_search button {
         background-color: #44484e !important;
@@ -550,16 +591,26 @@ with st.sidebar:
     </style>
     """, unsafe_allow_html=True)
 
-    st.subheader("예약 조건")
+    # 최상단 국가 → 예약 조건 → 공통 유형 → 검색 → 상세 검색.
+    all_countries = [c for c in COUNTRY_FLAGS if c in master["country"].values]
+    all_countries += [c for c in master["country"].drop_duplicates() if c not in all_countries]
+    selected_country = st.selectbox(
+        "🌏 국가 선택", options=all_countries,
+        index=all_countries.index("대한민국") if "대한민국" in all_countries else 0,
+        format_func=lambda c: f"{COUNTRY_FLAGS.get(c, '')} {c}",
+    )
     use_points = st.toggle(
         "💎 메리어트/힐튼 포인트 숙박", value=True,
-        help="OFF일 때 유상 숙박 링크를 만듭니다. 힐튼 포인트 적용은 공식 페이지에서 재확인하세요.",
+        help="끄면 유상 숙박으로 조회합니다. 힐튼은 예약 사이트에서 포인트 적용을 재확인하세요.",
     )
-    checkin_date = st.date_input(
-        "체크인 날짜", value=date.today() + timedelta(days=30), min_value=date.today()
-    )
-    nights = int(st.number_input("숙박 일수 (박)", min_value=1, max_value=14, value=1))
-    col_r, col_a, col_c = st.columns(3)
+    date_col, nights_col = st.columns([1.65, 1], gap="small")
+    with date_col:
+        checkin_date = st.date_input(
+            "체크인 날짜", value=date.today() + timedelta(days=30), min_value=date.today(),
+        )
+    with nights_col:
+        nights = int(st.number_input("숙박 일수(박)", min_value=1, max_value=14, value=1))
+    col_r, col_a, col_c = st.columns(3, gap="small")
     with col_r:
         rooms = int(st.number_input("객실", min_value=1, max_value=3, value=1))
     with col_a:
@@ -569,26 +620,21 @@ with st.sidebar:
     child_ages = []
     if children:
         with st.expander("👶 어린이 나이 입력 (힐튼 예약에 필요)", expanded=True):
-            st.caption("각 객실의 어린이 나이가 같다고 가정합니다. 실제 예약 화면에서 확인하세요.")
+            st.caption("각 객실의 어린이 나이가 같다고 가정하며 실제 예약 화면에서 확인하세요.")
             for i in range(children):
                 child_ages.append(int(st.number_input(
                     f"어린이 {i+1} 나이", min_value=0, max_value=17,
                     value=8, key=f"child_age_{i}"
                 )))
 
-    st.divider()
-    st.subheader("호텔 검색")
-    all_countries = [country for country in COUNTRY_FLAGS if country in master["country"].values]
-    all_countries += [country for country in master["country"].drop_duplicates() if country not in all_countries]
-    selected_country = st.selectbox(
-        "국가 선택", options=all_countries,
-        index=all_countries.index("대한민국") if "대한민국" in all_countries else 0,
-        format_func=lambda c: f"{COUNTRY_FLAGS.get(c, '')} {c}",
-    )
     tiers = ["Luxury", "Premium", "Lifestyle", "Select", "Extended Stay"]
     selected_tiers = st.multiselect(
         "호텔 유형 (체인 공통)", options=tiers, default=tiers,
-        help="브랜드 위치를 비교하기 위한 화면용 분류이며 호텔의 공식 성급이 아닙니다.",
+        help="호텔 공식 성급이 아닌 검색용 공통 분류입니다.",
+    )
+    # UI에서는 검색 버튼을 먼저 보여주고, 하단의 추가조건까지 읽은 뒤 적용합니다.
+    search_clicked = st.button(
+        "🔎 호텔 검색", type="secondary", use_container_width=True, key="apply_hotel_search"
     )
 
     enabled_groups = []
@@ -597,9 +643,8 @@ with st.sidebar:
     include_upcoming = False
     popular_only = False
     keyword = ""
-    # 자주 쓰지 않는 검색 옵션을 접어 핵심 조회 버튼이 위쪽에 남게 합니다.
     with st.expander("⚙️ 추가 검색 조건", expanded=False):
-        st.caption("호텔 체인 · 힐튼 세부 분류 · SLH · 검색어")
+        st.caption("호텔 체인 · 힐튼 세부 분류 · SLH · 영업 상태 · 검색어")
         for group in GROUPS:
             if st.checkbox(GROUP_LABELS[group], value=True, key=f"show_{group}"):
                 enabled_groups.append(group)
@@ -607,7 +652,7 @@ with st.sidebar:
             hilton_options = ["럭셔리", "프리미엄·풀서비스", "라이프스타일", "셀렉트"]
             hilton_source_tiers = st.multiselect(
                 "힐튼 세부 분류", options=hilton_options, default=hilton_options,
-                help="힐튼 원본 엑셀의 등급이며 공통 호텔 유형과는 별개입니다.",
+                help="힐튼 원본 등급이며 공통 호텔 유형과 구분됩니다.",
             )
             slh_mode = st.radio(
                 "힐튼 SLH 제휴 필터", ["전체", "힐튼 일반·계열만", "SLH 제휴만"],
@@ -619,7 +664,7 @@ with st.sidebar:
         )
         popular_only = st.checkbox(
             "⭐ 추천 호텔만 보기", value=False,
-            help="CSV의 popular=TRUE로 수동 분류한 호텔입니다.",
+            help="CSV에서 popular=TRUE로 표시된 호텔입니다.",
         )
         keyword = st.text_input(
             "호텔명 / 코드 / 지역 검색", placeholder="예: 콘래드, 오사카, SELCICI, 발리"
@@ -631,7 +676,7 @@ with st.sidebar:
     )
     if "applied_hotel_filters" not in st.session_state:
         st.session_state["applied_hotel_filters"] = draft_filters.copy()
-    if st.button("🔎 호텔 검색", type="secondary", use_container_width=True, key="apply_hotel_search"):
+    if search_clicked:
         st.session_state["applied_hotel_filters"] = draft_filters.copy()
     if draft_filters != st.session_state["applied_hotel_filters"]:
         st.caption("검색 조건 변경됨 · **호텔 검색**을 눌러 적용")
@@ -781,36 +826,14 @@ with tab_cards:
                 .sort_values(["_tier_order", "display_name", "code"], kind="stable")
                 .drop(columns="_tier_order")
             )
-            cols = st.columns(3)
-            for card_index, (_, hotel) in enumerate(region_df.iterrows()):
-                group = hotel["brand_group"]
-                with cols[card_index % 3]:
-                    with st.container(border=True):
-                        st.markdown(render_logo_label(group, hotel["display_name"], logo_height=18), unsafe_allow_html=True)
-                        st.markdown(render_tier_badge(hotel["tier"]), unsafe_allow_html=True)
-                        if group == "Hilton":
-                            st.caption(f"힐튼 분류: {hotel['tier_source']} · {hotel['hilton_affiliation']}")
-                            if str(hotel.get("opening_status", "")).startswith("개관 예정"):
-                                st.warning(f"🏗️ {hotel['opening_status']} · 예약 가능 여부 확인 필요")
-                        st.caption(f"`{hotel['code']}` | {hotel['brand']} | {hotel['area']}")
-                        if group == "Marriott" and hotel.get("location_status") == "위치 미확인":
-                            st.caption("📍 지역 정보 미확인 (원본 누락)")
-                        left, right = st.columns(2)
-                        with left:
-                            primary_label, exact_label = reservation_button_labels(group, use_points)
-                            st.markdown(
-                                render_anchor_button(primary_label, hotel["calendar_url"], BRAND_COLORS[group], BRAND_TEXT_COLORS[group]),
-                                unsafe_allow_html=True,
-                            )
-                        with right:
-                            st.markdown(
-                                render_anchor_button(exact_label, hotel["exact_url"], "#F7F7F7", "#222222"),
-                                unsafe_allow_html=True,
-                            )
-                        if group == "Hilton" and use_points:
-                            st.caption("힐튼 포인트 표시는 예약 사이트에서 재확인")
-                        if hotel.get("hotel_url"):
-                            st.markdown(f"[공식 호텔 상세 페이지]({hotel['hotel_url']})")
+            # 세 장을 한 행으로 묶어 동일한 높이의 카드로 표시합니다.
+            # 사진은 추후 검증된 이미지 URL을 확보한 뒤 선택적으로 추가합니다.
+            rows = [hotel for _, hotel in region_df.iterrows()]
+            for row_start in range(0, len(rows), 3):
+                cols = st.columns(3, gap="medium")
+                for col_idx, hotel in enumerate(rows[row_start:row_start + 3]):
+                    with cols[col_idx]:
+                        st.markdown(render_equal_height_hotel_card(hotel, use_points), unsafe_allow_html=True)
 
 with tab_table:
     if filtered_df.empty:
