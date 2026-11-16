@@ -440,18 +440,22 @@ with st.sidebar:
 
     all_countries = [country for country in COUNTRY_FLAGS if country in master["country"].values]
     all_countries += [country for country in master["country"].drop_duplicates() if country not in all_countries]
-    selected_countries = st.multiselect(
-        "국가", options=all_countries, default=[c for c in ("대한민국", "일본") if c in all_countries],
+    # 국가를 하나만 선택하도록 변경합니다. 국가 변경 시 권역 필터는 자동으로 갱신됩니다.
+    selected_country = st.selectbox(
+        "국가 선택", options=all_countries,
+        index=all_countries.index("대한민국") if "대한민국" in all_countries else 0,
         format_func=lambda c: f"{COUNTRY_FLAGS.get(c, '')} {c}",
     )
     available_region_data = master[
-        master["brand_group"].isin(enabled_groups) & master["country"].isin(selected_countries)
+        master["brand_group"].isin(enabled_groups) & master["country"].eq(selected_country)
     ]
+    # 국가 및 체인 기준 호텔 수가 많은 권역부터 표시합니다.
     available_regions = available_region_data["display_region"].value_counts().index.tolist()
-    if "대한민국" in selected_countries:
-        kr_order = ["서울", "경기", "인천", "부산", "대구", "대전", "광주", "울산", "세종", "제주", "강원", "충북", "충남", "전북", "전남", "경북", "경남"]
-        available_regions = [r for r in kr_order if r in available_regions] + [r for r in available_regions if r not in kr_order]
-    selected_regions = st.multiselect("표시용 권역", options=available_regions, default=available_regions)
+    selected_regions = st.multiselect(
+        "표시용 권역 (호텔 수 순)", options=available_regions,
+        default=available_regions, key=f"regions_{selected_country}",
+        format_func=lambda r: f"{r} ({(available_region_data['display_region'] == r).sum()}개)",
+    )
     tiers = ["Luxury", "Premium", "Select", "Extended Stay"]
     selected_tiers = st.multiselect("등급", options=tiers, default=tiers)
     popular_only = st.checkbox(
@@ -495,7 +499,7 @@ st.markdown(
 )
 st.caption("호텔 목록은 hotels.csv에서 통합 관리합니다. 메리어트 데이터는 2026-11-16 제공 수집본 기준이며, 힐튼·아코르는 기존 목록입니다. 평점·리뷰·미확인 성급은 표시하지 않습니다. 예약 링크 작동은 전수 검증되지 않았습니다.")
 
-filtered_df = filter_hotels(master, enabled_groups, selected_countries, selected_regions, selected_tiers, popular_only, keyword)
+filtered_df = filter_hotels(master, enabled_groups, [selected_country], selected_regions, selected_tiers, popular_only, keyword)
 if not filtered_df.empty:
     links = filtered_df.apply(
         lambda row: make_links(row, checkin_date, nights, rooms, adults, children, child_ages, use_points),
@@ -521,53 +525,71 @@ if any(g in enabled_groups for g in ["Hilton", "Accor"]):
         )
 
 tab_cards, tab_table = st.tabs(["🗂️ 국가·도시별 카드", "📊 전체 테이블·CSV 다운로드"])
-CARD_PAGE_SIZE = 60
 with tab_cards:
     if filtered_df.empty:
         st.warning("현재 조건에 일치하는 호텔이 없습니다. 체인, 국가, 지역, 등급을 변경하세요.")
     else:
-        total_pages = max(1, (len(filtered_df) + CARD_PAGE_SIZE - 1) // CARD_PAGE_SIZE)
-        card_page = st.number_input("카드 페이지", min_value=1, max_value=total_pages, value=1, step=1,
-                                    help="호텔이 많아 카드 화면은 페이지당 60개씩 표시합니다. 전체 목록은 테이블에서 확인하세요.")
-        visible_df = filtered_df.iloc[(card_page - 1) * CARD_PAGE_SIZE:card_page * CARD_PAGE_SIZE]
-        st.caption(f"카드 {len(filtered_df)}개 중 {(card_page - 1)*CARD_PAGE_SIZE + 1}~{min(card_page*CARD_PAGE_SIZE, len(filtered_df))}개 표시 · {card_page}/{total_pages}페이지")
-        for country in selected_countries:
-            country_df = visible_df[visible_df["country"] == country]
-            if country_df.empty:
+        st.header(f"{COUNTRY_FLAGS.get(selected_country, '🌐')} {selected_country} · {len(filtered_df):,}개 호텔")
+        # Streamlit의 st.expander는 닫힌 상태에서도 내부 위젯을 모두 생성합니다.
+        # 따라서 지역별 버튼+session_state로 구현하여 열린 권역만 카드를 렌더링합니다.
+        # 한 국가의 모든 권역은 이 화면에 표시되며, 별도의 페이지 분할은 없습니다.
+        region_counts = filtered_df["display_region"].value_counts()
+        regions_in_order = region_counts.index.tolist()  # 검색 결과 호텔 수 내림차순
+        region_keys = {
+            region: f"region_open_{selected_country}_{region}" for region in regions_in_order
+        }
+        for state_key in region_keys.values():
+            if state_key not in st.session_state:
+                st.session_state[state_key] = False
+
+        st.caption("권역 제목을 클릭하면 호텔 카드가 표시됩니다. 닫힌 권역의 카드는 렌더링하지 않아 화면이 가벼워집니다.")
+        ctl1, ctl2, _ = st.columns([1, 1, 3])
+        with ctl1:
+            if st.button("모두 펼치기", key=f"expand_regions_{selected_country}", use_container_width=True):
+                for state_key in region_keys.values():
+                    st.session_state[state_key] = True
+                st.rerun()
+        with ctl2:
+            if st.button("모두 접기", key=f"collapse_regions_{selected_country}", use_container_width=True):
+                for state_key in region_keys.values():
+                    st.session_state[state_key] = False
+                st.rerun()
+
+        for region in regions_in_order:
+            state_key = region_keys[region]
+            is_open = st.session_state[state_key]
+            arrow = "▼" if is_open else "▶"
+            label = f"{arrow}  {region}  ({int(region_counts[region]):,}개 호텔)"
+            if st.button(label, key=f"toggle_{selected_country}_{region}", use_container_width=True):
+                st.session_state[state_key] = not is_open
+                st.rerun()
+            if not is_open:
                 continue
-            st.header(f"{COUNTRY_FLAGS.get(country, '🌐')} {country}")
-            for region in country_df["display_region"].drop_duplicates():
-                st.subheader(f"📍 {region}")
-                region_df = country_df[country_df["display_region"] == region]
-                cols = st.columns(3)
-                for card_index, (_, hotel) in enumerate(region_df.iterrows()):
-                    group = hotel["brand_group"]
-                    with cols[card_index % 3]:
-                        with st.container(border=True):
-                            st.markdown(render_logo_label(group, hotel["display_name"], logo_height=18), unsafe_allow_html=True)
-                            st.caption(f"`{hotel['code']}` | {hotel['brand']} | {hotel['area']} | {hotel['tier']}")
-                            if group == "Marriott" and hotel.get("location_status") == "위치 미확인":
-                                st.caption("📍 지역 정보 미확인 (원본 누락)")
-                            left, right = st.columns(2)
-                            with left:
-                                primary_label = "🏨 호텔 소개" if group == "Accor" else "📅 날짜 달력"
-                                st.markdown(
-                                    render_anchor_button(
-                                        primary_label,
-                                        hotel["calendar_url"],
-                                        BRAND_COLORS[group],
-                                        BRAND_TEXT_COLORS[group],
-                                    ),
-                                    unsafe_allow_html=True,
-                                )
-                            with right:
-                                st.markdown(
-                                    render_anchor_button("🛏️ 요금 조회", hotel["exact_url"], "#F7F7F7", "#222222"),
-                                    unsafe_allow_html=True,
-                                )
-                            if hotel.get("hotel_url"):
-                                st.markdown(f"[공식 호텔 상세 페이지]({hotel['hotel_url']})")
-                st.divider()
+
+            region_df = filtered_df[filtered_df["display_region"] == region]
+            cols = st.columns(3)
+            for card_index, (_, hotel) in enumerate(region_df.iterrows()):
+                group = hotel["brand_group"]
+                with cols[card_index % 3]:
+                    with st.container(border=True):
+                        st.markdown(render_logo_label(group, hotel["display_name"], logo_height=18), unsafe_allow_html=True)
+                        st.caption(f"`{hotel['code']}` | {hotel['brand']} | {hotel['area']} | {hotel['tier']}")
+                        if group == "Marriott" and hotel.get("location_status") == "위치 미확인":
+                            st.caption("📍 지역 정보 미확인 (원본 누락)")
+                        left, right = st.columns(2)
+                        with left:
+                            primary_label = "🏨 호텔 소개" if group == "Accor" else "📅 날짜 달력"
+                            st.markdown(
+                                render_anchor_button(primary_label, hotel["calendar_url"], BRAND_COLORS[group], BRAND_TEXT_COLORS[group]),
+                                unsafe_allow_html=True,
+                            )
+                        with right:
+                            st.markdown(
+                                render_anchor_button("🛏️ 요금 조회", hotel["exact_url"], "#F7F7F7", "#222222"),
+                                unsafe_allow_html=True,
+                            )
+                        if hotel.get("hotel_url"):
+                            st.markdown(f"[공식 호텔 상세 페이지]({hotel['hotel_url']})")
 
 with tab_table:
     if filtered_df.empty:
