@@ -37,6 +37,35 @@ COUNTRY_FLAGS = {
 }
 
 
+# 국기는 실제 PNG 이미지를 사용합니다. 네트워크가 막히면 이모지로 대체합니다.
+COUNTRY_FLAG_CODES = {
+    "대한민국": "kr", "일본": "jp", "대만": "tw", "홍콩": "hk", "마카오": "mo",
+    "중국": "cn", "태국": "th", "베트남": "vn", "싱가포르": "sg",
+    "말레이시아": "my", "인도네시아": "id",
+}
+
+
+def country_heading(country: str, count: int) -> str:
+    """국가 제목 옆에 PNG 국기 표시, 실패하면 국기 이모지 노출."""
+    safe_country = html_escape(country)
+    code = COUNTRY_FLAG_CODES.get(country)
+    if code:
+        flag = (
+            f'<img src="https://flagcdn.com/w80/{code}.png" '
+            f'alt="{safe_country} 국기" loading="lazy" '
+            f'onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'inline\'" '
+            f'style="height:29px;width:44px;object-fit:cover;border:1px solid rgba(120,120,120,.18);border-radius:4px;" />'
+            f'<span style="display:none;font-size:29px;">{COUNTRY_FLAGS.get(country, "🌐")}</span>'
+        )
+    else:
+        flag = f'<span style="font-size:29px;">{COUNTRY_FLAGS.get(country, "🌐")}</span>'
+    return (
+        f'<div style="display:flex;align-items:center;gap:12px;margin:0.3rem 0 0.8rem;">'
+        f'{flag}<span style="font-size:1.65rem;font-weight:750;line-height:1.3;">'
+        f'{safe_country} · {count:,}개 호텔</span></div>'
+    )
+
+
 # 2) 호텔 마스터 데이터: hotels.csv 하나로 전 체인을 관리합니다.
 # 배포 시 integrated_dashboard.py + hotels.csv + assets/ 폴더만 필요합니다.
 DATA_DIR = Path(__file__).resolve().parent
@@ -161,6 +190,42 @@ GROUPS = ["Marriott", "Hilton", "Accor"]
 SIDEBAR_LOGO_SIZE = 40  # 원본 200×200, 사이드바에서는 40×40px로 표시
 BRAND_COLORS = {"Marriott": "#C73A4A", "Hilton": "#004B87", "Accor": "#9C7B2F"}
 BRAND_TEXT_COLORS = {"Marriott": "#FFFFFF", "Hilton": "#FFFFFF", "Accor": "#FFFFFF"}
+
+# 브랜드 개수는 각 체인 고유색을 연한 배지로 표시합니다.
+BRAND_PILL_STYLES = {
+    "Marriott": ("#B42335", "#FFF1F2"),
+    "Hilton": ("#07569B", "#ECF4FF"),
+    "Accor": ("#795D13", "#FFF7DB"),
+}
+TIER_PILL_STYLES = {
+    "Luxury": ("#805B17", "#FFF2CA", "◆"),
+    "Premium": ("#28569D", "#E9F1FF", "●"),
+    "Select": ("#18704D", "#E4F6ED", "●"),
+    "Extended Stay": ("#6847A3", "#F1EBFF", "■"),
+}
+
+
+def render_region_brand_counts(counts) -> str:
+    pills = []
+    for group in GROUPS:
+        color, background = BRAND_PILL_STYLES[group]
+        label = html_escape(GROUP_LABELS[group])
+        count = int(counts.get(group, 0))
+        pills.append(
+            f'<span style="display:inline-block;white-space:nowrap;font-size:12px;'
+            f'font-weight:700;color:{color};background:{background};'
+            f'padding:5px 8px;border-radius:7px;">{label} {count:,}</span>'
+        )
+    return '<div style="display:flex;flex-wrap:wrap;gap:5px;align-items:center;min-height:37px;">' + ''.join(pills) + '</div>'
+
+
+def render_tier_badge(tier: str) -> str:
+    color, background, symbol = TIER_PILL_STYLES.get(str(tier), ("#495567", "#E9EDF1", "•"))
+    return (
+        f'<span style="display:inline-block;white-space:nowrap;font-size:12px;'
+        f'font-weight:750;letter-spacing:0.2px;color:{color};background:{background};'
+        f'padding:4px 9px;border-radius:6px;">{symbol} {html_escape(str(tier))}</span>'
+    )
 SIDEBAR_LOGO_PATHS = {
     "Marriott": DATA_DIR / "assets" / "marriott_sidebar.png",
     "Hilton": DATA_DIR / "assets" / "hilton_sidebar.png",
@@ -529,7 +594,7 @@ with tab_cards:
     if filtered_df.empty:
         st.warning("현재 조건에 일치하는 호텔이 없습니다. 체인, 국가, 지역, 등급을 변경하세요.")
     else:
-        st.header(f"{COUNTRY_FLAGS.get(selected_country, '🌐')} {selected_country} · {len(filtered_df):,}개 호텔")
+        st.markdown(country_heading(selected_country, len(filtered_df)), unsafe_allow_html=True)
         # Streamlit의 st.expander는 닫힌 상태에서도 내부 위젯을 모두 생성합니다.
         # 따라서 지역별 버튼+session_state로 구현하여 열린 권역만 카드를 렌더링합니다.
         # 한 국가의 모든 권역은 이 화면에 표시되며, 별도의 페이지 분할은 없습니다.
@@ -571,14 +636,15 @@ with tab_cards:
             arrow = "▼" if is_open else "▶"
             region_df = filtered_df[filtered_df["display_region"] == region]
             chain_counts = region_df["brand_group"].value_counts()
-            chain_label = "  ·  ".join(
-                f"{GROUP_LABELS[group]} {int(chain_counts.get(group, 0)):,}"
-                for group in GROUPS
-            )
-            label = f"{arrow}  {region}  ({int(region_counts[region]):,}개)  |  {chain_label}"
-            if st.button(label, key=f"toggle_{selected_country}_{region}", use_container_width=True):
-                st.session_state[state_key] = not is_open
-                st.rerun()
+            label = f"{arrow}  {region}  ({int(region_counts[region]):,}개)"
+            # st.button은 HTML을 렌더링하지 않으므로, 버튼과 색상 배지를 나란히 배치합니다.
+            region_button_col, region_brand_col = st.columns([3, 2], gap="small", vertical_alignment="center")
+            with region_button_col:
+                if st.button(label, key=f"toggle_{selected_country}_{region}", use_container_width=True):
+                    st.session_state[state_key] = not is_open
+                    st.rerun()
+            with region_brand_col:
+                st.markdown(render_region_brand_counts(chain_counts), unsafe_allow_html=True)
             if not is_open:
                 continue
 
@@ -595,7 +661,8 @@ with tab_cards:
                 with cols[card_index % 3]:
                     with st.container(border=True):
                         st.markdown(render_logo_label(group, hotel["display_name"], logo_height=18), unsafe_allow_html=True)
-                        st.caption(f"`{hotel['code']}` | {hotel['brand']} | {hotel['area']} | {hotel['tier']}")
+                        st.markdown(render_tier_badge(hotel["tier"]), unsafe_allow_html=True)
+                        st.caption(f"`{hotel['code']}` | {hotel['brand']} | {hotel['area']}")
                         if group == "Marriott" and hotel.get("location_status") == "위치 미확인":
                             st.caption("📍 지역 정보 미확인 (원본 누락)")
                         left, right = st.columns(2)
