@@ -273,15 +273,14 @@ def star_rating_label(value) -> str:
 
 
 def render_anchor_button(label: str, url: str, bg_color: str, text_color: str = "#FFFFFF") -> str:
-    return f"""
-    <a href="{html_escape(url, quote=True)}" target="_blank"
-       style="display:block; width:100%; text-align:center; padding:0.6rem 0.75rem;
-              border-radius:0.55rem; text-decoration:none; font-weight:600;
-              background:{bg_color}; color:{text_color}; border:1px solid rgba(0,0,0,0.08);
-              box-sizing:border-box;">
-       {label}
-    </a>
-    """
+    """Use exactly the same dimensions for both external booking links."""
+    return f"""<a href="{html_escape(str(url), quote=True)}" target="_blank" rel="noopener noreferrer"
+        style="display:flex;width:100%;height:44px;min-height:44px;min-width:0;
+        align-items:center;justify-content:center;text-align:center;padding:4px 6px;
+        box-sizing:border-box;line-height:1.2;font-size:.76rem;font-weight:650;
+        border-radius:9px;text-decoration:none;overflow-wrap:anywhere;
+        background:{bg_color};color:{text_color};border:1px solid rgba(0,0,0,.08);">
+        {html_escape(str(label))}</a>"""
 
 
 def localize_hilton_hotel_url(url: str) -> str:
@@ -522,42 +521,51 @@ def reservation_button_labels(group: str, use_points: bool):
 
 
 def render_equal_height_hotel_card(hotel, use_points: bool) -> str:
-    """3열에서 호텔마다 카드 높이를 고정하고 하단 버튼을 같은 위치에 정렬."""
+    """Self-contained card markup with consistently aligned two-button booking row."""
     group = str(hotel["brand_group"])
-    safe = lambda x: html_escape(str(x or ""), quote=True)
-    name = safe(hotel["display_name"])
+    safe = lambda x: html_escape(str(x if x is not None else ""), quote=True)
+    logo_title = render_logo_label(group, hotel["display_name"], logo_height=18)
     code = safe(hotel["code"])
+    badge = render_tier_badge(hotel["tier"])
     brand = safe(hotel["brand"])
     area = safe(hotel["area"])
-    logo = render_logo_label(group, hotel["display_name"], logo_height=18)
-    tier = render_tier_badge(hotel["tier"])
-    extra = ""
+    extra = []
     if group == "Hilton":
-        extra = f'<div class="hotel-card-extra">힐튼: {safe(hotel["tier_source"])} · {safe(hotel["hilton_affiliation"])}</div>'
+        if str(hotel.get("hilton_affiliation", "")) == "SLH 제휴":
+            extra.append("SLH 제휴 호텔")
         if str(hotel.get("opening_status", "")).startswith("개관 예정"):
-            extra += f'<div class="hotel-card-upcoming">🏗️ {safe(hotel["opening_status"])}</div>'
+            extra.append("🏗️ " + safe(hotel["opening_status"]))
     if group == "Marriott" and hotel.get("location_status") == "위치 미확인":
-        extra += '<div class="hotel-card-extra">📍 지역 정보 미확인</div>'
-    if group == "Hilton" and use_points:
-        extra += '<div class="hotel-card-extra">포인트 적용은 예약 사이트에서 확인</div>'
-    calendar_label, exact_label = reservation_button_labels(group, use_points)
-    calendar_link = render_anchor_button(calendar_label, str(hotel["calendar_url"]), BRAND_COLORS[group], BRAND_TEXT_COLORS[group])
-    exact_link = render_anchor_button(exact_label, str(hotel["exact_url"]), "#F7F7F7", "#222222")
-    official = str(hotel.get("hotel_url", "") or "")
-    official_link = (f'<a href="{safe(official)}" target="_blank" rel="noopener noreferrer" '
-                     f'style="font-size:0.77rem; text-decoration:none; color:inherit;">🔗 호텔 공홈</a>') if official else ""
+        extra.append("📍 지역 정보 미확인")
+    extra_html = " · ".join(extra)
+
+    calendar_label, room_label = reservation_button_labels(group, use_points)
+    calendar = render_anchor_button(calendar_label, str(hotel["calendar_url"]), BRAND_COLORS[group], BRAND_TEXT_COLORS[group])
+    rooms = render_anchor_button(room_label, str(hotel["exact_url"]), "#F7F7F7", "#222222")
+    hotel_url = str(hotel.get("hotel_url", "") or "").strip()
+    official = (
+        f'<a href="{safe(hotel_url)}" target="_blank" rel="noopener noreferrer" '
+        f'style="font-size:.72rem;text-decoration:none;color:#777;">🔗 호텔 공홈</a>'
+        if hotel_url else ""
+    )
     return f"""
-    <div class="hotel-equal-card" style="box-sizing:border-box;border:1px solid rgba(120,120,120,.23);
-        border-radius:12px; padding:13px; height:292px; display:flex; flex-direction:column;
-        margin-bottom:16px; overflow:hidden; background:transparent;">
-        <div style="height:59px;overflow:hidden;">{logo}</div>
-        <div style="height:30px;">{tier}</div>
-        <div style="font-size:.78rem;color:gray;line-height:1.4;height:34px;overflow:hidden;">{code} · {brand} · {area}</div>
-        <div style="font-size:.72rem;color:gray;height:45px;overflow:hidden;">{extra}</div>
-        <div style="margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:7px;">{calendar_link}{exact_link}</div>
-        <div style="height:25px;display:flex;justify-content:flex-end;align-items:flex-end;">{official_link}</div>
+<div class="hotel-equal-card" style="box-sizing:border-box;border:1px solid rgba(120,120,120,.23);
+    border-radius:12px;padding:13px;height:292px;display:flex;flex-direction:column;
+    margin-bottom:16px;overflow:hidden;background:transparent;">
+    <div style="height:65px;min-height:65px;overflow:hidden;overflow-wrap:anywhere;">{logo_title}</div>
+    <div style="height:30px;min-height:30px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px;">
+        {badge}<span title="호텔 코드: {code}" style="font-size:9px;color:#fff;">{code}</span>
     </div>
-    """
+    <div style="font-size:.77rem;color:#70747a;line-height:1.45;min-height:43px;max-height:43px;
+         overflow:hidden;overflow-wrap:anywhere;">
+        <b>브랜드</b> : {brand} &nbsp;/&nbsp; <b>위치</b> : {area}
+    </div>
+    <div style="font-size:.71rem;color:#777;min-height:20px;height:20px;overflow:hidden;">{extra_html}</div>
+    <div style="flex:1;min-height:0;"></div>
+    <div style="height:24px;min-height:24px;display:flex;align-items:center;justify-content:flex-end;">{official}</div>
+    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:7px;
+       width:100%;height:44px;min-height:44px;align-items:stretch;">{calendar}{rooms}</div>
+</div>"""
 
 
 # 4) 사이드바: 국가 → 포인트 모드 → 날짜·인원 → 공통 유형 → 검색 → 추가조건.
@@ -565,7 +573,10 @@ def render_equal_height_hotel_card(hotel, use_points: bool) -> str:
 with st.sidebar:
     st.markdown("""
     <style>
-    .hotel-equal-card a {font-size:0.76rem !important; padding:0.55rem 0.28rem !important; line-height:1.2;}
+    /* Only booking buttons get button dimensions; never override the official-site link. */
+    .hotel-equal-card > div:last-child > a {height:44px !important;min-height:44px !important;padding:4px 6px !important;}
+    div[class*="st-key-toggle_"] button,
+    div[class*="st-key-toggle_"] button p {font-size:1.08rem !important;font-weight:750 !important;}
     .hotel-equal-card a:hover {filter:brightness(.94);}
     /* 검색 조건에서는 브랜드 전용 컬러를 쓰지 않습니다. */
     [data-testid="stSidebar"] .st-key-apply_hotel_search button {
@@ -601,7 +612,7 @@ with st.sidebar:
     )
     use_points = st.toggle(
         "💎 메리어트/힐튼 포인트 숙박", value=True,
-        help="끄면 유상 숙박으로 조회합니다. 힐튼은 예약 사이트에서 포인트 적용을 재확인하세요.",
+        help="끄면 유상 숙박으로 조회합니다.",
     )
     date_col, nights_col = st.columns([1.65, 1], gap="small")
     with date_col:
