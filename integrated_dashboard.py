@@ -33,7 +33,9 @@ COUNTRY_FLAGS = {
     "베트남": "🇻🇳",
     "싱가포르": "🇸🇬",
     "말레이시아": "🇲🇾",
-    "인도네시아": "🇮🇩",
+    "인도네시아": "🇮🇩", "필리핀": "🇵🇭", "캄보디아": "🇰🇭", "라오스": "🇱🇦", "미얀마": "🇲🇲",
+    "인도": "🇮🇳", "몰디브": "🇲🇻", "스리랑카": "🇱🇰", "네팔": "🇳🇵", "부탄": "🇧🇹",
+    "파키스탄": "🇵🇰", "카자흐스탄": "🇰🇿", "우즈베키스탄": "🇺🇿", "키르기스스탄": "🇰🇬", "타지키스탄": "🇹🇯",
 }
 
 
@@ -42,6 +44,9 @@ COUNTRY_FLAG_CODES = {
     "대한민국": "kr", "일본": "jp", "대만": "tw", "홍콩": "hk", "마카오": "mo",
     "중국": "cn", "태국": "th", "베트남": "vn", "싱가포르": "sg",
     "말레이시아": "my", "인도네시아": "id",
+    "필리핀": "ph", "캄보디아": "kh", "라오스": "la", "미얀마": "mm",
+    "인도": "in", "몰디브": "mv", "스리랑카": "lk", "네팔": "np", "부탄": "bt",
+    "파키스탄": "pk", "카자흐스탄": "kz", "우즈베키스탄": "uz", "키르기스스탄": "kg", "타지키스탄": "tj",
 }
 
 
@@ -76,7 +81,7 @@ HOTEL_COLUMNS = [
 ]
 EXTRA_COLUMNS = [
     "display_region", "name_en", "province", "address", "phone", "review_rating",
-    "review_count", "brand_code", "source_date", "location_status",
+    "review_count", "brand_code", "source_date", "location_status", "tier_source", "opening_status",
 ]
 SUPPORTED_GROUPS = {"Marriott": 5, "Hilton": 7, "Accor": 4}
 
@@ -180,6 +185,10 @@ def load_hotel_data() -> pd.DataFrame:
         part.loc[part["brand_group"] == "Hilton", "hotel_url"].str.replace("/en/", "/ko/", regex=False)
     )
     part["display_name"] = part.apply(display_hotel_name, axis=1)
+    part["hilton_affiliation"] = part.apply(
+        lambda h: "SLH 제휴" if h["brand_group"] == "Hilton" and bool(re.search(r"\bSLH\b|Small Luxury Hotels", h["brand"], re.IGNORECASE))
+        else ("힐튼 일반·계열" if h["brand_group"] == "Hilton" else ""), axis=1
+    )
     return part
 
 master = load_hotel_data()
@@ -200,6 +209,7 @@ BRAND_PILL_STYLES = {
 TIER_PILL_STYLES = {
     "Luxury": ("#805B17", "#FFF2CA", "◆"),
     "Premium": ("#28569D", "#E9F1FF", "●"),
+    "Lifestyle": ("#9346AB", "#F8EAFE", "✦"),
     "Select": ("#18704D", "#E4F6ED", "●"),
     "Extended Stay": ("#6847A3", "#F1EBFF", "■"),
 }
@@ -449,13 +459,44 @@ def make_links(hotel, checkin, nights, rooms, adults, children, child_ages, use_
     raise ValueError(f"지원하지 않는 체인: {group}")
 
 
-def filter_hotels(df, selected_groups, countries, regions, tiers, popular_only, keyword):
+def is_slh_partner(brand) -> bool:
+    """SLH 제휴 여부는 제공받은 brand 원문을 기준으로 판단합니다."""
+    return bool(re.search(r"\bSLH\b|Small Luxury Hotels", str(brand), re.IGNORECASE))
+
+
+def country_brand_summary(df, include_upcoming=False):
+    """데이터에 등록된 국가별 체인 수. 미수집 국가를 0개로 오해하면 안 됩니다."""
+    source = df.copy()
+    if not include_upcoming:
+        source = source[~((source["brand_group"] == "Hilton") & source["opening_status"].str.startswith("개관 예정"))]
+    count = source.groupby(["country", "brand_group"]).size().unstack(fill_value=0)
+    for group in GROUPS:
+        if group not in count.columns:
+            count[group] = 0
+    count = count[GROUPS].reset_index()
+    count["합계"] = count[GROUPS].sum(axis=1)
+    order = {c: i for i, c in enumerate(COUNTRY_FLAGS)}
+    return count.sort_values("country", key=lambda col: col.map(lambda c: order.get(c, 999)), kind="stable").reset_index(drop=True)
+
+
+def filter_hotels(df, selected_groups, countries, regions, tiers, popular_only, keyword, hilton_tiers=None, include_upcoming=False, slh_mode="전체"):
+
     filtered = df[
         df["brand_group"].isin(selected_groups)
         & df["country"].isin(countries)
         & df["display_region"].isin(regions)
         & df["tier"].isin(tiers)
     ].copy()
+    if not include_upcoming:
+        filtered = filtered[~((filtered["brand_group"] == "Hilton") & filtered["opening_status"].str.startswith("개관 예정"))]
+    if hilton_tiers is not None:
+        filtered = filtered[(filtered["brand_group"] != "Hilton") | filtered["tier_source"].isin(hilton_tiers)]
+    if slh_mode != "전체":
+        slh = filtered["brand"].map(is_slh_partner)
+        if slh_mode == "SLH 제휴만":
+            filtered = filtered[(filtered["brand_group"] != "Hilton") | slh]
+        else:
+            filtered = filtered[(filtered["brand_group"] != "Hilton") | ~slh]
     if popular_only:
         filtered = filtered[filtered["popular"] == True]
     kw = keyword.strip()
@@ -521,8 +562,31 @@ with st.sidebar:
         default=available_regions, key=f"regions_{selected_country}",
         format_func=lambda r: f"{r} ({(available_region_data['display_region'] == r).sum()}개)",
     )
-    tiers = ["Luxury", "Premium", "Select", "Extended Stay"]
-    selected_tiers = st.multiselect("등급", options=tiers, default=tiers)
+    tiers = ["Luxury", "Premium", "Lifestyle", "Select", "Extended Stay"]
+    selected_tiers = st.multiselect(
+        "호텔 유형 (체인 공통)", options=tiers, default=tiers,
+        help="브랜드 위치를 비교하기 위한 화면용 분류입니다. 공식 호텔 성급(별점)이 아닙니다.",
+    )
+    hilton_source_tiers = None
+    if "Hilton" in enabled_groups:
+        with st.expander("✨ 힐튼 원본 브랜드 분류", expanded=False):
+            hilton_options = ["럭셔리", "프리미엄·풀서비스", "라이프스타일", "셀렉트"]
+            hilton_source_tiers = st.multiselect(
+                "힐튼 세부 분류", options=hilton_options, default=hilton_options,
+                help="첨부한 힐튼 엑셀의 등급을 그대로 보존한 별도 필터입니다.",
+            )
+    slh_mode = "전체"
+    if "Hilton" in enabled_groups:
+        slh_mode = st.radio(
+            "힐튼 SLH 제휴 필터",
+            options=["전체", "힐튼 일반·계열만", "SLH 제휴만"],
+            horizontal=False,
+            help="첨부 원본의 brand에 SLH로 표기된 호텔을 분리합니다. Hilton Grand Vacations 등 기타 제휴 분류와는 별개입니다.",
+        )
+    include_upcoming = st.checkbox(
+        "🏗️ 힐튼 개관 예정 호텔도 보기", value=False,
+        help="힐튼 최신 엑셀에는 아직 개관하지 않은 호텔이 포함되어 있습니다. 기본값은 운영 중인 호텔만 표시합니다.",
+    )
     popular_only = st.checkbox(
         "⭐ 추천 호텔만 보기", value=False,
         help="CSV의 popular=TRUE로 수동 선택한 호텔입니다. 공식 인기 순위 또는 성급과는 무관합니다.",
@@ -562,9 +626,9 @@ st.markdown(
     f"**객실:** {rooms}개 (객실당 성인 {adults}명, 어린이 {children}명)  |  "
     f"**메리어트/힐튼:** {'💎 포인트 검색' if use_points else '💳 일반 요금 검색'}"
 )
-st.caption("호텔 목록은 hotels.csv에서 통합 관리합니다. 메리어트 데이터는 2026-11-16 제공 수집본 기준이며, 힐튼·아코르는 기존 목록입니다. 평점·리뷰·미확인 성급은 표시하지 않습니다. 예약 링크 작동은 전수 검증되지 않았습니다.")
+st.caption("호텔 목록은 hotels.csv에서 통합 관리합니다. 메리어트 데이터는 2026-11-16 제공 수집본 기준이며, 힐튼 데이터는 제공된 2026-11-16 아시아 25개국 엑셀 기준(개관 예정 포함), 아코르는 기존 목록입니다. 평점·리뷰·미확인 성급은 표시하지 않습니다. 예약 링크 작동은 전수 검증되지 않았습니다.")
 
-filtered_df = filter_hotels(master, enabled_groups, [selected_country], selected_regions, selected_tiers, popular_only, keyword)
+filtered_df = filter_hotels(master, enabled_groups, [selected_country], selected_regions, selected_tiers, popular_only, keyword, hilton_source_tiers, include_upcoming, slh_mode)
 if not filtered_df.empty:
     links = filtered_df.apply(
         lambda row: make_links(row, checkin_date, nights, rooms, adults, children, child_ages, use_points),
@@ -589,7 +653,7 @@ if any(g in enabled_groups for g in ["Hilton", "Accor"]):
             "- **어린이·다객실 예약:** 힐튼 아동 나이는 전달하지만, 브랜드별 예약 화면에서 인원과 연령을 재확인해야 합니다. 아코르는 객실 인원을 다시 지정할 수 있습니다."
         )
 
-tab_cards, tab_table = st.tabs(["🗂️ 국가·도시별 카드", "📊 전체 테이블·CSV 다운로드"])
+tab_cards, tab_table, tab_summary = st.tabs(["🗂️ 국가·도시별 카드", "📊 전체 테이블·CSV 다운로드", "🌏 국가별 체인 비교"])
 with tab_cards:
     if filtered_df.empty:
         st.warning("현재 조건에 일치하는 호텔이 없습니다. 체인, 국가, 지역, 등급을 변경하세요.")
@@ -629,7 +693,7 @@ with tab_cards:
                     st.session_state[state_key] = False
                 st.rerun()
 
-        tier_order = {"Luxury": 0, "Premium": 1, "Select": 2, "Extended Stay": 3}
+        tier_order = {"Luxury": 0, "Premium": 1, "Lifestyle": 2, "Select": 3, "Extended Stay": 4}
         for region in regions_in_order:
             state_key = region_keys[region]
             is_open = st.session_state[state_key]
@@ -662,6 +726,10 @@ with tab_cards:
                     with st.container(border=True):
                         st.markdown(render_logo_label(group, hotel["display_name"], logo_height=18), unsafe_allow_html=True)
                         st.markdown(render_tier_badge(hotel["tier"]), unsafe_allow_html=True)
+                        if group == "Hilton":
+                            st.caption(f"힐튼 분류: {hotel['tier_source']} · {hotel['hilton_affiliation']}")
+                            if str(hotel.get("opening_status", "")).startswith("개관 예정"):
+                                st.warning(f"🏗️ {hotel['opening_status']} · 예약 가능 여부 확인 필요")
                         st.caption(f"`{hotel['code']}` | {hotel['brand']} | {hotel['area']}")
                         if group == "Marriott" and hotel.get("location_status") == "위치 미확인":
                             st.caption("📍 지역 정보 미확인 (원본 누락)")
@@ -684,7 +752,7 @@ with tab_table:
     if filtered_df.empty:
         st.info("테이블에 표시할 호텔이 없습니다.")
     else:
-        columns = ["brand_group", "country", "display_region", "area", "tier", "brand", "display_name", "code", "hotel_url", "calendar_url", "exact_url"]
+        columns = ["brand_group", "country", "display_region", "area", "tier", "tier_source", "hilton_affiliation", "opening_status", "brand", "display_name", "code", "hotel_url", "calendar_url", "exact_url"]
         view = filtered_df[columns].copy()
         st.dataframe(
             view,
@@ -693,7 +761,10 @@ with tab_table:
                 "country": st.column_config.TextColumn("국가", width="small"),
                 "display_region": st.column_config.TextColumn("표시용 권역", width="medium"),
                 "area": st.column_config.TextColumn("위치(원본)", width="medium"),
-                "tier": st.column_config.TextColumn("브랜드 등급", width="small"),
+                "tier": st.column_config.TextColumn("공통 호텔 유형", width="small"),
+                "tier_source": st.column_config.TextColumn("원본 브랜드 분류", width="medium"),
+                "hilton_affiliation": st.column_config.TextColumn("힐튼 제휴 유형", width="medium"),
+                "opening_status": st.column_config.TextColumn("영업 상태", width="medium"),
                 "brand": st.column_config.TextColumn("브랜드", width="medium"),
                 "display_name": st.column_config.TextColumn("호텔명", width="large"),
                 "code": st.column_config.TextColumn("호텔 코드", width="small"),
@@ -712,3 +783,28 @@ with tab_table:
             file_name=f"asia_hotel_links_{checkin_date:%Y%m%d}.csv",
             mime="text/csv",
         )
+
+
+with tab_summary:
+    st.subheader("🌏 국가별 메리어트·힐튼·아코르 등록 호텔 수")
+    st.caption("통합 hotels.csv에 등록된 호텔 수입니다. 국가별 수집 범위가 다르므로 시장 전체의 호텔 수나 시장 점유율을 의미하지 않습니다. 메리어트는 일부 국가만 수집되어 있습니다.")
+    show_future_summary = st.checkbox("개관 예정 힐튼 호텔도 집계", value=False, key="summary_future")
+    counts = country_brand_summary(master, include_upcoming=show_future_summary)
+    total_m, total_h, total_a = st.columns(3)
+    with total_m:
+        st.metric("메리어트 등록", f"{int(counts['Marriott'].sum()):,}개")
+    with total_h:
+        st.metric("힐튼 등록", f"{int(counts['Hilton'].sum()):,}개")
+    with total_a:
+        st.metric("아코르 등록", f"{int(counts['Accor'].sum()):,}개")
+    st.dataframe(
+        counts.rename(columns={"country":"국가·지역", "Marriott":"메리어트", "Hilton":"힐튼", "Accor":"아코르"}),
+        hide_index=True, use_container_width=True,
+    )
+    st.bar_chart(counts.set_index("country")[["Marriott", "Hilton", "Accor"]], stack=False)
+    st.download_button(
+        "📥 국가별 체인 수 CSV 다운로드",
+        data=counts.to_csv(index=False).encode("utf-8-sig"),
+        file_name="hotel_country_brand_counts.csv", mime="text/csv",
+        key="download_country_brand_summary",
+    )
