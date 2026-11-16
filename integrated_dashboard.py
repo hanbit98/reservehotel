@@ -710,8 +710,22 @@ with tab_cards:
         # Streamlit의 st.expander는 닫힌 상태에서도 내부 위젯을 모두 생성합니다.
         # 따라서 지역별 버튼+session_state로 구현하여 열린 권역만 카드를 렌더링합니다.
         # 한 국가의 모든 권역은 이 화면에 표시되며, 별도의 페이지 분할은 없습니다.
-        region_counts = filtered_df["display_region"].value_counts()
-        regions_in_order = region_counts.index.tolist()  # 현재 필터 결과 기준 호텔 수 내림차순
+        # 실제 필터된 호텔 수로 정렬하며, 동률에서는 전체 호텔 수와 권역명을 사용합니다.
+        region_sort_choice = st.radio(
+            "권역 정렬 기준", ["전체 호텔 수", "메리어트 호텔 수", "힐튼 호텔 수"],
+            horizontal=True, key="region_sort_choice",
+            help="선택한 체인의 호텔 수를 우선하고 동률이면 전체 호텔 수순으로 표시합니다.",
+        )
+        region_counts = filtered_df.groupby("display_region").size()
+        region_chain_counts = filtered_df.groupby(["display_region", "brand_group"]).size().unstack(fill_value=0)
+        selected_chain = {"전체 호텔 수": None, "메리어트 호텔 수": "Marriott", "힐튼 호텔 수": "Hilton"}[region_sort_choice]
+        regions_in_order = sorted(
+            region_counts.index.tolist(),
+            key=lambda region: (
+                -int(region_counts[region]) if selected_chain is None else -int(region_chain_counts[selected_chain].get(region, 0)) if selected_chain in region_chain_counts.columns else 0,
+                -int(region_counts[region]), region,
+            ),
+        )
         region_keys = {
             region: f"region_open_{applied_country}_{region}" for region in regions_in_order
         }
@@ -728,7 +742,7 @@ with tab_cards:
             if state_key not in st.session_state:
                 st.session_state[state_key] = False
 
-        st.caption("국가를 선택하면 호텔이 가장 많은 권역 한 곳만 먼저 펼쳐집니다. 나머지는 클릭하여 열 수 있습니다.")
+        st.caption("국가를 선택하면 정렬 기준의 첫 번째 권역 한 곳만 먼저 펼쳐집니다. 나머지는 클릭하여 열 수 있습니다.")
         ctl1, ctl2, _ = st.columns([1, 1, 3])
         with ctl1:
             if st.button("모두 펼치기", key=f"expand_regions_{applied_country}", use_container_width=True):
