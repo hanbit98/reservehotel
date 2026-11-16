@@ -46,10 +46,25 @@ HOTEL_COLUMNS = [
     "name", "brand", "tier", "popular", "hotel_url",
 ]
 EXTRA_COLUMNS = [
-    "name_en", "province", "address", "phone", "review_rating",
+    "display_region", "name_en", "province", "address", "phone", "review_rating",
     "review_count", "brand_code", "source_date", "location_status",
 ]
 SUPPORTED_GROUPS = {"Marriott": 5, "Hilton": 7, "Accor": 4}
+
+
+def display_hotel_name(hotel) -> str:
+    """Domestic: Korean only; overseas: English and optionally Korean."""
+    country = str(hotel.get("country", "")).strip()
+    name = str(hotel.get("name", "")).strip()
+    english = str(hotel.get("name_en", "")).strip()
+    if country == "대한민국":
+        return name or english
+    if english:
+        if name and name.casefold() != english.casefold() and re.search(r"[가-힣]", name):
+            return f"{english} ({name})"
+        return english
+    # Legacy Hilton/Accor entries without verified English names retain the source name.
+    return name
 
 
 @st.cache_data(show_spinner=False)
@@ -99,7 +114,7 @@ def load_hotel_data() -> pd.DataFrame:
             rows = [int(i)+2 for i in part.index[invalid_code][:5]]
             issues.append(f"{group} 호텔 코드 형식 오류: CSV 행 {rows} (영숫자 {code_length}자리)")
 
-    required = ["brand_group", "country", "region", "area", "code", "name", "brand", "tier"]
+    required = ["brand_group", "country", "display_region", "region", "area", "code", "name", "brand", "tier"]
     missing_values = part[required].eq("")
     if missing_values.any().any():
         detail = []
@@ -135,6 +150,7 @@ def load_hotel_data() -> pd.DataFrame:
     part.loc[part["brand_group"] == "Hilton", "hotel_url"] = (
         part.loc[part["brand_group"] == "Hilton", "hotel_url"].str.replace("/en/", "/ko/", regex=False)
     )
+    part["display_name"] = part.apply(display_hotel_name, axis=1)
     return part
 
 master = load_hotel_data()
@@ -372,14 +388,14 @@ def filter_hotels(df, selected_groups, countries, regions, tiers, popular_only, 
     filtered = df[
         df["brand_group"].isin(selected_groups)
         & df["country"].isin(countries)
-        & df["region"].isin(regions)
+        & df["display_region"].isin(regions)
         & df["tier"].isin(tiers)
     ].copy()
     if popular_only:
         filtered = filtered[filtered["popular"] == True]
     kw = keyword.strip()
     if kw:
-        searchable = ["name", "name_en", "code", "brand", "country", "region", "area", "province", "address"]
+        searchable = ["name", "name_en", "display_name", "code", "brand", "country", "display_region", "region", "area", "province", "address"]
         mask = pd.Series(False, index=filtered.index)
         for col in searchable:
             mask |= filtered[col].fillna("").astype(str).str.contains(kw, case=False, regex=False)
@@ -428,10 +444,14 @@ with st.sidebar:
         "국가", options=all_countries, default=[c for c in ("대한민국", "일본") if c in all_countries],
         format_func=lambda c: f"{COUNTRY_FLAGS.get(c, '')} {c}",
     )
-    available_regions = master[
+    available_region_data = master[
         master["brand_group"].isin(enabled_groups) & master["country"].isin(selected_countries)
-    ]["region"].drop_duplicates().tolist()
-    selected_regions = st.multiselect("도시 / 권역", options=available_regions, default=available_regions)
+    ]
+    available_regions = available_region_data["display_region"].value_counts().index.tolist()
+    if "대한민국" in selected_countries:
+        kr_order = ["서울", "경기", "인천", "부산", "대구", "대전", "광주", "울산", "세종", "제주", "강원", "충북", "충남", "전북", "전남", "경북", "경남"]
+        available_regions = [r for r in kr_order if r in available_regions] + [r for r in available_regions if r not in kr_order]
+    selected_regions = st.multiselect("표시용 권역", options=available_regions, default=available_regions)
     tiers = ["Luxury", "Premium", "Select", "Extended Stay"]
     selected_tiers = st.multiselect("등급", options=tiers, default=tiers)
     popular_only = st.checkbox(
@@ -473,7 +493,7 @@ st.markdown(
     f"**객실:** {rooms}개 (객실당 성인 {adults}명, 어린이 {children}명)  |  "
     f"**메리어트/힐튼:** {'💎 포인트 검색' if use_points else '💳 일반 요금 검색'}"
 )
-st.caption("호텔 목록은 hotels.csv에서 통합 관리합니다. 메리어트 데이터는 제공된 2026-11-16 수집본을 기준으로 하며, 힐튼·아코르는 기존 등록분입니다. 공식 예약 페이지의 실시간 작동은 전체 검증되지 않았습니다.")
+st.caption("호텔 목록은 hotels.csv에서 통합 관리합니다. 메리어트 데이터는 2026-11-16 제공 수집본 기준이며, 힐튼·아코르는 기존 목록입니다. 평점·리뷰·미확인 성급은 표시하지 않습니다. 예약 링크 작동은 전수 검증되지 않았습니다.")
 
 filtered_df = filter_hotels(master, enabled_groups, selected_countries, selected_regions, selected_tiers, popular_only, keyword)
 if not filtered_df.empty:
@@ -516,21 +536,16 @@ with tab_cards:
             if country_df.empty:
                 continue
             st.header(f"{COUNTRY_FLAGS.get(country, '🌐')} {country}")
-            for region in country_df["region"].drop_duplicates():
+            for region in country_df["display_region"].drop_duplicates():
                 st.subheader(f"📍 {region}")
-                region_df = country_df[country_df["region"] == region]
+                region_df = country_df[country_df["display_region"] == region]
                 cols = st.columns(3)
                 for card_index, (_, hotel) in enumerate(region_df.iterrows()):
                     group = hotel["brand_group"]
                     with cols[card_index % 3]:
                         with st.container(border=True):
-                            st.markdown(render_logo_label(group, hotel["name"], logo_height=18), unsafe_allow_html=True)
-                            rating = star_rating_label(hotel.get("star_rating", ""))
-                            st.caption(f"`{hotel['code']}` | {hotel['brand']} | {hotel['area']} | {hotel['tier']} | {rating}")
-                            if group == "Marriott" and str(hotel.get("review_rating", "")).strip():
-                                rv = str(hotel.get("review_rating", "")).strip()
-                                rc = str(hotel.get("review_count", "")).strip()
-                                st.caption(f"⭐ 고객 평점 {rv}/5" + (f" · 리뷰 {rc}개" if rc else "") )
+                            st.markdown(render_logo_label(group, hotel["display_name"], logo_height=18), unsafe_allow_html=True)
+                            st.caption(f"`{hotel['code']}` | {hotel['brand']} | {hotel['area']} | {hotel['tier']}")
                             if group == "Marriott" and hotel.get("location_status") == "위치 미확인":
                                 st.caption("📍 지역 정보 미확인 (원본 누락)")
                             left, right = st.columns(2)
@@ -558,23 +573,19 @@ with tab_table:
     if filtered_df.empty:
         st.info("테이블에 표시할 호텔이 없습니다.")
     else:
-        columns = ["brand_group", "country", "region", "area", "tier", "star_rating", "brand", "name", "code", "review_rating", "review_count", "hotel_url", "calendar_url", "exact_url"]
+        columns = ["brand_group", "country", "display_region", "area", "tier", "brand", "display_name", "code", "hotel_url", "calendar_url", "exact_url"]
         view = filtered_df[columns].copy()
-        view["star_rating"] = view["star_rating"].map(star_rating_label)
         st.dataframe(
             view,
             column_config={
                 "brand_group": st.column_config.TextColumn("체인", width="small"),
                 "country": st.column_config.TextColumn("국가", width="small"),
-                "region": st.column_config.TextColumn("도시/권역", width="small"),
-                "area": st.column_config.TextColumn("상세 위치", width="medium"),
+                "display_region": st.column_config.TextColumn("표시용 권역", width="medium"),
+                "area": st.column_config.TextColumn("위치(원본)", width="medium"),
                 "tier": st.column_config.TextColumn("브랜드 등급", width="small"),
-                "star_rating": st.column_config.TextColumn("호텔 성급", width="small"),
                 "brand": st.column_config.TextColumn("브랜드", width="medium"),
-                "name": st.column_config.TextColumn("호텔명", width="large"),
+                "display_name": st.column_config.TextColumn("호텔명", width="large"),
                 "code": st.column_config.TextColumn("호텔 코드", width="small"),
-                "review_rating": st.column_config.TextColumn("고객 평점(5점)", width="small"),
-                "review_count": st.column_config.TextColumn("리뷰 수", width="small"),
                 "hotel_url": st.column_config.LinkColumn("공식 호텔 페이지", display_text="🔗 열기", width="small"),
                 "calendar_url": st.column_config.LinkColumn("달력 / 호텔 소개", display_text="📅 열기", width="small"),
                 "exact_url": st.column_config.LinkColumn("특정일 요금", display_text="🛏️ 열기", width="small"),
