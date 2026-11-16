@@ -26,7 +26,8 @@ COUNTRY_FLAGS = {
     "대한민국": "🇰🇷",
     "일본": "🇯🇵",
     "대만": "🇹🇼",
-    "홍콩·마카오": "🇭🇰",
+    "홍콩": "🇭🇰",
+    "마카오": "🇲🇴",
     "중국": "🇨🇳",
     "태국": "🇹🇭",
     "베트남": "🇻🇳",
@@ -36,80 +37,105 @@ COUNTRY_FLAGS = {
 }
 
 
-# 2) 호텔 마스터 데이터는 대시보드 파일과 같은 폴더의 CSV로 관리합니다.
-# 배포 시 .py + CSV 3개 + assets 폴더를 함께 업로드하세요.
+# 2) 호텔 마스터 데이터: hotels.csv 하나로 전 체인을 관리합니다.
+# 배포 시 integrated_dashboard.py + hotels.csv + assets/ 폴더만 필요합니다.
 DATA_DIR = Path(__file__).resolve().parent
-CSV_FILES = {
-    "Marriott": DATA_DIR / "marriott_hotels.csv",
-    "Hilton": DATA_DIR / "hilton_hotels.csv",
-    "Accor": DATA_DIR / "accor_hotels.csv",
-}
+HOTELS_CSV = DATA_DIR / "hotels.csv"
 HOTEL_COLUMNS = [
     "brand_group", "country", "region", "area", "code",
     "name", "brand", "tier", "popular", "hotel_url",
 ]
+EXTRA_COLUMNS = [
+    "name_en", "province", "address", "phone", "review_rating",
+    "review_count", "brand_code", "source_date", "location_status",
+]
+SUPPORTED_GROUPS = {"Marriott": 5, "Hilton": 7, "Accor": 4}
+
+
+@st.cache_data(show_spinner=False)
+def read_hotels_csv(path: str, modified_ns: int) -> pd.DataFrame:
+    """CSV가 바뀌면 수정시각을 캐시 키로 사용해 다시 읽습니다."""
+    return pd.read_csv(path, dtype=str, keep_default_na=False, encoding="utf-8-sig")
 
 
 def load_hotel_data() -> pd.DataFrame:
-    """체인별 CSV를 병합하고 필수값·코드·중복을 점검합니다.
+    """통합 hotels.csv를 읽어 체인별 코드와 데이터 무결성을 확인합니다."""
+    if not HOTELS_CSV.is_file():
+        st.error("hotels.csv 파일이 없습니다. integrated_dashboard.py와 같은 폴더에 올려주세요.")
+        st.stop()
 
-    CSV는 UTF-8 / UTF-8 BOM 모두 지원합니다. 코드를 문자로 읽어
-    숫자로 시작하는 코드의 앞자리 0을 보존합니다.
-    """
-    data_frames = []
+    try:
+        part = read_hotels_csv(str(HOTELS_CSV), HOTELS_CSV.stat().st_mtime_ns)
+    except Exception as exc:
+        st.error(f"hotels.csv 읽기 오류: {exc}")
+        st.stop()
+
+    missing = sorted(set(HOTEL_COLUMNS) - set(part.columns))
+    if missing:
+        st.error("hotels.csv 필수 열 누락: " + ", ".join(missing))
+        st.stop()
+
+    if "star_rating" not in part.columns:
+        part["star_rating"] = ""
+    for col in EXTRA_COLUMNS:
+        if col not in part.columns:
+            part[col] = ""
+    part = part[HOTEL_COLUMNS + ["star_rating"] + EXTRA_COLUMNS].copy()
+    for col in part.columns:
+        part[col] = part[col].fillna("").astype(str).str.strip()
+    part["brand_group"] = part["brand_group"].str.strip()
+    part["code"] = part["code"].str.upper()
+
     issues = []
-    for group, csv_path in CSV_FILES.items():
-        if not csv_path.is_file():
-            issues.append(f"{csv_path.name}: 파일이 없습니다.")
-            continue
-        try:
-            part = pd.read_csv(csv_path, dtype=str, keep_default_na=False, encoding="utf-8-sig")
-        except Exception as exc:
-            issues.append(f"{csv_path.name}: CSV 읽기 오류 - {exc}")
-            continue
-        missing = sorted(set(HOTEL_COLUMNS) - set(part.columns))
-        if missing:
-            issues.append(f"{csv_path.name}: 필수 열 누락 - {', '.join(missing)}")
-            continue
-        # star_rating은 선택 사항입니다. 현재 호텔의 성급은 검증되지 않아 비워 둡니다.
-        if "star_rating" not in part.columns:
-            part["star_rating"] = ""
-        part = part[HOTEL_COLUMNS + ["star_rating"]].copy()
-        for col in HOTEL_COLUMNS + ["star_rating"]:
-            part[col] = part[col].astype(str).str.strip()
-        part["brand_group"] = part["brand_group"].replace("", group)
-        invalid_groups = part[part["brand_group"] != group]
-        if not invalid_groups.empty:
-            issues.append(f"{csv_path.name}: brand_group은 모든 행에서 {group}이어야 합니다.")
-        part["code"] = part["code"].str.upper()
-        expected_len = {"Marriott": 5, "Hilton": 7, "Accor": 4}[group]
-        valid_codes = part["code"].str.fullmatch(rf"[A-Z0-9]{{{expected_len}}}")
-        if (~valid_codes).any():
-            issues.append(f"{csv_path.name}: 잘못된 호텔 코드 - {part.loc[~valid_codes, 'code'].head(5).tolist()}")
-        required = ["country", "region", "area", "code", "name", "brand", "tier"]
-        if part[required].eq("").any().any():
-            issues.append(f"{csv_path.name}: 국가, 지역, 호텔 코드/명 등 필수 정보에 빈 칸이 있습니다.")
-        popular_lower = part["popular"].str.lower()
-        if (~popular_lower.isin(["true", "false", "1", "0", "yes", "no", "y", "n"])).any():
-            issues.append(f"{csv_path.name}: popular 열은 TRUE 또는 FALSE를 사용하세요.")
-        part["popular"] = popular_lower.isin(["true", "1", "yes", "y"])
-        invalid_stars = ~part["star_rating"].isin(["", "1", "2", "3", "4", "5"])
-        if invalid_stars.any():
-            issues.append(f"{csv_path.name}: star_rating 열은 공란 또는 1~5의 정수만 사용하세요.")
-        if group == "Hilton":
-            part["hotel_url"] = part["hotel_url"].str.replace("/en/", "/ko/", regex=False)
-        data_frames.append(part)
+    invalid_group = ~part["brand_group"].isin(SUPPORTED_GROUPS)
+    if invalid_group.any():
+        cases = part.index[invalid_group][:5].tolist()
+        issues.append(f"지원하지 않는 brand_group 행: {[i+2 for i in cases]} (Marriott/Hilton/Accor 사용)")
+
+    for group, code_length in SUPPORTED_GROUPS.items():
+        mask = part["brand_group"].eq(group)
+        invalid_code = mask & ~part["code"].str.fullmatch(rf"[A-Z0-9]{{{code_length}}}")
+        if invalid_code.any():
+            rows = [int(i)+2 for i in part.index[invalid_code][:5]]
+            issues.append(f"{group} 호텔 코드 형식 오류: CSV 행 {rows} (영숫자 {code_length}자리)")
+
+    required = ["brand_group", "country", "region", "area", "code", "name", "brand", "tier"]
+    missing_values = part[required].eq("")
+    if missing_values.any().any():
+        detail = []
+        for i in part.index[missing_values.any(axis=1)][:8]:
+            empty_columns = missing_values.columns[missing_values.loc[i]].tolist()
+            detail.append(f"{i+2}행 {part.at[i, 'code'] or '(코드 없음)'}: {', '.join(empty_columns)}")
+        issues.append("필수 정보 빈칸 - " + " / ".join(detail))
+
+    truthy = {"true", "1", "yes", "y"}
+    falsy = {"false", "0", "no", "n"}
+    popular_lower = part["popular"].str.lower()
+    invalid_popular = ~popular_lower.isin(truthy | falsy)
+    if invalid_popular.any():
+        rows = [int(i)+2 for i in part.index[invalid_popular][:5]]
+        issues.append(f"popular은 TRUE/FALSE를 입력하세요: CSV 행 {rows}")
+    part["popular"] = popular_lower.isin(truthy)
+
+    invalid_stars = ~part["star_rating"].isin(["", "1", "2", "3", "4", "5"])
+    if invalid_stars.any():
+        rows = [int(i)+2 for i in part.index[invalid_stars][:5]]
+        issues.append(f"star_rating은 공란 또는 1~5 정수만 허용합니다: CSV 행 {rows}")
+
+    duplicates = part.duplicated(["brand_group", "code"], keep=False)
+    if duplicates.any():
+        dup_rows = part.loc[duplicates, ["brand_group", "code"]].head(8).to_dict("records")
+        issues.append(f"같은 체인 내 호텔 코드 중복: {dup_rows}")
+
     if issues:
         for issue in issues:
-            st.error(issue)
+            st.error("hotels.csv: " + issue)
         st.stop()
-    result = pd.concat(data_frames, ignore_index=True)
-    if result.duplicated(["brand_group", "code"]).any():
-        duplicates = result[result.duplicated(["brand_group", "code"], keep=False)]
-        st.error("중복 호텔 코드가 있습니다: " + ", ".join(duplicates["code"].tolist()))
-        st.stop()
-    return result
 
+    part.loc[part["brand_group"] == "Hilton", "hotel_url"] = (
+        part.loc[part["brand_group"] == "Hilton", "hotel_url"].str.replace("/en/", "/ko/", regex=False)
+    )
+    return part
 
 master = load_hotel_data()
 INTEGRATED_HOTELS = master.to_dict("records")
@@ -353,7 +379,7 @@ def filter_hotels(df, selected_groups, countries, regions, tiers, popular_only, 
         filtered = filtered[filtered["popular"] == True]
     kw = keyword.strip()
     if kw:
-        searchable = ["name", "code", "brand", "country", "region", "area"]
+        searchable = ["name", "name_en", "code", "brand", "country", "region", "area", "province", "address"]
         mask = pd.Series(False, index=filtered.index)
         for col in searchable:
             mask |= filtered[col].fillna("").astype(str).str.contains(kw, case=False, regex=False)
@@ -361,12 +387,7 @@ def filter_hotels(df, selected_groups, countries, regions, tiers, popular_only, 
     return filtered
 
 
-# 4) 사이드바: 기존 필터와 직접 코드 조회 모두 복구
-if "hotel_url" in master.columns:
-    master["hotel_url"] = master.apply(
-        lambda row: localize_hilton_hotel_url(row["hotel_url"]) if row["brand_group"] == "Hilton" else row["hotel_url"],
-        axis=1,
-    )
+# 4) 사이드바: 호텔 체인 및 국가/지역 필터
 with st.sidebar:
     st.header("🔍 숙박 및 조회 조건")
     use_points = st.toggle("💎 메리어트/힐튼 포인트 모드", value=True)
@@ -411,7 +432,7 @@ with st.sidebar:
         master["brand_group"].isin(enabled_groups) & master["country"].isin(selected_countries)
     ]["region"].drop_duplicates().tolist()
     selected_regions = st.multiselect("도시 / 권역", options=available_regions, default=available_regions)
-    tiers = ["Luxury", "Premium", "Select"]
+    tiers = ["Luxury", "Premium", "Select", "Extended Stay"]
     selected_tiers = st.multiselect("등급", options=tiers, default=tiers)
     popular_only = st.checkbox(
         "⭐ 추천 호텔만 보기", value=False,
@@ -452,7 +473,7 @@ st.markdown(
     f"**객실:** {rooms}개 (객실당 성인 {adults}명, 어린이 {children}명)  |  "
     f"**메리어트/힐튼:** {'💎 포인트 검색' if use_points else '💳 일반 요금 검색'}"
 )
-st.caption("예약 페이지로 이동하는 링크 모음입니다. 실시간 포인트/요금을 앱 자체에서 수집·비교하지 않습니다. 최종 조건·금액은 각 호텔 공식 예약 화면에서 확인하세요.")
+st.caption("호텔 목록은 hotels.csv에서 통합 관리합니다. 메리어트 데이터는 제공된 2026-11-16 수집본을 기준으로 하며, 힐튼·아코르는 기존 등록분입니다. 공식 예약 페이지의 실시간 작동은 전체 검증되지 않았습니다.")
 
 filtered_df = filter_hotels(master, enabled_groups, selected_countries, selected_regions, selected_tiers, popular_only, keyword)
 if not filtered_df.empty:
@@ -480,12 +501,18 @@ if any(g in enabled_groups for g in ["Hilton", "Accor"]):
         )
 
 tab_cards, tab_table = st.tabs(["🗂️ 국가·도시별 카드", "📊 전체 테이블·CSV 다운로드"])
+CARD_PAGE_SIZE = 60
 with tab_cards:
     if filtered_df.empty:
         st.warning("현재 조건에 일치하는 호텔이 없습니다. 체인, 국가, 지역, 등급을 변경하세요.")
     else:
+        total_pages = max(1, (len(filtered_df) + CARD_PAGE_SIZE - 1) // CARD_PAGE_SIZE)
+        card_page = st.number_input("카드 페이지", min_value=1, max_value=total_pages, value=1, step=1,
+                                    help="호텔이 많아 카드 화면은 페이지당 60개씩 표시합니다. 전체 목록은 테이블에서 확인하세요.")
+        visible_df = filtered_df.iloc[(card_page - 1) * CARD_PAGE_SIZE:card_page * CARD_PAGE_SIZE]
+        st.caption(f"카드 {len(filtered_df)}개 중 {(card_page - 1)*CARD_PAGE_SIZE + 1}~{min(card_page*CARD_PAGE_SIZE, len(filtered_df))}개 표시 · {card_page}/{total_pages}페이지")
         for country in selected_countries:
-            country_df = filtered_df[filtered_df["country"] == country]
+            country_df = visible_df[visible_df["country"] == country]
             if country_df.empty:
                 continue
             st.header(f"{COUNTRY_FLAGS.get(country, '🌐')} {country}")
@@ -500,6 +527,12 @@ with tab_cards:
                             st.markdown(render_logo_label(group, hotel["name"], logo_height=18), unsafe_allow_html=True)
                             rating = star_rating_label(hotel.get("star_rating", ""))
                             st.caption(f"`{hotel['code']}` | {hotel['brand']} | {hotel['area']} | {hotel['tier']} | {rating}")
+                            if group == "Marriott" and str(hotel.get("review_rating", "")).strip():
+                                rv = str(hotel.get("review_rating", "")).strip()
+                                rc = str(hotel.get("review_count", "")).strip()
+                                st.caption(f"⭐ 고객 평점 {rv}/5" + (f" · 리뷰 {rc}개" if rc else "") )
+                            if group == "Marriott" and hotel.get("location_status") == "위치 미확인":
+                                st.caption("📍 지역 정보 미확인 (원본 누락)")
                             left, right = st.columns(2)
                             with left:
                                 primary_label = "🏨 호텔 소개" if group == "Accor" else "📅 날짜 달력"
@@ -525,7 +558,7 @@ with tab_table:
     if filtered_df.empty:
         st.info("테이블에 표시할 호텔이 없습니다.")
     else:
-        columns = ["brand_group", "country", "region", "area", "tier", "star_rating", "brand", "name", "code", "calendar_url", "exact_url"]
+        columns = ["brand_group", "country", "region", "area", "tier", "star_rating", "brand", "name", "code", "review_rating", "review_count", "hotel_url", "calendar_url", "exact_url"]
         view = filtered_df[columns].copy()
         view["star_rating"] = view["star_rating"].map(star_rating_label)
         st.dataframe(
@@ -540,6 +573,9 @@ with tab_table:
                 "brand": st.column_config.TextColumn("브랜드", width="medium"),
                 "name": st.column_config.TextColumn("호텔명", width="large"),
                 "code": st.column_config.TextColumn("호텔 코드", width="small"),
+                "review_rating": st.column_config.TextColumn("고객 평점(5점)", width="small"),
+                "review_count": st.column_config.TextColumn("리뷰 수", width="small"),
+                "hotel_url": st.column_config.LinkColumn("공식 호텔 페이지", display_text="🔗 열기", width="small"),
                 "calendar_url": st.column_config.LinkColumn("달력 / 호텔 소개", display_text="📅 열기", width="small"),
                 "exact_url": st.column_config.LinkColumn("특정일 요금", display_text="🛏️ 열기", width="small"),
             },
