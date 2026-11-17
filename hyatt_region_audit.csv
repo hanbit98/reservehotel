@@ -1,0 +1,540 @@
+﻿country,code,location,display_region,match_method,portfolio,tier,opening_status
+대한민국,BUSPH,부산,부산,verified-city-mapping,럭셔리,Luxury,운영중
+대한민국,BUSZY,부산,부산,verified-city-mapping,에센셜,Select,운영중
+대한민국,SELRS,서울,서울,cross-chain-existing-region,클래식,Premium,운영중
+대한민국,SELAZ,서울,서울,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+대한민국,SELPH,서울,서울,cross-chain-existing-region,럭셔리,Luxury,운영중
+대한민국,SELZP,성남,경기,verified-city-mapping,에센셜,Select,운영중
+대한민국,INCHE,인천,인천,cross-chain-existing-region,클래식,Premium,운영중
+대한민국,KRAAA,인천,인천,cross-chain-existing-region,클래식,Premium,운영중
+대한민국,CJUGH,제주,제주,verified-city-mapping,클래식,Premium,운영중
+일본,KMQCT,가나자와,나고야·중부,cross-chain-existing-region,클래식,Premium,운영중
+일본,KMQXK,가나자와,나고야·중부,cross-chain-existing-region,에센셜,Select,운영중
+일본,M1563,가루이자와,나고야·중부,cross-chain-existing-region,파트너,Partner,운영중
+일본,M1823,고베,교토·오사카·간사이,cross-chain-existing-region,파트너,Partner,운영중
+일본,ITMPH,교토,교토·오사카·간사이,cross-chain-existing-region,럭셔리,Luxury,운영중
+일본,KYOTO,교토,교토·오사카·간사이,cross-chain-existing-region,클래식,Premium,운영중
+일본,KYOZK,교토,교토·오사카·간사이,cross-chain-existing-region,에센셜,Select,운영중
+일본,M2090,나가노,나고야·중부,cross-chain-existing-region,파트너,Partner,운영중
+일본,M0700,도나미,나고야·중부,verified-city-mapping,파트너,Partner,운영중
+일본,TYOGH,도쿄,도쿄·수도권,cross-chain-existing-region,클래식,Premium,운영중
+일본,TYOAZ,도쿄,도쿄·수도권,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+일본,TYOCP,도쿄,도쿄·수도권,cross-chain-existing-region,에센셜,Select,운영중
+일본,TYOPH,도쿄,도쿄·수도권,cross-chain-existing-region,럭셔리,Luxury,운영중
+일본,TYOTY,도쿄,도쿄·수도권,cross-chain-existing-region,클래식,Premium,운영중
+일본,TYOCT,도쿄,도쿄·수도권,cross-chain-existing-region,클래식,Premium,운영중
+일본,TYOXS,도쿄,도쿄·수도권,cross-chain-existing-region,에센셜,Select,운영중
+일본,TYOUB,도쿄,도쿄·수도권,cross-chain-existing-region,럭셔리,Luxury,운영중
+일본,M2093,마에바시,도쿄·수도권,verified-city-mapping,파트너,Partner,운영중
+일본,FSWUB,시즈오카,나고야·중부,cross-chain-existing-region,럭셔리,Luxury,운영중
+일본,M2087,오미하치만,교토·오사카·간사이,verified-city-mapping,파트너,Partner,운영중
+일본,OSACP,오사카,교토·오사카·간사이,cross-chain-existing-region,에센셜,Select,운영중
+일본,OKARN,오키나와,오키나와,cross-chain-existing-region,클래식,Premium,운영중
+일본,OKARO,오키나와,오키나와,cross-chain-existing-region,클래식,Premium,운영중
+일본,M2153,요나고,히로시마·주고쿠,verified-city-mapping,파트너,Partner,운영중
+일본,HNDRY,요코하마,도쿄·수도권,cross-chain-existing-region,클래식,Premium,운영중
+일본,NRTZT,지바,도쿄·수도권,cross-chain-existing-region,클래식,Premium,운영중
+일본,HAKHR,하코네,도쿄·수도권,verified-city-mapping,클래식,Premium,운영중
+일본,M0296,홋카이도,홋카이도,verified-city-mapping,파트너,Partner,운영중
+일본,CTSPH,홋카이도,홋카이도,verified-city-mapping,럭셔리,Luxury,운영중
+일본,CTSCT,홋카이도,홋카이도,verified-city-mapping,클래식,Premium,운영중
+일본,FUKGH,후쿠오카,규슈,cross-chain-existing-region,클래식,Premium,운영중
+홍콩,M1813,홍콩,홍콩,cross-chain-existing-region,파트너,Partner,운영중
+홍콩,HKGGH,홍콩,홍콩,cross-chain-existing-region,클래식,Premium,운영중
+홍콩,SHAHR,홍콩,홍콩,cross-chain-existing-region,클래식,Premium,운영중
+홍콩,HONHR,홍콩,홍콩,cross-chain-existing-region,클래식,Premium,운영중
+홍콩,HKGCT,홍콩,홍콩,cross-chain-existing-region,클래식,Premium,운영중
+마카오,MACGH,마카오,마카오,cross-chain-existing-region,클래식,Premium,운영중
+마카오,MACAZ,마카오,마카오,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+대만,TPEZN,신베이,타이베이·북부,cross-chain-existing-region,에센셜,Select,운영중
+대만,HSUJD,신주,타이베이·북부,verified-city-mapping,라이프스타일,Lifestyle,운영중
+대만,TPERA,타오위안,타이베이·북부,cross-chain-existing-region,클래식,Premium,운영중
+대만,TAIGH,타이베이,타이베이·북부,cross-chain-existing-region,클래식,Premium,운영중
+대만,TPEJD,타이베이,타이베이·북부,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+대만,TSACT,타이베이,타이베이·북부,cross-chain-existing-region,클래식,Premium,개관 예정
+중국,UC110,광저우,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC115,광저우,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,GUAGH,광저우,광둥,cross-chain-existing-region,클래식,Premium,운영중
+중국,GUAPH,광저우,광둥,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,CANHR,광저우,광둥,cross-chain-existing-region,클래식,Premium,운영중
+중국,GUIHR,구이양,윈난·구이저우·티베트,cross-chain-existing-region,클래식,Premium,운영중
+중국,UC064,난징,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC137,난징,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC183,난징,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC018,난징,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC070,난징,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC091,난징,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,NKGUB,난징,상하이·장쑤,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,NKGAZ,난징,상하이·장쑤,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+중국,UC006,난징,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,NKGZN,난징,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,NAOZN,난충,쓰촨·충칭,verified-city-mapping,에센셜,Select,운영중
+중국,NTGZN,난퉁,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC099,닝보,저장·안후이,cross-chain-existing-region,에센셜,Select,운영중
+중국,NINPH,닝보,저장·안후이,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,NGBRN,닝보,저장·안후이,cross-chain-existing-region,클래식,Premium,운영중
+중국,NGBCT,닝보,저장·안후이,cross-chain-existing-region,클래식,Premium,운영중
+중국,DALGH,다롄,동북·내몽골,cross-chain-existing-region,클래식,Premium,운영중
+중국,HGHZM,더칭,저장·안후이,verified-city-mapping,에센셜,Select,운영중
+중국,UC067,둥관,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,DONGG,둥관,광둥,cross-chain-existing-region,클래식,Premium,운영중
+중국,UC074,라싸,윈난·구이저우·티베트,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC193,란저우,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC105,란저우,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC190,란저우,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,LHWRL,란저우,산시·서북,cross-chain-existing-region,클래식,Premium,운영중
+중국,UC083,롄윈강,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,LZHZL,류저우,하이난·광시,cross-chain-existing-region,에센셜,Select,운영중
+중국,RIZJD,르자오,산둥,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+중국,LJGGH,리장,윈난·구이저우·티베트,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,LYIZL,린이,산둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,HAKRH,링수이,하이난·광시,cross-chain-existing-region,클래식,Premium,운영중
+중국,TCZUB,바오산 (텅충),윈난·구이저우·티베트,verified-city-mapping,럭셔리,Luxury,운영중
+중국,UC079,베이징,베이징·톈진·허베이,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC157,베이징,베이징·톈진·허베이,cross-chain-existing-region,에센셜,Select,개관 예정
+중국,UC138,베이징,베이징·톈진·허베이,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC092,베이징,베이징·톈진·허베이,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC153,베이징,베이징·톈진·허베이,cross-chain-existing-region,에센셜,Select,운영중
+중국,BEIGH,베이징,베이징·톈진·허베이,cross-chain-existing-region,클래식,Premium,운영중
+중국,PKXUB,베이징,베이징·톈진·허베이,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,PEKAL,베이징,베이징·톈진·허베이,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+중국,UC003,베이징,베이징·톈진·허베이,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC047,베이징,베이징·톈진·허베이,cross-chain-existing-region,에센셜,Select,운영중
+중국,PEKUB,베이징,베이징·톈진·허베이,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,BEIPH,베이징,베이징·톈진·허베이,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,NAYRS,베이징,베이징·톈진·허베이,cross-chain-existing-region,클래식,Premium,운영중
+중국,NAYRW,베이징,베이징·톈진·허베이,cross-chain-existing-region,클래식,Premium,운영중
+중국,NAYZD,베이징,베이징·톈진·허베이,cross-chain-existing-region,에센셜,Select,운영중
+중국,PEKZS,베이징,베이징·톈진·허베이,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC133,보러,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,SAXUB,사오싱,저장·안후이,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,SAXZS,사오싱,저장·안후이,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC129,산터우,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC122,산터우,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC109,상하이,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC218,상하이,상하이·장쑤,cross-chain-existing-region,에센셜,Select,개관 예정
+중국,UC061,상하이,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC120,상하이,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,SHAGH,상하이,상하이·장쑤,cross-chain-existing-region,클래식,Premium,운영중
+중국,SHAUM,상하이,상하이·장쑤,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,SHAAX,상하이,상하이·장쑤,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+중국,SHAAZ,상하이,상하이·장쑤,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+중국,SHAAL,상하이,상하이·장쑤,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,UC001,상하이,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC005,상하이,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC002,상하이,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,SHACP,상하이,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,SHATH,상하이,상하이·장쑤,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+중국,SHAPH,상하이,상하이·장쑤,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,SHAJD,상하이,상하이·장쑤,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+중국,SHAPR,상하이,상하이·장쑤,cross-chain-existing-region,클래식,Premium,운영중
+중국,SHARL,상하이,상하이·장쑤,cross-chain-existing-region,클래식,Premium,운영중
+중국,SHARS,상하이,상하이·장쑤,cross-chain-existing-region,클래식,Premium,운영중
+중국,SHARJ,상하이,상하이·장쑤,cross-chain-existing-region,클래식,Premium,운영중
+중국,SHWHR,상하이,상하이·장쑤,cross-chain-existing-region,클래식,Premium,운영중
+중국,SHACT,상하이,상하이·장쑤,cross-chain-existing-region,클래식,Premium,운영중
+중국,SHANG,상하이,상하이·장쑤,cross-chain-existing-region,클래식,Premium,운영중
+중국,SHAZN,상하이,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,SHAZW,상하이,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,SHAZL,상하이,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,SHAZC,상하이,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,SHAZH,상하이,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,SHAXN,상하이,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,SHAXH,상하이,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,XMNAZ,샤먼,푸젠·장시,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+중국,XMNRW,샤먼,푸젠·장시,cross-chain-existing-region,클래식,Premium,운영중
+중국,XMNCT,샤먼,푸젠·장시,cross-chain-existing-region,클래식,Premium,운영중
+중국,SHEGS,선양,동북·내몽골,cross-chain-existing-region,클래식,Premium,운영중
+중국,UC033,선전,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC019,선전,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC108,선전,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC127,선전,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC035,선전,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC078,선전,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC223,선전,광둥,cross-chain-existing-region,에센셜,Select,개관 예정
+중국,SHEGH,선전,광둥,cross-chain-existing-region,클래식,Premium,운영중
+중국,SZXAZ,선전,광둥,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+중국,UC031,선전,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,SZXJD,선전,광둥,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+중국,SZXPH,선전,광둥,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,SZXRA,선전,광둥,cross-chain-existing-region,클래식,Premium,운영중
+중국,SZXRY,선전,광둥,cross-chain-existing-region,클래식,Premium,운영중
+중국,SZXZS,선전,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,SZXZL,선전,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,SZXZA,선전,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,SZXXA,선전,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC088,쉬저우,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC113,쉬창,후베이·후난·허난,verified-city-mapping,에센셜,Select,운영중
+중국,UC125,시솽반나 (징훙),윈난·구이저우·티베트,verified-city-mapping,에센셜,Select,운영중
+중국,UC124,시안,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC215,시안,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC055,시안,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC085,시안,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC040,시안,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC017,시안,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,XIYGH,시안,산시·서북,cross-chain-existing-region,클래식,Premium,운영중
+중국,XIYHR,시안,산시·서북,cross-chain-existing-region,클래식,Premium,운영중
+중국,XIYRX,시안,산시·서북,cross-chain-existing-region,클래식,Premium,운영중
+중국,XIYCT,시안,산시·서북,cross-chain-existing-region,클래식,Premium,운영중
+중국,SYXGH,싼야,하이난·광시,cross-chain-existing-region,클래식,Premium,운영중
+중국,SANPH,싼야,하이난·광시,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,SYXRS,싼야,하이난·광시,cross-chain-existing-region,클래식,Premium,운영중
+중국,SYXZS,싼야,하이난·광시,cross-chain-existing-region,에센셜,Select,운영중
+중국,SUZJD,쑤저우,상하이·장쑤,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+중국,UC086,쑤저우,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,SUZPH,쑤저우,상하이·장쑤,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,SUZHR,쑤저우,상하이·장쑤,cross-chain-existing-region,클래식,Premium,운영중
+중국,UC132,아러타이,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC053,아커쑤,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC075,양저우,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC180,양저우,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC175,양저우,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,YNTZY,옌타이,산둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,SHHGH,완닝,하이난·광시,cross-chain-existing-region,클래식,Premium,운영중
+중국,HGHAW,우전,저장·안후이,verified-city-mapping,럭셔리,Luxury,운영중
+중국,UC200,우한,후베이·후난·허난,cross-chain-existing-region,에센셜,Select,운영중
+중국,WUHRW,우한,후베이·후난·허난,cross-chain-existing-region,클래식,Premium,운영중
+중국,UC107,웨이팡,산둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC012,웨이팡,산둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,WUXUB,이싱,상하이·장쑤,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,UC094,인촨,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,INCZD,인촨,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,INCXD,인촨,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC041,자샨,저장·안후이,verified-city-mapping,에센셜,Select,운영중
+중국,HGHRJ,자싱,저장·안후이,cross-chain-existing-region,클래식,Premium,운영중
+중국,HGHZJ,자싱,저장·안후이,cross-chain-existing-region,에센셜,Select,운영중
+중국,PEKZC,장자커우 (충리),베이징·톈진·허베이,verified-city-mapping,에센셜,Select,운영중
+중국,CSXRZ,주저우,후베이·후난·허난,cross-chain-existing-region,클래식,Premium,운영중
+중국,UC166,주하이,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC155,주하이,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,ZUHAL,주하이,광둥,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,ZUHRG,주하이,광둥,cross-chain-existing-region,클래식,Premium,운영중
+중국,ZUHRA,주하이,광둥,cross-chain-existing-region,클래식,Premium,개관 예정
+중국,MFMRH,주하이,광둥,cross-chain-existing-region,클래식,Premium,운영중
+중국,ZUHZJ,주하이,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,JINHR,지난,산둥,cross-chain-existing-region,클래식,Premium,운영중
+중국,JDZUB,징더전,푸젠·장시,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,JDZZJ,징더전,푸젠·장시,cross-chain-existing-region,에센셜,Select,운영중
+중국,NBSPH,창바이산,동북·내몽골,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,NBSHR,창바이산,동북·내몽골,cross-chain-existing-region,클래식,Premium,운영중
+중국,CNAAL,창사,후베이·후난·허난,cross-chain-existing-region,럭셔리,Luxury,개관 예정
+중국,CSXGH,창사,후베이·후난·허난,cross-chain-existing-region,클래식,Premium,운영중
+중국,CSXPH,창사,후베이·후난·허난,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,CSXZA,창사,후베이·후난·허난,cross-chain-existing-region,에센셜,Select,운영중
+중국,SUZRC,창수,상하이·장쑤,cross-chain-existing-region,클래식,Premium,운영중
+중국,UC069,창저우,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,CGQHR,창춘,동북·내몽골,cross-chain-existing-region,클래식,Premium,운영중
+중국,CGQZC,창춘,동북·내몽골,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC072,청두,쓰촨·충칭,cross-chain-existing-region,에센셜,Select,운영중
+중국,CTUGH,청두,쓰촨·충칭,cross-chain-existing-region,클래식,Premium,운영중
+중국,CTUUB,청두,쓰촨·충칭,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,CTMUB,청두,쓰촨·충칭,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,CTDUB,청두,쓰촨·충칭,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,CTUCT,청두,쓰촨·충칭,cross-chain-existing-region,클래식,Premium,운영중
+중국,CTUZB,청두,쓰촨·충칭,cross-chain-existing-region,에센셜,Select,운영중
+중국,CTUZC,청두,쓰촨·충칭,cross-chain-existing-region,에센셜,Select,운영중
+중국,CTUXC,청두,쓰촨·충칭,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC037,충칭,쓰촨·충칭,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC139,충칭,쓰촨·충칭,cross-chain-existing-region,에센셜,Select,운영중
+중국,CKGUB,충칭,쓰촨·충칭,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,CKGRO,충칭,쓰촨·충칭,cross-chain-existing-region,클래식,Premium,운영중
+중국,CHONG,충칭,쓰촨·충칭,cross-chain-existing-region,클래식,Premium,운영중
+중국,UC209,취안저우,푸젠·장시,cross-chain-existing-region,에센셜,Select,개관 예정
+중국,UC052,취저우 (창산),저장·안후이,verified-city-mapping,에센셜,Select,운영중
+중국,QINHR,칭다오,산둥,cross-chain-existing-region,클래식,Premium,운영중
+중국,UC111,카슈가르,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC118,카슈가르,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC084,카슈가르,산시·서북,cross-chain-existing-region,에센셜,Select,개관 예정
+중국,KMGGH,쿤밍,윈난·구이저우·티베트,cross-chain-existing-region,클래식,Premium,운영중
+중국,KMGZS,쿤밍,윈난·구이저우·티베트,cross-chain-existing-region,에센셜,Select,운영중
+중국,KVSZK,쿤산,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,TNYZT,타이위안,산시·서북,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC146,타이창,상하이·장쑤,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC050,톈진,베이징·톈진·허베이,cross-chain-existing-region,에센셜,Select,운영중
+중국,ETIJD,톈진,베이징·톈진·허베이,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+중국,ETIHR,톈진,베이징·톈진·허베이,cross-chain-existing-region,클래식,Premium,운영중
+중국,CNAAF,톈진,베이징·톈진·허베이,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC065,포산,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC186,포산,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,CANZF,포산,광둥,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC117,푸저우,푸젠·장시,cross-chain-existing-region,에센셜,Select,운영중
+중국,FOCHR,푸저우,푸젠·장시,cross-chain-existing-region,클래식,Premium,운영중
+중국,UC198,핑량,산시·서북,verified-city-mapping,에센셜,Select,운영중
+중국,HRBUB,하얼빈,동북·내몽골,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,HGHJD,항저우,저장·안후이,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+중국,UC058,항저우,저장·안후이,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC112,항저우,저장·안후이,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC027,항저우,저장·안후이,cross-chain-existing-region,에센셜,Select,운영중
+중국,HANGZ,항저우,저장·안후이,cross-chain-existing-region,클래식,Premium,운영중
+중국,HANUB,항저우,저장·안후이,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,HANPH,항저우,저장·안후이,cross-chain-existing-region,럭셔리,Luxury,운영중
+중국,HGHRH,항저우,저장·안후이,cross-chain-existing-region,클래식,Premium,운영중
+중국,HGHZH,항저우,저장·안후이,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC076,허페이,저장·안후이,cross-chain-existing-region,에센셜,Select,운영중
+중국,UC169,허페이,저장·안후이,cross-chain-existing-region,에센셜,Select,운영중
+중국,HFEGH,허페이,저장·안후이,cross-chain-existing-region,클래식,Premium,운영중
+중국,TXNRH,황산,저장·안후이,cross-chain-existing-region,클래식,Premium,운영중
+중국,TXNZT,황산,저장·안후이,cross-chain-existing-region,에센셜,Select,운영중
+싱가포르,SINSS,싱가포르,싱가포르,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+싱가포르,SINRS,싱가포르,싱가포르,cross-chain-existing-region,클래식,Premium,운영중
+싱가포르,SINAZ,싱가포르,싱가포르,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+말레이시아,JHBZJ,조호르바루,조호르·남부,cross-chain-existing-region,에센셜,Select,운영중
+말레이시아,BKIKI,코타키나발루,보르네오,cross-chain-existing-region,클래식,Premium,운영중
+말레이시아,BKICT,코타키나발루,보르네오,cross-chain-existing-region,클래식,Premium,운영중
+말레이시아,M1721,쿠알라룸푸르,쿠알라룸푸르·수도권,cross-chain-existing-region,파트너,Partner,운영중
+말레이시아,M1783,쿠알라룸푸르,쿠알라룸푸르·수도권,cross-chain-existing-region,파트너,Partner,운영중
+말레이시아,KUAGH,쿠알라룸푸르,쿠알라룸푸르·수도권,cross-chain-existing-region,클래식,Premium,운영중
+말레이시아,KULAL,쿠알라룸푸르,쿠알라룸푸르·수도권,cross-chain-existing-region,럭셔리,Luxury,운영중
+말레이시아,KULPH,쿠알라룸푸르,쿠알라룸푸르·수도권,cross-chain-existing-region,럭셔리,Luxury,운영중
+말레이시아,KULRK,쿠알라룸푸르,쿠알라룸푸르·수도권,cross-chain-existing-region,클래식,Premium,운영중
+말레이시아,KULCT,쿠알라룸푸르,쿠알라룸푸르·수도권,cross-chain-existing-region,클래식,Premium,운영중
+말레이시아,KULZK,쿠알라룸푸르,쿠알라룸푸르·수도권,cross-chain-existing-region,에센셜,Select,운영중
+말레이시아,KULXK,쿠알라룸푸르,쿠알라룸푸르·수도권,cross-chain-existing-region,에센셜,Select,운영중
+말레이시아,KUAKT,파항,동해안·고원,cross-chain-existing-region,클래식,Premium,운영중
+베트남,M1933,깜라인,나트랑,cross-chain-existing-region,파트너,Partner,운영중
+베트남,VN104,껀터,호치민·남부,cross-chain-existing-region,에센셜,Select,운영중
+베트남,M0340,나트랑,나트랑,cross-chain-existing-region,파트너,Partner,운영중
+베트남,CXRRN,나트랑,나트랑,cross-chain-existing-region,클래식,Premium,운영중
+베트남,VN101,다낭,다낭·중부,cross-chain-existing-region,에센셜,Select,운영중
+베트남,VN102,다낭,다낭·중부,cross-chain-existing-region,에센셜,Select,운영중
+베트남,DANHR,다낭,다낭·중부,cross-chain-existing-region,클래식,Premium,운영중
+베트남,M0724,마이쩌우,하노이·북부,verified-city-mapping,파트너,Partner,운영중
+베트남,M0943,판티엣 (케가베이),나트랑,verified-city-mapping,파트너,Partner,운영중
+베트남,PQCPH,푸꾸옥 특별구,푸꾸옥,verified-city-mapping,럭셔리,Luxury,개관 예정
+베트남,M0928,푸옌,나트랑,verified-city-mapping,파트너,Partner,운영중
+베트남,VN103,푸옌 (뚜이호아),나트랑,verified-city-mapping,에센셜,Select,운영중
+베트남,VN106,하노이,하노이·북부,cross-chain-existing-region,에센셜,Select,개관 예정
+베트남,HANCT,하노이,하노이·북부,cross-chain-existing-region,클래식,Premium,예약 불가
+베트남,VDORH,하롱,하노이·북부,cross-chain-existing-region,클래식,Premium,개관 예정
+베트남,VDOZH,하롱,하노이·북부,cross-chain-existing-region,에센셜,Select,운영중
+베트남,VN105,하이퐁,하노이·북부,cross-chain-existing-region,에센셜,Select,운영중
+베트남,VN100,호치민,호치민·남부,verified-city-mapping,에센셜,Select,운영중
+베트남,SAIPH,호치민,호치민·남부,verified-city-mapping,럭셔리,Luxury,운영중
+베트남,M1714,호치민 (투안안),호치민·남부,verified-city-mapping,파트너,Partner,운영중
+태국,M1569,꼬사무이,코사무이,verified-city-mapping,파트너,Partner,운영중
+태국,M1362,꼬사무이,코사무이,verified-city-mapping,파트너,Partner,운영중
+태국,USMRK,꼬사무이,코사무이,verified-city-mapping,클래식,Premium,운영중
+태국,M0671,꼬야오,푸켓·안다만,verified-city-mapping,파트너,Partner,운영중
+태국,M0792,끄라비 (꼬란타),푸켓·안다만,verified-city-mapping,파트너,Partner,운영중
+태국,M0260,나콘시탐마랏 (카놈),코사무이,verified-city-mapping,파트너,Partner,운영중
+태국,BKKSX,방콕,방콕·중부,verified-city-mapping,에센셜,Select,운영중
+태국,M2023,방콕,방콕·중부,verified-city-mapping,파트너,Partner,운영중
+태국,M1484,방콕,방콕·중부,verified-city-mapping,파트너,Partner,운영중
+태국,BKKSB,방콕,방콕·중부,verified-city-mapping,라이프스타일,Lifestyle,운영중
+태국,M1703,방콕,방콕·중부,verified-city-mapping,파트너,Partner,운영중
+태국,BANGH,방콕,방콕·중부,verified-city-mapping,클래식,Premium,운영중
+태국,BKKAZ,방콕,방콕·중부,verified-city-mapping,라이프스타일,Lifestyle,운영중
+태국,BKKPH,방콕,방콕·중부,verified-city-mapping,럭셔리,Luxury,운영중
+태국,BKKHR,방콕,방콕·중부,verified-city-mapping,클래식,Premium,운영중
+태국,BKKZK,방콕,방콕·중부,verified-city-mapping,에센셜,Select,운영중
+태국,BKKZS,방콕,방콕·중부,verified-city-mapping,에센셜,Select,운영중
+태국,BKKRB,방콕 (수완나품),방콕·중부,verified-city-mapping,클래식,Premium,운영중
+태국,M0796,치앙마이,치앙마이·북부,cross-chain-existing-region,파트너,Partner,운영중
+태국,M0176,치앙마이,치앙마이·북부,cross-chain-existing-region,파트너,Partner,운영중
+태국,M0388,치앙마이,치앙마이·북부,cross-chain-existing-region,파트너,Partner,운영중
+태국,UTPSP,파타야,파타야·기타,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+태국,UTPAZ,파타야,파타야·기타,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+태국,M1673,푸껫,푸켓·안다만,verified-city-mapping,파트너,Partner,운영중
+태국,M1681,푸껫,푸켓·안다만,verified-city-mapping,파트너,Partner,운영중
+태국,M1446,푸껫,푸켓·안다만,verified-city-mapping,파트너,Partner,운영중
+태국,PHUHR,푸껫,푸켓·안다만,verified-city-mapping,클래식,Premium,운영중
+태국,M1406,푸껫 (카말라),푸켓·안다만,verified-city-mapping,파트너,Partner,운영중
+태국,M2037,푸껫 (탈랑),푸켓·안다만,verified-city-mapping,파트너,Partner,운영중
+태국,M0789,후아힌,파타야·기타,cross-chain-existing-region,파트너,Partner,운영중
+태국,HUASH,후아힌,파타야·기타,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+태국,HHQUB,후아힌,파타야·기타,cross-chain-existing-region,럭셔리,Luxury,운영중
+태국,HUAHI,후아힌,파타야·기타,cross-chain-existing-region,클래식,Premium,운영중
+인도네시아,M1909,누사페니다,발리,verified-city-mapping,파트너,Partner,운영중
+인도네시아,DPAAL,라부안바조,롬복·리우제도,cross-chain-existing-region,럭셔리,Luxury,운영중
+인도네시아,M1617,롬복,롬복·리우제도,cross-chain-existing-region,파트너,Partner,운영중
+인도네시아,UPGZM,마카사르,인도네시아 기타,cross-chain-existing-region,에센셜,Select,운영중
+인도네시아,M1491,발리 (기아냐르),발리,verified-city-mapping,파트너,Partner,운영중
+인도네시아,BALGH,발리 (누사두아),발리,verified-city-mapping,클래식,Premium,운영중
+인도네시아,DPSAK,발리 (망기스),발리,verified-city-mapping,럭셔리,Luxury,운영중
+인도네시아,DPSAZ,발리 (사누르),발리,verified-city-mapping,라이프스타일,Lifestyle,운영중
+인도네시아,DPSAS,발리 (스미냑),발리,verified-city-mapping,럭셔리,Luxury,운영중
+인도네시아,DPSAT,발리 (스미냑),발리,verified-city-mapping,라이프스타일,Lifestyle,운영중
+인도네시아,M1304,발리 (아메드),발리,verified-city-mapping,파트너,Partner,운영중
+인도네시아,M1385,발리 (우붓),발리,verified-city-mapping,파트너,Partner,운영중
+인도네시아,DPSAU,발리 (우붓),발리,verified-city-mapping,럭셔리,Luxury,운영중
+인도네시아,M1686,발리 (울루와뚜),발리,verified-city-mapping,파트너,Partner,운영중
+인도네시아,DPSAV,발리 (울루와뚜),발리,verified-city-mapping,럭셔리,Luxury,운영중
+인도네시아,M1294,발리 (타바난),발리,verified-city-mapping,파트너,Partner,운영중
+인도네시아,M2128,빈탄 (니코이 섬),롬복·리우제도,verified-city-mapping,파트너,Partner,운영중
+인도네시아,M2136,빈탄 (첨페닥 섬),롬복·리우제도,verified-city-mapping,파트너,Partner,운영중
+인도네시아,DPSBL,사누르,발리,verified-city-mapping,클래식,Premium,운영중
+인도네시아,SOCAL,수라카르타,동부·중부자바,cross-chain-existing-region,럭셔리,Luxury,운영중
+인도네시아,M0273,숨바,롬복·리우제도,cross-chain-existing-region,파트너,Partner,운영중
+인도네시아,M0666,숨바,롬복·리우제도,cross-chain-existing-region,파트너,Partner,운영중
+인도네시아,M1072,숨바와,롬복·리우제도,verified-city-mapping,파트너,Partner,운영중
+인도네시아,JAKGH,자카르타,자카르타·서부자바,cross-chain-existing-region,클래식,Premium,운영중
+인도네시아,CGKUB,자카르타,자카르타·서부자바,cross-chain-existing-region,럭셔리,Luxury,운영중
+인도네시아,CGKPH,자카르타,자카르타·서부자바,cross-chain-existing-region,럭셔리,Luxury,운영중
+인도네시아,M0141,족자카르타,자카르타·서부자바,cross-chain-existing-region,파트너,Partner,운영중
+인도네시아,YOGYA,족자카르타,자카르타·서부자바,cross-chain-existing-region,클래식,Premium,운영중
+필리핀,MANGH,마닐라,마닐라·수도권,cross-chain-existing-region,클래식,Premium,운영중
+필리핀,MNLHY,마닐라,마닐라·수도권,cross-chain-existing-region,클래식,Premium,운영중
+필리핀,M0302,시아르가오,민다나오·시아르가오,verified-city-mapping,파트너,Partner,운영중
+캄보디아,M0216,꼬롱,시아누크빌,verified-city-mapping,파트너,Partner,운영중
+캄보디아,M0669,꼬롱,시아누크빌,verified-city-mapping,파트너,Partner,운영중
+캄보디아,M1410,시엠리프,시엠립,verified-city-mapping,파트너,Partner,운영중
+캄보디아,M1399,시엠리프,시엠립,verified-city-mapping,파트너,Partner,운영중
+캄보디아,REPPH,시엠리프,시엠립,verified-city-mapping,럭셔리,Luxury,운영중
+캄보디아,M0423,카다멈 (캄퐁세일라),시아누크빌,verified-city-mapping,파트너,Partner,운영중
+캄보디아,PNHRP,프놈펜,프놈펜,cross-chain-existing-region,클래식,Premium,운영중
+라오스,M2026,루앙프라방,루앙프라방,cross-chain-existing-region,파트너,Partner,운영중
+라오스,M0180,루앙프라방,루앙프라방,cross-chain-existing-region,파트너,Partner,운영중
+인도,GOIAL,고아 (마조르다),고아,verified-city-mapping,럭셔리,Luxury,운영중
+인도,GOAGH,고아 (밤볼림),고아,verified-city-mapping,클래식,Premium,운영중
+인도,GOAJD,고아 (칼랑구트),고아,verified-city-mapping,라이프스타일,Lifestyle,운영중
+인도,M0454,고카르나,벵갈루루·카르나타카,verified-city-mapping,파트너,Partner,운영중
+인도,M0130,고카르나,벵갈루루·카르나타카,verified-city-mapping,파트너,Partner,운영중
+인도,GRGGH,구르가온,델리·수도권,cross-chain-existing-region,클래식,Premium,운영중
+인도,DELRG,구르가온,델리·수도권,cross-chain-existing-region,클래식,Premium,운영중
+인도,DELZO,구르가온,델리·수도권,cross-chain-existing-region,에센셜,Select,운영중
+인도,DELAZ,뉴델리,델리·수도권,cross-chain-existing-region,라이프스타일,Lifestyle,운영중
+인도,DELAA,뉴델리,델리·수도권,cross-chain-existing-region,클래식,Premium,운영중
+인도,DELRD,뉴델리,델리·수도권,cross-chain-existing-region,클래식,Premium,운영중
+인도,DELCT,뉴델리,델리·수도권,cross-chain-existing-region,클래식,Premium,운영중
+인도,DHMRM,다람살라,북부·히말라야,verified-city-mapping,클래식,Premium,운영중
+인도,M0297,다르질링,동부·북동부,verified-city-mapping,파트너,Partner,운영중
+인도,DELRH,데라둔,북부·히말라야,cross-chain-existing-region,클래식,Premium,운영중
+인도,DEDZD,데라둔,북부·히말라야,cross-chain-existing-region,클래식,Premium,운영중
+인도,RPRHY,라이푸르,중부,cross-chain-existing-region,클래식,Premium,운영중
+인도,LKORL,러크나우,동부·북동부,cross-chain-existing-region,클래식,Premium,운영중
+인도,M0728,레,북부·히말라야,verified-city-mapping,파트너,Partner,운영중
+인도,LUHRL,루디아나,북부·히말라야,verified-city-mapping,클래식,Premium,운영중
+인도,M1992,뭄바이,뭄바이·마하라슈트라,cross-chain-existing-region,파트너,Partner,운영중
+인도,MUMGH,뭄바이,뭄바이·마하라슈트라,cross-chain-existing-region,클래식,Premium,운영중
+인도,MUMCT,뭄바이,뭄바이·마하라슈트라,cross-chain-existing-region,클래식,Premium,운영중
+인도,BDQZV,바도다라,구자라트,cross-chain-existing-region,에센셜,Select,운영중
+인도,STVZB,바루치,구자라트,verified-city-mapping,에센셜,Select,운영중
+인도,M0404,반다브가르,중부,verified-city-mapping,파트너,Partner,운영중
+인도,BLRHY,벵갈루루,벵갈루루·카르나타카,cross-chain-existing-region,클래식,Premium,운영중
+인도,BLRCB,벵갈루루,벵갈루루·카르나타카,cross-chain-existing-region,클래식,Premium,개관 예정
+인도,BLRCH,벵갈루루,벵갈루루·카르나타카,cross-chain-existing-region,클래식,Premium,운영중
+인도,IN102,벵갈루루,벵갈루루·카르나타카,cross-chain-existing-region,클래식,Premium,운영중
+인도,GAYZB,보드가야,동부·북동부,verified-city-mapping,에센셜,Select,운영중
+인도,BHOZB,보팔,중부,cross-chain-existing-region,에센셜,Select,운영중
+인도,VGAZV,비자야와다,하이데라바드·안드라,cross-chain-existing-region,에센셜,Select,운영중
+인도,M1691,신두두르그,뭄바이·마하라슈트라,verified-city-mapping,파트너,Partner,운영중
+인도,AMDHR,아메다바드,구자라트,cross-chain-existing-region,클래식,Premium,운영중
+인도,AMDHY,아메다바드,구자라트,cross-chain-existing-region,클래식,Premium,운영중
+인도,AMDZV,아메다바드,구자라트,cross-chain-existing-region,에센셜,Select,운영중
+인도,IXUZA,아우랑가바드,뭄바이·마하라슈트라,verified-city-mapping,에센셜,Select,운영중
+인도,M0375,안다만 (해블록 섬),동부·북동부,verified-city-mapping,파트너,Partner,운영중
+인도,M0407,알모라,북부·히말라야,cross-chain-existing-region,파트너,Partner,운영중
+인도,ATQHY,암리차르,북부·히말라야,cross-chain-existing-region,클래식,Premium,운영중
+인도,M1418,우다이푸르,라자스탄,verified-city-mapping,파트너,Partner,운영중
+인도,M1435,우다이푸르 (라지사만드),라자스탄,verified-city-mapping,파트너,Partner,운영중
+인도,M1731,자이푸르,라자스탄,cross-chain-existing-region,파트너,Partner,운영중
+인도,M1680,자이푸르,라자스탄,cross-chain-existing-region,파트너,Partner,운영중
+인도,M1644,자이푸르,라자스탄,cross-chain-existing-region,파트너,Partner,운영중
+인도,M1497,자이푸르,라자스탄,cross-chain-existing-region,파트너,Partner,운영중
+인도,JAIAL,자이푸르,라자스탄,cross-chain-existing-region,럭셔리,Luxury,운영중
+인도,JAIRJ,자이푸르,라자스탄,cross-chain-existing-region,클래식,Premium,운영중
+인도,JAIZM,자이푸르,라자스탄,cross-chain-existing-region,에센셜,Select,운영중
+인도,M0293,잠타라,동부·북동부,verified-city-mapping,파트너,Partner,운영중
+인도,M2058,조드푸르,라자스탄,cross-chain-existing-region,파트너,Partner,운영중
+인도,M0713,조드푸르,라자스탄,cross-chain-existing-region,파트너,Partner,운영중
+인도,M1830,조드푸르,라자스탄,cross-chain-existing-region,파트너,Partner,운영중
+인도,M0821,조드푸르,라자스탄,cross-chain-existing-region,파트너,Partner,운영중
+인도,M1988,조드푸르,라자스탄,cross-chain-existing-region,파트너,Partner,운영중
+인도,M0299,조드푸르,라자스탄,cross-chain-existing-region,파트너,Partner,운영중
+인도,M0955,조드푸르,라자스탄,cross-chain-existing-region,파트너,Partner,운영중
+인도,IXCHR,찬디가르,북부·히말라야,cross-chain-existing-region,클래식,Premium,운영중
+인도,IXCCT,찬디가르,북부·히말라야,cross-chain-existing-region,클래식,Premium,운영중
+인도,CHEPH,첸나이,첸나이·타밀나두,cross-chain-existing-region,럭셔리,Luxury,운영중
+인도,CHENN,첸나이,첸나이·타밀나두,cross-chain-existing-region,클래식,Premium,운영중
+인도,M0829,카나두카탄,첸나이·타밀나두,verified-city-mapping,파트너,Partner,운영중
+인도,GOAZC,칸돌림,고아,cross-chain-existing-region,클래식,Premium,운영중
+인도,GOAZG,칸돌림,고아,cross-chain-existing-region,에센셜,Select,운영중
+인도,M0128,케랄라 (마라리쿨람),케랄라,verified-city-mapping,파트너,Partner,운영중
+인도,M1358,케랄라 (벰바나드 호수),케랄라,verified-city-mapping,파트너,Partner,예약 불가
+인도,M0129,코치,케랄라,cross-chain-existing-region,파트너,Partner,운영중
+인도,M0471,코치,케랄라,cross-chain-existing-region,파트너,Partner,운영중
+인도,M1359,코치,케랄라,cross-chain-existing-region,파트너,Partner,운영중
+인도,COKGH,코치,케랄라,cross-chain-existing-region,클래식,Premium,운영중
+인도,COKRM,코치,케랄라,cross-chain-existing-region,클래식,Premium,운영중
+인도,M1517,콜카타,동부·북동부,cross-chain-existing-region,파트너,Partner,운영중
+인도,KOLKA,콜카타,동부·북동부,cross-chain-existing-region,클래식,Premium,운영중
+인도,KOLCT,콜카타,동부·북동부,cross-chain-existing-region,클래식,Premium,운영중
+인도,M1307,쿠마라콤,케랄라,verified-city-mapping,파트너,Partner,운영중
+인도,COKRT,트리수르,케랄라,verified-city-mapping,클래식,Premium,운영중
+인도,M1493,티루바난타푸람,케랄라,verified-city-mapping,파트너,Partner,운영중
+인도,TRVRT,티루바난타푸람,케랄라,verified-city-mapping,클래식,Premium,운영중
+인도,M1291,팔리,라자스탄,verified-city-mapping,파트너,Partner,운영중
+인도,M0304,퐁디셰리,첸나이·타밀나두,verified-city-mapping,파트너,Partner,운영중
+인도,PUNHR,푸네,뭄바이·마하라슈트라,cross-chain-existing-region,클래식,Premium,운영중
+인도,PNQHY,푸네,뭄바이·마하라슈트라,cross-chain-existing-region,클래식,Premium,운영중
+인도,PNQZP,푸네,뭄바이·마하라슈트라,cross-chain-existing-region,에센셜,Select,운영중
+인도,DEDZH,하리드와르,북부·히말라야,verified-city-mapping,에센셜,Select,운영중
+인도,HYDPH,하이데라바드,하이데라바드·안드라,cross-chain-existing-region,럭셔리,Luxury,운영중
+인도,HYDZH,하이데라바드,하이데라바드·안드라,cross-chain-existing-region,에센셜,Select,운영중
+인도,HYDHY,하이데라바드,하이데라바드·안드라,cross-chain-existing-region,클래식,Premium,운영중
+인도,HBXZH,함피,벵갈루루·카르나타카,verified-city-mapping,에센셜,Select,운영중
+몰디브,MLDPH,가푸알리푸아톨,몰디브,countrywide-region,럭셔리,Luxury,운영중
+몰디브,M2077,노스말레아톨,몰디브,countrywide-region,파트너,Partner,운영중
+몰디브,M2038,다알루아톨,몰디브,countrywide-region,파트너,Partner,운영중
+몰디브,M2025,라비야니아톨,몰디브,countrywide-region,파트너,Partner,운영중
+몰디브,MLDSM,라아톨,몰디브,countrywide-region,라이프스타일,Lifestyle,운영중
+몰디브,MLDAL,라아톨,몰디브,countrywide-region,럭셔리,Luxury,운영중
+몰디브,M1518,바아아톨,몰디브,countrywide-region,파트너,Partner,운영중
+몰디브,M1978,바아아톨,몰디브,countrywide-region,파트너,Partner,운영중
+스리랑카,M1870,갈레 (하바라두와),남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0328,갈오야,남부·동부,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0323,갤,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M1092,갤,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M1868,갤,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0361,갤,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0206,군네파나 (캔디),중부·북부,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M1284,네곰보,콜롬보·서부,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M1816,네보다,콜롬보·서부,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0418,데모데라,중부·북부,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0396,디코야,중부·북부,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M2054,레카와,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0355,발라피티야,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0567,벤토타,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M1872,벤토타,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0800,시기리야,중부·북부,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0403,시기리야,중부·북부,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0263,아누라다푸라,중부·북부,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M1519,아항가마,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0283,아항가마,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M2053,아훈갈라,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M1412,알라와투고다,중부·북부,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M2059,얄라,남부·동부,cross-chain-existing-region,파트너,Partner,운영중
+스리랑카,M2048,웰리가마,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M1074,웰리가마,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M2072,웰리가마,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M1379,카탈루와,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0417,칸다폴라 (누와라엘리야),중부·북부,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M2123,칼쿠다,남부·동부,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0324,캔디,중부·북부,cross-chain-existing-region,파트너,Partner,운영중
+스리랑카,M0266,코슬란다,중부·북부,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M1498,콜롬보,콜롬보·서부,cross-chain-existing-region,파트너,Partner,운영중
+스리랑카,M1367,콜롬보,콜롬보·서부,cross-chain-existing-region,파트너,Partner,운영중
+스리랑카,M1433,콜롬보,콜롬보·서부,cross-chain-existing-region,파트너,Partner,운영중
+스리랑카,M1360,콜롬보,콜롬보·서부,cross-chain-existing-region,파트너,Partner,운영중
+스리랑카,M1767,탕갈레,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0205,탕갈레,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M2129,탕갈레,남부 해안,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0264,트링코말리,남부·동부,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0288,티사마하라마 (얄라),남부·동부,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M2042,하톤,중부·북부,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0333,하푸탈레,중부·북부,verified-city-mapping,파트너,Partner,운영중
+스리랑카,M0481,히카두와,남부 해안,verified-city-mapping,파트너,Partner,운영중
+네팔,M0828,나왈파라시,카트만두·중부,verified-city-mapping,파트너,Partner,운영중
+네팔,M0708,무스탕,포카라·히말라야,verified-city-mapping,파트너,Partner,운영중
+네팔,M0459,바르디아,네팔 서부,verified-city-mapping,파트너,Partner,운영중
+네팔,BWAZB,붓왈,네팔 서부,verified-city-mapping,에센셜,Select,운영중
+네팔,KATHM,카트만두,카트만두,verified-city-mapping,클래식,Premium,예약 불가
+네팔,KTMZK,카트만두,카트만두,verified-city-mapping,클래식,Premium,운영중
+네팔,M0463,포카라,포카라·히말라야,verified-city-mapping,파트너,Partner,운영중
+방글라데시,DACZD,다카,다카,cross-chain-existing-region,에센셜,Select,운영중
+부탄,M1885,푸나카,푸나카,verified-city-mapping,파트너,Partner,운영중
+우즈베키스탄,TASDH,벨데르소이,타슈켄트,verified-city-mapping,클래식,Premium,운영중
+우즈베키스탄,TASRT,타슈켄트,타슈켄트,cross-chain-existing-region,클래식,Premium,운영중
+키르기스스탄,BISHK,비슈케크,비슈케크,cross-chain-existing-region,클래식,Premium,운영중
+타지키스탄,DUSHR,두샨베,두샨베,cross-chain-existing-region,클래식,Premium,운영중
+괌,GUAMH,투몬,괌,countrywide-region,클래식,Premium,운영중

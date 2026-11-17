@@ -1,4 +1,4 @@
-"""메리어트 + 힐튼 + 아코르 아시아 호텔 예약 링크 대시보드.
+"""메리어트 + 힐튼 + 아코르 + 하얏트 아시아 호텔 예약 링크 대시보드.
 
 기존 marriott_asia_dashboard.py의 메리어트 목록/URL 함수를 유지하고,
 타 브랜드 식별코드, 예약 링크, 검색 및 내보내기를 통합한 독립 실행형 Streamlit 앱.
@@ -35,7 +35,7 @@ COUNTRY_FLAGS = {
     "말레이시아": "🇲🇾",
     "인도네시아": "🇮🇩", "필리핀": "🇵🇭", "캄보디아": "🇰🇭", "라오스": "🇱🇦", "미얀마": "🇲🇲",
     "인도": "🇮🇳", "몰디브": "🇲🇻", "스리랑카": "🇱🇰", "네팔": "🇳🇵", "부탄": "🇧🇹", "방글라데시": "🇧🇩",
-    "파키스탄": "🇵🇰", "몽골": "🇲🇳", "카자흐스탄": "🇰🇿", "우즈베키스탄": "🇺🇿", "키르기스스탄": "🇰🇬", "타지키스탄": "🇹🇯",
+    "파키스탄": "🇵🇰", "몽골": "🇲🇳", "괌": "🇬🇺", "카자흐스탄": "🇰🇿", "우즈베키스탄": "🇺🇿", "키르기스스탄": "🇰🇬", "타지키스탄": "🇹🇯",
 }
 
 
@@ -46,7 +46,7 @@ COUNTRY_FLAG_CODES = {
     "말레이시아": "my", "인도네시아": "id",
     "필리핀": "ph", "캄보디아": "kh", "라오스": "la", "미얀마": "mm",
     "인도": "in", "몰디브": "mv", "스리랑카": "lk", "네팔": "np", "부탄": "bt", "방글라데시": "bd",
-    "파키스탄": "pk", "몽골": "mn", "카자흐스탄": "kz", "우즈베키스탄": "uz", "키르기스스탄": "kg", "타지키스탄": "tj",
+    "파키스탄": "pk", "몽골": "mn", "괌": "gu", "카자흐스탄": "kz", "우즈베키스탄": "uz", "키르기스스탄": "kg", "타지키스탄": "tj",
 }
 
 
@@ -83,7 +83,7 @@ EXTRA_COLUMNS = [
     "display_region", "name_en", "province", "address", "phone", "review_rating",
     "review_count", "brand_code", "source_date", "location_status", "tier_source", "opening_status",
 ]
-SUPPORTED_GROUPS = {"Marriott": 5, "Hilton": 7, "Accor": 4}
+SUPPORTED_GROUPS = {"Marriott": 5, "Hilton": 7, "Accor": 4, "Hyatt": 5}
 
 
 def display_hotel_name(hotel) -> str:
@@ -139,7 +139,7 @@ def load_hotel_data() -> pd.DataFrame:
     invalid_group = ~part["brand_group"].isin(SUPPORTED_GROUPS)
     if invalid_group.any():
         cases = part.index[invalid_group][:5].tolist()
-        issues.append(f"지원하지 않는 brand_group 행: {[i+2 for i in cases]} (Marriott/Hilton/Accor 사용)")
+        issues.append(f"지원하지 않는 brand_group 행: {[i+2 for i in cases]} (Marriott/Hilton/Accor/Hyatt 사용)")
 
     for group, code_length in SUPPORTED_GROUPS.items():
         mask = part["brand_group"].eq(group)
@@ -193,17 +193,18 @@ def load_hotel_data() -> pd.DataFrame:
 
 master = load_hotel_data()
 INTEGRATED_HOTELS = master.to_dict("records")
-GROUP_LABELS = {"Marriott": "메리어트", "Hilton": "힐튼", "Accor": "아코르"}
-GROUP_ICONS = {"Marriott": "Ⓜ️", "Hilton": "✨", "Accor": "🪶"}
-GROUPS = ["Marriott", "Hilton", "Accor"]
-BRAND_COLORS = {"Marriott": "#C73A4A", "Hilton": "#004B87", "Accor": "#9C7B2F"}
-BRAND_TEXT_COLORS = {"Marriott": "#FFFFFF", "Hilton": "#FFFFFF", "Accor": "#FFFFFF"}
+GROUP_LABELS = {"Marriott": "메리어트", "Hilton": "힐튼", "Accor": "아코르", "Hyatt": "하얏트"}
+GROUP_ICONS = {"Marriott": "Ⓜ️", "Hilton": "✨", "Accor": "🪶", "Hyatt": "🏨"}
+GROUPS = ["Marriott", "Hilton", "Accor", "Hyatt"]
+BRAND_COLORS = {"Marriott": "#C73A4A", "Hilton": "#004B87", "Accor": "#9C7B2F", "Hyatt": "#4E427B"}
+BRAND_TEXT_COLORS = {"Marriott": "#FFFFFF", "Hilton": "#FFFFFF", "Accor": "#FFFFFF", "Hyatt": "#FFFFFF"}
 
 # 브랜드 개수는 각 체인 고유색을 연한 배지로 표시합니다.
 BRAND_PILL_STYLES = {
     "Marriott": ("#B42335", "#FFF1F2"),
     "Hilton": ("#07569B", "#ECF4FF"),
     "Accor": ("#795D13", "#FFF7DB"),
+    "Hyatt": ("#59408D", "#F1EDFA"),
 }
 TIER_PILL_STYLES = {
     "Luxury": ("#805B17", "#FFF2CA", "◆"),
@@ -211,6 +212,7 @@ TIER_PILL_STYLES = {
     "Lifestyle": ("#9346AB", "#F8EAFE", "✦"),
     "Select": ("#18704D", "#E4F6ED", "●"),
     "Extended Stay": ("#6847A3", "#F1EBFF", "■"),
+    "Partner": ("#515C6F", "#E9EDF3", "◇"),
 }
 
 
@@ -239,6 +241,7 @@ LOGO_PATHS = {
     "Marriott": DATA_DIR / "assets" / "marriott.png",
     "Hilton": DATA_DIR / "assets" / "hilton.png",
     "Accor": DATA_DIR / "assets" / "accor.png",
+    "Hyatt": DATA_DIR / "assets" / "hyatt.png",
 }
 
 
@@ -454,6 +457,20 @@ def make_links(hotel, checkin, nights, rooms, adults, children, child_ages, use_
             build_accor_url("calendar", code, checkin, nights, rooms, adults, children),
             build_accor_url("exact", code, checkin, nights, rooms, adults, children),
         )
+    if group == "Hyatt":
+        # 호텔 정보/예약 페이지는 엑셀 원본 공식 URL을 신뢰합니다.
+        # 호텔 코드로 만드는 /shop/rooms/ 링크는 공식 사이트가 차후 변경할 수 있으므로 실시간 작동 미검증.
+        official = str(hotel.get("hotel_url", "") or "").strip()
+        if not official:
+            official = f"https://www.hyatt.com/shop/rooms/{code.upper()}"
+        is_partner = bool(re.search(r"Mr\s*&\s*Mrs\s*Smith|미스터\s*&\s*미세스", str(hotel.get("brand", "")), re.I))
+        if is_partner:
+            return official, official  # 제휴 브랜드는 하얏트 객실 검색 경로와 호환성을 가정하지 않음.
+        checkout = checkin + timedelta(days=nights)
+        params = {"checkinDate": checkin.strftime("%Y-%m-%d"),
+                  "checkoutDate": checkout.strftime("%Y-%m-%d"),
+                  "rooms": str(rooms), "adults": str(adults)}
+        return official, f"https://www.hyatt.com/shop/rooms/{code.upper()}?{urlencode(params)}"
     raise ValueError(f"지원하지 않는 체인: {group}")
 
 
@@ -466,7 +483,7 @@ def country_brand_summary(df, include_upcoming=False):
     """데이터에 등록된 국가별 체인 수. 미수집 국가를 0개로 오해하면 안 됩니다."""
     source = df.copy()
     if not include_upcoming:
-        source = source[~(source["brand_group"].isin(["Hilton", "Accor"]) & source["opening_status"].str.startswith("개관 예정"))]
+        source = source[~(source["brand_group"].isin(["Hilton", "Accor", "Hyatt"]) & source["opening_status"].str.contains("개관 예정|예약 불가", regex=True))]
     count = source.groupby(["country", "brand_group"]).size().unstack(fill_value=0)
     for group in GROUPS:
         if group not in count.columns:
@@ -488,7 +505,7 @@ def filter_hotels(df, selected_groups, countries, regions, tiers, popular_only, 
     if regions is not None:
         filtered = filtered[filtered["display_region"].isin(regions)]
     if not include_upcoming:
-        filtered = filtered[~(filtered["brand_group"].isin(["Hilton", "Accor"]) & filtered["opening_status"].str.startswith("개관 예정"))]
+        filtered = filtered[~(filtered["brand_group"].isin(["Hilton", "Accor", "Hyatt"]) & filtered["opening_status"].str.contains("개관 예정|예약 불가", regex=True))]
     if hilton_tiers is not None:
         filtered = filtered[(filtered["brand_group"] != "Hilton") | filtered["tier_source"].isin(hilton_tiers)]
     if accor_tiers is not None:
@@ -525,6 +542,8 @@ def current_filter_snapshot(groups, country, tiers, hilton_tiers, slh, upcoming,
 def reservation_button_labels(group: str, use_points: bool):
     if group == "Accor":
         return "📅 날짜별 요금보기", "🛏️ 선택일 객실 조회"
+    if group == "Hyatt":
+        return "🏨 호텔 예약", "🛏️ 선택일 객실 조회"
     return ("📅 포인트 달력" if use_points else "📅 유상요금 달력", "🛏️ 선택일 객실 조회")
 
 
@@ -545,9 +564,11 @@ def render_equal_height_hotel_card(hotel, use_points: bool) -> str:
     area = safe(hotel["area"])
     is_slh = group == "Hilton" and str(hotel.get("hilton_affiliation", "")) == "SLH 제휴"
     extra = []
+    if group == "Hyatt" and str(hotel.get("tier_source", "")) == "파트너":
+        extra.append('<span style="font-weight:650;color:#625775;white-space:nowrap;">제휴 호텔</span>')
     if is_slh:
         extra.append('<span style="font-weight:650;color:#76618b;white-space:nowrap;">SLH 제휴</span>')
-    if group == "Hilton" and str(hotel.get("opening_status", "")).startswith("개관 예정"):
+    if group in ("Hilton", "Accor", "Hyatt") and ("개관 예정" in str(hotel.get("opening_status", "")) or "예약 불가" in str(hotel.get("opening_status", ""))):
         extra.append('🏗️ 개관 예정')
     if group == "Marriott" and hotel.get("location_status") == "위치 미확인":
         extra.append('지역 정보 미확인')
@@ -656,7 +677,7 @@ with st.sidebar:
                     value=8, key=f"child_age_{i}"
                 )))
 
-    tiers = ["Luxury", "Premium", "Lifestyle", "Select", "Extended Stay"]
+    tiers = ["Luxury", "Premium", "Lifestyle", "Select", "Extended Stay", "Partner"]
     selected_tiers = st.multiselect(
         "호텔 유형 (체인 공통)", options=tiers, default=tiers,
         help="호텔 공식 성급이 아닌 검색용 공통 분류입니다.",
@@ -674,7 +695,7 @@ with st.sidebar:
     popular_only = False
     keyword = ""
     with st.expander("⚙️ 추가 검색 조건", expanded=False):
-        st.caption("힐튼/아코르 세부 분류 · SLH · 개관 예정 · 검색어")
+        st.caption("하얏트/힐튼/아코르 세부 분류 · SLH · 개관 예정 · 검색어")
         # 체인 선택은 메인 화면의 가로 체크박스로 이동했습니다.
         # 위젯 렌더 순서상 메인 체크박스 값은 session_state에서 읽습니다.
         enabled_groups = [g for g in GROUPS if st.session_state.get(f"main_show_{g}", True)]
@@ -684,6 +705,8 @@ with st.sidebar:
                 "아코르 세부 분류", options=accor_options, default=accor_options,
                 help="아코르 원본 등급입니다. 공통 호텔 유형에서 Select로 묶이는 미드스케일·이코노미·버짓을 별도로 골라볼 수 있습니다.",
             )
+        if "Hyatt" in enabled_groups:
+            st.caption("하얏트 포트폴리오: 럭셔리·클래식·에센셜·라이프스타일·파트너. 파트너는 별도 유형으로 구분됩니다.")
         if "Hilton" in enabled_groups:
             hilton_options = ["럭셔리", "프리미엄·풀서비스", "라이프스타일", "셀렉트"]
             hilton_source_tiers = st.multiselect(
@@ -695,7 +718,7 @@ with st.sidebar:
                 help="힐튼 원본의 SLH 제휴 표기를 기준으로 구분합니다.",
             )
         include_upcoming = st.checkbox(
-            "🏗️ 힐튼·아코르 개관 예정 호텔도 보기", value=False,
+            "🏗️ 개관 예정·예약 불가 호텔도 보기", value=False,
             help="기본값은 운영 중인 호텔만 표시합니다.",
         )
         popular_only = st.checkbox(
@@ -723,9 +746,9 @@ with st.sidebar:
     with st.expander("🛠️ 직접 호텔 코드로 조회", expanded=False):
         custom_group = st.selectbox("체인", GROUPS, format_func=lambda g: GROUP_LABELS[g])
         custom_code = st.text_input(
-            "호텔 코드", placeholder="메리어트 5자리 / 힐튼 7자리 / 아코르 4자리"
+            "호텔 코드", placeholder="메리어트·하얏트 5자리 / 힐튼 7자리 / 아코르 4자리"
         ).strip().upper()
-        lengths = {"Marriott": 5, "Hilton": 7, "Accor": 4}
+        lengths = {"Marriott": 5, "Hilton": 7, "Accor": 4, "Hyatt": 5}
         if custom_code:
             if len(custom_code) != lengths[custom_group] or not custom_code.isalnum():
                 st.warning(f"{custom_group} 호텔 코드는 영숫자 {lengths[custom_group]}자리입니다.")
@@ -752,11 +775,11 @@ st.markdown(
     f"**객실:** {rooms}개 (객실당 성인 {adults}명, 어린이 {children}명)  |  "
     f"**메리어트/힐튼:** {'💎 포인트 검색' if use_points else '💳 일반 요금 검색'}"
 )
-st.caption("호텔 목록은 hotels.csv에서 통합 관리합니다. 메리어트 데이터는 2026-11-16 제공 수집본 기준이며, 힐튼 데이터는 제공된 2026-11-16 아시아 25개국 엑셀 기준(개관 예정 포함), 아코르 데이터는 2026-11-17 제공된 아시아 26개국 엑셀에서 조지아·아르메니아·아제르바이잔을 제외한 자료입니다. 평점·리뷰·미확인 성급은 표시하지 않습니다. 예약 링크 작동은 전수 검증되지 않았습니다.")
+st.caption("호텔 목록은 hotels.csv에서 통합 관리합니다. 하얏트는 2026-11-17 제공된 아시아 수집본에서 아제르바이잔을 제외하고 괌을 포함했습니다. 파트너 호텔은 별도 유형이며 하얏트 예약 링크·포인트 적용은 전체 검증되지 않았습니다. 평점·리뷰·미확인 성급은 표시하지 않습니다.")
 
 # 호텔 체인 필터는 메인 화면에서 즉시 반영합니다 (호텔 검색 버튼 불필요).
 st.markdown("**호텔 체인 선택**")
-chain_cols = st.columns(3, gap="small")
+chain_cols = st.columns(len(GROUPS), gap="small")
 main_selected_groups = []
 for group, col in zip(GROUPS, chain_cols):
     with col:
@@ -788,7 +811,7 @@ if not filtered_df.empty:
 summary = " / ".join(f"{GROUP_LABELS[g]} {len(master[master['brand_group'] == g])}개" for g in GROUPS)
 st.caption(f"등록 호텔: **{len(master)}개** ({summary}) | 현재 검색 결과: **{len(filtered_df)}개**")
 
-if any(g in applied_filters["groups"] for g in ["Hilton", "Accor"]):
+if any(g in applied_filters["groups"] for g in ["Hilton", "Accor", "Hyatt"]):
     with st.expander("ℹ️ 체인별 예약 링크 주의사항", expanded=False):
         st.markdown(
             "- **메리어트:** 원래 사용하던 월간 가용성 달력과 특정일 요금 링크를 유지했습니다.\n"
@@ -840,7 +863,7 @@ with tab_cards:
                     st.session_state[state_key] = False
                 st.rerun()
 
-        tier_order = {"Luxury": 0, "Premium": 1, "Lifestyle": 2, "Select": 3, "Extended Stay": 4}
+        tier_order = {"Luxury": 0, "Premium": 1, "Lifestyle": 2, "Select": 3, "Extended Stay": 4, "Partner": 5}
         for region in regions_in_order:
             state_key = region_keys[region]
             is_open = st.session_state[state_key]
@@ -914,22 +937,24 @@ with tab_table:
 
 
 with tab_summary:
-    st.subheader("🌏 국가별 메리어트·힐튼·아코르 등록 호텔 수")
+    st.subheader("🌏 국가별 메리어트·힐튼·아코르·하얏트 등록 호텔 수")
     st.caption("통합 hotels.csv에 등록된 호텔 수입니다. 국가별 수집 범위가 다르므로 시장 전체의 호텔 수나 시장 점유율을 의미하지 않습니다. 메리어트는 일부 국가만 수집되어 있습니다.")
-    show_future_summary = st.checkbox("개관 예정 힐튼 호텔도 집계", value=False, key="summary_future")
+    show_future_summary = st.checkbox("개관 예정·예약 불가 호텔도 집계", value=False, key="summary_future")
     counts = country_brand_summary(master, include_upcoming=show_future_summary)
-    total_m, total_h, total_a = st.columns(3)
+    total_m, total_h, total_a, total_y = st.columns(4)
     with total_m:
         st.metric("메리어트 등록", f"{int(counts['Marriott'].sum()):,}개")
     with total_h:
         st.metric("힐튼 등록", f"{int(counts['Hilton'].sum()):,}개")
     with total_a:
         st.metric("아코르 등록", f"{int(counts['Accor'].sum()):,}개")
+    with total_y:
+        st.metric("하얏트 등록", f"{int(counts['Hyatt'].sum()):,}개")
     st.dataframe(
-        counts.rename(columns={"country":"국가·지역", "Marriott":"메리어트", "Hilton":"힐튼", "Accor":"아코르"}),
+        counts.rename(columns={"country":"국가·지역", "Marriott":"메리어트", "Hilton":"힐튼", "Accor":"아코르", "Hyatt":"하얏트"}),
         hide_index=True, use_container_width=True,
     )
-    st.bar_chart(counts.set_index("country")[["Marriott", "Hilton", "Accor"]], stack=False)
+    st.bar_chart(counts.set_index("country")[["Marriott", "Hilton", "Accor", "Hyatt"]], stack=False)
     st.download_button(
         "📥 국가별 체인 수 CSV 다운로드",
         data=counts.to_csv(index=False).encode("utf-8-sig"),
