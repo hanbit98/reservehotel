@@ -276,7 +276,14 @@ def star_rating_label(value) -> str:
 
 
 def render_anchor_button(label: str, url: str, bg_color: str, text_color: str = "#FFFFFF") -> str:
-    """Use exactly the same dimensions for both external booking links."""
+    """Equal-size buttons. No href or click action for a deliberately disabled link."""
+    if not str(url).strip():
+        return (f'<span aria-disabled="true" title="하얏트 유상요금 달력은 제공하지 않습니다" '
+                f'style="display:flex;width:100%;height:44px;min-height:44px;min-width:0;'
+                f'align-items:center;justify-content:center;text-align:center;padding:4px 6px;'
+                f'box-sizing:border-box;line-height:1.2;font-size:.76rem;font-weight:650;'
+                f'border-radius:9px;background:#ECEDEF;color:#858991;border:1px solid #DDDFE2;'
+                f'cursor:not-allowed;">{html_escape(str(label))}</span>')
     return f"""<a href="{html_escape(str(url), quote=True)}" target="_blank" rel="noopener noreferrer"
         style="display:flex;width:100%;height:44px;min-height:44px;min-width:0;
         align-items:center;justify-content:center;text-align:center;padding:4px 6px;
@@ -439,6 +446,45 @@ def build_accor_url(kind, code, checkin, nights, rooms, adults, children):
     return f"https://all.accor.com/ssr/app/accor/rates/{code.upper()}/index.ko.shtml?{urlencode(params)}"
 
 
+def build_hyatt_url(kind, code, checkin, nights, rooms, adults, children, use_points):
+    """Generate Hyatt links following the requested World of Hyatt URL scheme.
+
+    Hyatt code is normalized to lowercase for spiritCode and the rooms path.
+    Empty string for cash calendar deliberately means there is NO navigation.
+    The external booking page may still enforce property-specific rules.
+    """
+    if not re.fullmatch(r"[A-Za-z0-9]{5}", str(code)):
+        raise ValueError("하얏트 호텔 코드는 영숫자 5자리여야 합니다.")
+    code = str(code).lower()
+    checkout = checkin + timedelta(days=int(nights))
+    if kind == "calendar":
+        if not use_points:
+            return ""
+        params = {
+            "spiritCode": code,
+            "startDate": checkin.strftime("%Y-%m-%d"),
+            "endDate": checkout.strftime("%Y-%m-%d"),
+            "rooms": str(rooms),
+            "adults": str(adults),
+            "kids": str(children),
+            "rate": "Standard",
+        }
+        return "https://www.hyatt.com/ko-KR/explore-hotels/rate-calendar?" + urlencode(params)
+    if kind == "exact":
+        params = {
+            "checkinDate": checkin.strftime("%Y-%m-%d"),
+            "checkoutDate": checkout.strftime("%Y-%m-%d"),
+            "rooms": str(rooms),
+            "adults": str(adults),
+            "kids": str(children),
+            "rate": "Standard",
+            "rateFilter": "woh" if use_points else "standard",
+            "accessibilityCheck": "false",
+        }
+        return f"https://www.hyatt.com/ko-KR/shop/rooms/{code}?{urlencode(params)}"
+    raise ValueError(f"지원하지 않는 하얏트 링크 종류: {kind}")
+
+
 def make_links(hotel, checkin, nights, rooms, adults, children, child_ages, use_points):
     group = hotel["brand_group"]
     code = str(hotel["code"])
@@ -458,19 +504,10 @@ def make_links(hotel, checkin, nights, rooms, adults, children, child_ages, use_
             build_accor_url("exact", code, checkin, nights, rooms, adults, children),
         )
     if group == "Hyatt":
-        # 호텔 정보/예약 페이지는 엑셀 원본 공식 URL을 신뢰합니다.
-        # 호텔 코드로 만드는 /shop/rooms/ 링크는 공식 사이트가 차후 변경할 수 있으므로 실시간 작동 미검증.
-        official = str(hotel.get("hotel_url", "") or "").strip()
-        if not official:
-            official = f"https://www.hyatt.com/shop/rooms/{code.upper()}"
-        is_partner = bool(re.search(r"Mr\s*&\s*Mrs\s*Smith|미스터\s*&\s*미세스", str(hotel.get("brand", "")), re.I))
-        if is_partner:
-            return official, official  # 제휴 브랜드는 하얏트 객실 검색 경로와 호환성을 가정하지 않음.
-        checkout = checkin + timedelta(days=nights)
-        params = {"checkinDate": checkin.strftime("%Y-%m-%d"),
-                  "checkoutDate": checkout.strftime("%Y-%m-%d"),
-                  "rooms": str(rooms), "adults": str(adults)}
-        return official, f"https://www.hyatt.com/shop/rooms/{code.upper()}?{urlencode(params)}"
+        return (
+            build_hyatt_url("calendar", code, checkin, nights, rooms, adults, children, use_points),
+            build_hyatt_url("exact", code, checkin, nights, rooms, adults, children, use_points),
+        )
     raise ValueError(f"지원하지 않는 체인: {group}")
 
 
@@ -543,7 +580,7 @@ def reservation_button_labels(group: str, use_points: bool):
     if group == "Accor":
         return "📅 날짜별 요금보기", "🛏️ 선택일 객실 조회"
     if group == "Hyatt":
-        return "🏨 호텔 예약", "🛏️ 선택일 객실 조회"
+        return ("📅 포인트 달력" if use_points else "유상요금달력 없음"), "🛏️ 선택일 객실 조회"
     return ("📅 포인트 달력" if use_points else "📅 유상요금 달력", "🛏️ 선택일 객실 조회")
 
 
@@ -650,7 +687,7 @@ with st.sidebar:
         format_func=lambda c: f"{COUNTRY_FLAGS.get(c, '')} {c}",
     )
     use_points = st.toggle(
-        "💎 메리어트/힐튼 포인트 숙박", value=True,
+        "💎 메리어트/힐튼/하얏트 포숙", value=True,
         help="끄면 유상 숙박으로 조회합니다.",
     )
     date_col, nights_col = st.columns([1.65, 1], gap="small")
@@ -773,16 +810,17 @@ checkout = checkin_date + timedelta(days=nights)
 st.markdown(
     f"**숙박:** {checkin_date:%Y-%m-%d} ~ {checkout:%Y-%m-%d} ({nights}박)  |  "
     f"**객실:** {rooms}개 (객실당 성인 {adults}명, 어린이 {children}명)  |  "
-    f"**메리어트/힐튼:** {'💎 포인트 검색' if use_points else '💳 일반 요금 검색'}"
+    f"**메리어트/힐튼/하얏트:** {'💎 포인트 검색' if use_points else '💳 일반 요금 검색'}"
 )
 st.caption("호텔 목록은 hotels.csv에서 통합 관리합니다. 하얏트는 2026-11-17 제공된 아시아 수집본에서 아제르바이잔을 제외하고 괌을 포함했습니다. 파트너 호텔은 별도 유형이며 하얏트 예약 링크·포인트 적용은 전체 검증되지 않았습니다. 평점·리뷰·미확인 성급은 표시하지 않습니다.")
 
 # 호텔 체인 필터는 메인 화면에서 즉시 반영합니다 (호텔 검색 버튼 불필요).
 st.markdown("**호텔 체인 선택**")
-chain_cols = st.columns(len(GROUPS), gap="small")
+# st.columns는 각 체인에 화면 폭을 균등 배분해 간격이 넓어집니다.
+# horizontal container는 각 체크박스가 필요한 너비만 사용합니다 (Streamlit >=1.50).
 main_selected_groups = []
-for group, col in zip(GROUPS, chain_cols):
-    with col:
+with st.container(horizontal=True, horizontal_alignment="left", gap="small", key="compact_chain_filters"):
+    for group in GROUPS:
         if st.checkbox(GROUP_LABELS[group], value=True, key=f"main_show_{group}"):
             main_selected_groups.append(group)
 
@@ -817,6 +855,7 @@ if any(g in applied_filters["groups"] for g in ["Hilton", "Accor", "Hyatt"]):
             "- **메리어트:** 원래 사용하던 월간 가용성 달력과 특정일 요금 링크를 유지했습니다.\n"
             "- **힐튼:** 유연한 날짜 검색 및 객실 검색 링크입니다. 힐튼 공식 안내에서는 포인트 사용을 별도로 선택하도록 안내하므로 결과 화면에서 반드시 확인하세요.\n"
             "- **아코르:** 첫 번째 버튼은 선택한 체크인 날짜와 숙박 일수를 전달하는 날짜별 요금 조회입니다. 월간 포인트 달력은 아닙니다.\n"
+            "- **하얏트:** 포인트 ON은 월별 포인트 달력 및 World of Hyatt 객실 필터(woh), OFF는 객실 일반 요금 필터(standard)입니다. OFF에는 달력 링크가 없습니다. Mr & Mrs Smith 등 제휴 호텔은 일반 하얏트 예약 링크와 호환되지 않을 수 있으므로 호텔 공홈에서 확인하세요.\n"
             "- **어린이·다객실 예약:** 힐튼 아동 나이는 전달하지만, 브랜드별 예약 화면에서 인원과 연령을 재확인해야 합니다. 아코르는 객실 인원을 다시 지정할 수 있습니다."
         )
 
