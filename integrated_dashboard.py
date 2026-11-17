@@ -408,16 +408,21 @@ def build_hilton_url(kind, code, checkin, nights, rooms, adults, children, child
 
 
 def build_accor_url(kind, code, checkin, nights, rooms, adults, children):
-    """Accor: 공식 호텔 페이지 + 날짜가 입력된 요금 검색 링크.
+    """아코르 호텔 코드와 예약일을 전달하는 공식 요금 조회 링크.
 
-    Accor에는 Marriott와 같은 월간 포인트 달력을 가정하지 않음.
-    comps는 사이트의 객실 인원 설정에 쓰이는 파라미터. 여러 객실/아동이
-    포함된 예약은 링크 이동 후 공식 화면에서 객실/나이를 반드시 확인해야 함.
+    첫 버튼: 사용자가 지정한 all.accor.com/booking/ko/accor/hotels 형식.
+    둘째 버튼: 기존의 특정 호텔 객실 요금 조회 경로를 유지.
+    사이트의 응답·객실/인원 선택은 공식 예약 화면에서 재확인해야 함.
     """
     if not re.fullmatch(r"[A-Za-z0-9]{4}", str(code)):
         raise ValueError("아코르 호텔 코드는 영숫자 4자리여야 합니다.")
     if kind == "calendar":
-        return f"https://all.accor.com/hotel/{code.upper()}/index.ko.shtml"
+        params = {
+            "hotelCodes": code.upper(),
+            "dateIn": checkin.strftime("%Y-%m-%d"),
+            "nights": str(nights),
+        }
+        return f"https://all.accor.com/booking/ko/accor/hotels?{urlencode(params)}"
     params = {
         "dateIn": checkin.strftime("%Y-%m-%d"),
         "nights": str(nights),
@@ -519,7 +524,7 @@ def current_filter_snapshot(groups, country, tiers, hilton_tiers, slh, upcoming,
 
 def reservation_button_labels(group: str, use_points: bool):
     if group == "Accor":
-        return "🏨 호텔 소개", "🛏️ 선택일 객실 조회"
+        return "📅 날짜별 요금보기", "🛏️ 선택일 객실 조회"
     return ("📅 포인트 달력" if use_points else "📅 유상요금 달력", "🛏️ 선택일 객실 조회")
 
 
@@ -669,10 +674,10 @@ with st.sidebar:
     popular_only = False
     keyword = ""
     with st.expander("⚙️ 추가 검색 조건", expanded=False):
-        st.caption("호텔 체인 · 힐튼/아코르 세부 분류 · SLH · 개관 예정 · 검색어")
-        for group in GROUPS:
-            if st.checkbox(GROUP_LABELS[group], value=True, key=f"show_{group}"):
-                enabled_groups.append(group)
+        st.caption("힐튼/아코르 세부 분류 · SLH · 개관 예정 · 검색어")
+        # 체인 선택은 메인 화면의 가로 체크박스로 이동했습니다.
+        # 위젯 렌더 순서상 메인 체크박스 값은 session_state에서 읽습니다.
+        enabled_groups = [g for g in GROUPS if st.session_state.get(f"main_show_{g}", True)]
         if "Accor" in enabled_groups:
             accor_options = ["럭셔리", "프리미엄", "미드스케일", "이코노미", "버짓"]
             accor_source_tiers = st.multiselect(
@@ -709,7 +714,10 @@ with st.sidebar:
         st.session_state["applied_hotel_filters"] = draft_filters.copy()
     if search_clicked:
         st.session_state["applied_hotel_filters"] = draft_filters.copy()
-    if draft_filters != st.session_state["applied_hotel_filters"]:
+    # 메인 화면 체인 체크박스는 즉시 적용되므로 '미적용 검색 조건'으로 간주하지 않습니다.
+    pending_search = {k: v for k, v in draft_filters.items() if k != "groups"}
+    active_search = {k: v for k, v in st.session_state["applied_hotel_filters"].items() if k != "groups"}
+    if pending_search != active_search:
         st.caption("검색 조건 변경됨 · **호텔 검색**을 눌러 적용")
 
     with st.expander("🛠️ 직접 호텔 코드로 조회", expanded=False):
@@ -746,7 +754,18 @@ st.markdown(
 )
 st.caption("호텔 목록은 hotels.csv에서 통합 관리합니다. 메리어트 데이터는 2026-11-16 제공 수집본 기준이며, 힐튼 데이터는 제공된 2026-11-16 아시아 25개국 엑셀 기준(개관 예정 포함), 아코르 데이터는 2026-11-17 제공된 아시아 26개국 엑셀에서 조지아·아르메니아·아제르바이잔을 제외한 자료입니다. 평점·리뷰·미확인 성급은 표시하지 않습니다. 예약 링크 작동은 전수 검증되지 않았습니다.")
 
-applied_filters = st.session_state["applied_hotel_filters"]
+# 호텔 체인 필터는 메인 화면에서 즉시 반영합니다 (호텔 검색 버튼 불필요).
+st.markdown("**호텔 체인 선택**")
+chain_cols = st.columns(3, gap="small")
+main_selected_groups = []
+for group, col in zip(GROUPS, chain_cols):
+    with col:
+        if st.checkbox(GROUP_LABELS[group], value=True, key=f"main_show_{group}"):
+            main_selected_groups.append(group)
+
+# 적용된 국가·유형 검색 조건은 유지하되 체인만 즉시 변경합니다.
+applied_filters = st.session_state["applied_hotel_filters"].copy()
+applied_filters["groups"] = main_selected_groups
 applied_country = applied_filters["country"]
 filtered_df = filter_hotels(
     master, applied_filters["groups"], [applied_country], None,
@@ -774,7 +793,7 @@ if any(g in applied_filters["groups"] for g in ["Hilton", "Accor"]):
         st.markdown(
             "- **메리어트:** 원래 사용하던 월간 가용성 달력과 특정일 요금 링크를 유지했습니다.\n"
             "- **힐튼:** 유연한 날짜 검색 및 객실 검색 링크입니다. 힐튼 공식 안내에서는 포인트 사용을 별도로 선택하도록 안내하므로 결과 화면에서 반드시 확인하세요.\n"
-            "- **아코르:** 메리어트식 포인트 달력이 없어 첫 번째 링크는 호텔 소개입니다. 날짜별 요금 검색만 연결합니다.\n"
+            "- **아코르:** 첫 번째 버튼은 선택한 체크인 날짜와 숙박 일수를 전달하는 날짜별 요금 조회입니다. 월간 포인트 달력은 아닙니다.\n"
             "- **어린이·다객실 예약:** 힐튼 아동 나이는 전달하지만, 브랜드별 예약 화면에서 인원과 연령을 재확인해야 합니다. 아코르는 객실 인원을 다시 지정할 수 있습니다."
         )
 
@@ -787,21 +806,11 @@ with tab_cards:
         # Streamlit의 st.expander는 닫힌 상태에서도 내부 위젯을 모두 생성합니다.
         # 따라서 지역별 버튼+session_state로 구현하여 열린 권역만 카드를 렌더링합니다.
         # 한 국가의 모든 권역은 이 화면에 표시되며, 별도의 페이지 분할은 없습니다.
-        # 실제 필터된 호텔 수로 정렬하며, 동률에서는 전체 호텔 수와 권역명을 사용합니다.
-        region_sort_choice = st.radio(
-            "권역 정렬 기준", ["전체 호텔 수", "메리어트 호텔 수", "힐튼 호텔 수"],
-            horizontal=True, key="region_sort_choice",
-            help="선택한 체인의 호텔 수를 우선하고 동률이면 전체 호텔 수순으로 표시합니다.",
-        )
+        # 권역 정렬 옵션은 제거하고, 현재 표시되는 전체 호텔 수 내림차순으로 고정합니다.
         region_counts = filtered_df.groupby("display_region").size()
-        region_chain_counts = filtered_df.groupby(["display_region", "brand_group"]).size().unstack(fill_value=0)
-        selected_chain = {"전체 호텔 수": None, "메리어트 호텔 수": "Marriott", "힐튼 호텔 수": "Hilton"}[region_sort_choice]
         regions_in_order = sorted(
             region_counts.index.tolist(),
-            key=lambda region: (
-                -int(region_counts[region]) if selected_chain is None else -int(region_chain_counts[selected_chain].get(region, 0)) if selected_chain in region_chain_counts.columns else 0,
-                -int(region_counts[region]), region,
-            ),
+            key=lambda region: (-int(region_counts[region]), region),
         )
         region_keys = {
             region: f"region_open_{applied_country}_{region}" for region in regions_in_order
@@ -888,7 +897,7 @@ with tab_table:
                 "display_name": st.column_config.TextColumn("호텔명", width="large"),
                 "code": st.column_config.TextColumn("호텔 코드", width="small"),
                 "hotel_url": st.column_config.LinkColumn("공식 호텔 페이지", display_text="🔗 열기", width="small"),
-                "calendar_url": st.column_config.LinkColumn("포인트/유상 달력 · 호텔 소개", display_text="📅 열기", width="small"),
+                "calendar_url": st.column_config.LinkColumn("포인트/유상 달력 · 아코르 날짜별 요금", display_text="📅 열기", width="small"),
                 "exact_url": st.column_config.LinkColumn("선택일 객실 조회", display_text="🛏️ 열기", width="small"),
             },
             hide_index=True,
