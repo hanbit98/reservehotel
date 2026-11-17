@@ -521,7 +521,7 @@ def reservation_button_labels(group: str, use_points: bool):
 
 
 def render_equal_height_hotel_card(hotel, use_points: bool) -> str:
-    """Compact, equal-height card. Tier appears inline directly after the hotel name."""
+    """내용에 맞춰 높이를 결정하는 카드. 같은 CSS Grid 행에서는 자동으로 높이가 맞습니다."""
     group = str(hotel["brand_group"])
     safe = lambda value: html_escape(str(value if value is not None else ""), quote=True)
     logo_b64 = LOGO_BASE64.get(group, "")
@@ -551,26 +551,25 @@ def render_equal_height_hotel_card(hotel, use_points: bool) -> str:
     hotel_url = str(hotel.get("hotel_url", "") or "").strip()
     official = (
         f'<a href="{safe(hotel_url)}" target="_blank" rel="noopener noreferrer" '
-        f'style="font-size:.70rem;text-decoration:none;color:#777;white-space:nowrap;">🔗 호텔 공홈</a>'
+        f'style="font-size:.69rem;text-decoration:none;color:#777;white-space:nowrap;">🔗 호텔 공홈</a>'
         if hotel_url else ""
     )
     return f"""
 <div class="hotel-equal-card" style="box-sizing:border-box;border:1px solid rgba(120,120,120,.23);
-    border-radius:12px;padding:12px;height:228px;display:flex;flex-direction:column;
-    margin-bottom:12px;overflow:hidden;background:transparent;">
-    <div style="font-size:1rem;font-weight:750;line-height:1.35;max-height:76px;
-        overflow:hidden;overflow-wrap:anywhere;">
+    border-radius:12px;padding:10px 12px;min-width:0;display:flex;flex-direction:column;
+    background:transparent;">
+    <div style="font-size:.96rem;font-weight:750;line-height:1.3;overflow-wrap:anywhere;">
         {logo}<span>{safe(hotel["display_name"])}</span> <span style="display:inline-block;vertical-align:baseline;white-space:nowrap;">{badge}</span>
         <span title="호텔 코드: {code}" style="font-size:8px;color:#fff;">{code}</span>
     </div>
-    <div style="font-size:.76rem;color:#70747a;line-height:1.35;max-height:43px;
-        margin-top:4px;overflow:hidden;overflow-wrap:anywhere;">
+    <div style="font-size:.73rem;color:#70747a;line-height:1.3;margin-top:4px;overflow-wrap:anywhere;">
         <b>브랜드</b> : {brand} &nbsp;/&nbsp; <b>위치</b> : {area}{extra_html}
     </div>
-    <div style="flex:1;min-height:2px;"></div>
-    <div style="min-height:18px;display:flex;align-items:center;justify-content:flex-end;margin-bottom:3px;">{official}</div>
-    <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:7px;
-       width:100%;height:44px;min-height:44px;align-items:stretch;">{calendar}{rooms}</div>
+    <div style="margin-top:auto;padding-top:9px;">
+        <div style="min-height:15px;display:flex;align-items:center;justify-content:flex-end;margin-bottom:5px;">{official}</div>
+        <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:7px;
+            width:100%;align-items:stretch;">{calendar}{rooms}</div>
+    </div>
 </div>"""
 
 
@@ -579,6 +578,11 @@ def render_equal_height_hotel_card(hotel, use_points: bool) -> str:
 with st.sidebar:
     st.markdown("""
     <style>
+    /* CSS Grid는 같은 행에서 카드의 높이를 자동으로 맞춥니다. 카드 자체에 height를 강제하지 않습니다. */
+    .hotel-card-row {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch;margin-bottom:12px;}
+    .hotel-card-row .hotel-equal-card {height:100%;}
+    @media (max-width:1000px) {.hotel-card-row {grid-template-columns:repeat(2,minmax(0,1fr));}}
+    @media (max-width:650px) {.hotel-card-row {grid-template-columns:minmax(0,1fr);}}
     /* Only booking buttons get button dimensions; never override the official-site link. */
     .hotel-equal-card > div:last-child > a {height:44px !important;min-height:44px !important;padding:4px 6px !important;}
     div[class*="st-key-toggle_"] button,
@@ -842,14 +846,15 @@ with tab_cards:
                 .sort_values(["_tier_order", "display_name", "code"], kind="stable")
                 .drop(columns="_tier_order")
             )
-            # 세 장을 한 행으로 묶어 동일한 높이의 카드로 표시합니다.
-            # 사진은 추후 검증된 이미지 URL을 확보한 뒤 선택적으로 추가합니다.
+            # st.columns 내부에 228px 고정 카드를 넣는 대신 CSS Grid에 세 장을 같이 렌더링합니다.
+            # 같은 행끼리만 높이가 자동으로 맞춰지고, 내용이 적으면 카드가 짧아집니다.
             rows = [hotel for _, hotel in region_df.iterrows()]
             for row_start in range(0, len(rows), 3):
-                cols = st.columns(3, gap="medium")
-                for col_idx, hotel in enumerate(rows[row_start:row_start + 3]):
-                    with cols[col_idx]:
-                        st.markdown(render_equal_height_hotel_card(hotel, use_points), unsafe_allow_html=True)
+                row_html = '<div class="hotel-card-row">' + ''.join(
+                    render_equal_height_hotel_card(hotel, use_points)
+                    for hotel in rows[row_start:row_start + 3]
+                ) + '</div>'
+                st.markdown(row_html, unsafe_allow_html=True)
 
 with tab_table:
     if filtered_df.empty:
