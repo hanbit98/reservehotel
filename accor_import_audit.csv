@@ -1,0 +1,1368 @@
+﻿action,country,code,name,source_city,display_region,mapping_method,tier_source,tier,opening_status
+added,대한민국,B8C1,머큐어 앰배서더 제주,서귀포,제주,manual-city-or-address,미드스케일,Select,운영중
+updated,대한민국,B200,페어몬트 앰배서더 서울,서울,서울,existing-country-city,럭셔리,Luxury,운영중
+added,대한민국,B5E0,호텔 나루 서울 - 엠갤러리,서울,서울,existing-country-city,럭셔리,Luxury,운영중
+updated,대한민국,B220,소피텔 앰배서더 서울,서울,서울,existing-country-city,럭셔리,Luxury,운영중
+added,대한민국,9470,그랜드 머큐어 앰배서더 호텔 앤 레지던스 서울 용산,서울,서울,existing-country-city,프리미엄,Premium,운영중
+added,대한민국,C3E4,그랜드 머큐어 임페리얼 팰리스 서울,서울,서울,existing-country-city,프리미엄,Premium,운영중
+added,대한민국,9473,노보텔 스위트 앰배서더 서울 용산,서울,서울,existing-country-city,미드스케일,Select,운영중
+added,대한민국,1633,노보텔 앰배서더 서울 강남,서울,서울,existing-country-city,미드스케일,Select,운영중
+added,대한민국,A5U6,노보텔 앰배서더 서울 동대문 호텔 & 레지던스,서울,서울,existing-country-city,미드스케일,Select,운영중
+added,대한민국,9472,노보텔 앰배서더 서울 용산 - 서울 드래곤 시티,서울,서울,existing-country-city,미드스케일,Select,운영중
+added,대한민국,C6M1,머큐어 앰배서더 서울 동대문,서울,서울,existing-country-city,미드스케일,Select,운영중
+added,대한민국,C0G5,머큐어 앰배서더 서울 마곡,서울,서울,existing-country-city,미드스케일,Select,운영중
+added,대한민국,B696,머큐어 앰배서더 서울 홍대,서울,서울,existing-country-city,미드스케일,Select,운영중
+added,대한민국,B771,몬드리안 서울 이태원,서울,서울,existing-country-city,럭셔리,Luxury,운영중
+added,대한민국,B1V3,반얀 트리 클럽 앤 스파 서울,서울,서울,existing-country-city,럭셔리,Luxury,운영중
+added,대한민국,0966,앰배서더 서울 - 풀만 호텔,서울,서울,existing-country-city,프리미엄,Premium,운영중
+added,대한민국,3730,이비스 스타일 앰배서더 서울 강남,서울,서울,existing-country-city,이코노미,Select,운영중
+added,대한민국,9771,이비스 스타일 앰배서더 서울 명동,서울,서울,existing-country-city,이코노미,Select,운영중
+added,대한민국,9469,이비스 스타일 앰배서더 서울 용산 - 서울 드래곤 시티,서울,서울,existing-country-city,이코노미,Select,운영중
+added,대한민국,6317,이비스 앰배서더 서울 명동,서울,서울,existing-country-city,이코노미,Select,운영중
+added,대한민국,8002,이비스 앰배서더 서울 인사동,서울,서울,existing-country-city,이코노미,Select,운영중
+added,대한민국,C173,풀만 앰배서더 서울 이스트폴,서울,서울,existing-country-city,프리미엄,Premium,운영중
+added,대한민국,C3E6,홈 마리나 속초,속초,강원,manual-city-or-address,미드스케일,Select,운영중
+added,대한민국,C318,카시아 속초,속초,강원,manual-city-or-address,미드스케일,Select,운영중
+added,대한민국,8748,노보텔 앰배서더 수원,수원,경기,manual-city-or-address,미드스케일,Select,운영중
+added,대한민국,6528,이비스 앰배서더 수원,수원,경기,manual-city-or-address,이코노미,Select,운영중
+added,대한민국,A3N6,머큐어 앰배서더 울산,울산,울산,manual-city-or-address,미드스케일,Select,운영중
+added,대한민국,B7P1,이비스 스타일 앰배서더 인천 에어포트,인천,인천,existing-country-city,이코노미,Select,운영중
+added,대한민국,C2G2,이비스 스타일 앰배서더 전주 시티 센터,전주,전북,manual-city-or-address,이코노미,Select,운영중
+added,대한민국,7163,그랜드 머큐어 앰배서더 창원,창원,경남,manual-city-or-address,프리미엄,Premium,운영중
+added,일본,C381,Banyan Tree Higashiyama Kyoto,교토,교토·오사카·간사이,existing-country-city,럭셔리,Luxury,운영중
+added,일본,C016,Garrya Nijo Castle Kyoto,교토,교토·오사카·간사이,existing-country-city,프리미엄,Premium,운영중
+added,일본,C015,다와 유라 교토,교토,교토·오사카·간사이,existing-country-city,미드스케일,Select,운영중
+added,일본,C1P6,머큐어 교토 미야즈 리조트 & 스파,교토,교토·오사카·간사이,existing-country-city,미드스케일,Select,운영중
+added,일본,B4F4,머큐어 교토 스테이션,교토,교토·오사카·간사이,existing-country-city,미드스케일,Select,운영중
+added,일본,9418,이비스 스타일 교토역,교토,교토·오사카·간사이,existing-country-city,이코노미,Select,운영중
+added,일본,C1Q8,머큐어 나가노 마쓰시로 리조트 & 스파,나가노,나고야·중부,manual-city-or-address,미드스케일,Select,운영중
+added,일본,C1Q7,그랜드 머큐어 비와코 리조트 & 스파,나가하마,교토·오사카·간사이,manual-city-or-address,프리미엄,Premium,운영중
+added,일본,5300,머큐어 나고야 사이프러스,나고야,나고야·중부,existing-country-city,미드스케일,Select,운영중
+added,일본,B4F6,이비스 스타일 나고야,나고야,나고야·중부,existing-country-city,이코노미,Select,운영중
+added,일본,C1P9,그랜드 머큐어 나라 가시하라,나라,교토·오사카·간사이,existing-country-city,프리미엄,Premium,운영중
+added,일본,C166,노보텔 나라,나라,교토·오사카·간사이,existing-country-city,미드스케일,Select,운영중
+added,일본,C1I6,그랜드 머큐어 나스고원 리조트 & 스파,나스,도쿄·수도권,manual-city-or-address,프리미엄,Premium,운영중
+added,일본,8725,머큐어 오키나와 나하,나하,오키나와,existing-country-city,미드스케일,Select,운영중
+added,일본,C6U9,머큐어 니세코 리조트,니세코,홋카이도,existing-country-city,미드스케일,Select,개관 예정 (2026.11)
+added,일본,B9G5,머큐어 히다 다카야마,다카야마,나고야·중부,manual-city-or-address,미드스케일,Select,운영중
+added,일본,C1P0,머큐어 도야마 토나미 리조트 & 스파,도야마,나고야·중부,existing-country-city,미드스케일,Select,운영중
+added,일본,B6R8,Fairmont Tokyo,도쿄,도쿄·수도권,existing-country-city,럭셔리,Luxury,운영중
+added,일본,C1F1,머큐어 도쿄 히비야,도쿄,도쿄·수도권,existing-country-city,미드스케일,Select,운영중
+added,일본,B7G7,머큐어도쿄 하네다에어포트,도쿄,도쿄·수도권,existing-country-city,미드스케일,Select,운영중
+added,일본,B9H6,이비스 스타일 도쿄 긴자,도쿄,도쿄·수도권,existing-country-city,이코노미,Select,운영중
+added,일본,C185,이비스 스타일 도쿄 긴자 이스트,도쿄,도쿄·수도권,existing-country-city,이코노미,Select,운영중
+added,일본,B137,풀만 도쿄 타마치,도쿄,도쿄·수도권,existing-country-city,프리미엄,Premium,운영중
+added,일본,C1P7,머큐어 돗토리 다이센 리조트 & 스파,돗토리,히로시마·주고쿠,manual-city-or-address,미드스케일,Select,운영중
+added,일본,C5R4,라임 리조트 미오코,묘코,나고야·중부,manual-city-or-address,럭셔리,Luxury,운영중
+added,일본,C1N6,그랜드 머큐어 벳푸완 리조트 & 스파,벳푸,규슈,manual-city-or-address,프리미엄,Premium,운영중
+added,일본,C1P5,머큐어 사가 가라쓰 리조트,사가,규슈,manual-city-or-address,미드스케일,Select,운영중
+added,일본,C082,Hotel Sosei Sapporo - MGallery Collection,삿포로,홋카이도,existing-country-city,럭셔리,Luxury,운영중
+added,일본,C1P3,그랜드 머큐어 삿포로 오도리 공원,삿포로,홋카이도,existing-country-city,프리미엄,Premium,운영중
+added,일본,7023,머큐어 삿포로,삿포로,홋카이도,existing-country-city,미드스케일,Select,운영중
+added,일본,9730,이비스 스타일 삿포로,삿포로,홋카이도,existing-country-city,이코노미,Select,운영중
+added,일본,C1P4,그랜드 머큐어 하마나코 리조트 & 스파,시즈오카,나고야·중부,existing-country-city,프리미엄,Premium,운영중
+added,일본,C1R3,그랜드 머큐어 아와지 아일랜드 리조트 & 스파,아와지,교토·오사카·간사이,manual-city-or-address,프리미엄,Premium,운영중
+added,일본,A5U8,ibis Osaka Umeda,오사카,교토·오사카·간사이,existing-country-city,이코노미,Select,운영중
+added,일본,B9I7,머큐어 토큐 스테이 오사카 남바,오사카,교토·오사카·간사이,existing-country-city,미드스케일,Select,운영중
+updated,일본,A5C3,스위소텔 난카이 오사카,오사카,교토·오사카·간사이,existing-country-city,프리미엄,Premium,운영중
+added,일본,B5X1,이비스 버젯 오사카 우메다,오사카,교토·오사카·간사이,existing-country-city,버짓,Select,운영중
+added,일본,C1T0,Homm Stay Yumiha Okinawa,오키나와,오키나와,existing-country-city,미드스케일,Select,운영중
+added,일본,C1Q6,그랜드 머큐어 오키나와 케이프 잔파 리조트,오키나와,오키나와,existing-country-city,프리미엄,Premium,운영중
+added,일본,C1Q5,그랜드 머큐어 와카야마 미나베 리조트 & 스파,와카야마,교토·오사카·간사이,existing-country-city,프리미엄,Premium,운영중
+added,일본,C1Q2,머큐어 와카야마 쿠시모토 리조트 & 스파,와카야마,교토·오사카·간사이,existing-country-city,미드스케일,Select,운영중
+added,일본,7490,머큐어 요코스카,요코스카,도쿄·수도권,manual-city-or-address,미드스케일,Select,운영중
+added,일본,C1P1,머큐어 우라반다이 리조트 & 스파,우라반다이,도호쿠,manual-city-or-address,미드스케일,Select,운영중
+added,일본,C1Q3,그랜드 머큐어 이세시마 리조트 & 스파,이세시마,나고야·중부,existing-country-city,프리미엄,Premium,운영중
+added,일본,C5T3,Madarao Kogen Hotel,이이야마,나고야·중부,manual-city-or-address,럭셔리,Luxury,운영중
+added,일본,C1R2,머큐어 미야기 자오 리조트 & 스파,자오,도호쿠,manual-city-or-address,미드스케일,Select,운영중
+added,일본,B2X6,ibis Styles Tokyo Bay,지바,도쿄·수도권,manual-city-or-address,이코노미,Select,운영중
+added,일본,C1P2,그랜드 머큐어 미나미보소 리조트 및 스파,지바,도쿄·수도권,manual-city-or-address,프리미엄,Premium,운영중
+added,일본,C1N8,머큐어 코치 도사 리조트 & 스파,코치,히로시마·주고쿠,manual-city-or-address,미드스케일,Select,운영중
+added,일본,C1R1,그랜드 머큐어 야쓰가타케 리조트 & 스파,호쿠토,도쿄·수도권,manual-city-or-address,프리미엄,Premium,운영중
+added,일본,C1N7,머큐어 후쿠오카 무나카타 리조트 & 스파,후쿠오카,규슈,existing-country-city,미드스케일,Select,운영중
+added,일본,C5E8,Mercure Tokyu Stay Hiroshima,히로시마,히로시마·주고쿠,existing-country-city,미드스케일,Select,운영중
+added,홍콩,B5L5,AKI Hotel Hong Kong - MGallery Collection,홍콩,홍콩,existing-country-city,럭셔리,Luxury,운영중
+added,홍콩,B7J3,Mondrian Hong Kong,홍콩,홍콩,existing-country-city,럭셔리,Luxury,운영중
+added,홍콩,A4A4,The Silveri Hotel Hong Kong - MGallery Collection,홍콩,홍콩,existing-country-city,럭셔리,Luxury,운영중
+added,홍콩,3562,노보텔 센추리 홍콩,홍콩,홍콩,existing-country-city,미드스케일,Select,운영중
+added,홍콩,6239,노보텔 홍콩 시티게이트,홍콩,홍콩,existing-country-city,미드스케일,Select,운영중
+added,홍콩,3563,이비스 홍콩 노스 포인트,홍콩,홍콩,existing-country-city,이코노미,Select,운영중
+added,홍콩,7606,이비스 홍콩 센트럴 앤 셩완,홍콩,홍콩,existing-country-city,이코노미,Select,운영중
+added,마카오,B824,Raffles at Galaxy Macau,마카오,마카오,existing-country-city,럭셔리,Luxury,운영중
+added,마카오,B1U0,반얀 트리 마카오,마카오,마카오,existing-country-city,럭셔리,Luxury,운영중
+added,마카오,6480,소피텔 마카오 앳 폰테 16,마카오,마카오,existing-country-city,럭셔리,Luxury,운영중
+added,중국,C206,Mercure Golmud Sports Center,거얼무,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B5G7,Ibis Guanyun Kowloon Port Water Street Hotel,관윈,상하이·장쑤,manual-city-or-address,이코노미,Select,운영중
+added,중국,B108,Ibis Guangyuan City Square Hotel,광위안,쓰촨·충칭,existing-country-city,이코노미,Select,운영중
+added,중국,B3E5,Ibis Guangzhou International Exhibition Center Hotel,광저우,광둥,existing-country-city,이코노미,Select,운영중
+added,중국,B7Z8,Mercure Guangzhou Baiyun Int'l Airport,광저우,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C048,Mercure Guangzhou Tianhe 스포츠 센터,광저우,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C054,Mercure Guangzhou Yuexiu Beijing Road,광저우,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C496,Swissôtel Guangzhou,광저우,광둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,C3V3,그랜드 머큐어 광저우 바이윈 국제공항,광저우,광둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,C558,그랜드 머큐어 광저우 바이윈리,광저우,광둥,existing-country-city,프리미엄,Premium,개관 예정
+added,중국,B321,노보텔 광저우 바이윈 공항,광저우,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,B8T6,머큐어 광저우 금융 도시,광저우,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,B4D6,머큐어 광저우 난샤,광저우,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C4W2,머큐어 광저우 파이낸셜 시티 리버사이드,광저우,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C3T3,머큐어 광저우 판유,광저우,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C6U4,반얀트리 광저우 지우롱 레이크,광저우,광둥,existing-country-city,럭셔리,Luxury,운영중
+added,중국,6318,소피텔 광저우 선리치,광저우,광둥,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B0Z6,이비스 광저우 웨슈 파크 메트로 스테이션 호텔,광저우,광둥,existing-country-city,이코노미,Select,운영중
+added,중국,B2W3,풀만 광저우 바이윈 에어포트,광저우,광둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,B556,Mercure Guilin Hi Tech Zone,구이린,하이난·광시,existing-country-city,미드스케일,Select,운영중
+added,중국,B551,Mercure Guilin Yangshuo Xingping,구이린,하이난·광시,existing-country-city,미드스케일,Select,운영중
+added,중국,C3Y4,Mercure Guiyang Exhibition Center,구이양,윈난·구이저우·티베트,existing-country-city,미드스케일,Select,운영중
+added,중국,8032,Novotel Guiyang Downtown,구이양,윈난·구이저우·티베트,existing-country-city,미드스케일,Select,운영중
+added,중국,B1R1,Novotel Guiyang Panjiang,구이양,윈난·구이저우·티베트,existing-country-city,미드스케일,Select,운영중
+added,중국,8275,Pullman Guiyang,구이양,윈난·구이저우·티베트,existing-country-city,프리미엄,Premium,운영중
+added,중국,8873,Sofitel Guiyang Hunter,구이양,윈난·구이저우·티베트,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B6D6,ibis Nanyang Xixia County Hotel,난양,후베이·후난·허난,existing-country-city,이코노미,Select,운영중
+added,중국,B5G5,IBIS Nanjing South Railway Station North Square Hotel,난징,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B1A8,Ibis Nanjing Guli Development,난징,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B6F3,Ibis Styles Nanjing Dongqi Road Hotel,난징,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B9B4,Mercure Nanjing Hongshan Zoo,난징,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C256,Mercure Nanjing Sun Yat-sen Mausoleum,난징,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C1H8,Ming Hotel Nanjing - MGallery Collection,난징,상하이·장쑤,existing-country-city,럭셔리,Luxury,운영중
+added,중국,C1U9,Mövenpick by Accor Binjiang Nanjing,난징,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,B258,ibis Nanjing Jiangjun Avenue Hotel,난징,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B2F3,ibis Styles Nanjing Jiangning Kylin Gate Hotel,난징,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B2N2,ibis Styles Nanjing South Railway Station North Square Hotel,난징,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,C0A1,노보텔 난진 공항,난징,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C3M4,노보텔 난징 사우스 레일웨이 스테이션,난징,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,7870,노보텔 난징 센트럴 쑤닝,난징,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,7548,노보텔 난징 이스트 수닝 갤럭시,난징,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C3D2,머큐어 난징 공자 사당,난징,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B6M4,머큐어 난징 다운타운,난징,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B4Z4,머큐어 난징 사우스 레일웨이 스테이션,난징,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B7N3,머큐어 난징 쉬안우 레이크,난징,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B5Z3,머큐어 난징 올림픽 엑스포,난징,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B9A3,반얀 트리 난진 가든 엑스포,난징,상하이·장쑤,existing-country-city,럭셔리,Luxury,운영중
+added,중국,6179,소피텔 난징 갤럭시 쑤닝,난징,상하이·장쑤,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B6K2,이비스 난진 리슈이 버스 스테이션,난징,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,6575,이비스 난징 컨퓨셔스 템플,난징,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,8737,풀만 난진 루코우 에어포트,난징,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,B9S2,풀만 난진빈장,난징,상하이·장쑤,existing-country-city,프리미엄,Premium,개관 예정
+added,중국,B2U1,Ibis Nanchang Bayi Museum Metro Station Hotel,난창,푸젠·장시,existing-country-city,이코노미,Select,운영중
+added,중국,B3E3,Ibis Styles Nanchang Xiaolan Industrial Park Hotel,난창,푸젠·장시,existing-country-city,이코노미,Select,운영중
+added,중국,A5G5,Mercure Nanchang Sunac,난창,푸젠·장시,existing-country-city,미드스케일,Select,운영중
+added,중국,B4S0,Mercure Nanchang Tengwang Pavilion,난창,푸젠·장시,existing-country-city,미드스케일,Select,운영중
+added,중국,9772,Novotel Nanchang Sunac,난창,푸젠·장시,existing-country-city,미드스케일,Select,운영중
+added,중국,B9J5,Pullman Nanchang Meiling,난창,푸젠·장시,existing-country-city,프리미엄,Premium,운영중
+added,중국,9776,Pullman Nanchang Sunac,난창,푸젠·장시,existing-country-city,프리미엄,Premium,운영중
+added,중국,A326,이비스 스타일 난창 홍구 뉴 시티,난창,푸젠·장시,existing-country-city,이코노미,Select,운영중
+added,중국,C0J6,Ibis Styles Haian Bus Station Hotel,난퉁,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,C0J4,Ibis Styles Nantong Rugao Port,난퉁,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,C1X2,Mercure Nantong Central Business District,난퉁,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,A4G0,Mercure Nantong Downtown,난퉁,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C0E3,Mercure Nantong Railway Station,난퉁,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C0W6,Mercure Nantong Suxitong Riverside,난퉁,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C1K4,Novotel Nantong Center,난퉁,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C1K3,Novotel Nantong Development Zone,난퉁,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C373,Mövenpick 바이 Accor 네이장,네이장,쓰촨·충칭,manual-city-or-address,프리미엄,Premium,운영중
+added,중국,B8J0,Mercure Ningbo Yinzhou,닝보,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,8310,Novotel Ningbo East,닝보,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C1B5,Fairmont Dalian,다롄,동북·내몽골,existing-country-city,럭셔리,Luxury,개관 예정
+added,중국,B5X7,Ibis Dalian Chunliu Friendship Shopping Center Hotel,다롄,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,B6Z9,Ibis Dalian Railwaystation Hotel,다롄,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,B5T7,Ibis Dalian Xinghai Park,다롄,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,B377,Ibis Dalian Yida Spring Field Hotel,다롄,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,B6E7,Ibis Styles Dalian Station Hotel,다롄,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,B8T5,Mercure Dalian City Center,다롄,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,C444,Novotel Dalian Zhongshan Square,다롄,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,C4Q5,Pullman Dalian,다롄,동북·내몽골,existing-country-city,프리미엄,Premium,운영중
+added,중국,C4N4,Mercure Dali Ancient City,다리,윈난·구이저우·티베트,existing-country-city,미드스케일,Select,운영중
+added,중국,8627,Pullman Dali,다리,윈난·구이저우·티베트,existing-country-city,프리미엄,Premium,운영중
+added,중국,B3F2,Ibis Dazhou Dazhu Hotel,다저우,쓰촨·충칭,manual-city-or-address,이코노미,Select,운영중
+added,중국,A313,ibis Dazhou Xuanhan Hotel,다저우,쓰촨·충칭,manual-city-or-address,이코노미,Select,운영중
+added,중국,8900,Novotel Daqing Haofang,다칭,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,9533,이비스 다칭 하오팡,다칭,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,B5T6,Ibis Datong Nanhuan Road Hotel,다퉁,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,C261,Mercure Datong Railway Station,다퉁,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C668,머큐어 다퉁 고대 도시,다퉁,산시·서북,existing-country-city,미드스케일,Select,개관 예정
+added,중국,B9B0,Mercure Danzhou Yangpu Seaview,단저우,하이난·광시,existing-country-city,미드스케일,Select,운영중
+added,중국,C0L0,Ibis Deyang Wuzhou Plaza Hotel,더양,쓰촨·충칭,existing-country-city,이코노미,Select,운영중
+added,중국,C2C1,JO&JOE 청두 두장옌,두장옌,쓰촨·충칭,manual-city-or-address,이코노미,Select,운영중
+added,중국,A381,ibis Chengdu Dujiangyan Hotel,두장옌,쓰촨·충칭,manual-city-or-address,이코노미,Select,운영중
+added,중국,C0J5,Ibis Dongguan Songshan Lake,둥관,광둥,existing-country-city,이코노미,Select,운영중
+added,중국,B848,Ibis Styles DG Changan LightRail,둥관,광둥,existing-country-city,이코노미,Select,운영중
+added,중국,B3D8,ibis Styles Dongguan Chang'an Wanda Plaza Hotel,둥관,광둥,existing-country-city,이코노미,Select,운영중
+added,중국,8629,그랜드 머큐어 둥관 후멘,둥관,광둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,B887,노보텔 동관 송산 호수,둥관,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C288,반얀 트리 동관 송산 레이크,둥관,광둥,existing-country-city,럭셔리,Luxury,운영중
+added,중국,7047,이비스 둥관 둥청,둥관,광둥,existing-country-city,이코노미,Select,운영중
+added,중국,7483,풀만 둥관 장안,둥관,광둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,B8L7,Mercure Dongtai Huanghai Forest,둥타이,상하이·장쑤,manual-city-or-address,미드스케일,Select,운영중
+added,중국,B1V0,반얀 트리 링하,디칭,윈난·구이저우·티베트,manual-city-or-address,럭셔리,Luxury,운영중
+added,중국,C2C0,JO&JOE Lhasa Jokhang Temple,라싸,윈난·구이저우·티베트,existing-country-city,이코노미,Select,운영중
+added,중국,B496,IBIS LANZHOU NEW AREAPCR,란저우,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B2Y6,Ibis Lanzhou Customs House Hotel,란저우,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B644,Ibis Lanzhou East Market Hotel,란저우,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B5S0,Ibis Lanzhou Railway Bureau Hotel,란저우,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B577,Ibis Lanzhou Xigu Yumen Street Hotel,란저우,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B7S4,Mercure Lanzhou Dongfanghong,란저우,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B3B9,Mercure Lanzhou Downtown,란저우,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C244,Mercure Lanzhou University Tianshui,란저우,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C0G4,Mercure Lanzhou West,란저우,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B7D6,Mercure Lanzhou Zhengning Road,란저우,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B5Y5,ibis Styles Lanzhou Wulipu,란저우,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B0Z9,이비스 란저우 페일리 스퀘어 호텔,란저우,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,9044,이비스 러산 시티 센터,러산,쓰촨·충칭,existing-country-city,이코노미,Select,운영중
+added,중국,C0X2,Ibis Styles Lianyungang Ganyu,롄윈강,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,C271,Novotel Lianyungang Haizhou,롄윈강,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,8102,Sofitel Lianyungang Suning,롄윈강,상하이·장쑤,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B5F4,Mercure Rugao City Center,루가오,상하이·장쑤,manual-city-or-address,미드스케일,Select,운영중
+added,중국,C392,Grand Mercure Lushan Jade,루산,푸젠·장시,manual-city-or-address,프리미엄,Premium,운영중
+added,중국,B708,Ibis Longnan Railway Station,룽난,산시·서북,manual-city-or-address,이코노미,Select,운영중
+added,중국,C2D2,Mercure Luoyang Downtown,뤄양,후베이·후난·허난,existing-country-city,미드스케일,Select,운영중
+added,중국,C5C6,Mercure Luoyang Nanchang Road,뤄양,후베이·후난·허난,existing-country-city,미드스케일,Select,운영중
+added,중국,C3T5,Novotel Luoyang Hongden,뤄양,후베이·후난·허난,existing-country-city,미드스케일,Select,운영중
+added,중국,C617,Grand Mercure Rizhao Haiqu,르자오,산둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,9531,Novotel Rizhao Suning,르자오,산둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C0L2,Ibis Lijiang Qixing Street Hotel,리장,윈난·구이저우·티베트,existing-country-city,이코노미,Select,운영중
+added,중국,B3D7,Ibis Styles Ruili Jiegao Hotel,리장,윈난·구이저우·티베트,existing-country-city,이코노미,Select,운영중
+added,중국,C3T0,Mercure Lijiang Old Town,리장,윈난·구이저우·티베트,existing-country-city,미드스케일,Select,운영중
+added,중국,7231,Pullman Lijiang Resort & Spa,리장,윈난·구이저우·티베트,existing-country-city,프리미엄,Premium,운영중
+added,중국,B1V6,반얀 트리 리장,리장,윈난·구이저우·티베트,existing-country-city,럭셔리,Luxury,운영중
+added,중국,7468,Pullman Linyi Lushang,린이,산둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,C2Y7,Mercure Linfen China Gate,린펀,산시·서북,manual-city-or-address,미드스케일,Select,운영중
+added,중국,C0J3,Mercure Linfen West Railway Station,린펀,산시·서북,manual-city-or-address,미드스케일,Select,운영중
+added,중국,C070,Novotel Linfen Mount Yun,린펀,산시·서북,manual-city-or-address,미드스케일,Select,운영중
+added,중국,C0X4,Ibis Maoming Cultural Plaza,마오밍,광둥,existing-country-city,이코노미,Select,운영중
+added,중국,B6C9,Ibis Styles Mianyang Station,몐양,쓰촨·충칭,existing-country-city,이코노미,Select,운영중
+added,중국,B654,DongFengYun Hotel Mi'Le - MGallery Collection,미러,윈난·구이저우·티베트,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B8Y3,Sofitel Xiong An,바오딩,베이징·톈진·허베이,existing-country-city,럭셔리,Luxury,운영중
+added,중국,C3X7,Angsana Tengchong,바오산,윈난·구이저우·티베트,manual-city-or-address,프리미엄,Premium,운영중
+added,중국,B314,Ibis Baoji Hi-Tech Zone Hotel,바오지,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,C5F7,Mercure Baotou Convention and Exhibition Center,바오터우,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C0Y0,Ibis Baishan Wanda Plaza,바이산,동북·내몽골,manual-city-or-address,이코노미,Select,운영중
+added,중국,9728,Pullman Changbaishan Resort,바이산,동북·내몽골,manual-city-or-address,프리미엄,Premium,운영중
+added,중국,B6W8,Swissôtel Resort Changbaishan,바이산,동북·내몽골,manual-city-or-address,프리미엄,Premium,운영중
+added,중국,B6X0,The View Hotel Changbai Mountain - MGallery Collection,바이산,동북·내몽골,manual-city-or-address,럭셔리,Luxury,운영중
+added,중국,8965,ibis Bengbu Donghai Ave,벙부,저장·안후이,existing-country-city,이코노미,Select,운영중
+added,중국,9683,ibis Bengbu Huaihe Rd Railway Station,벙부,저장·안후이,existing-country-city,이코노미,Select,운영중
+added,중국,B6C4,IBIS Beijing Guloudajie Metro Station Hotel,베이징,베이징·톈진·허베이,existing-country-city,이코노미,Select,운영중
+added,중국,C0K6,Ibis Beijing Beiqijia Hotel,베이징,베이징·톈진·허베이,existing-country-city,이코노미,Select,운영중
+added,중국,B571,Ibis Beijing Changping Metro Station Hotel,베이징,베이징·톈진·허베이,existing-country-city,이코노미,Select,운영중
+added,중국,9725,Ibis Beijing Chaoyang Joy City Hotel,베이징,베이징·톈진·허베이,existing-country-city,이코노미,Select,운영중
+added,중국,C1S9,Ibis Beijing Tiananmen Square Hotel,베이징,베이징·톈진·허베이,existing-country-city,이코노미,Select,운영중
+added,중국,C309,Mercure Beijing The Grand Canal CBD,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,B171,ibis Beijing Changying Hotel,베이징,베이징·톈진·허베이,existing-country-city,이코노미,Select,운영중
+added,중국,B253,ibis Beijing Sanlitun Tuanjie Lake Hotel,베이징,베이징·톈진·허베이,existing-country-city,이코노미,Select,운영중
+added,중국,A8F0,ibis Styles Beijing Capital Airport Hotel,베이징,베이징·톈진·허베이,existing-country-city,이코노미,Select,운영중
+added,중국,6684,그랜드 머큐어 베이징 센트럴,베이징,베이징·톈진·허베이,existing-country-city,프리미엄,Premium,운영중
+added,중국,7565,머큐어 베이징 다운타운,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,C508,머큐어 베이징 동지멘,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,C577,머큐어 베이징 라이즈 로드,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,C390,머큐어 베이징 바이지완 CBD,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,C5V9,머큐어 베이징 사우스 레일웨이 스테이션,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,B4Z5,머큐어 베이징 서장안,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,B9W2,머큐어 베이징 시티 센터,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,B900,머큐어 베이징 안전 올림픽 센터,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,C245,머큐어 베이징 에드밴드 비즈니스 파크,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,C107,머큐어 베이징 유니버설 리조트,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,B4Z7,머큐어 베이징 중관춘,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,C5P9,머큐어 베이징 중관춘 이하오,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,C570,머큐어 베이징 차오양 판자위안,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,C0Y3,머큐어 베이징 치안먼,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,C5C5,머큐어 베이징 캐피탈 국제 공항,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,C010,머큐어 베이징 통저우 지구,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,C228,머큐어 베이징 퓨처 사이언스 시티,베이징,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,B628,소피텔 베이징 센트럴,베이징,베이징·톈진·허베이,existing-country-city,럭셔리,Luxury,운영중
+added,중국,A5A1,스위소텔 베이징 홍콩 마카오 센터,베이징,베이징·톈진·허베이,existing-country-city,프리미엄,Premium,운영중
+added,중국,8605,이비스 베이징 다청 로드,베이징,베이징·톈진·허베이,existing-country-city,이코노미,Select,운영중
+added,중국,8009,이비스 베이징 동따챠오,베이징,베이징·톈진·허베이,existing-country-city,이코노미,Select,운영중
+added,중국,7025,풀만 베이징 사우스,베이징,베이징·톈진·허베이,existing-country-city,프리미엄,Premium,운영중
+added,중국,C5W2,Dhawa Beihai Weizhou Island,베이하이,하이난·광시,existing-country-city,미드스케일,Select,운영중
+added,중국,C1X3,JO&JOE Shaoguan High-Speed Railway Station,사오관,광둥,existing-country-city,이코노미,Select,운영중
+added,중국,C0Y2,Ibis Styles Shengzhou,사오싱,저장·안후이,existing-country-city,이코노미,Select,운영중
+added,중국,C4V6,Novotel Shaoxing Keqiao,사오싱,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B8U0,Mercure Shantou Railway Station,산터우,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C0H5,풀만 샨라오 광펑,상라오,푸젠·장시,existing-country-city,프리미엄,Premium,개관 예정
+added,중국,B378,Ibis Shangqiu Railway Station,상추,후베이·후난·허난,existing-country-city,이코노미,Select,운영중
+added,중국,B6K8,Ibis Yongcheng Jinboda Plaza Hotel,상추,후베이·후난·허난,existing-country-city,이코노미,Select,운영중
+added,중국,B1U4,Banyan Tree Shanghai On the Bund,상하이,상하이·장쑤,existing-country-city,럭셔리,Luxury,운영중
+added,중국,A5G7,Fairmont Peace Hotel,상하이,상하이·장쑤,existing-country-city,럭셔리,Luxury,운영중
+added,중국,C4L4,Grand Mercure Shanghai Century Park,상하이,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,B761,Ibis Shanghai Hongcao Road,상하이,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B566,Ibis Shanghai Hongqiao Railway Station,상하이,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B2Y2,Ibis Shanghai Songjiang University Town Wencheng Rd Hotel,상하이,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,C0J8,Ibis Shanghai Xiupu Road Hotel,상하이,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B568,Ibis Styles Shanghai Qingpu Sports Center Hotel,상하이,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B4F0,Ibis Styles Shanghai caohejing Hotel,상하이,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B930,Mercure Shanghai Jinqiao,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C1A5,Mercure Shanghai Lingang Oriental Pearl,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C1X1,Mercure Shanghai Pudong Zhangjiang Park,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C2R9,Mercure Shanghai Pujiang,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C3N7,Mövenpick by Accor Shanghai People's Square,상하이,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,C3E7,Novotel Living Shanghai Jingan,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C222,Novotel Shanghai JingAn,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B923,Novotel Shanghai Lingang,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,A5C9,Swissôtel Grand Shanghai,상하이,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,C4X2,Swissôtel Living Shanghai Hongqiao,상하이,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,C807,greet 호텔 상하이 국제 관광 리조트,상하이,상하이·장쑤,existing-country-city,이코노미,Select,개관 예정
+added,중국,C804,greet 호텔 상하이 헤타오로 지하철역,상하이,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B2A9,ibis Shanghai Changshou Road Hotel,상하이,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B6B6,ibis Styles Shangai Gubei,상하이,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B2U0,ibis Styles Shanghai Hongqiao Airport Huqingping Highway Hot,상하이,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B3F1,ibis Styles Shanghai Zhangjiang Hotel,상하이,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B6C1,그랜드 머큐어 상하이 린강,상하이,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,6694,그랜드 머큐어 상하이 홍차오,상하이,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,C4T0,노보텔 리빙 상하이 수후이 리버사이드,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C3V2,노보텔 상하이 바오산 지우시,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C4L7,노보텔 상하이 수후이 리버사이드,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C5U8,노보텔 상하이 쉬자후이,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,3019,노보텔 상하이 아틀란티스,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B886,노보텔 상하이 완위안,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B0Y6,노보텔 상하이 촨샤,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B7H8,노보텔 상하이 칭푸 엑설런스,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,A3P3,노보텔 상하이 클로버,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C4T9,노보텔 상하이 홍차오 구베이,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C3I3,노보텔 상하이 홍차오 국제 공항,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C4V8,노보텔 상하이 홍차오 기차역,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,9229,노보텔 상하이 훙차오,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C0S8,노보텔 선링 상하이 인터내셔널 관광 존 노스 타워,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C0S7,노보텔 선링 상하이 인터내셔널 관광 존 사우스 타워,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B3D0,노보텔 스위트 상하이 홍차오,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B2M3,머큐어 상하이 NECC,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B3B6,머큐어 상하이 글로벌 하버,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C044,머큐어 상하이 루자주이,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C4N3,머큐어 상하이 루지아주이 금융 센터,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C5Q3,머큐어 상하이 루지아주이빈장 센터,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C203,머큐어 상하이 바오산,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C4T3,머큐어 상하이 수후이 카오허진,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B432,머큐어 상하이 쉬자후이 사우스,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B6U5,머큐어 상하이 엑스포 뉴 번드,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,A602,머큐어 상하이 와이카오차오 자유 무역 지대,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C503,머큐어 상하이 우자오창,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B1K6,머큐어 상하이 유 가든 온 더 번드,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B2S0,머큐어 상하이 지우팅,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B2P4,머큐어 상하이 홍차오 센트럴,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B0Y2,머큐어 상하이 홍차오 소호,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C3I1,머큐어 상하이 홍차오 에어포트,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B1Y2,머큐어 상하이 훙차오 레일웨이 스테이션,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B061,머큐어 상하이 훙차오 사우스,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B9G8,소피텔 상하이 북와이탄,상하이,상하이·장쑤,existing-country-city,럭셔리,Luxury,운영중
+added,중국,9933,소피텔 상하이 홍차오,상하이,상하이·장쑤,existing-country-city,럭셔리,Luxury,운영중
+added,중국,6474,이비스 상하이 리안양,상하이,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,7949,이비스 상하이 쉬자후이,상하이,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,7505,이비스 상하이 쳉산 로드,상하이,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,7298,풀만 상하이 센트럴,상하이,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,7564,풀만 상하이 수후이,상하이,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,7598,풀만 상하이 징안,상하이,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,9307,풀만 상하이 칭푸 엑셀런스,상하이,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,C4X1,호텔 상하이 홍차오 - 핸드리튼 컬렉션,상하이,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B953,Fairmont Xiamen,샤먼,푸젠·장시,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B2E4,Grand Mercure Xiamen Downtown,샤먼,푸젠·장시,existing-country-city,프리미엄,Premium,운영중
+added,중국,B5F6,Mercure Xiamen On the Bund,샤먼,푸젠·장시,existing-country-city,미드스케일,Select,운영중
+added,중국,C388,Mercure Xiamen Science City,샤먼,푸젠·장시,existing-country-city,미드스케일,Select,운영중
+added,중국,C1B0,Novotel Xiamen Downtown,샤먼,푸젠·장시,existing-country-city,미드스케일,Select,운영중
+added,중국,C4K1,Novotel Xiamen International Convention Center,샤먼,푸젠·장시,existing-country-city,미드스케일,Select,운영중
+added,중국,8160,Pullman Xiamen Powerlong,샤먼,푸젠·장시,existing-country-city,프리미엄,Premium,운영중
+added,중국,7227,ibis Xiamen Kaiyuan,샤먼,푸젠·장시,existing-country-city,이코노미,Select,운영중
+added,중국,A472,이비스 스타일 샤먼 중산 로드 워킹 스트리트 호텔,샤먼,푸젠·장시,existing-country-city,이코노미,Select,운영중
+added,중국,B767,Ibis Shenyang Huaiyuanmen Hotel,선양,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,C531,Mercure Shenyang Qingnian Avenue TV Tower,선양,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,C4L9,Mercure Shenyang Qingnian Street,선양,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,C4W1,Mercure Shenyang Railway Station Taiyuan Street,선양,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,B9L8,Swissôtel Shenyang,선양,동북·내몽골,existing-country-city,프리미엄,Premium,운영중
+added,중국,B1E7,ibis Shenyang North Railway Station Hotel,선양,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,C1Y8,그랜드 머큐어 선양 컨벤션 및 전시 센터,선양,동북·내몽골,existing-country-city,프리미엄,Premium,운영중
+added,중국,B102,이비스 선양 레일웨이 스테이션,선양,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,B9N9,Fashion Town Hotel Shenzhen - MGallery Collection,선전,광둥,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B5X6,Ibis Shenzhen Nanxin Road Hotel,선전,광둥,existing-country-city,이코노미,Select,운영중
+added,중국,B2H2,Pullman Shenzhen North,선전,광둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,A7Z7,Raffles Shenzhen,선전,광둥,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B9F6,그랜드 머큐어 심천 광밍,선전,광둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,B6Q8,그랜드 머큐어 심천 난샨,선전,광둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,3601,노보텔 선전 워터게이트,선전,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C5Q2,머큐어 선전 난산 난유,선전,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,B5Y7,머큐어 선전 스포츠 센터,선전,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,B1K9,머큐어 선전 핑후,선전,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,B7M7,머큐어 심천 난샨,선전,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,B765,Ibis Xianyang Normal University Hotel,셴양,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,C0K3,Ibis Xianyang Qidi Science Park,셴양,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,C0E4,머큐어 시안 국제 공항,셴양,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B5G8,Ibis Styles Xuzhou Jiawang Hotel,쉬저우,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,C6G4,Novotel Xuzhou Tongshan,쉬저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,8624,Pullman Shishi Mattison,스스,푸젠·장시,manual-city-or-address,프리미엄,Premium,운영중
+added,중국,B311,Grand Mercure Shiyan Dajia,스옌,후베이·후난·허난,manual-city-or-address,프리미엄,Premium,운영중
+added,중국,B5R6,Mercure Shijiazhuang Downtown,스자좡,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,B8N3,Mercure Shijiazhuang East Yuhua Road,스자좡,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,B6B3,Mercure Shijiazhuang People Square,스자좡,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,B101,이비스 시가체 시티 라체 카운티,시가체,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B6D8,Ibis Styles Xi'ning Railway Sta,시닝,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B698,Mercure Xining Haihu CBD,시닝,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,9567,Sofitel Xining,시닝,산시·서북,existing-country-city,럭셔리,Luxury,운영중
+added,중국,9804,THE SEBEL XI NING – Managed by Sofitel,시닝,산시·서북,existing-country-city,프리미엄,Premium,운영중
+added,중국,B839,Pullman Resort Xishuangbanna,시솽반나,윈난·구이저우·티베트,manual-city-or-address,프리미엄,Premium,운영중
+added,중국,B5R8,앙사나 시우왕반나,시솽반나,윈난·구이저우·티베트,manual-city-or-address,프리미엄,Premium,운영중
+added,중국,B569,Ibis Styles Xi 'an Daxing New District G park Hotel,시안,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B5H8,Ibis Xi an Jianzhang Road Fengdong New Area Hotel,시안,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,C0X1,Ibis Xi'an Baqiao Hongqing,시안,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B6B9,Ibis Xi'an Bell Tower East Hotel,시안,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,C0X5,Ibis Xi'an Huimin Street Hotel,시안,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B517,Ibis Xian Xingqing Palace Park Hotel,시안,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B4D5,Mercure Xi'an Downtown,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C0M2,Mercure Xi'an Stadium Hotel,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B6R1,Mercure Xi'an The Bell Tower,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C2I8,Novotel Xi'an Xinxing,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C2X0,Swissôtel Xi'an Xinxing Hot Spring,시안,산시·서북,existing-country-city,프리미엄,Premium,운영중
+added,중국,B1E3,ibis Xi'an South Gate Hotel,시안,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B2N3,ibis xi'an North Second Ring Weiyang Rd Hotel,시안,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B9Q8,가리야 시안 린통,시안,산시·서북,existing-country-city,프리미엄,Premium,운영중
+added,중국,5974,그랜드 머큐어 온 렌민 스퀘어,시안,산시·서북,existing-country-city,프리미엄,Premium,운영중
+added,중국,C3D1,노보텔 시안 다밍 팰리스,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B6K7,노보텔 시안 더 벨 타워,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B1L0,노보텔 시안 시시안,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B8U6,노보텔 시안 아덴,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C0Z9,다와 시안 찬바,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,A473,머 큐어 서안 하이테크 존,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C053,머큐어 시안 가오신 다자이 로드,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B5R5,머큐어 시안 노스,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C386,머큐어 시안 뉴 소프트웨어 시티,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C1S1,머큐어 시안 다밍 팰리스,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B4Z8,머큐어 시안 다얀 파고다,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B5Z0,머큐어 시안 시티 센터,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B9P0,머큐어 시안 역사 박물관,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C106,머큐어 시안 찬바,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B493,머큐어 시안 취장,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B6D3,머큐어 시안 하이테크 존 센터,시안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,6156,소피텔 레전드 피플스 그랜드 호텔 시안,시안,산시·서북,existing-country-city,럭셔리,Luxury,운영중
+added,중국,5949,소피텔 시안 인민광장,시안,산시·서북,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B1X5,앙사나 시안 린퉁,시안,산시·서북,existing-country-city,프리미엄,Premium,운영중
+added,중국,B828,Mercure Xichang Qionghai Wetland,시창,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,B6V2,Mercure Xinyang East Railway Station,신양,후베이·후난·허난,existing-country-city,미드스케일,Select,운영중
+added,중국,C2R5,머큐어 신양 시티 센터,신양,후베이·후난·허난,existing-country-city,미드스케일,Select,운영중
+added,중국,9206,ibis Xinzhou Qiyi Road,신저우,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B851,Fairmont Sanya Haitang Bay,싼야,하이난·광시,existing-country-city,럭셔리,Luxury,운영중
+added,중국,C306,Grand Mercure Sanya Yalong Bay,싼야,하이난·광시,existing-country-city,프리미엄,Premium,운영중
+added,중국,C3G1,Novotel Sanya Bay Yatai,싼야,하이난·광시,existing-country-city,미드스케일,Select,운영중
+added,중국,C305,Swissôtel Sanya Yalong Bay,싼야,하이난·광시,existing-country-city,프리미엄,Premium,운영중
+added,중국,C0G2,노보텔 싼야 피닉스 국제 공항,싼야,하이난·광시,existing-country-city,미드스케일,Select,운영중
+added,중국,C3I2,머큐어 싼야 원,싼야,하이난·광시,existing-country-city,미드스케일,Select,운영중
+added,중국,B1U1,반얀 트리 싼야,싼야,하이난·광시,existing-country-city,럭셔리,Luxury,운영중
+added,중국,8167,소피텔 싼야 리만 리조트,싼야,하이난·광시,existing-country-city,럭셔리,Luxury,운영중
+added,중국,6467,풀만 싼야 야롱 베이 빌라 & 리조트,싼야,하이난·광시,existing-country-city,프리미엄,Premium,운영중
+added,중국,7126,풀만 오션뷰 싼야 베이 리조트 & 스파,싼야,하이난·광시,existing-country-city,프리미엄,Premium,운영중
+added,중국,C3G9,Banyan Tree Yangcheng Lake,쑤저우,상하이·장쑤,existing-country-city,럭셔리,Luxury,운영중
+added,중국,C3G8,Garrya Yangcheng Lake,쑤저우,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,B6K4,Ibis Styles Suzhou Industrial Park Jinji Lake Hotel,쑤저우,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B5T8,Ibis Styles Suzhou Sports Center Hotel,쑤저우,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B5G9,Ibis Suzhou Sanxiang Road Hotel,쑤저우,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B9B3,Mercure Kunshan Beimenlu,쑤저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B434,Mercure Suzhou City Center,쑤저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B2P7,Mercure Suzhou Downtown,쑤저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C0R8,Mercure Suzhou HSR New Town,쑤저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B2X3,Mercure Suzhou Jinji Lake,쑤저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B6B0,Mercure Suzhou Shilu Shantang,쑤저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C389,Mövenpick by Accor Suzhou Gusu,쑤저우,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,C3V1,Novotel Changshu Yushan,쑤저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B8E3,Novotel Kunshan East,쑤저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C0M3,Novotel Suzhou Huanxiu Lake,쑤저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,9442,Novotel Suzhou SIP,쑤저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B0Y8,Novotel Suzhou Tai Lake Santeh,쑤저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,9936,Pullman Suzhou Zhonghui,쑤저우,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,B6C2,Suzhou Xushuguan Hotel,쑤저우,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B2V3,ibis Styles Suzhou Science and Technology Hotel,쑤저우,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,C2Q3,반얀트리 쑤저우 시산,쑤저우,상하이·장쑤,existing-country-city,럭셔리,Luxury,운영중
+added,중국,C2Q4,앙사나 쑤저우 시산,쑤저우,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,9853,이비스 쿤산 창장 로드,쑤저우,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B438,ibis Styles Suqian Sihong South Hengshan Road Hotel,쑤첸,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,C5G1,Mercure Altay Keketuohai,아러타이,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,8276,Pullman Anshan Time Square,안산,동북·내몽골,existing-country-city,프리미엄,Premium,운영중
+added,중국,B4E3,Mercure Anshun Railway Station,안순,윈난·구이저우·티베트,existing-country-city,미드스케일,Select,운영중
+added,중국,B6V1,Mercure Anyang Downtown,안양,후베이·후난·허난,manual-city-or-address,미드스케일,Select,운영중
+added,중국,9043,이비스 안양 지에팡 애비뉴,안양,후베이·후난·허난,manual-city-or-address,이코노미,Select,운영중
+added,중국,B6E8,Ibis Ankang Hanbin Hotel,안캉,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,6466,이비스 야안 랑챠오,야안,쓰촨·충칭,existing-country-city,이코노미,Select,운영중
+added,중국,B1W8,반얀 트리 양숴,양숴,하이난·광시,manual-city-or-address,럭셔리,Luxury,운영중
+added,중국,C350,JO&JOE Yangzhou Hanjiang,양저우,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,A8E8,Mercure Yangzhou Dongguan Street,양저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C223,Mercure Yangzhou East High-Speed Railway Station,양저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B6U1,Novotel Yangzhou City Center,양저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B1N4,ibis Styles Yangzhou Baixiang Rd Hotel,양저우,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,8681,ibis Yangzhou Wen Chang Attic,양저우,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,C297,Novotel Yangquan High-Tech Zone,양취안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C6H2,BANYAN TREE MOUNT EMEI,어메이산,쓰촨·충칭,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B4L0,Mövenpick Enshi,언스,후베이·후난·허난,manual-city-or-address,프리미엄,Premium,운영중
+added,중국,B5Y6,Mercure Yan'an Downtown,옌안,산시·서북,manual-city-or-address,미드스케일,Select,운영중
+added,중국,B642,IBIS Yanji Renmin Road Hotel,옌지,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,C300,Mercure Changbai Mountain North,옌지,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,C3T4,Mercure Yancheng Funing Swan Lake,옌청,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B840,Novotel Yancheng Exhibition Center,옌청,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B2P2,Mercure Yantai Golden Beach,옌타이,산둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C207,Novotel Yantai Banshan,옌타이,산둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C037,Pullman Yantai Center,옌타이,산둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,B4A2,Mercure Ordos Downtown,오르도스,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,B3E7,Ibis Urumqi Weixing Square Hotel,우루무치,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,C1D8,Mercure Urumqi Airport,우루무치,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C0E1,Mercure Urumqi Beijing Road,우루무치,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B7M8,Mercure Urumqi Doowin Wanda Plaza,우루무치,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B7U4,Mercure Urumqi Downtown,우루무치,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B924,Mercure Urumqi Railway Station,우루무치,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B8J1,Mercure Urumqi South Lake,우루무치,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C4W7,Mövenpick by Accor Urumqi Jingkai,우루무치,산시·서북,existing-country-city,프리미엄,Premium,운영중
+added,중국,B3E8,ibis Urumqi Railway Station,우루무치,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B9X2,Dangkou Ancient Town Hotel Wuxi - MGallery Collection,우시,상하이·장쑤,existing-country-city,럭셔리,Luxury,운영중
+added,중국,C201,Grand Mercure Wuxi Huishan,우시,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,B332,Ibis Wuxi Taihu Square Hotel,우시,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,C226,Mercure Wuxi East Railway Station,우시,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B5W3,ibis Styles Wuxi Nanchan Temple Hotel,우시,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B2A8,ibis Wuxi Jiangnan University Hotel,우시,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B263,ibis Yixing South Renmin Rd,우시,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,C311,노보텔 우시,우시,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C5F2,노보텔 우시 산양 플라자,우시,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C6I6,머큐어 우시 빈후 리위안 개발구,우시,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C3T1,머큐어 우시 천안 인텔리전트 파크,우시,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B6R0,머큐어 우시 타이후 관광 지구 장난 대학교,우시,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,7545,풀만 우시 뉴 레이크,우시,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,A7Z9,Fairmont Wuhan,우한,후베이·후난·허난,existing-country-city,럭셔리,Luxury,운영중
+added,중국,C2L0,Grand Mercure Wuhan Hanyang,우한,후베이·후난·허난,existing-country-city,프리미엄,Premium,운영중
+added,중국,7103,ibis Styles Wuhan Optics Valley Square Hotel,우한,후베이·후난·허난,existing-country-city,이코노미,Select,운영중
+added,중국,B4A0,ibis Wuhan Hubu Alley Hotel,우한,후베이·후난·허난,existing-country-city,이코노미,Select,운영중
+added,중국,B320,그랜드 머큐어 우한 차오커우,우한,후베이·후난·허난,existing-country-city,프리미엄,Premium,운영중
+added,중국,C5B2,노보텔 우한 옵틱 밸리,우한,후베이·후난·허난,existing-country-city,미드스케일,Select,운영중
+added,중국,B5M1,머큐어 우한 양루오,우한,후베이·후난·허난,existing-country-city,미드스케일,Select,운영중
+added,중국,C4U8,Homm Wenzhou Nanxijiang,원저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B5W2,Ibis Styles Wenzhou Wenchang Road Heart Workshop Hotel,원저우,저장·안후이,existing-country-city,이코노미,Select,운영중
+added,중국,8837,Pullman Wenzhou,원저우,저장·안후이,existing-country-city,프리미엄,Premium,운영중
+added,중국,B2E9,ibis Styles Wenzhou international Airport Hotel,원저우,저장·안후이,existing-country-city,이코노미,Select,운영중
+added,중국,B1N6,ibis Wenzhou Airport Avenue Hotel,원저우,저장·안후이,existing-country-city,이코노미,Select,운영중
+added,중국,A0B5,ibis Wenzhou University Town,원저우,저장·안후이,existing-country-city,이코노미,Select,운영중
+added,중국,8309,Pullman Yueyang,웨양,후베이·후난·허난,existing-country-city,프리미엄,Premium,운영중
+added,중국,9590,Pullman Weifang,웨이팡,산둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,C006,Pullman Yuxi,위시,윈난·구이저우·티베트,existing-country-city,프리미엄,Premium,운영중
+added,중국,B6U8,Novotel Shanxi Yuncheng,윈청,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C5F4,머큐어 이닝 지에팡 로드,이닝,산시·서북,existing-country-city,미드스케일,Select,개관 예정
+added,중국,C576,Mercure Yibin West Railway Station,이빈,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,C1D7,Mercure Yixing Wanda Plaza,이싱,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C1S7,Mercure Yiwu International Trade City,이우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B8X4,Grand Mercure Yichang Waitan,이창,후베이·후난·허난,existing-country-city,프리미엄,Premium,운영중
+added,중국,B1E6,ibis Yichang Bayi Rd,이창,후베이·후난·허난,existing-country-city,이코노미,Select,운영중
+added,중국,C1M9,Ibis Styles Yinchuan Ningda,인촨,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B325,Mercure Yinchuan Xinhua,인촨,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C3D0,Novotel Yinchuan Huirong,인촨,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C272,노보텔 인촨 랑시구,인촨,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C2E4,Novotel Jiaxing Port Area,자싱,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B4E5,Pullman Jiaxing Pinghu Excellence,자싱,저장·안후이,existing-country-city,프리미엄,Premium,운영중
+added,중국,C205,Mercure Jiangyin South Gate Yaohan,장인,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C6I3,Mercure Zhangjiajie National Forest Park,장자제,후베이·후난·허난,existing-country-city,미드스케일,Select,운영중
+added,중국,C3D4,Mercure Zhangjiajie Tianmen Mountain,장자제,후베이·후난·허난,existing-country-city,미드스케일,Select,운영중
+added,중국,7934,Pullman Zhangjiajie,장자제,후베이·후난·허난,existing-country-city,프리미엄,Premium,운영중
+added,중국,B4B4,Ibis Zhangjiakou Zhangbei County Coach Station Hotel,장자커우,베이징·톈진·허베이,existing-country-city,이코노미,Select,운영중
+added,중국,C564,Angsana Zhoushan,저우산,저장·안후이,existing-country-city,프리미엄,Premium,운영중
+added,중국,C3D9,Mercure Zhoushan Putuoshan Airport,저우산,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C3Y7,Novotel Zhoushan Luting,저우산,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C4K8,Pullman Zhoushan Seaside,저우산,저장·안후이,existing-country-city,프리미엄,Premium,운영중
+added,중국,C6G2,Swissôtel Zhoushan Yingguan,저우산,저장·안후이,existing-country-city,프리미엄,Premium,운영중
+added,중국,B847,Ibis Zhoukou Daqing Road,저우커우,후베이·후난·허난,existing-country-city,이코노미,Select,운영중
+added,중국,B2X0,ibis Zhenjiang East Zhongshan Rd Hotel,전장,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B6K3,Ibis Zhengzhou Dongming Rd Hotel,정저우,후베이·후난·허난,existing-country-city,이코노미,Select,운영중
+added,중국,C5D6,Mercure Zhengzhoudong Railway Station Provincial Government,정저우,후베이·후난·허난,existing-country-city,미드스케일,Select,운영중
+added,중국,A0L0,Novotel Zhengzhou Airport,정저우,후베이·후난·허난,existing-country-city,미드스케일,Select,운영중
+added,중국,8258,Novotel Zhengzhou Convention Centre,정저우,후베이·후난·허난,existing-country-city,미드스케일,Select,운영중
+added,중국,2197,Sofitel Zhengzhou International,정저우,후베이·후난·허난,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B2Y0,ibis Zhengzhou Longhai Road,정저우,후베이·후난·허난,existing-country-city,이코노미,Select,운영중
+added,중국,C4W4,노보텔 지우차이구,주자이거우,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,B1V8,반얀 트리 주자이거우,주자이거우,쓰촨·충칭,existing-country-city,럭셔리,Luxury,운영중
+added,중국,C0K9,Ibis Jiujiang Gongqingcheng,주장,푸젠·장시,existing-country-city,이코노미,Select,운영중
+added,중국,C241,Angsana Zhuhai Hengqin,주하이,광둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,C5X4,BANYAN TREE ZHUHAI PHOENIX BAY,주하이,광둥,existing-country-city,럭셔리,Luxury,운영중
+added,중국,C0L5,Ibis Styles Zhuhai Nanping Huafa,주하이,광둥,existing-country-city,이코노미,Select,운영중
+added,중국,C1A6,Mercure Zhuhai Xiangzhou Coast,주하이,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,8098,Pullman Zhuhai,주하이,광둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,B2T1,앙사나 주하이 피닉스 베이,주하이,광둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,B7T3,Ibis Jinan East Wenhua Rd Hotel,지난,산둥,existing-country-city,이코노미,Select,운영중
+added,중국,C0R7,MERCURE JINAN HANYU FINANCIAL BUSINESS CENTRE,지난,산둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C385,Mercure Jinan Beiyuan Street,지난,산둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C017,Novotel Jinan North Down Town,지난,산둥,existing-country-city,미드스케일,Select,운영중
+added,중국,8120,그랜드 머큐어 지난 선샤인,지난,산둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,C420,노보텔 지난 에어포트,지난,산둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C0Q2,다와 지난 다밍호,지난,산둥,existing-country-city,미드스케일,Select,운영중
+added,중국,B5Y9,머큐어 지난 웨스트 레일웨이 스테이션,지난,산둥,existing-country-city,미드스케일,Select,운영중
+added,중국,B3W2,머큐어 지난 핑인,지난,산둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C294,머큐어 지난동 기차역,지난,산둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C3Y1,Anqia Beida Lake Hotel Jilin – MGallery Collection,지린,동북·내몽골,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B594,Ibis Jilin Beishan Park Hotel,지린,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,C3V6,Grand Mercure Pingyao,진중,산시·서북,existing-country-city,프리미엄,Premium,운영중
+added,중국,C4A2,Mercure Pingyao Ancient City,진중,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C0K1,Ibis Jincheng Pedestrian Street,진청,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,C0H4,Pullman Jinhua,진화,저장·안후이,existing-country-city,프리미엄,Premium,운영중
+added,중국,B7N2,Mercure Jingjiang Downtown,징장,상하이·장쑤,manual-city-or-address,미드스케일,Select,운영중
+added,중국,C0V9,Mercure Xishuangbanna,징훙,윈난·구이저우·티베트,existing-country-city,미드스케일,Select,운영중
+added,중국,C367,Mercure Xishuangbanna Tropical Botanical Garden,징훙,윈난·구이저우·티베트,existing-country-city,미드스케일,Select,운영중
+added,중국,C1W6,Pullman Renhuai Chuangmeng,쭌이,윈난·구이저우·티베트,existing-country-city,프리미엄,Premium,운영중
+added,중국,C0J1,Novotel Zibo New Hongcheng,쯔보,산둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C1C4,Mercure Chaozhou Ancient City,차오저우,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,B6F2,ibis Styles Chaozhou Development Zone GuXiang Hotel,차오저우,광둥,existing-country-city,이코노미,Select,운영중
+added,중국,C023,Ibis Styles CS Railway Station,창사,후베이·후난·허난,existing-country-city,이코노미,Select,운영중
+added,중국,A150,Novotel Changsha International Exhibition Center,창사,후베이·후난·허난,existing-country-city,미드스케일,Select,운영중
+added,중국,A160,ibis Styles Changsha International Exhibition Center,창사,후베이·후난·허난,existing-country-city,이코노미,Select,운영중
+added,중국,B928,Mercure Changshu Riverside,창수,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,8968,Pullman Changshu Leeman,창수,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,B8V7,Grand Mercure Changzhou Luoxi,창저우,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,C0L1,Ibis Changzhou Jintan Wuyue,창저우,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,C3E2,JO&JOE Changzhou Tianning,창저우,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,B2S2,Mercure Changzhou Jintan,창저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C3E1,Mercure Changzhou Qingguo Lane,창저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C3A6,Novotel Changzhou Hi-Tech District,창저우,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,C3B5,Sofitel Changzhou Hi-Tech District,창저우,상하이·장쑤,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B926,Ibis Changzhi Wanda Plaza,창즈,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B3E9,Ibis Changji Jianshe Road Snack Street,창지,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,C414,Homm Changchun Beihu,창춘,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,B6B7,Ibis Changchun FAW Group Hotel,창춘,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,C021,Ibis Changchun Jiefang Road,창춘,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,B567,Ibis Changchun Jilin University Hotel,창춘,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,B7T6,Ibis Changchun SECC Hotel,창춘,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,B5K3,Mercure Changchun Hengxing,창춘,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,B337,Mercure Changchun Jingyue Xincheng,창춘,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,B6M3,Mercure Changchun Ziyou Road Dahua,창춘,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,B3W3,Novotel Changchun North,창춘,동북·내몽골,existing-country-city,미드스케일,Select,개관 예정
+added,중국,9072,이비스 창춘 잔시 스트리트,창춘,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,C2A6,Chengdu Expo Waterfall Hotel - MGallery Collection,청두,쓰촨·충칭,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B5P7,Ibis Chengdu Broad and Narrow Alley West Hotel,청두,쓰촨·충칭,existing-country-city,이코노미,Select,운영중
+added,중국,B8T8,Ibis Chengdu China Lane Central,청두,쓰촨·충칭,existing-country-city,이코노미,Select,운영중
+added,중국,B4S3,Ibis Chengdu Hi-Tech Zone Longhu Hotel,청두,쓰촨·충칭,existing-country-city,이코노미,Select,운영중
+added,중국,B5T1,Ibis Chengdu Hi-tech Tianfu,청두,쓰촨·충칭,existing-country-city,이코노미,Select,운영중
+added,중국,C1C3,Mercure Chengdu Dongjiao Memory,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,B338,Mercure Chengdu Huapaifang,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,B705,Mercure Chengdu Jinniu Wanda Plaza,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,B9P5,Mercure Chengdu Longtan,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,C0C6,Mercure Chengdu Shuangliu International Airport,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,C1X5,Mercure Chengdu West Expo City,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,C2U1,Mövenpick by Accor Kuanzhai Alley Chengdu,청두,쓰촨·충칭,existing-country-city,프리미엄,Premium,운영중
+added,중국,C5B5,Novotel ChengDu Chunxi Road,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,C0B5,Novotel Living Chengdu Tianfu,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,B2T5,Ocean Spring Resort Chengdu - MGallery Collection,청두,쓰촨·충칭,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B255,ibis Chengdu Chunxi Road Shudu Mansion Hotel,청두,쓰촨·충칭,existing-country-city,이코노미,Select,운영중
+added,중국,B375,ibis Chengdu East Railway Station Hotel,청두,쓰촨·충칭,existing-country-city,이코노미,Select,운영중
+added,중국,C0B6,그랜드 머큐어 청두 이스트,청두,쓰촨·충칭,existing-country-city,프리미엄,Premium,운영중
+added,중국,C295,노보텔 청두 롱마 레이크,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,개관 예정
+added,중국,C2J6,노보텔 청두 리게,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,C502,머큐어 청두 글로벌 센터,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,B0Y9,머큐어 청두 다운타운,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,B8X7,머큐어 청두 상리우,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,B575,머큐어 청두 신두,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,C060,머큐어 청두 우저우 사원,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,B7D4,머큐어 청두 지우얀차오,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,B1Y3,머큐어 청두 춘시,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,C2I5,머큐어 청두 춘시 로드 티안푸 스퀘어,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,B8X6,머큐어 청두 쿠안차이 앨리 웨스트,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,C3D3,머큐어 청두 티안푸 스퀘어,청두,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,C0Q1,앙사나 청두 원장,청두,쓰촨·충칭,existing-country-city,프리미엄,Premium,운영중
+added,중국,B106,이비스 청두 SM 스퀘어 호텔,청두,쓰촨·충칭,existing-country-city,이코노미,Select,운영중
+added,중국,A8N9,이비스 청두 아메리칸 센터 호텔,청두,쓰촨·충칭,existing-country-city,이코노미,Select,운영중
+added,중국,5564,이비스 청두 융펑,청두,쓰촨·충칭,existing-country-city,이코노미,Select,운영중
+added,중국,B107,이비스 청두 템플 오브 마르퀴즈,청두,쓰촨·충칭,existing-country-city,이코노미,Select,운영중
+added,중국,C3A2,파이낸셜 시티 호텔 청두-엠갤러리 컬렉션,청두,쓰촨·충칭,existing-country-city,럭셔리,Luxury,운영중
+added,중국,C3N8,Mövenpick By Accor Guizhou Tianyan,첸난,윈난·구이저우·티베트,manual-city-or-address,프리미엄,Premium,운영중
+added,중국,B583,Ibis Chongqing Jiefangbei Pedestrian Street Hotel,충칭,쓰촨·충칭,existing-country-city,이코노미,Select,운영중
+added,중국,B330,Mercure Chongqing Downtown,충칭,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,C6I4,Mercure Chongqing Guanyinqiao Center,충칭,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,C011,Mercure Chongqing Jiefangbei Hongya Cave,충칭,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,C5V2,Mercure Chongqing North Railway Station,충칭,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,C2R7,Mercure Chongqing Times Paradise Walk,충칭,쓰촨·충칭,existing-country-city,미드스케일,Select,운영중
+added,중국,C2G5,Pullman Chongqing Xiyue,충칭,쓰촨·충칭,existing-country-city,프리미엄,Premium,운영중
+added,중국,B7L0,ibis Chongqing Jiangbei Airport Shuanglong Avenue Hotel,충칭,쓰촨·충칭,existing-country-city,이코노미,Select,운영중
+added,중국,C1N0,Pullman Quanzhou Shuitou,취안저우,푸젠·장시,existing-country-city,프리미엄,Premium,운영중
+added,중국,B8Q2,Dhawa Quzhou,취저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B5P8,Ibis Styles Qidong Middle Renmin Road Hotel,치둥,상하이·장쑤,existing-country-city,이코노미,Select,운영중
+added,중국,C1X0,Mercure Qidong Downtown,치둥,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B8P2,Ibis Styles Qinghuangdao Hotel,친황다오,베이징·톈진·허베이,existing-country-city,이코노미,Select,운영중
+added,중국,B8J4,Mercure Qinhuangdao Downtown,친황다오,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,C0X0,Ibis Qingdao Xinduxin CapitaMall,칭다오,산둥,existing-country-city,이코노미,Select,운영중
+added,중국,C0M1,MOVENPICK 칭다오 순마이,칭다오,산둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,C7G9,Mövenpick by Accor 칭다오 5·4 광장,칭다오,산둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,C808,greet Hotel Qingdao Shandong Road,칭다오,산둥,existing-country-city,이코노미,Select,운영중
+added,중국,B0Y3,노보텔 칭다오 뉴 호프,칭다오,산둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C370,머큐어 칭다오 5월 4일 광장,칭다오,산둥,existing-country-city,미드스케일,Select,운영중
+added,중국,B7T0,머큐어 칭다오 장차오,칭다오,산둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C336,머큐어 칭다오 코스트,칭다오,산둥,existing-country-city,미드스케일,Select,운영중
+added,중국,8603,풀만 칭다오 주예,칭다오,산둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,B9A9,Mercure Kashgar Ancient City,카슈가르,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B9N7,Mercure Kashgar Downtown,카슈가르,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C4W0,Mercure Kashgar Exhibition Center,카슈가르,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B6D4,Ibis Styles Kaifeng Millennium City Park Hotel,카이펑,후베이·후난·허난,existing-country-city,이코노미,Select,운영중
+added,중국,B4D9,Mercure Kaifeng North,카이펑,후베이·후난·허난,existing-country-city,미드스케일,Select,운영중
+added,중국,C4F6,Mövenpick by Accor Kaifeng West Lake,카이펑,후베이·후난·허난,existing-country-city,프리미엄,Premium,운영중
+added,중국,8509,Pullman Kaifeng Jianye,카이펑,후베이·후난·허난,existing-country-city,프리미엄,Premium,운영중
+added,중국,B622,IBIS Kangding Hotel,캉딩,쓰촨·충칭,manual-city-or-address,이코노미,Select,운영중
+added,중국,C3Z3,Mercure Kuitun Duku Garden,쿠이툰,산시·서북,manual-city-or-address,미드스케일,Select,운영중
+added,중국,C2Z8,Grand Mercure Kunming South,쿤밍,윈난·구이저우·티베트,existing-country-city,프리미엄,Premium,운영중
+added,중국,C0K8,Ibis KM South Railway Station,쿤밍,윈난·구이저우·티베트,existing-country-city,이코노미,Select,운영중
+added,중국,B5G6,Ibis Kunming Yunda West Rosd,쿤밍,윈난·구이저우·티베트,existing-country-city,이코노미,Select,운영중
+added,중국,B6U7,Ibis Styles Kunming Hi-tech Zone Hotel,쿤밍,윈난·구이저우·티베트,existing-country-city,이코노미,Select,운영중
+added,중국,B9Q2,Mercure KunMing Airport,쿤밍,윈난·구이저우·티베트,existing-country-city,미드스케일,Select,운영중
+added,중국,C447,Mercure Kunming Wujiaba,쿤밍,윈난·구이저우·티베트,existing-country-city,미드스케일,Select,운영중
+added,중국,B9A6,Novotel Kunming City Center,쿤밍,윈난·구이저우·티베트,existing-country-city,미드스케일,Select,운영중
+added,중국,C0M4,Novotel Kunming Yunjin,쿤밍,윈난·구이저우·티베트,existing-country-city,미드스케일,Select,운영중
+added,중국,C221,Novotel Living Yunnan Dianchi Times,쿤밍,윈난·구이저우·티베트,existing-country-city,미드스케일,Select,운영중
+added,중국,8529,Sofitel Kunming,쿤밍,윈난·구이저우·티베트,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B170,ibis Kunming Beijing Rd,쿤밍,윈난·구이저우·티베트,existing-country-city,이코노미,Select,운영중
+added,중국,B0E5,이비스 스타일 쿤밍 난핑 워킹 스트리트,쿤밍,윈난·구이저우·티베트,existing-country-city,이코노미,Select,운영중
+added,중국,B339,Mercure Kunshan MIXC Hi-tech,쿤산,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B966,Novotel Kunshan Yangcheng Lake,쿤산,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,9113,Pullman Zhouzhuang,쿤산,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,C4F5,Mercure Xinjiang Tashkurgan Khunjerab,타슈쿠르간,산시·서북,manual-city-or-address,미드스케일,Select,운영중
+added,중국,C330,Mercure Tai'an Centre,타이안,산둥,existing-country-city,미드스케일,Select,운영중
+added,중국,C1J9,Ibis Styles Taiyuan Liuxiang,타이위안,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B7Z7,Ibis Taiyuan Economic Zone,타이위안,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B341,Ibis Taiyuan Qinxian Street Hotel,타이위안,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B5S2,Ibis Taiyuan SX Hospital Hotel,타이위안,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B6C6,Ibis Taiyuan South Railway Station Hotel,타이위안,산시·서북,existing-country-city,이코노미,Select,운영중
+added,중국,B2X4,Mercure Taiyuan Changfeng Street,타이위안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C0C5,Mercure Taiyuan City Centre,타이위안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B6B4,Mercure Taiyuan Downtown,타이위안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B5R3,Mercure Taiyuan E Tech,타이위안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B371,Mercure Taiyuan Jinyang,타이위안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,C262,Mercure Taiyuan Shanxi Museum,타이위안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B9B2,Mercure Taiyuan Yingze,타이위안,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,8475,Pullman Taiyuan,타이위안,산시·서북,existing-country-city,프리미엄,Premium,운영중
+added,중국,C0C2,Grand Mercure Taizhou Tiantai,타이저우,저장·안후이,existing-country-city,프리미엄,Premium,운영중
+added,중국,C0L8,Ibis Styles Taizhou East Jichuan,타이저우,저장·안후이,existing-country-city,이코노미,Select,운영중
+added,중국,C022,Ibis Styles Taizhou Jiangyan,타이저우,저장·안후이,existing-country-city,이코노미,Select,운영중
+added,중국,C2A3,Mercure Taizhou Wanda Fengcheng River Scenic Area,타이저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B905,Pullman Taizhou Huahong,타이저우,저장·안후이,existing-country-city,프리미엄,Premium,운영중
+added,중국,B9T7,Pullman Taizhou Shenxianju,타이저우,저장·안후이,existing-country-city,프리미엄,Premium,운영중
+added,중국,C3L3,가리아 시안주,타이저우,저장·안후이,existing-country-city,프리미엄,Premium,운영중
+added,중국,B5H9,Pullman Suzhou Taicang,타이창,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,9807,Pullman Tangshan,탕산,베이징·톈진·허베이,existing-country-city,프리미엄,Premium,운영중
+added,중국,B1X1,반얀 트리 텅충(BANYAN TREE TENGCHONG),텅충,윈난·구이저우·티베트,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B8T3,Mercure Tianshui Downtown,톈수이,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B4E9,IBIS Tianjin Ancient Cultural Street Hotel,톈진,베이징·톈진·허베이,existing-country-city,이코노미,Select,운영중
+added,중국,B5Z2,Ibis Tianjin Jinwan Plaza Hotel,톈진,베이징·톈진·허베이,existing-country-city,이코노미,Select,운영중
+added,중국,B512,Ibis Tianjin Railway Station North Square Hotel,톈진,베이징·톈진·허베이,existing-country-city,이코노미,Select,운영중
+added,중국,B6U2,Mercure Tianjin Eco Oriental,톈진,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,B697,Novotel Tianjin Meijiang,톈진,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,9502,ibis Tianjin Wuqing,톈진,베이징·톈진·허베이,existing-country-city,이코노미,Select,운영중
+added,중국,B6R4,노보텔 톈진 드럼 타워,톈진,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,A9P1,머큐어 톈진 우칭,톈진,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,B5M2,머큐어 톈진 톈구,톈진,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,B1U5,반얀 트리 톈진 리버사이드,톈진,베이징·톈진·허베이,existing-country-city,럭셔리,Luxury,운영중
+added,중국,5444,이비스 톈진 테다,톈진,베이징·톈진·허베이,existing-country-city,이코노미,Select,운영중
+added,중국,B5U1,IBIS styles taizhou tiantai HOTEL,톈타이,저장·안후이,manual-city-or-address,이코노미,Select,운영중
+added,중국,C308,Mercure Shanshan Downtown,투루판,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B5W4,Mercure Turpan Downtown,투루판,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B643,Ibis Tongliao Ganqika Hotel,퉁랴오,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,B5Q5,Ibis Tonghua Binjiang West Road Hotel,퉁화,동북·내몽골,manual-city-or-address,이코노미,Select,운영중
+added,중국,B1E0,Mercure Panjin,판진,동북·내몽골,manual-city-or-address,미드스케일,Select,운영중
+added,중국,B6V0,Ibis Foshan Shunde Hotel,포산,광둥,existing-country-city,이코노미,Select,운영중
+added,중국,C2R4,Mercure Foshan Midea Headquarters,포산,광둥,existing-country-city,미드스케일,Select,운영중
+added,중국,B866,Pullman Foshan Shunde,포산,광둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,8719,Sofitel Foshan,포산,광둥,existing-country-city,럭셔리,Luxury,운영중
+added,중국,A5B2,Swissôtel Foshan,포산,광둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,B3E2,Ibis Styles Fuzhou Wuyi Square Hotel,푸저우,푸젠·장시,existing-country-city,이코노미,Select,운영중
+added,중국,B4E1,Mercure Fuzhou Downtown,푸저우,푸젠·장시,existing-country-city,미드스케일,Select,운영중
+added,중국,9806,Pullman Fuzhou Tahoe,푸저우,푸젠·장시,existing-country-city,프리미엄,Premium,운영중
+added,중국,C1I9,GRAND MERCURE HARBIN DOWNTOWN,하얼빈,동북·내몽골,existing-country-city,프리미엄,Premium,운영중
+added,중국,C0L3,Ibis Harbin Airport Bus Stop,하얼빈,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,B3E1,Ibis Harbin Hongqi Street Hotel,하얼빈,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,B4E6,Ibis Harbin Museum,하얼빈,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,B257,Ibis Harbin Songbei Wanda,하얼빈,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,B5P4,Ibis Harbin West Railway Station Wanda plaza hotel,하얼빈,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,B5S1,Ibis Harbin Xinyang Road Hotel,하얼빈,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,B2P1,Mercure Harbin Songbei,하얼빈,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,B2A6,ibis Harbin Normal University Hotel,하얼빈,동북·내몽골,existing-country-city,이코노미,Select,운영중
+added,중국,C568,노보텔 하얼빈 중양 스트리트,하얼빈,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,B7N1,머큐어 하얼빈 공과대학,하얼빈,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,B4S1,머큐어 하얼빈 센트럴 스트리트 소피아 처치,하얼빈,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,B702,머큐어 하얼빈 웨스트 레일웨이 스테이션,하얼빈,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,6824,소피텔 하얼빈,하얼빈,동북·내몽골,existing-country-city,럭셔리,Luxury,운영중
+added,중국,A5D7,Raffles Hainan Clear Water Bay,하이난,하이난·광시,manual-city-or-address,럭셔리,Luxury,운영중
+added,중국,C1B2,Pullman Haining,하이닝,저장·안후이,manual-city-or-address,프리미엄,Premium,운영중
+added,중국,B348,Ibis Haimen South Changjiang Rd Hotel,하이먼,상하이·장쑤,manual-city-or-address,이코노미,Select,운영중
+added,중국,C171,Grand Hotel Haikou (Managed by Accor),하이커우,하이난·광시,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B312,Ibis Haikou Injoy Plaza Hotel,하이커우,하이난·광시,existing-country-city,이코노미,Select,운영중
+added,중국,C4S6,Novotel Haikou West Coast,하이커우,하이난·광시,existing-country-city,미드스케일,Select,운영중
+added,중국,A8G6,Novotel Haikou Xinbudao,하이커우,하이난·광시,existing-country-city,미드스케일,Select,운영중
+added,중국,B9I2,Pullman Haikou,하이커우,하이난·광시,existing-country-city,프리미엄,Premium,운영중
+added,중국,7970,Sofitel Haikou,하이커우,하이난·광시,existing-country-city,럭셔리,Luxury,운영중
+added,중국,C4X6,Novotel HanDan Congtai,한단,베이징·톈진·허베이,existing-country-city,미드스케일,Select,운영중
+added,중국,C2Y5,Grand Mercure Hangzhou Qingshan Lake,항저우,저장·안후이,existing-country-city,프리미엄,Premium,운영중
+added,중국,B7M6,Grand Mercure Hangzhou Zijingang,항저우,저장·안후이,existing-country-city,프리미엄,Premium,운영중
+added,중국,B511,Ibis Hangzhou Future Sci-tech City Hotel,항저우,저장·안후이,existing-country-city,이코노미,Select,운영중
+added,중국,C1K1,Ibis Styles Hangzhou Fuyang,항저우,저장·안후이,existing-country-city,이코노미,Select,운영중
+added,중국,C0L7,Ibis Styles Hangzhou Qiutao,항저우,저장·안후이,existing-country-city,이코노미,Select,운영중
+added,중국,C5C2,Mercure Hangzhou Binjiang Star Avenue,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C571,Mercure Hangzhou Daguan,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B5L0,Mercure Hangzhou East Railway Station,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C369,Mercure Hangzhou Gongshu Wanda Plaza,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B1Y4,Mercure Hangzhou Liping,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B2P6,Mercure Hangzhou Qianjiang,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B7U3,Mercure Hangzhou Qingchun,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C5C1,Mercure Hangzhou Wenyi Road,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B1M5,Mercure Hangzhou West Lake,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C2C9,Mercure Hangzhou West Lake Fengqi Road,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C3Y3,Mercure Hangzhou West Lake Yuquan,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B3W0,Mercure Hangzhou Xixi Future Tech City,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C312,Mercure Hangzhou Xixi Tianmu Mountain,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B7D7,Mercure Hangzhou Xixi Zijingang,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C333,Mövenpick by Accor Hangzhou Xin'an River,항저우,저장·안후이,existing-country-city,프리미엄,Premium,운영중
+added,중국,C5B4,Novotel Hangzhou Binjiang,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C1W8,Novotel Hangzhou East Railway Station,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C4F2,Novotel Hangzhou Xintiandi,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C3V4,Novotel Hangzhou Yuhang,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C5V1,Novotel Living Hangzhou Gongshu Wanda Plaza,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B3C2,Novotel Qiandao Lake,항저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,5554,Sofitel Hangzhou Westlake,항저우,저장·안후이,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B733,Sofitel Hangzhou Yingguan,항저우,저장·안후이,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B2U2,ibis Hangzhou West Lake Qingchun Rd Hotel,항저우,저장·안후이,existing-country-city,이코노미,Select,운영중
+added,중국,B1V5,반얀 트리 항저우,항저우,저장·안후이,existing-country-city,럭셔리,Luxury,운영중
+added,중국,8829,이비스 항저우 황룽 스포츠 센터,항저우,저장·안후이,existing-country-city,이코노미,Select,운영중
+added,중국,B6R2,Mercure Hefei City Hall Square,허페이,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B6Q9,Mercure Hefei Huaihe Road,허페이,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C050,Mercure Hefei South Railway Station,허페이,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,A5G6,Mercure Hefei Sunac,허페이,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,9872,Novotel Hefei Sunac,허페이,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,9871,Pullman Hefei Sunac,허페이,저장·안후이,existing-country-city,프리미엄,Premium,운영중
+added,중국,B9T5,Swissôtel Hefei Grand Park,허페이,저장·안후이,existing-country-city,프리미엄,Premium,운영중
+added,중국,C0G1,Mercure Hetian Night Market Airport,호탄,산시·서북,existing-country-city,미드스케일,Select,운영중
+added,중국,B0Z7,이비스 화이베이 난리 로드 호텔,화이베이,저장·안후이,existing-country-city,이코노미,Select,운영중
+added,중국,C2C8,Mercure Huaian East Railway Station,화이안,상하이·장쑤,existing-country-city,미드스케일,Select,운영중
+added,중국,B890,Pullman Huai'an,화이안,상하이·장쑤,existing-country-city,프리미엄,Premium,운영중
+added,중국,B5X2,Novotel Huashan,화인,산시·서북,manual-city-or-address,미드스케일,Select,운영중
+added,중국,B1W9,Banyan Tree Huangshan,황산,저장·안후이,existing-country-city,럭셔리,Luxury,운영중
+added,중국,C0K5,Ibis Huangshan SX Huizhou Ancient City Hotel,황산,저장·안후이,existing-country-city,이코노미,Select,운영중
+added,중국,C3T2,Mercure Mount Huangshan South Gate Transfer Center,황산,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C659,그랜드 머큐어 황산 셰셴,황산,저장·안후이,existing-country-city,프리미엄,Premium,개관 예정
+added,중국,C019,Grand Mercure Huizhou Huiyang,후이저우,광둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,8163,Pullman Huizhou Kaisa,후이저우,광둥,existing-country-city,프리미엄,Premium,운영중
+added,중국,B9N1,Garrya Huzhou Lucun,후저우,저장·안후이,existing-country-city,프리미엄,Premium,운영중
+added,중국,C0I1,Homm Huzhou Xisai Shan,후저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C4V5,Mercure Deqing Xinshi Ancient Town,후저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C291,Mercure Huzhou Nanxun Ancient Town,후저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B1Y1,Novotel Deqing Moganshan,후저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B9V0,Novotel Huzhou South Taihu Lake,후저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,C4V0,Pullman Moganshan,후저우,저장·안후이,existing-country-city,프리미엄,Premium,운영중
+added,중국,C4U2,Sofitel Anji,후저우,저장·안후이,existing-country-city,럭셔리,Luxury,운영중
+added,중국,C6V9,노보텔 후저우 국제 클레이 테니스 센터,후저우,저장·안후이,existing-country-city,미드스케일,Select,운영중
+added,중국,B3Y4,반얀 트리 안지,후저우,저장·안후이,existing-country-city,럭셔리,Luxury,운영중
+added,중국,B4R9,Mercure Hohhot Downtown,후허하오터,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,중국,C020,Mercure Huhhot Economic Zone,후허하오터,동북·내몽골,existing-country-city,미드스케일,Select,운영중
+added,몽골,B1D8,Novotel Ulaanbaatar,울란바토르,울란바토르,manual-city-or-address,미드스케일,Select,운영중
+added,몽골,9808,이비스 스타일 울란바토르 폴라리스,울란바토르,울란바토르,manual-city-or-address,이코노미,Select,운영중
+added,싱가포르,B9G6,8 on Claymore Singapore - Accor가 관리,싱가포르,싱가포르,existing-country-city,미드스케일,Select,운영중
+added,싱가포르,A5G8,Fairmont Singapore,싱가포르,싱가포르,existing-country-city,럭셔리,Luxury,운영중
+added,싱가포르,C1A7,Mama Shelter Singapore,싱가포르,싱가포르,existing-country-city,미드스케일,Select,운영중
+added,싱가포르,B5Q2,Raffles Sentosa Singapore,싱가포르,싱가포르,existing-country-city,럭셔리,Luxury,운영중
+added,싱가포르,A5E1,Raffles Singapore,싱가포르,싱가포르,existing-country-city,럭셔리,Luxury,운영중
+added,싱가포르,A152,Sofitel Singapore City Centre,싱가포르,싱가포르,existing-country-city,럭셔리,Luxury,운영중
+updated,싱가포르,A5D3,Swissôtel The Stamford Singapore,싱가포르,싱가포르,existing-country-city,프리미엄,Premium,운영중
+added,싱가포르,3610,그랜드 머큐어 싱가포르 록시,싱가포르,싱가포르,existing-country-city,프리미엄,Premium,운영중
+added,싱가포르,C7F0,노보텔 싱가포르 로버트슨 키,싱가포르,싱가포르,existing-country-city,미드스케일,Select,운영중
+added,싱가포르,9543,노보텔 싱가포르 온 스티븐스,싱가포르,싱가포르,existing-country-city,미드스케일,Select,운영중
+added,싱가포르,C3Q7,만다이 레인포레스트 리조트 바이 배얀 트리,싱가포르,싱가포르,existing-country-city,럭셔리,Luxury,운영중
+added,싱가포르,A0D7,머큐어 싱가포르 부기스,싱가포르,싱가포르,existing-country-city,미드스케일,Select,운영중
+added,싱가포르,9561,머큐어 싱가포르 온 스티븐스,싱가포르,싱가포르,existing-country-city,미드스케일,Select,운영중
+added,싱가포르,B6I2,머큐어 싱가포르 티휘트,싱가포르,싱가포르,existing-country-city,미드스케일,Select,운영중
+added,싱가포르,C2S1,머큐어 아이콘 싱가포르 시티 센터,싱가포르,싱가포르,existing-country-city,미드스케일,Select,운영중
+added,싱가포르,B7F8,몬드리안 싱가포르 덕스턴,싱가포르,싱가포르,existing-country-city,럭셔리,Luxury,운영중
+updated,싱가포르,9474,소피텔 싱가포르 센토사,싱가포르,싱가포르,existing-country-city,럭셔리,Luxury,운영중
+added,싱가포르,B6H4,이비스 버제 싱가포르 자스민,싱가포르,싱가포르,existing-country-city,버짓,Select,운영중
+added,싱가포르,B9T2,이비스 버젯 싱가포르 골드,싱가포르,싱가포르,existing-country-city,버짓,Select,운영중
+added,싱가포르,B6H5,이비스 버젯 싱가포르 달리아,싱가포르,싱가포르,existing-country-city,버짓,Select,운영중
+added,싱가포르,B6H9,이비스 버젯 싱가포르 마운트 페이버,싱가포르,싱가포르,existing-country-city,버짓,Select,운영중
+added,싱가포르,B6J8,이비스 버젯 싱가포르 반다,싱가포르,싱가포르,existing-country-city,버짓,Select,운영중
+added,싱가포르,B6H8,이비스 버젯 싱가포르 부기스,싱가포르,싱가포르,existing-country-city,버짓,Select,운영중
+added,싱가포르,B6J6,이비스 버젯 싱가포르 셀레지,싱가포르,싱가포르,existing-country-city,버짓,Select,운영중
+added,싱가포르,B6H7,이비스 버젯 싱가포르 올리브,싱가포르,싱가포르,existing-country-city,버짓,Select,운영중
+added,싱가포르,B6I3,이비스 버젯 싱가포르 웨스트 코스트,싱가포르,싱가포르,existing-country-city,버짓,Select,운영중
+added,싱가포르,B6J7,이비스 버젯 싱가포르 임페리얼,싱가포르,싱가포르,existing-country-city,버짓,Select,운영중
+added,싱가포르,B6J5,이비스 버젯 싱가포르 주 치아트,싱가포르,싱가포르,existing-country-city,버짓,Select,운영중
+added,싱가포르,B6J9,이비스 버젯 싱가포르 클라크 키,싱가포르,싱가포르,existing-country-city,버짓,Select,운영중
+added,싱가포르,B6H6,이비스 버젯 싱가포르 클로브,싱가포르,싱가포르,existing-country-city,버짓,Select,운영중
+added,싱가포르,B6I0,이비스 버젯 싱가포르 튤립,싱가포르,싱가포르,existing-country-city,버짓,Select,운영중
+added,싱가포르,B6I1,이비스 스타일 싱가포르 알버트,싱가포르,싱가포르,existing-country-city,이코노미,Select,운영중
+added,싱가포르,9411,이비스 스타일 싱가포르 온 맥퍼슨,싱가포르,싱가포르,existing-country-city,이코노미,Select,운영중
+added,싱가포르,7451,이비스 싱가포르 노베나,싱가포르,싱가포르,existing-country-city,이코노미,Select,운영중
+added,싱가포르,6657,이비스 싱가포르 온 벤쿨렌,싱가포르,싱가포르,existing-country-city,이코노미,Select,운영중
+added,싱가포르,B9H8,풀만 싱가포르 오차드,싱가포르,싱가포르,existing-country-city,프리미엄,Premium,운영중
+added,싱가포르,B5L7,풀만 싱가포르 힐 스트리트,싱가포르,싱가포르,existing-country-city,프리미엄,Premium,운영중
+added,싱가포르,C3S7,호텔 워터루 싱가포르 - 핸드리튼 컬렉션,싱가포르,싱가포르,existing-country-city,미드스케일,Select,운영중
+added,싱가포르,C266,호텔 파버 파크 싱가포르 - 손글씨 컬렉션,싱가포르,싱가포르,existing-country-city,미드스케일,Select,운영중
+added,말레이시아,A3M7,Mercure Langkawi Pantai Cenang,랑카위,페낭·북부·도서,existing-country-city,미드스케일,Select,운영중
+added,말레이시아,9101,ibis Melaka,믈라카,조호르·남부,manual-city-or-address,이코노미,Select,운영중
+added,말레이시아,A1K1,Mercure Miri City Centre,미리,보르네오,existing-country-city,미드스케일,Select,운영중
+added,말레이시아,9731,Pullman Miri Waterfront,미리,보르네오,existing-country-city,프리미엄,Premium,운영중
+added,말레이시아,A7M8,Mercure Kuala Lumpur Glenmarie,샤알람,쿠알라룸푸르·수도권,existing-country-city,미드스케일,Select,운영중
+added,말레이시아,C5I9,그랜드 머큐어 샤 알람 SA 센트럴,샤알람,쿠알라룸푸르·수도권,existing-country-city,프리미엄,Premium,개관 예정 (2026.11)
+added,말레이시아,B4P4,Mövenpick Hotel And Convention Centre Klia,스팡,쿠알라룸푸르·수도권,existing-country-city,프리미엄,Premium,운영중
+added,말레이시아,B687,이비스 스타일 세팡 클리아,스팡,쿠알라룸푸르·수도권,existing-country-city,이코노미,Select,운영중
+added,말레이시아,9280,머큐어 셀랑고 슬라양,슬랑오르,쿠알라룸푸르·수도권,manual-city-or-address,미드스케일,Select,운영중
+added,말레이시아,B585,Novotel Johor Bahru City Centre,조호르바루,조호르·남부,existing-country-city,미드스케일,Select,운영중
+added,말레이시아,C6L6,ibis Styles Johor Bahru City Centre,조호르바루,조호르·남부,existing-country-city,이코노미,Select,개관 예정 (2026.12)
+added,말레이시아,A0K9,ibis Styles Johor Iskandar Puteri,조호르바루,조호르·남부,existing-country-city,이코노미,Select,운영중
+added,말레이시아,9928,ibis Styles Kota Bharu,코타바루,동해안·고원,manual-city-or-address,이코노미,Select,운영중
+added,말레이시아,9416,머큐어 코타키나발루 시티 센터,코타키나발루,보르네오,existing-country-city,미드스케일,Select,운영중
+added,말레이시아,8457,이비스 스타일 코타키나발루 이나남,코타키나발루,보르네오,existing-country-city,이코노미,Select,운영중
+added,말레이시아,B4Z2,Banyan Tree가 관리하는 Pavilion Hotel Kuala Lumpur,쿠알라룸푸르,쿠알라룸푸르·수도권,existing-country-city,럭셔리,Luxury,운영중
+added,말레이시아,A123,Sofitel Kuala Lumpur Damansara,쿠알라룸푸르,쿠알라룸푸르·수도권,existing-country-city,럭셔리,Luxury,운영중
+added,말레이시아,C3M1,그랜드 머큐어 쿠알라룸푸르 부킷 빈탕,쿠알라룸푸르,쿠알라룸푸르·수도권,existing-country-city,프리미엄,Premium,운영중
+added,말레이시아,6324,노보텔 쿠알라룸푸르 시티 센터,쿠알라룸푸르,쿠알라룸푸르·수도권,existing-country-city,미드스케일,Select,운영중
+added,말레이시아,A545,머큐어 쿠알라 룸푸르 트라이언,쿠알라룸푸르,쿠알라룸푸르·수도권,existing-country-city,미드스케일,Select,운영중
+added,말레이시아,9279,머큐어 쿠알라룸푸르 쇼 퍼레이드,쿠알라룸푸르,쿠알라룸푸르·수도권,existing-country-city,미드스케일,Select,운영중
+added,말레이시아,B3C1,반얀 트리 쿠알라룸푸르,쿠알라룸푸르,쿠알라룸푸르·수도권,existing-country-city,럭셔리,Luxury,운영중
+added,말레이시아,C3K9,이비스 스타일 쿠알라룸푸르 부킷 빈탕,쿠알라룸푸르,쿠알라룸푸르·수도권,existing-country-city,이코노미,Select,운영중
+added,말레이시아,9216,이비스 스타일 쿠알라룸푸르 스리 다만사라,쿠알라룸푸르,쿠알라룸푸르·수도권,existing-country-city,이코노미,Select,운영중
+added,말레이시아,8552,이비스 스타일 쿠알라룸푸르 프레이저 비즈니스 파크,쿠알라룸푸르,쿠알라룸푸르·수도권,existing-country-city,이코노미,Select,운영중
+added,말레이시아,8732,이비스 쿠알라룸푸르 시티 센터,쿠알라룸푸르,쿠알라룸푸르·수도권,existing-country-city,이코노미,Select,운영중
+added,말레이시아,A0C5,풀만 쿠알라룸푸르 시티 센터 호텔 & 레지던스,쿠알라룸푸르,쿠알라룸푸르·수도권,existing-country-city,프리미엄,Premium,운영중
+added,말레이시아,6332,풀만 쿠칭,쿠칭,보르네오,existing-country-city,프리미엄,Premium,운영중
+added,말레이시아,9233,Novotel Taiping Perak,타이핑,페낭·북부·도서,manual-city-or-address,미드스케일,Select,운영중
+added,말레이시아,B7Q0,"Angsana Teluk Bahang, Penang",페낭,페낭·북부·도서,existing-country-city,프리미엄,Premium,운영중
+added,말레이시아,B4R7,Mercure Penang Beach,페낭,페낭·북부·도서,existing-country-city,미드스케일,Select,운영중
+added,말레이시아,B8Z0,머큐어 리빙 푸트라자야,푸트라자야,쿠알라룸푸르·수도권,existing-country-city,미드스케일,Select,운영중
+added,말레이시아,A8V8,ibis PJCC Petaling Jaya,프탈링자야,쿠알라룸푸르·수도권,existing-country-city,이코노미,Select,운영중
+added,베트남,B4G8,Mövenpick 리조트 캄란,깜라인,나트랑,manual-city-or-address,프리미엄,Premium,운영중
+added,베트남,C3J0,Mercure Nha Trang Beach,나트랑,나트랑,existing-country-city,미드스케일,Select,운영중
+added,베트남,6033,Novotel Nha Trang,나트랑,나트랑,existing-country-city,미드스케일,Select,운영중
+added,베트남,C561,The Morning Glow - Handwritten Collection,나트랑,나트랑,existing-country-city,미드스케일,Select,운영중
+added,베트남,9578,ibis Styles Nha Trang,나트랑,나트랑,existing-country-city,이코노미,Select,운영중
+added,베트남,A8E7,풀만 닌빈,닌빈,하노이·북부,existing-country-city,프리미엄,Premium,운영중
+added,베트남,8838,Pullman Danang Beach Resort,다낭,다낭·중부,existing-country-city,프리미엄,Premium,운영중
+added,베트남,7821,그랜드 머큐어 다낭,다낭,다낭·중부,existing-country-city,프리미엄,Premium,운영중
+added,베트남,8287,노보텔 다낭 프리미어 한 리버,다낭,다낭·중부,existing-country-city,미드스케일,Select,운영중
+added,베트남,8488,머큐어 다낭 프렌치 빌리지 바나 힐스,다낭,다낭·중부,existing-country-city,미드스케일,Select,운영중
+added,베트남,B8H0,그랜드 머큐어 달랏,달랏,나트랑,manual-city-or-address,프리미엄,Premium,운영중
+added,베트남,C376,더 아마이엔 - 핸드리튼 컬렉션,뚜이호아,다낭·중부,manual-city-or-address,미드스케일,Select,운영중
+added,베트남,C301,Garrya Mu Cang Chai,무깡짜이,하노이·북부,manual-city-or-address,프리미엄,Premium,운영중
+added,베트남,A5V2,Hotel de la Coupole Sapa - MGallery Collection,사파,하노이·북부,manual-city-or-address,럭셔리,Luxury,운영중
+added,베트남,A248,풀만 푸꾸옥 비치 리조트,안장,푸꾸옥,manual-city-or-address,프리미엄,Premium,운영중
+added,베트남,B1Y7,레거시 옌투 리조트 & 리트리트 - 엠갤러리 컬렉션,옌뜨,하노이·북부,manual-city-or-address,럭셔리,Luxury,운영중
+added,베트남,B6Y9,뫼벤픽 리조트 판 티엣,판티엣,나트랑,manual-city-or-address,프리미엄,Premium,운영중
+added,베트남,6479,La Veranda Resort Phu Quoc - MGallery Collection,푸꾸옥,푸꾸옥,existing-country-city,럭셔리,Luxury,운영중
+added,베트남,B4V5,Mövenpick Resort Waverly Phu Quoc,푸꾸옥,푸꾸옥,existing-country-city,프리미엄,Premium,운영중
+added,베트남,B6Q0,Mövenpick Villas & Residences Phu Quoc,푸꾸옥,푸꾸옥,existing-country-city,프리미엄,Premium,운영중
+added,베트남,9770,Novotel Phu Quoc Resort,푸꾸옥,푸꾸옥,existing-country-city,미드스케일,Select,운영중
+added,베트남,C428,Rixos Phu Quoc Vietnam - Ultra All Inclusive,푸꾸옥,푸꾸옥,existing-country-city,럭셔리,Luxury,운영중
+added,베트남,C675,TRIBE Phu Quoc Thom Island,푸꾸옥,푸꾸옥,existing-country-city,미드스케일,Select,개관 예정 (2027 1분기)
+added,베트남,C678,이비스 스타일 포 옥 톰 아일랜드,푸꾸옥,푸꾸옥,existing-country-city,이코노미,Select,개관 예정 (2027 1분기)
+added,베트남,B2Q9,프리미어 레지던스 푸꾸옥 에메랄드 베이 매니지드 바이 Accor,푸꾸옥,푸꾸옥,existing-country-city,미드스케일,Select,운영중
+added,베트남,B2R4,프리미어 빌리지 푸꾸옥 리조트 - Managed by Accor,푸꾸옥,푸꾸옥,existing-country-city,이코노미,Select,운영중
+added,베트남,7832,Hotel de l'Opera Hanoi - MGallery Collection,하노이,하노이·북부,existing-country-city,럭셔리,Luxury,운영중
+added,베트남,C265,Mövenpick 리빙 웨스트 하노이,하노이,하노이·북부,existing-country-city,프리미엄,Premium,운영중
+added,베트남,B4G6,Mövenpick 호텔 하노이 센터,하노이,하노이·북부,existing-country-city,프리미엄,Premium,운영중
+added,베트남,1555,Sofitel Legend Metropole Hanoi,하노이,하노이·북부,existing-country-city,럭셔리,Luxury,운영중
+added,베트남,6936,그랜드 머큐어 하노이,하노이,하노이·북부,existing-country-city,프리미엄,Premium,운영중
+added,베트남,9813,노보텔 스위트 하노이,하노이,하노이·북부,existing-country-city,미드스케일,Select,운영중
+added,베트남,9692,노보텔 하노이 타이 하,하노이,하노이·북부,existing-country-city,미드스케일,Select,운영중
+added,베트남,7049,머큐어 하노이 라 가르,하노이,하노이·북부,existing-country-city,미드스케일,Select,운영중
+added,베트남,B9U0,페어몬트 하노이,하노이,하노이·북부,existing-country-city,럭셔리,Luxury,운영중
+added,베트남,7579,풀만 하노이,하노이,하노이·북부,existing-country-city,프리미엄,Premium,운영중
+added,베트남,6185,노보텔 하롱 베이,하롱,하노이·북부,manual-city-or-address,미드스케일,Select,운영중
+added,베트남,C324,앙사나 콴란 하롱베이,하롱,하노이·북부,manual-city-or-address,프리미엄,Premium,운영중
+added,베트남,9183,머큐어 하이퐁,하이퐁,하노이·북부,existing-country-city,미드스케일,Select,운영중
+added,베트남,B4S6,풀만 하이 퐁 그랜드 호텔,하이퐁,하노이·북부,existing-country-city,프리미엄,Premium,운영중
+added,베트남,9231,Hôtel des Arts Saigon - MGallery Collection,호치민,호치민·남부,existing-country-city,럭셔리,Luxury,운영중
+added,베트남,B738,Mercure Vung Tau,호치민,호치민·남부,existing-country-city,미드스케일,Select,운영중
+added,베트남,7133,Pullman Vung Tau,호치민,호치민·남부,existing-country-city,프리미엄,Premium,운영중
+added,베트남,2077,Sofitel Saigon Plaza,호치민,호치민·남부,existing-country-city,럭셔리,Luxury,운영중
+added,베트남,B2U9,ibis Styles Vung Tau,호치민,호치민·남부,existing-country-city,이코노미,Select,운영중
+added,베트남,C1W1,노보텔 리빙 사이공 사우스,호치민,호치민·남부,existing-country-city,미드스케일,Select,운영중
+added,베트남,7965,노보텔 사이공 센터,호치민,호치민·남부,existing-country-city,미드스케일,Select,운영중
+added,베트남,C1H5,다와 호 트램,호치민,호치민·남부,existing-country-city,미드스케일,Select,운영중
+added,베트남,C1H4,앙사나 호 트람,호치민,호치민·남부,existing-country-city,프리미엄,Premium,운영중
+added,베트남,7177,이비스 사이공 사우스,호치민,호치민·남부,existing-country-city,이코노미,Select,운영중
+added,베트남,9468,이비스 사이공 에어포트,호치민,호치민·남부,existing-country-city,이코노미,Select,운영중
+added,베트남,7489,풀만 사이공 센터,호치민,호치민·남부,existing-country-city,프리미엄,Premium,운영중
+added,베트남,B1V7,반얀 트리 랑 코 베트남,후에,다낭·중부,existing-country-city,럭셔리,Luxury,운영중
+added,베트남,B1W4,앙사나 랑 코 베트남,후에,다낭·중부,existing-country-city,프리미엄,Premium,운영중
+added,태국,6688,이비스 사무이 보푸트,꼬사무이,코사무이,manual-city-or-address,이코노미,Select,운영중
+added,태국,8463,Mercure Koh Chang Hideaway,꼬창,파타야·기타,manual-city-or-address,미드스케일,Select,운영중
+added,태국,6184,Sofitel Krabi Phokeethra Golf & Spa Resort,끄라비,푸켓·안다만,existing-country-city,럭셔리,Luxury,운영중
+added,태국,B6F7,그랜드 머큐어 크라비 아오 난,끄라비,푸켓·안다만,existing-country-city,프리미엄,Premium,운영중
+added,태국,B809,반얀트리 크라비,끄라비,푸켓·안다만,existing-country-city,럭셔리,Luxury,운영중
+added,태국,7020,이비스 스타일 크라비 아오낭,끄라비,푸켓·안다만,existing-country-city,이코노미,Select,운영중
+added,태국,B4K4,뫼벤픽 리조트 카오 야이,나콘랏차시마,파타야·기타,manual-city-or-address,프리미엄,Premium,운영중
+added,태국,8059,노보텔 방콕 임팩트,논타부리,방콕·중부,manual-city-or-address,미드스케일,Select,운영중
+added,태국,9060,이비스 방콕 임팩트,논타부리,방콕·중부,manual-city-or-address,이코노미,Select,운영중
+added,태국,B2E7,Mercure Rayong Lomtalay Villas & Resort,라용,파타야·기타,existing-country-city,미드스케일,Select,운영중
+added,태국,1130,Novotel Rayong Rim Pae Resort,라용,파타야·기타,existing-country-city,미드스케일,Select,운영중
+added,태국,B631,Novotel Rayong Star Convention Centre,라용,파타야·기타,existing-country-city,미드스케일,Select,운영중
+added,태국,B4U9,Mövenpick BDMS Wellness Resort Bangkok,방콕,방콕·중부,existing-country-city,프리미엄,Premium,운영중
+added,태국,A246,Novotel Bangkok Sukhumvit 4,방콕,방콕·중부,existing-country-city,미드스케일,Select,운영중
+updated,태국,5213,Sofitel Bangkok Sukhumvit,방콕,방콕·중부,existing-country-city,럭셔리,Luxury,운영중
+added,태국,C0G7,TRIBE 리빙 방콕 수쿰빗 39,방콕,방콕·중부,existing-country-city,미드스케일,Select,운영중
+added,태국,6469,VIE Hotel Bangkok - MGallery Collection,방콕,방콕·중부,existing-country-city,럭셔리,Luxury,운영중
+added,태국,A237,ibis Styles Bangkok Sukhumvit 4,방콕,방콕·중부,existing-country-city,이코노미,Select,운영중
+added,태국,6162,그랜드 머큐어 방콕 아속 레지던스,방콕,방콕·중부,existing-country-city,프리미엄,Premium,운영중
+added,태국,C0Y8,그랜드 머큐어 방콕 아트리움,방콕,방콕·중부,existing-country-city,프리미엄,Premium,운영중
+added,태국,C7B4,그리트 방콕 수쿰빗 16 조노,방콕,방콕·중부,existing-country-city,이코노미,Select,운영중
+added,태국,B776,노보텔 리빙 방콕 수쿰빗 레거시,방콕,방콕·중부,existing-country-city,미드스케일,Select,운영중
+added,태국,1738,노보텔 방콕 방나,방콕,방콕·중부,existing-country-city,미드스케일,Select,운영중
+added,태국,9343,노보텔 방콕 스쿰빗 20,방콕,방콕·중부,existing-country-city,미드스케일,Select,운영중
+added,태국,1031,노보텔 방콕 온 시암 스퀘어,방콕,방콕·중부,existing-country-city,미드스케일,Select,운영중
+added,태국,7272,노보텔 방콕 플래티넘 프라투남,방콕,방콕·중부,existing-country-city,미드스케일,Select,운영중
+added,태국,8422,머큐어 방콕 마카산,방콕,방콕·중부,existing-country-city,미드스케일,Select,운영중
+added,태국,C0Q6,머큐어 방콕 수라웡,방콕,방콕·중부,existing-country-city,미드스케일,Select,운영중
+added,태국,B0M2,머큐어 방콕 수쿰빗 24,방콕,방콕·중부,existing-country-city,미드스케일,Select,운영중
+added,태국,A247,머큐어 방콕 스쿰빗 11,방콕,방콕·중부,existing-country-city,미드스케일,Select,운영중
+added,태국,8015,머큐어 방콕 시암,방콕,방콕·중부,existing-country-city,미드스케일,Select,운영중
+added,태국,C0I3,머큐어 방콕 시암 라차트위,방콕,방콕·중부,existing-country-city,미드스케일,Select,운영중
+added,태국,B4K2,뫼벤픽 호텔 스쿰빗 15 방콕,방콕,방콕·중부,existing-country-city,프리미엄,Premium,운영중
+added,태국,B1U6,반얀 트리 방콕,방콕,방콕·중부,existing-country-city,럭셔리,Luxury,운영중
+added,태국,6835,소/방콕,방콕,방콕·중부,existing-country-city,럭셔리,Luxury,운영중
+added,태국,7026,이비스 방콕 리버사이드,방콕,방콕·중부,existing-country-city,이코노미,Select,운영중
+added,태국,6537,이비스 방콕 사톤,방콕,방콕·중부,existing-country-city,이코노미,Select,운영중
+added,태국,B0M5,이비스 방콕 스쿰빗 24,방콕,방콕·중부,existing-country-city,이코노미,Select,운영중
+added,태국,7295,이비스 방콕 스쿰빗 4,방콕,방콕·중부,existing-country-city,이코노미,Select,운영중
+added,태국,8016,이비스 방콕 시암,방콕,방콕·중부,existing-country-city,이코노미,Select,운영중
+added,태국,C0I2,이비스 방콕 시암 라차트위,방콕,방콕·중부,existing-country-city,이코노미,Select,운영중
+added,태국,A9G9,이비스 스타일 방콕 라차타,방콕,방콕·중부,existing-country-city,이코노미,Select,운영중
+added,태국,9790,이비스 스타일 방콕 스쿰빗 프라 카농,방콕,방콕·중부,existing-country-city,이코노미,Select,운영중
+added,태국,B6N1,이비스 스타일 방콕 실롬,방콕,방콕·중부,existing-country-city,이코노미,Select,운영중
+added,태국,C3L2,카시아 라마 9 방콕,방콕,방콕·중부,existing-country-city,미드스케일,Select,운영중
+added,태국,C1G0,페어몬트 방콕 수쿰빗,방콕,방콕·중부,existing-country-city,럭셔리,Luxury,운영중
+added,태국,6323,풀만 방콕 킹 파워,방콕,방콕·중부,existing-country-city,프리미엄,Premium,운영중
+added,태국,3616,풀만 방콕 호텔 G,방콕,방콕·중부,existing-country-city,프리미엄,Premium,운영중
+added,태국,C0H0,홈 스쿰빗34 방콕,방콕,방콕·중부,existing-country-city,미드스케일,Select,운영중
+added,태국,C2P4,Homm Chura Samui,수랏타니,코사무이,manual-city-or-address,미드스케일,Select,운영중
+added,태국,C100,가리야 통사이 베이 사무이,수랏타니,코사무이,manual-city-or-address,프리미엄,Premium,운영중
+added,태국,8502,머큐어 사무이 차웽 타나,수랏타니,코사무이,manual-city-or-address,미드스케일,Select,운영중
+added,태국,B1U2,반얀 트리 사무이,수랏타니,코사무이,manual-city-or-address,럭셔리,Luxury,운영중
+added,태국,C2F8,Novotel Koh Si Chang,촌부리,파타야·기타,manual-city-or-address,미드스케일,Select,운영중
+added,태국,9775,Novotel Marina Sriracha,촌부리,파타야·기타,manual-city-or-address,미드스케일,Select,운영중
+added,태국,A0E9,Veranda Resort Pattaya - MGallery Collection,촌부리,파타야·기타,manual-city-or-address,럭셔리,Luxury,운영중
+added,태국,8154,Veranda High Resort Chiang Mai - MGallery Collection,치앙마이,치앙마이·북부,existing-country-city,럭셔리,Luxury,운영중
+added,태국,B4F8,노보텔 치앙마이 님만 저니허브,치앙마이,치앙마이·북부,existing-country-city,미드스케일,Select,운영중
+added,태국,1797,머큐어 치앙 마이,치앙마이,치앙마이·북부,existing-country-city,미드스케일,Select,운영중
+added,태국,8108,이비스 스타일 치앙 마이(구 올시즌스),치앙마이,치앙마이·북부,existing-country-city,이코노미,Select,운영중
+added,태국,B9U9,이비스 치앙마이 님만 저니허브,치앙마이,치앙마이·북부,existing-country-city,이코노미,Select,운영중
+added,태국,8889,머큐어 파타야 오션 리조트,파타야,파타야·기타,existing-country-city,미드스케일,Select,운영중
+added,태국,B4J6,뫼벤픽 시암 나 좀티엔 파타야,파타야,파타야·기타,existing-country-city,프리미엄,Premium,운영중
+added,태국,6539,이비스 파타야,파타야,파타야·기타,existing-country-city,이코노미,Select,운영중
+added,태국,7540,풀만 파타야 호텔 G,파타야,파타야·기타,existing-country-city,프리미엄,Premium,운영중
+added,태국,B346,노보텔 방콕 퓨처 파크 랑시,파툼타니,방콕·중부,manual-city-or-address,미드스케일,Select,운영중
+added,태국,B130,Grand Mercure Khao Lak Bangsak,팡응아,푸켓·안다만,existing-country-city,프리미엄,Premium,운영중
+added,태국,B436,Pullman Khao Lak Resort,팡응아,푸켓·안다만,existing-country-city,프리미엄,Premium,운영중
+added,태국,A224,Avista Grande Karon Resort & Spa Phuket - MGallery Collection,푸껫,푸켓·안다만,existing-country-city,럭셔리,Luxury,운영중
+added,태국,A245,Avista Hideaway Patong Resort & Spa Phuket - MGallery Collection,푸껫,푸켓·안다만,existing-country-city,럭셔리,Luxury,운영중
+added,태국,B653,Kamaliss MontAzure Phuket - MGallery Collection,푸껫,푸켓·안다만,existing-country-city,럭셔리,Luxury,운영중
+added,태국,B4J4,Mövenpick Phuket Bangtao,푸껫,푸켓·안다만,existing-country-city,프리미엄,Premium,운영중
+added,태국,C541,Mövenpick 리조트 푸켓 카말라 비치,푸껫,푸켓·안다만,existing-country-city,프리미엄,Premium,개관 예정 (2027.01)
+added,태국,C2K2,Navera Phuket - MGallery Collection,푸껫,푸켓·안다만,existing-country-city,럭셔리,Luxury,개관 예정 (2026)
+added,태국,B775,V Villas Phuket - MGallery Collection,푸껫,푸켓·안다만,existing-country-city,럭셔리,Luxury,운영중
+added,태국,8109,그랜드 머큐어 푸켓 파통,푸껫,푸켓·안다만,existing-country-city,프리미엄,Premium,운영중
+added,태국,1965,노보텔 푸켓 리조트,푸껫,푸켓·안다만,existing-country-city,미드스케일,Select,운영중
+added,태국,8099,노보텔 푸켓 빈티지 파크 리조트,푸껫,푸켓·안다만,existing-country-city,미드스케일,Select,운영중
+added,태국,9932,노보텔 푸켓 시티 포키트라,푸껫,푸켓·안다만,existing-country-city,미드스케일,Select,운영중
+added,태국,7235,노보텔 푸켓 카말라 비치,푸껫,푸켓·안다만,existing-country-city,미드스케일,Select,운영중
+added,태국,A206,노보텔 푸켓 카타 아비스타 리조트 앤 스파,푸껫,푸켓·안다만,existing-country-city,미드스케일,Select,운영중
+added,태국,C543,머큐어 푸켓 파통 저니허브,푸껫,푸켓·안다만,existing-country-city,미드스케일,Select,운영중
+added,태국,B2E1,모벤픽 신화 호텔 파통 푸켓,푸껫,푸켓·안다만,existing-country-city,프리미엄,Premium,운영중
+added,태국,B1U8,반얀 트리 푸켓,푸껫,푸켓·안다만,existing-country-city,럭셔리,Luxury,운영중
+added,태국,C600,스플래시 비치 리조트 푸켓,푸껫,푸켓·안다만,existing-country-city,럭셔리,Luxury,운영중
+added,태국,C267,안다만 비치 호텔 푸켓 - 핸드리튼 컬렉션,푸껫,푸켓·안다만,existing-country-city,미드스케일,Select,운영중
+added,태국,B1W2,앙사나 라구나 푸켓,푸껫,푸켓·안다만,existing-country-city,프리미엄,Premium,운영중
+added,태국,C2B8,옴 스위트 라구나,푸껫,푸켓·안다만,existing-country-city,미드스케일,Select,운영중
+added,태국,C2H9,이비스 스타일 푸켓 방타오,푸껫,푸켓·안다만,existing-country-city,이코노미,Select,운영중
+added,태국,9929,이비스 스타일 푸켓 시티,푸껫,푸켓·안다만,existing-country-city,이코노미,Select,운영중
+added,태국,7273,이비스 푸켓 카타,푸껫,푸켓·안다만,existing-country-city,이코노미,Select,운영중
+added,태국,6538,이비스 푸켓 파통,푸껫,푸켓·안다만,existing-country-city,이코노미,Select,운영중
+added,태국,B1X3,카시아 푸켓,푸껫,푸켓·안다만,existing-country-city,미드스케일,Select,운영중
+added,태국,A742,트리브 푸켓 파통,푸껫,푸켓·안다만,existing-country-city,미드스케일,Select,운영중
+added,태국,7488,풀만 푸켓 아카디아 나이톤 비치,푸껫,푸켓·안다만,existing-country-city,프리미엄,Premium,운영중
+added,태국,C1D6,풀만 푸켓 카론 비치 리조트,푸껫,푸켓·안다만,existing-country-city,프리미엄,Premium,운영중
+added,태국,A2E5,풀만 푸켓 판와 비치 리조트,푸껫,푸켓·안다만,existing-country-city,프리미엄,Premium,운영중
+added,태국,B9E6,홈 블리스 사우스비치 파통,푸껫,푸켓·안다만,existing-country-city,미드스케일,Select,운영중
+added,태국,9649,SO/ Sofitel Hua Hin,후아힌,파타야·기타,existing-country-city,럭셔리,Luxury,운영중
+added,태국,7050,V Villas Hua Hin - MGallery Collection,후아힌,파타야·기타,existing-country-city,럭셔리,Luxury,운영중
+added,태국,B4K3,모벤픽 아사라 리조트 앤 스파 후아힌,후아힌,파타야·기타,existing-country-city,프리미엄,Premium,운영중
+added,태국,7276,이비스 후아힌,후아힌,파타야·기타,existing-country-city,이코노미,Select,운영중
+added,인도네시아,C278,Mercure Garut City Center,가루트,자카르타·서부자바,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,B1U7,반얀 트리 빈탄,라고이,롬복·리우제도,manual-city-or-address,럭셔리,Luxury,운영중
+added,인도네시아,0571,노보텔 롬복,롬복,롬복·리우제도,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,A1K2,풀만 롬복 메루야니 만달리카 비치 리조트,롬복,롬복·리우제도,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,7867,ibis Manado City Center Boulevard,마나도,인도네시아 기타,existing-country-city,이코노미,Select,운영중
+added,인도네시아,C1Y9,머큐어 마디운,마디운,동부·중부자바,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,B2V1,Mercure Makassar Nexa Pettarani,마카사르,인도네시아 기타,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,8584,Novotel Makassar Grand Shayla,마카사르,인도네시아 기타,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,8355,ibis Makassar City Center,마카사르,인도네시아 기타,existing-country-city,이코노미,Select,운영중
+added,인도네시아,9757,ibis Styles Makassar Sam Ratulangi,마카사르,인도네시아 기타,existing-country-city,이코노미,Select,운영중
+added,인도네시아,9824,Grand Mercure Malang Mirama,말랑,동부·중부자바,manual-city-or-address,프리미엄,Premium,운영중
+added,인도네시아,8875,ibis Styles Malang,말랑,동부·중부자바,manual-city-or-address,이코노미,Select,운영중
+added,인도네시아,9054,Grand Mercure Maha Cipta Medan Angkasa,메단,인도네시아 기타,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,A6S6,ibis Styles Medan Pattimura,메단,인도네시아 기타,existing-country-city,이코노미,Select,운영중
+added,인도네시아,B549,Grand Mercure Batam Centre,바탐,롬복·리우제도,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,9758,ibis Styles Batam Nagoya,바탐,롬복·리우제도,existing-country-city,이코노미,Select,운영중
+added,인도네시아,9778,Grand Mercure Lampung,반다르람풍,인도네시아 기타,manual-city-or-address,프리미엄,Premium,운영중
+added,인도네시아,6647,Novotel Lampung,반다르람풍,인도네시아 기타,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,8814,Grand Mercure Bandung Setiabudi,반둥,자카르타·서부자바,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,9598,Mercure Bandung City Centre,반둥,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,B2U4,Mercure Bandung Nexa Supratman,반둥,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,6181,Novotel Bandung,반둥,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,9109,Pullman Bandung Grand Central,반둥,자카르타·서부자바,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,9397,ibis Bandung Pasteur,반둥,자카르타·서부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,8060,ibis Bandung Trans Studio,반둥,자카르타·서부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,9339,ibis Styles Bandung Grand Central,반둥,자카르타·서부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,8489,Novotel Banjarmasin Airport,반자르마신,인도네시아 기타,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,B9B5,Buahan A Banyan Tree Escape,발리,발리,existing-country-city,럭셔리,Luxury,운영중
+added,인도네시아,C1H6,Homm 사라남 바투리티,발리,발리,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,B777,TRIBE 발리 쿠타 비치,발리,발리,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,9823,그랜드 머큐어 발리 스미냑,발리,발리,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,6328,노보텔 발리 누사두아 호텔 & 레지던스,발리,발리,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,A222,노보텔 발리 우부드 리조트,발리,발리,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,9105,노보텔 발리 응우라 라이 에어포트,발리,발리,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,8450,머큐어 발리 레기안,발리,발리,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,9078,Sofitel Bali Nusa Dua Beach Resort,발리 (누사두아),발리,existing-country-city,럭셔리,Luxury,운영중
+added,인도네시아,C150,누사두아 비치 호텔 & 스파 - 핸드리튼 컬렉션,발리 (누사두아),발리,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,8006,머큐어 발리 누사두아,발리 (누사두아),발리,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,5474,머큐어 리조트 사누르,발리 (덴파사르),발리,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,7538,올시즌스 발리 덴파사르(이비스 스타일),발리 (덴파사르),발리,existing-country-city,이코노미,Select,운영중
+added,인도네시아,5703,TRIBE 발리 레기안,발리 (레기안),발리,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,6556,풀만 발리 레기안 비치,발리 (레기안),발리,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,1922,노보텔 발리 베노아,발리 (베노아),발리,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,B3U5,PEPPERS 스미냑,발리 (스미냑),발리,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,C4D5,그랜드 스미냑 라이프스타일 부티크 발리 리조트,발리 (스미냑),발리,existing-country-city,럭셔리,Luxury,운영중
+added,인도네시아,B4P2,Mövenpick Resort & Spa Jimbaran Bali,발리 (짐바란),발리,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,B695,Raffles Bali,발리 (짐바란),발리,existing-country-city,럭셔리,Luxury,운영중
+added,인도네시아,C806,Mercure Bali Kuta Galleria,발리 (쿠타),발리,existing-country-city,미드스케일,Select,개관 예정 (2026.11)
+added,인도네시아,8151,더 쿠타 비치 헤리티지 호텔 발리 - Accor 관리,발리 (쿠타),발리,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,3713,머큐어 쿠타 발리,발리 (쿠타),발리,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,7537,이비스 발리 쿠타,발리 (쿠타),발리,existing-country-city,이코노미,Select,운영중
+added,인도네시아,6445,노보텔 발릭파판,발릭파판,인도네시아 기타,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,7443,이비스 발릭파판,발릭파판,인도네시아 기타,existing-country-city,이코노미,Select,운영중
+added,인도네시아,B063,Mercure Bengkulu,벵쿨루,인도네시아 기타,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,C7P8,Angsana Bogor Gunung Geulis,보고르,자카르타·서부자바,manual-city-or-address,프리미엄,Premium,운영중
+added,인도네시아,C7V7,Folio Bogor Padjajaran,보고르,자카르타·서부자바,manual-city-or-address,버짓,Select,운영중
+added,인도네시아,0533,Novotel Bogor Golf Resort & Convention Center,보고르,자카르타·서부자바,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,9061,Pullman Ciawi Vimala Hills Resort Spa & Convention,보고르,자카르타·서부자바,manual-city-or-address,프리미엄,Premium,운영중
+added,인도네시아,A1K4,ibis Styles Bogor Pajajaran,보고르,자카르타·서부자바,manual-city-or-address,이코노미,Select,운영중
+added,인도네시아,9495,ibis Styles Bogor Raya,보고르,자카르타·서부자바,manual-city-or-address,이코노미,Select,운영중
+added,인도네시아,9706,Mercure Berau,브라우,인도네시아 기타,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,C7T5,Mercure Bekasi City Center,브카시,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,A3N3,ibis Styles Bekasi Jatibening,브카시,자카르타·서부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,9196,ibis Styles Cikarang,브카시,자카르타·서부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,B1W6,Homm Laguna Bintan,빈탄,롬복·리우제도,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,B9X8,Mövenpick Resort & Spa Bintan Lagoon,빈탄,롬복·리우제도,manual-city-or-address,프리미엄,Premium,운영중
+added,인도네시아,B1X4,카시아 빈탄,빈탄,롬복·리우제도,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,B5E5,Ibis Samarinda,사마린다,인도네시아 기타,manual-city-or-address,이코노미,Select,운영중
+added,인도네시아,B5E4,Mercure Samarinda,사마린다,인도네시아 기타,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,B066,Majapahit Hotel Surabaya - MGallery Collection,수라바야,동부·중부자바,existing-country-city,럭셔리,Luxury,운영중
+added,인도네시아,6155,Mercure Surabaya Grand Mirama,수라바야,동부·중부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,B750,Mercure Surabaya Manyar,수라바야,동부·중부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,B208,Mövenpick Surabaya City,수라바야,동부·중부자바,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,8967,Novotel Samator Surabaya Timur,수라바야,동부·중부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,7855,ibis Surabaya City Center,수라바야,동부·중부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,B749,ibis Surabaya Tidar,수라바야,동부·중부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,9524,ibis budget Surabaya Diponegoro,수라바야,동부·중부자바,existing-country-city,버짓,Select,운영중
+added,인도네시아,C0I4,Grand Mercure Solo Baru,수라카르타,동부·중부자바,manual-city-or-address,프리미엄,Premium,운영중
+added,인도네시아,0545,Novotel Solo,수라카르타,동부·중부자바,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,9239,The Royal Surakarta Heritage - Handwritten Collection,수라카르타,동부·중부자바,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,6530,ibis Styles Solo,수라카르타,동부·중부자바,manual-city-or-address,이코노미,Select,운영중
+added,인도네시아,C622,머큐어 솔로,수라카르타,동부·중부자바,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,C5Z9,Mercure Cibadak Sukabumi Resort,수카부미,자카르타·서부자바,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,C6A5,Mövenpick Resort Carita,스랑,자카르타·서부자바,manual-city-or-address,프리미엄,Premium,운영중
+added,인도네시아,5506,노보텔 세마랑,스마랑,동부·중부자바,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,8430,이비스 버젯 세마랑 텐데안,스마랑,동부·중부자바,manual-city-or-address,버짓,Select,운영중
+added,인도네시아,6473,이비스 세마랑 심팡 리마,스마랑,동부·중부자바,manual-city-or-address,이코노미,Select,운영중
+added,인도네시아,B911,이비스 스타일 세마랑 심팡 리마,스마랑,동부·중부자바,manual-city-or-address,이코노미,Select,운영중
+added,인도네시아,B6X1,Mercure Jayapura,자야푸라,인도네시아 기타,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,C1I1,25시간 호텔 자카르타 더 오드버드,자카르타,자카르타·서부자바,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,A5G1,Fairmont Jakarta,자카르타,자카르타·서부자바,existing-country-city,럭셔리,Luxury,운영중
+added,인도네시아,B151,Mercure Jakarta Gatot Subroto,자카르타,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,C0Q3,Mövenpick 호텔 자카르타 시티 센터,자카르타,자카르타·서부자바,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,A5Y7,Raffles Jakarta,자카르타,자카르타·서부자바,existing-country-city,럭셔리,Luxury,운영중
+added,인도네시아,9896,그랜드 머큐어 자카르타 케마요란,자카르타,자카르타·서부자바,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,8535,그랜드 머큐어 자카르타 하모니,자카르타,자카르타·서부자바,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,7447,노보텔 자카르타 가자 마다,자카르타,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,5704,노보텔 자카르타 망가 두아 스퀘어,자카르타,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,9799,노보텔 자카르타 시키니,자카르타,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,C252,노보텔 자카르타 플로마스,자카르타,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,C250,노보텔 탕게랑 BSD 시티,자카르타,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,8057,머큐어 자카르타 그로골,자카르타,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,A610,머큐어 자카르타 바타비아,자카르타,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,9414,머큐어 자카르타 사방,자카르타,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,6680,머큐어 자카르타 시마투팡,자카르타,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,A1K6,머큐어 자카르타 시키니,자카르타,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,5473,머큐어 컨벤션 센터 안촐,자카르타,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,9021,머큐어 판타이 인다 카푹,자카르타,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,B764,스위소텔 리빙 자카르타 메가 쿠닝안,자카르타,자카르타·서부자바,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,B590,스위소텔 자카르타 픽 애비뉴,자카르타,자카르타·서부자바,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,8307,올 시즌스 자카르타 담린,자카르타,자카르타·서부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,6366,이비스 버젯 자카르타 멘텡,자카르타,자카르타·서부자바,existing-country-city,버짓,Select,운영중
+added,인도네시아,6594,이비스 버젯 자카르타 시키니,자카르타,자카르타·서부자바,existing-country-city,버짓,Select,운영중
+added,인도네시아,9103,이비스 스타일 자카르타 망가 두아 스퀘어,자카르타,자카르타·서부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,9213,이비스 스타일 자카르타 순터,자카르타,자카르타·서부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,A1K5,이비스 스타일 자카르타 시마투팡,자카르타,자카르타·서부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,8593,이비스 스타일 자카르타 에어포트,자카르타,자카르타·서부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,8674,이비스 스타일 자카르타 타나 아방,자카르타,자카르타·서부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,9652,이비스 자카르타 라덴 살레,자카르타,자카르타·서부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,8448,이비스 자카르타 스넨,자카르타,자카르타·서부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,8487,이비스 자카르타 하모니,자카르타,자카르타·서부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,7536,풀만 자카르타 센트럴 파크,자카르타,자카르타·서부자바,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,8491,풀만 자카르타 인도네시아 탐린 CBD,자카르타,자카르타·서부자바,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,C270,가리아 비안티 요그야카르타,족자카르타,자카르타·서부자바,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,9608,그랜드 머큐어 요그야카르타 아디수십토,족자카르타,자카르타·서부자바,existing-country-city,프리미엄,Premium,운영중
+added,인도네시아,A088,노보텔 스위트 요그야카르타 말리오보로,족자카르타,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,B5Q9,노보텔 요그야카르타 국제 공항 쿨론 프로고,족자카르타,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,7460,이비스 스타일 요그야카르타,족자카르타,자카르타·서부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,9637,이비스 요그야카르타 아디수십토,족자카르타,자카르타·서부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,B5Z8,이비스 욕야카르타 인터내셔널 에어포트 꿀론 쁘로고,족자카르타,자카르타·서부자바,existing-country-city,이코노미,Select,운영중
+added,인도네시아,5451,피닉스 호텔 요그야카르타 - 핸드리튼 컬렉션,족자카르타,자카르타·서부자바,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,9019,Mercure Karawang,카라왕,자카르타·서부자바,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,B3Z6,Novotel Karawang,카라왕,자카르타·서부자바,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,7234,노보텔 탕게랑,탕에랑,자카르타·서부자바,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,8455,머큐어 세르퐁 알람 수테라,탕에랑,자카르타·서부자바,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,A6P9,머큐어 탕게랑 BSD 시티,탕에랑,자카르타·서부자바,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,B1R6,머큐어 탕게랑 센터,탕에랑,자카르타·서부자바,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,8826,이비스 가딩 세르퐁,탕에랑,자카르타·서부자바,manual-city-or-address,이코노미,Select,운영중
+added,인도네시아,9041,이비스 버젯 자카르타 에어포트,탕에랑,자카르타·서부자바,manual-city-or-address,버짓,Select,운영중
+added,인도네시아,B281,이비스 스타일 세르퐁 BSD 시티,탕에랑,자카르타·서부자바,manual-city-or-address,이코노미,Select,운영중
+added,인도네시아,7854,Mercure Padang,파당,인도네시아 기타,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,9099,ibis Padang,파당,인도네시아 기타,manual-city-or-address,이코노미,Select,운영중
+added,인도네시아,3716,Novotel Palembang - Hotel & Residence,팔렘방,인도네시아 기타,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,9214,ibis Palembang Sanggar,팔렘방,인도네시아 기타,manual-city-or-address,이코노미,Select,운영중
+added,인도네시아,9707,머큐어 팡칼란분,팡칼란분,인도네시아 기타,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,7297,Novotel Bangka - Hotel & Convention Centre,팡칼피낭,롬복·리우제도,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,C2H0,스위소텔 누산타라,페나잠파세르우타라,인도네시아 기타,manual-city-or-address,프리미엄,Premium,운영중
+added,인도네시아,9482,Novotel Pekanbaru,페칸바루,인도네시아 기타,manual-city-or-address,미드스케일,Select,운영중
+added,인도네시아,6925,Mercure Pontianak City Center,폰티아낙,인도네시아 기타,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,B836,Novotel Pontianak Convention Centre,폰티아낙,인도네시아 기타,existing-country-city,미드스케일,Select,운영중
+added,인도네시아,9654,ibis Pontianak City Center,폰티아낙,인도네시아 기타,existing-country-city,이코노미,Select,운영중
+added,필리핀,C586,Mercure Mactan Cebu,라푸라푸,세부·막탄,manual-city-or-address,미드스케일,Select,운영중
+added,필리핀,B4N9,Mövenpick Cebu,라푸라푸,세부·막탄,manual-city-or-address,프리미엄,Premium,운영중
+added,필리핀,9338,Admiral Hotel Manila - MGallery Collection,마닐라,마닐라·수도권,existing-country-city,럭셔리,Luxury,운영중
+added,필리핀,7090,Novotel Manila Araneta City,마닐라,마닐라·수도권,existing-country-city,미드스케일,Select,운영중
+added,필리핀,6308,Sofitel Philippine Plaza Manila,마닐라,마닐라·수도권,existing-country-city,럭셔리,Luxury,운영중
+added,필리핀,A5G3,Fairmont Makati,마카티,마닐라·수도권,manual-city-or-address,럭셔리,Luxury,운영중
+added,필리핀,A5E3,Raffles Makati,마카티,마닐라·수도권,manual-city-or-address,럭셔리,Luxury,운영중
+added,필리핀,C4R4,Homm Mandaue City Cebu,만다우에,세부·막탄,manual-city-or-address,미드스케일,Select,운영중
+added,필리핀,9607,노보텔 스위트 마닐라 앳 아쿠아,만달루용,마닐라·수도권,manual-city-or-address,미드스케일,Select,운영중
+added,필리핀,B4P1,Mövenpick Resort & Spa Boracay,보라카이,보라카이,existing-country-city,프리미엄,Premium,운영중
+added,필리핀,C3A0,ibis Styles Boracay,보라카이,보라카이,existing-country-city,이코노미,Select,개관 예정 (2026.12)
+added,필리핀,B6N4,Swissôtel Clark Philippines,앙헬레스,루손·기타,manual-city-or-address,프리미엄,Premium,운영중
+added,필리핀,C2H4,Ibis Styles Subic,올롱가포,루손·기타,manual-city-or-address,이코노미,Select,운영중
+added,필리핀,B133,이비스 스타일 마닐라 아라네타 시티,케손시티,마닐라·수도권,manual-city-or-address,이코노미,Select,운영중
+added,필리핀,C0Q8,South Palms Resort and Spa Panglao - MGallery Collection,팡라오,세부·막탄,manual-city-or-address,럭셔리,Luxury,운영중
+added,캄보디아,A611,Novotel Sihanoukville Holiday Resort,시아누크빌,시아누크빌,manual-city-or-address,미드스케일,Select,운영중
+added,캄보디아,A5D9,Raffles Grand Hotel d'Angkor Siem Reap,시엠리프,시엠립,manual-city-or-address,럭셔리,Luxury,운영중
+added,캄보디아,3123,Sofitel Angkor Phokeethra Golf & Spa Resort,시엠리프,시엠립,manual-city-or-address,럭셔리,Luxury,운영중
+added,캄보디아,9914,이비스 스타일스 씨엠립,시엠리프,시엠립,manual-city-or-address,이코노미,Select,운영중
+added,캄보디아,B2E8,Novotel Phnom Penh BKK 1,프놈펜,프놈펜,existing-country-city,미드스케일,Select,운영중
+added,캄보디아,A5E0,Raffles Hotel Le Royal Phnom Penh,프놈펜,프놈펜,existing-country-city,럭셔리,Luxury,운영중
+added,캄보디아,6526,Sofitel Phnom Penh Phokeethra,프놈펜,프놈펜,existing-country-city,럭셔리,Luxury,운영중
+added,캄보디아,B5M5,TRIBE Phnom Penh Post Office Square,프놈펜,프놈펜,existing-country-city,미드스케일,Select,운영중
+added,캄보디아,B9Q9,ibis budget Phnom Penh Riverside,프놈펜,프놈펜,existing-country-city,버짓,Select,운영중
+added,라오스,9641,3 Nagas Hotel Luang Prabang - MGallery Collection,루앙프라방,루앙프라방,existing-country-city,럭셔리,Luxury,운영중
+added,라오스,9112,Pullman Luang Prabang,루앙프라방,루앙프라방,existing-country-city,프리미엄,Premium,운영중
+added,라오스,9669,Sofitel Luang Prabang,루앙프라방,루앙프라방,existing-country-city,럭셔리,Luxury,운영중
+added,라오스,B1X0,옴 수반나품 루앙프라방,루앙프라방,루앙프라방,existing-country-city,미드스케일,Select,운영중
+added,라오스,8074,ibis Vientiane Nam Phu,비엔티안,비엔티안,existing-country-city,이코노미,Select,운영중
+added,미얀마,9395,Novotel Inle Lake Myat Min,냐웅슈웨,인레호수,manual-city-or-address,미드스케일,Select,운영중
+added,미얀마,A095,Sofitel Inle Lake Myat Min,냐웅슈웨,인레호수,manual-city-or-address,럭셔리,Luxury,운영중
+added,미얀마,9096,The Lake Garden Hotel Nay Pyi Taw - MGallery Collection,네피도,네피도,manual-city-or-address,럭셔리,Luxury,운영중
+added,미얀마,9793,ibis Styles Mandalay Centre,만달레이,만달레이,manual-city-or-address,이코노미,Select,개관 예정
+added,미얀마,A3N7,Mercure Yangon Kaba Aye,양곤,양곤,manual-city-or-address,미드스케일,Select,운영중
+added,미얀마,9045,Novotel Yangon Max,양곤,양곤,manual-city-or-address,미드스케일,Select,운영중
+added,인도,A741,Grand Mercure Ahmedabad GIFT City,간디나가르,구자라트,existing-country-city,프리미엄,Premium,운영중
+added,인도,8855,Novotel Goa Candolim,고아,고아,existing-country-city,미드스케일,Select,운영중
+added,인도,A6P4,Novotel Goa Dona Sylvia Resort,고아,고아,existing-country-city,미드스케일,Select,운영중
+added,인도,8861,Novotel Goa Resort & Spa,고아,고아,existing-country-city,미드스케일,Select,운영중
+added,인도,8562,ibis Styles Goa Calangute,고아,고아,existing-country-city,이코노미,Select,운영중
+added,인도,B374,ibis Styles Goa Vagator,고아,고아,existing-country-city,이코노미,Select,운영중
+added,인도,6363,ibis Gurgaon Golf Course Road,구르가온,델리·수도권,existing-country-city,이코노미,Select,운영중
+added,인도,9581,Novotel Guwahati GS Road,구와하티,동부·북동부,existing-country-city,미드스케일,Select,운영중
+added,인도,7087,ibis Navi Mumbai,나비뭄바이,뭄바이·마하라슈트라,existing-country-city,이코노미,Select,운영중
+added,인도,7347,ibis Nashik,나식,뭄바이·마하라슈트라,existing-country-city,이코노미,Select,운영중
+added,인도,7560,Novotel New Delhi Aerocity,뉴델리,델리·수도권,existing-country-city,미드스케일,Select,운영중
+added,인도,6972,Novotel New Delhi City Centre,뉴델리,델리·수도권,existing-country-city,미드스케일,Select,운영중
+added,인도,7559,Pullman New Delhi Aerocity,뉴델리,델리·수도권,existing-country-city,프리미엄,Premium,운영중
+added,인도,7484,ibis New Delhi Aerocity,뉴델리,델리·수도권,existing-country-city,이코노미,Select,운영중
+added,인도,C253,Mercure Lucknow Gomti Nagar,러크나우,동부·북동부,existing-country-city,미드스케일,Select,운영중
+added,인도,A8M7,Novotel Lucknow Gomti Nagar,러크나우,동부·북동부,existing-country-city,미드스케일,Select,운영중
+added,인도,9306,Grand Mercure Mysore,마이소르,벵갈루루·카르나타카,manual-city-or-address,프리미엄,Premium,운영중
+added,인도,C2L5,ibis Styles Mysuru,마이소르,벵갈루루·카르나타카,manual-city-or-address,이코노미,Select,운영중
+added,인도,B354,Fairmont Mumbai,뭄바이,뭄바이·마하라슈트라,existing-country-city,럭셔리,Luxury,운영중
+added,인도,B4C0,Novotel Mumbai International Airport,뭄바이,뭄바이·마하라슈트라,existing-country-city,미드스케일,Select,운영중
+added,인도,6926,Novotel Mumbai Juhu Beach,뭄바이,뭄바이·마하라슈트라,existing-country-city,미드스케일,Select,운영중
+added,인도,C2S3,"Roswyn, A Morgans Originals Hotel",뭄바이,뭄바이·마하라슈트라,existing-country-city,럭셔리,Luxury,운영중
+added,인도,6451,Sofitel Mumbai BKC,뭄바이,뭄바이·마하라슈트라,existing-country-city,럭셔리,Luxury,운영중
+added,인도,6367,ibis Mumbai Airport,뭄바이,뭄바이·마하라슈트라,existing-country-city,이코노미,Select,운영중
+added,인도,6830,ibis Mumbai BKC,뭄바이,뭄바이·마하라슈트라,existing-country-city,이코노미,Select,운영중
+added,인도,9063,ibis Mumbai Vikhroli,뭄바이,뭄바이·마하라슈트라,existing-country-city,이코노미,Select,운영중
+added,인도,B072,ibis Thane,뭄바이,뭄바이·마하라슈트라,existing-country-city,이코노미,Select,운영중
+added,인도,9278,Grand Mercure Vadodara Surya Palace,바도다라,구자라트,existing-country-city,프리미엄,Premium,운영중
+added,인도,C464,Angsana Oasis Spa & Resort,벵갈루루,벵갈루루·카르나타카,existing-country-city,프리미엄,Premium,운영중
+added,인도,7155,Grand Mercure Bangalore,벵갈루루,벵갈루루·카르나타카,existing-country-city,프리미엄,Premium,운영중
+added,인도,8908,Grand Mercure Bengaluru at Gopalan Mall,벵갈루루,벵갈루루·카르나타카,existing-country-city,프리미엄,Premium,운영중
+added,인도,6453,Novotel Bengaluru Outer Ring Road,벵갈루루,벵갈루루·카르나타카,existing-country-city,미드스케일,Select,운영중
+added,인도,6454,ibis Bengaluru City Centre,벵갈루루,벵갈루루·카르나타카,existing-country-city,이코노미,Select,운영중
+added,인도,B2W1,ibis Bengaluru Hebbal,벵갈루루,벵갈루루·카르나타카,existing-country-city,이코노미,Select,운영중
+added,인도,6963,ibis Bengaluru Hosur Road,벵갈루루,벵갈루루·카르나타카,existing-country-city,이코노미,Select,운영중
+added,인도,7441,ibis Bengaluru Outer Ring Road,벵갈루루,벵갈루루·카르나타카,existing-country-city,이코노미,Select,운영중
+added,인도,C0B9,NOVOTEL BHOPAL,보팔,중부,existing-country-city,미드스케일,Select,운영중
+added,인도,B6H1,NOVOTEL BHUBANESWAR JANPATH,부바네스와르,동부·북동부,manual-city-or-address,미드스케일,Select,운영중
+added,인도,7535,Novotel Visakhapatnam Varun Beach,비사카파트남,하이데라바드·안드라,existing-country-city,미드스케일,Select,운영중
+added,인도,A121,The Bheemli Resort - Managed by AccorHotels,비사카파트남,하이데라바드·안드라,existing-country-city,이코노미,Select,운영중
+added,인도,A0L1,Novotel Vijayawada Varun,비자야와다,하이데라바드·안드라,manual-city-or-address,미드스케일,Select,운영중
+added,인도,C0W7,Grand Mercure Agra,아그라,델리·수도권,existing-country-city,프리미엄,Premium,운영중
+added,인도,8173,Novotel Ahmedabad,아메다바드,구자라트,existing-country-city,미드스케일,Select,운영중
+added,인도,B9T3,Fairmont Udaipur Palace,우다이푸르,라자스탄,existing-country-city,럭셔리,Luxury,운영중
+added,인도,B068,Raffles Udaipur,우다이푸르,라자스탄,existing-country-city,럭셔리,Luxury,운영중
+added,인도,A5G0,Fairmont Jaipur,자이푸르,라자스탄,existing-country-city,럭셔리,Luxury,운영중
+added,인도,9884,Novotel Jaipur Convention Centre,자이푸르,라자스탄,existing-country-city,미드스케일,Select,운영중
+added,인도,B5N1,Raffles Jaipur,자이푸르,라자스탄,existing-country-city,럭셔리,Luxury,운영중
+added,인도,6529,ibis Jaipur City Centre,자이푸르,라자스탄,existing-country-city,이코노미,Select,운영중
+added,인도,B9J2,Novotel Jodhpur ITI Circle,조드푸르,라자스탄,existing-country-city,미드스케일,Select,운영중
+added,인도,C0N5,Mercure Chandigarh Tribune Chowk,찬디가르,북부·히말라야,existing-country-city,미드스케일,Select,운영중
+added,인도,B7I3,Novotel Chandigarh Tribune Chowk,찬디가르,북부·히말라야,existing-country-city,미드스케일,Select,운영중
+added,인도,9249,Mercure Chennai Sriperumbudur,첸나이,첸나이·타밀나두,existing-country-city,미드스케일,Select,운영중
+added,인도,9636,Novotel Chennai Chamiers Road,첸나이,첸나이·타밀나두,existing-country-city,미드스케일,Select,운영중
+added,인도,6714,Novotel Chennai OMR,첸나이,첸나이·타밀나두,existing-country-city,미드스케일,Select,운영중
+added,인도,7089,Novotel Chennai Sipcot,첸나이,첸나이·타밀나두,existing-country-city,미드스케일,Select,운영중
+added,인도,C460,Pullman Chennai Anna Salai,첸나이,첸나이·타밀나두,existing-country-city,프리미엄,Premium,운영중
+added,인도,8020,ibis Chennai City Centre,첸나이,첸나이·타밀나두,existing-country-city,이코노미,Select,운영중
+added,인도,6715,ibis Chennai OMR,첸나이,첸나이·타밀나두,existing-country-city,이코노미,Select,운영중
+added,인도,7057,ibis Chennai Sipcot,첸나이,첸나이·타밀나두,existing-country-city,이코노미,Select,운영중
+added,인도,C2A7,Grand Mercure Goa Candolim,칸돌림,고아,existing-country-city,프리미엄,Premium,운영중
+added,인도,8096,ibis Coimbatore City Centre,코임바토르,첸나이·타밀나두,existing-country-city,이코노미,Select,운영중
+added,인도,B283,Novotel Kochi Infopark,코치,케랄라,existing-country-city,미드스케일,Select,운영중
+added,인도,7928,ibis Kochi City Centre,코치,케랄라,existing-country-city,이코노미,Select,운영중
+added,인도,9832,Novotel Imagicaa Khopoli,코폴리,뭄바이·마하라슈트라,manual-city-or-address,미드스케일,Select,운영중
+added,인도,6937,Novotel Kolkata - Hotel & Residences,콜카타,동부·북동부,existing-country-city,미드스케일,Select,운영중
+added,인도,9115,ibis Kolkata Rajarhat,콜카타,동부·북동부,existing-country-city,이코노미,Select,운영중
+added,인도,B4F9,Mercure Goa Devaaya Resort,판짐,고아,manual-city-or-address,미드스케일,Select,운영중
+added,인도,9634,Novotel Goa Panjim,판짐,고아,manual-city-or-address,미드스케일,Select,운영중
+added,인도,6833,Novotel Pune Nagar Road,푸네,뭄바이·마하라슈트라,existing-country-city,미드스케일,Select,운영중
+added,인도,7253,ibis Pune Hinjewadi,푸네,뭄바이·마하라슈트라,existing-country-city,이코노미,Select,운영중
+added,인도,6543,ibis Pune Viman Nagar,푸네,뭄바이·마하라슈트라,existing-country-city,이코노미,Select,운영중
+added,인도,8824,Mercure Hyderabad KCP,하이데라바드,하이데라바드·안드라,existing-country-city,미드스케일,Select,운영중
+added,인도,6687,Novotel Hyderabad Airport,하이데라바드,하이데라바드·안드라,existing-country-city,미드스케일,Select,운영중
+added,인도,6182,Novotel Hyderabad Convention Centre,하이데라바드,하이데라바드·안드라,existing-country-city,미드스케일,Select,운영중
+added,인도,6589,ibis Hyderabad HITEC City,하이데라바드,하이데라바드·안드라,existing-country-city,이코노미,Select,운영중
+added,몰디브,C4Z3,V Villas Maldives at Mirihi - MGallery Collection,남아리아톨,몰디브,manual-city-or-address,럭셔리,Luxury,운영중
+added,몰디브,B4P5,Kuredhivaru Resort & Spa Maldives,누누아톨,몰디브,manual-city-or-address,프리미엄,Premium,운영중
+added,몰디브,9924,"Pullman Maldives Maamutaa, All-Inclusive Resort",마무타,몰디브,manual-city-or-address,프리미엄,Premium,운영중
+added,몰디브,B986,SO/ Maldives,말레,몰디브,existing-country-city,럭셔리,Luxury,운영중
+added,몰디브,B1W0,반얀 트리 바빈파루,말레,몰디브,existing-country-city,럭셔리,Luxury,운영중
+added,몰디브,B1W5,앙사나 벨라바루,말레,몰디브,existing-country-city,프리미엄,Premium,운영중
+added,몰디브,B1W1,앙사나 아이후루,말레,몰디브,existing-country-city,미드스케일,Select,운영중
+added,몰디브,9923,Mercure Maldives Kooddoo Resort,쿠두,몰디브,manual-city-or-address,미드스케일,Select,운영중
+added,스리랑카,C7L1,Pullman Bentota Resort and Spa,알루트가마,남부 해안,manual-city-or-address,프리미엄,Premium,운영중
+added,스리랑카,C7L3,Pullman Colombo Downtown,콜롬보,콜롬보·서부,existing-country-city,프리미엄,Premium,운영중
+added,네팔,C181,Mercure Kathmandu Sukedhara Heights,카트만두,카트만두,existing-country-city,미드스케일,Select,운영중
+added,파키스탄,B4X7,Movenpick Centaurus Islamabad,이슬라마바드,이슬라마바드,existing-country-city,프리미엄,Premium,운영중
+added,파키스탄,B4N7,Mövenpick Karachi,카라치,카라치,existing-country-city,프리미엄,Premium,운영중
+added,카자흐스탄,B1Q4,Rixos Borovoe,슈추친스크,아스타나,manual-city-or-address,럭셔리,Luxury,운영중
+added,카자흐스탄,B1Q3,Rixos President Astana,아스타나,아스타나,existing-country-city,럭셔리,Luxury,운영중
+added,카자흐스탄,8474,ibis Astana,아스타나,아스타나,existing-country-city,이코노미,Select,운영중
+added,카자흐스탄,B7R0,Rixos Water World Aktau,악타우,악타우,manual-city-or-address,럭셔리,Luxury,운영중
+added,카자흐스탄,A0S4,ibis Aktobe,악토베,악토베,manual-city-or-address,이코노미,Select,운영중
+added,카자흐스탄,C287,Ibis Almaty East,알마티,알마티,existing-country-city,이코노미,Select,개관 예정 (2026)
+added,카자흐스탄,B0P4,Mercure Almaty City Center,알마티,알마티,existing-country-city,미드스케일,Select,운영중
+added,카자흐스탄,8582,Novotel Almaty City Center,알마티,알마티,existing-country-city,미드스케일,Select,운영중
+added,카자흐스탄,B5J5,Novotel Living Almaty Jetisu,알마티,알마티,existing-country-city,미드스케일,Select,운영중
+added,카자흐스탄,B1N9,Rixos Almaty,알마티,알마티,existing-country-city,럭셔리,Luxury,운영중
+added,카자흐스탄,B967,Swissôtel Wellness Resort Alatau Almaty,알마티,알마티,existing-country-city,프리미엄,Premium,운영중
+added,카자흐스탄,B5L4,ibis Almaty Jetisu,알마티,알마티,existing-country-city,이코노미,Select,운영중
+added,우즈베키스탄,C0E8,Mercure Bukhara Old Town,부하라,부하라,manual-city-or-address,미드스케일,Select,운영중
+added,우즈베키스탄,C076,Mövenpick Samarkand,사마르칸트,사마르칸트,existing-country-city,프리미엄,Premium,운영중
+added,우즈베키스탄,C485,Ibis Tashkent Index,타슈켄트,타슈켄트,existing-country-city,이코노미,Select,운영중
+added,우즈베키스탄,C4C7,Mercure Tashkent North,타슈켄트,타슈켄트,existing-country-city,미드스케일,Select,운영중
+added,우즈베키스탄,C042,Mercure Tashkent South,타슈켄트,타슈켄트,existing-country-city,미드스케일,Select,운영중
+added,우즈베키스탄,C5K7,Mövenpick Tashkent Old City,타슈켄트,타슈켄트,existing-country-city,프리미엄,Premium,운영중
+added,우즈베키스탄,C093,Swissôtel Tashkent,타슈켄트,타슈켄트,existing-country-city,프리미엄,Premium,운영중
+added,우즈베키스탄,C0R1,Mercure Khiva,히바,히바,manual-city-or-address,미드스케일,Select,운영중
+added,키르기스스탄,A145,Novotel Bishkek City Center,비슈케크,비슈케크,existing-country-city,미드스케일,Select,운영중

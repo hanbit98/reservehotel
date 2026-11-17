@@ -35,7 +35,7 @@ COUNTRY_FLAGS = {
     "말레이시아": "🇲🇾",
     "인도네시아": "🇮🇩", "필리핀": "🇵🇭", "캄보디아": "🇰🇭", "라오스": "🇱🇦", "미얀마": "🇲🇲",
     "인도": "🇮🇳", "몰디브": "🇲🇻", "스리랑카": "🇱🇰", "네팔": "🇳🇵", "부탄": "🇧🇹", "방글라데시": "🇧🇩",
-    "파키스탄": "🇵🇰", "카자흐스탄": "🇰🇿", "우즈베키스탄": "🇺🇿", "키르기스스탄": "🇰🇬", "타지키스탄": "🇹🇯",
+    "파키스탄": "🇵🇰", "몽골": "🇲🇳", "카자흐스탄": "🇰🇿", "우즈베키스탄": "🇺🇿", "키르기스스탄": "🇰🇬", "타지키스탄": "🇹🇯",
 }
 
 
@@ -46,7 +46,7 @@ COUNTRY_FLAG_CODES = {
     "말레이시아": "my", "인도네시아": "id",
     "필리핀": "ph", "캄보디아": "kh", "라오스": "la", "미얀마": "mm",
     "인도": "in", "몰디브": "mv", "스리랑카": "lk", "네팔": "np", "부탄": "bt", "방글라데시": "bd",
-    "파키스탄": "pk", "카자흐스탄": "kz", "우즈베키스탄": "uz", "키르기스스탄": "kg", "타지키스탄": "tj",
+    "파키스탄": "pk", "몽골": "mn", "카자흐스탄": "kz", "우즈베키스탄": "uz", "키르기스스탄": "kg", "타지키스탄": "tj",
 }
 
 
@@ -461,7 +461,7 @@ def country_brand_summary(df, include_upcoming=False):
     """데이터에 등록된 국가별 체인 수. 미수집 국가를 0개로 오해하면 안 됩니다."""
     source = df.copy()
     if not include_upcoming:
-        source = source[~((source["brand_group"] == "Hilton") & source["opening_status"].str.startswith("개관 예정"))]
+        source = source[~(source["brand_group"].isin(["Hilton", "Accor"]) & source["opening_status"].str.startswith("개관 예정"))]
     count = source.groupby(["country", "brand_group"]).size().unstack(fill_value=0)
     for group in GROUPS:
         if group not in count.columns:
@@ -472,7 +472,7 @@ def country_brand_summary(df, include_upcoming=False):
     return count.sort_values("country", key=lambda col: col.map(lambda c: order.get(c, 999)), kind="stable").reset_index(drop=True)
 
 
-def filter_hotels(df, selected_groups, countries, regions, tiers, popular_only, keyword, hilton_tiers=None, include_upcoming=False, slh_mode="전체"):
+def filter_hotels(df, selected_groups, countries, regions, tiers, popular_only, keyword, hilton_tiers=None, include_upcoming=False, slh_mode="전체", accor_tiers=None):
 
     filtered = df[
         df["brand_group"].isin(selected_groups)
@@ -483,9 +483,11 @@ def filter_hotels(df, selected_groups, countries, regions, tiers, popular_only, 
     if regions is not None:
         filtered = filtered[filtered["display_region"].isin(regions)]
     if not include_upcoming:
-        filtered = filtered[~((filtered["brand_group"] == "Hilton") & filtered["opening_status"].str.startswith("개관 예정"))]
+        filtered = filtered[~(filtered["brand_group"].isin(["Hilton", "Accor"]) & filtered["opening_status"].str.startswith("개관 예정"))]
     if hilton_tiers is not None:
         filtered = filtered[(filtered["brand_group"] != "Hilton") | filtered["tier_source"].isin(hilton_tiers)]
+    if accor_tiers is not None:
+        filtered = filtered[(filtered["brand_group"] != "Accor") | filtered["tier_source"].isin(accor_tiers)]
     if slh_mode != "전체":
         slh = filtered["brand"].map(is_slh_partner)
         if slh_mode == "SLH 제휴만":
@@ -506,11 +508,12 @@ def filter_hotels(df, selected_groups, countries, regions, tiers, popular_only, 
 
 # 호텔 검색 필터는 「호텔 검색」 버튼으로 적용합니다.
 # 날짜·인원·포인트 모드는 변경 즉시 예약 링크에 반영합니다.
-def current_filter_snapshot(groups, country, tiers, hilton_tiers, slh, upcoming, popular, query):
+def current_filter_snapshot(groups, country, tiers, hilton_tiers, slh, upcoming, popular, query, accor_tiers=None):
     return {
         "groups": list(groups), "country": country,
         "tiers": list(tiers), "hilton_tiers": None if hilton_tiers is None else list(hilton_tiers),
         "slh": slh, "upcoming": bool(upcoming), "popular": bool(popular), "query": query,
+        "accor_tiers": None if accor_tiers is None else list(accor_tiers),
     }
 
 
@@ -660,15 +663,22 @@ with st.sidebar:
 
     enabled_groups = []
     hilton_source_tiers = None
+    accor_source_tiers = None
     slh_mode = "전체"
     include_upcoming = False
     popular_only = False
     keyword = ""
     with st.expander("⚙️ 추가 검색 조건", expanded=False):
-        st.caption("호텔 체인 · 힐튼 세부 분류 · SLH · 영업 상태 · 검색어")
+        st.caption("호텔 체인 · 힐튼/아코르 세부 분류 · SLH · 개관 예정 · 검색어")
         for group in GROUPS:
             if st.checkbox(GROUP_LABELS[group], value=True, key=f"show_{group}"):
                 enabled_groups.append(group)
+        if "Accor" in enabled_groups:
+            accor_options = ["럭셔리", "프리미엄", "미드스케일", "이코노미", "버짓"]
+            accor_source_tiers = st.multiselect(
+                "아코르 세부 분류", options=accor_options, default=accor_options,
+                help="아코르 원본 등급입니다. 공통 호텔 유형에서 Select로 묶이는 미드스케일·이코노미·버짓을 별도로 골라볼 수 있습니다.",
+            )
         if "Hilton" in enabled_groups:
             hilton_options = ["럭셔리", "프리미엄·풀서비스", "라이프스타일", "셀렉트"]
             hilton_source_tiers = st.multiselect(
@@ -680,7 +690,7 @@ with st.sidebar:
                 help="힐튼 원본의 SLH 제휴 표기를 기준으로 구분합니다.",
             )
         include_upcoming = st.checkbox(
-            "🏗️ 힐튼 개관 예정 호텔도 보기", value=False,
+            "🏗️ 힐튼·아코르 개관 예정 호텔도 보기", value=False,
             help="기본값은 운영 중인 호텔만 표시합니다.",
         )
         popular_only = st.checkbox(
@@ -693,7 +703,7 @@ with st.sidebar:
 
     draft_filters = current_filter_snapshot(
         enabled_groups, selected_country, selected_tiers,
-        hilton_source_tiers, slh_mode, include_upcoming, popular_only, keyword,
+        hilton_source_tiers, slh_mode, include_upcoming, popular_only, keyword, accor_source_tiers,
     )
     if "applied_hotel_filters" not in st.session_state:
         st.session_state["applied_hotel_filters"] = draft_filters.copy()
@@ -734,7 +744,7 @@ st.markdown(
     f"**객실:** {rooms}개 (객실당 성인 {adults}명, 어린이 {children}명)  |  "
     f"**메리어트/힐튼:** {'💎 포인트 검색' if use_points else '💳 일반 요금 검색'}"
 )
-st.caption("호텔 목록은 hotels.csv에서 통합 관리합니다. 메리어트 데이터는 2026-11-16 제공 수집본 기준이며, 힐튼 데이터는 제공된 2026-11-16 아시아 25개국 엑셀 기준(개관 예정 포함), 아코르는 기존 목록입니다. 평점·리뷰·미확인 성급은 표시하지 않습니다. 예약 링크 작동은 전수 검증되지 않았습니다.")
+st.caption("호텔 목록은 hotels.csv에서 통합 관리합니다. 메리어트 데이터는 2026-11-16 제공 수집본 기준이며, 힐튼 데이터는 제공된 2026-11-16 아시아 25개국 엑셀 기준(개관 예정 포함), 아코르 데이터는 2026-11-17 제공된 아시아 26개국 엑셀에서 조지아·아르메니아·아제르바이잔을 제외한 자료입니다. 평점·리뷰·미확인 성급은 표시하지 않습니다. 예약 링크 작동은 전수 검증되지 않았습니다.")
 
 applied_filters = st.session_state["applied_hotel_filters"]
 applied_country = applied_filters["country"]
@@ -742,6 +752,7 @@ filtered_df = filter_hotels(
     master, applied_filters["groups"], [applied_country], None,
     applied_filters["tiers"], applied_filters["popular"], applied_filters["query"],
     applied_filters["hilton_tiers"], applied_filters["upcoming"], applied_filters["slh"],
+    applied_filters.get("accor_tiers"),
 )
 if not filtered_df.empty:
     links = filtered_df.apply(
